@@ -1,0 +1,126 @@
+{
+  "api_contract": "single-item-trending-public-api",
+  "api_version": "v2",
+  "response_kind": "TRENDING_LIST",
+  "query": {
+    "as_of": null,
+    "snapshot_known_at": "2026-09-07T12:00:00.000000Z",
+    "request_known_at": "2026-09-07T12:00:00.000000Z",
+    "publication_id": "1111111111111111111111111111111111111111111111111111111111111111",
+    "direction": "GAINERS",
+    "page_size": 50,
+    "cursor": null,
+    "filters": {
+      "item_kind": null,
+      "base_item_code": null,
+      "edition_kind": null,
+      "wear_tier": null
+    }
+  },
+  "publication": {
+    "publication_id": "1111111111111111111111111111111111111111111111111111111111111111",
+    "manifest_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+    "result_as_of": "2026-09-06",
+    "input_available_at": "2026-09-07T10:00:00.000000Z",
+    "public_available_at": "2026-09-07T10:30:00.000000Z",
+    "published_at": "2026-09-07T10:31:00.000000Z",
+    "freshness_anchor_at": "2026-09-07T00:00:00.000000Z",
+    "fresh_until": "2026-09-08T10:30:00.000000Z",
+    "retain_until": "2026-10-07T10:30:00.000000Z",
+    "freshness": "FRESH",
+    "supersedes_publication_id": null,
+    "producer_release": {
+      "release_code": "synthetic-contract-vector-v1",
+      "algorithm_version": "single-item-trending-m3a-cny-v1",
+      "data_quality_policy_version": "synthetic-contract-vector-v1",
+      "public_top_n_per_direction": 50,
+      "minimum_three_source_endpoint_ratio_bps": 0,
+      "minimum_direction_eligible_ratio_bps": 0,
+      "minimum_qualified_three_source_endpoint_ratio_bps": 0
+    },
+    "numeric_profile": {
+      "profile_code": "synthetic-contract-vector-v1",
+      "method_id": "M3",
+      "segment": "A_THREE_SOURCE",
+      "horizon_days": 30,
+      "analysis_currency": "CNY",
+      "minimum_endpoint_cny_minor": 10,
+      "minimum_abs_leg_delta_cny_minor": 1
+    },
+    "rights_release_code": "upstream-derived-top50-public-app-2026-09-07-v1",
+    "rights_maximum_public_members_per_direction": 50,
+    "evidence_release_code": "synthetic-window-evidence-release-v1",
+    "catalog": {
+      "catalog_publication_id": "6666666666666666666666666666666666666666666666666666666666666666",
+      "snapshot_id": "3333333333333333333333333333333333333333333333333333333333333333",
+      "catalog_version": "catalog-contract-vector-v1",
+      "as_of": "2026-09-07T09:00:00.000000Z",
+      "available_at": "2026-09-07T09:30:00.000000Z",
+      "published_at": "2026-09-07T09:45:00.000000Z",
+      "member_count": 16978,
+      "member_set_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+      "decision": "APPROVED",
+      "withdrawn": false
+    },
+    "accounting": {
+      "member_count": 16978,
+      "three_source_endpoint_count": 1,
+      "three_source_endpoint_ratio_bps": 0,
+      "direction_eligible_count": 1,
+      "direction_eligible_ratio_bps": 0,
+      "eligible_count": 1,
+      "excluded_count": 16977,
+      "status_counts": {
+        "ELIGIBLE_A3": 1,
+        "CONFLICTED_DIRECTION": 0,
+        "INSUFFICIENT_THREE_SOURCES": 16977,
+        "FLAT_OR_ZERO_CONFLICT": 0,
+        "WITHHELD_ANOMALY": 0,
+        "WITHHELD_ANOMALY_UNKNOWN": 0,
+        "WITHHELD_WINDOW_EVIDENCE": 0,
+        "WITHHELD_MICROPRICE": 0,
+        "STALE_ENDPOINT": 0,
+        "TEMPORAL_VIOLATION": 0,
+        "CONTRACT_MISMATCH": 0
+      },
+      "gainer_count": 1,
+      "loser_count": 0,
+      "qualified_three_source_endpoint_count": 1,
+      "qualified_three_source_endpoint_ratio_bps": 0
+    }
+  },
+  "total": 1,
+  "members": [
+    {
+      "rank": 1,
+      "tie_break_key": "fixture:item:official-name-shape",
+      "measurement_id": "5555555555555555555555555555555555555555555555555555555555555555",
+      "analysis_unit_id": "fixture:item:official-name-shape",
+      "direction": "GAINERS",
+      "evidence_grade": "THREE_SOURCE_SAME_DIRECTION",
+      "conservative_source_code": "market_a",
+      "conservative_same_direction_change_floor_ratio": "0.10000000",
+      "catalog": {
+        "analysis_unit_id": "fixture:item:official-name-shape",
+        "parent_analysis_unit_id": null,
+        "analysis_unit_kind": "BASE_MHN",
+        "item_kind": "WEAPON",
+        "base_item_code": "fixture.weapon.official-name-shape",
+        "edition_kind": "STATTRAK",
+        "wear_tier": "FIELD_TESTED",
+        "localized_name": {
+          "en": "StatTrak™ Contract Fixture | Official String Shape (Field-Tested)",
+          "zh_cn": "StatTrak™ 合同样例 | 官方字符串形状 (久经沙场)"
+        },
+        "media": {
+          "status": "BOUND",
+          "media_asset_version_id": "105",
+          "media_key": "fixture/series-representative",
+          "presentation_kind": "SERIES_REPRESENTATIVE"
+        },
+        "catalog_version": "catalog-contract-vector-v1"
+      }
+    }
+  ],
+  "next_cursor": null
+}

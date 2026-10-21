@@ -1,0 +1,23 @@
+[
+  {
+    "case_id": "branch-b-trade-confirmation",
+    "base_file": "unit-item-branch-b.valid.json",
+    "operation": "replace",
+    "path": ["recommendation_detail", "trade_confirmation"],
+    "value": "CONFIRMED"
+  },
+  {
+    "case_id": "duplicate-p-domain",
+    "base_file": "unit-item-branch-b.valid.json",
+    "operation": "replace",
+    "path": ["evidence_domains", 0, "domain"],
+    "value": "P"
+  },
+  {
+    "case_id": "source-private-top-level-field",
+    "base_file": "unit-item-branch-b.valid.json",
+    "operation": "add",
+    "path": ["source_code"],
+    "value": "synthetic-source-must-be-rejected"
+  }
+]

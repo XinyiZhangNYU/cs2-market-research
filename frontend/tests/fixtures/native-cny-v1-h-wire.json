@@ -1,0 +1,890 @@
+{
+ "backend_commit": "synthetic-h-generator",
+ "generator": "gen_h_fixtures.py",
+ "h": {
+  "day": {
+   "data": {
+    "availability": "CONTEMPORANEOUS_EOD_NOT_ARCHIVE_LAST_OBSERVATION",
+    "basis": "UPSTREAM_VENDOR_DECLARED_NATIVE_CNY_V1",
+    "bucket_date": "2026-09-28",
+    "currency": "CNY",
+    "fx_applied": false,
+    "measured_at": "2026-10-01T00:00:00Z",
+    "method": "PRICE_TIER_BALANCED_NATIVE_CNY_V1",
+    "numeric_semantics": "FIXED_50_SIGNIFICANT_DECIMAL_DIGITS_CUMULATIVE_LOG_CHAIN_ROUND_HALF_EVEN_DISPLAY_ROUNDING",
+    "points": [
+     {
+      "absolute_price_qualified_member_count": 120,
+      "absolute_price_semantic": "FUSED_MEMBER_ASKS_NOT_MARKET_VALUE",
+      "ask_median_cny_display": "580.61",
+      "ask_sum_cny_display": "103859.28",
+      "effective_estimator": "PRICE_TIER_BALANCED_H",
+      "expected_member_count": 120,
+      "grade_counts": {
+       "A": 120,
+       "B": 0,
+       "C": 0,
+       "D": 0,
+       "E": 0
+      },
+      "index_display": "998.93770376",
+      "paired_member_count": 120,
+      "period_return_display": "0.000827418672",
+      "price_quality": "HIGH",
+      "qualified_member_count": 120,
+      "rejected_return_domain_count": 0,
+      "return_quality": "HIGH",
+      "scope_code": "ALL",
+      "segment_number": 1,
+      "source_pair_counts": {
+       "3->3": 120
+      },
+      "state": "ADJACENT_NATIVE_CNY_GEOMETRIC_RETURN",
+      "warnings": []
+     },
+     {
+      "absolute_price_qualified_member_count": 120,
+      "absolute_price_semantic": "FUSED_MEMBER_ASKS_NOT_MARKET_VALUE",
+      "ask_median_cny_display": "580.61",
+      "ask_sum_cny_display": "103859.28",
+      "effective_estimator": "PRICE_TIER_BALANCED_H",
+      "expected_member_count": 120,
+      "grade_counts": {
+       "A": 120,
+       "B": 0,
+       "C": 0,
+       "D": 0,
+       "E": 0
+      },
+      "index_display": "998.93770376",
+      "paired_member_count": 120,
+      "period_return_display": "0.000827418672",
+      "price_quality": "HIGH",
+      "qualified_member_count": 120,
+      "rejected_return_domain_count": 0,
+      "return_quality": "HIGH",
+      "scope_code": "WEAPON",
+      "segment_number": 1,
+      "source_pair_counts": {
+       "3->3": 120
+      },
+      "state": "ADJACENT_NATIVE_CNY_GEOMETRIC_RETURN",
+      "warnings": []
+     }
+    ],
+    "price_unit": "CNY_MAJOR",
+    "schema": "native-cny-index-public-day/1",
+    "spec_sha256": "33d070f71a581a0ccad42c55293d1cfa98979d607299ef887e9004cfc6a01228"
+   },
+   "public_sha256": "cf1bdf5ccd668fb2b3119c44632663547e877ee85451d1c97788df971f7fbba3",
+   "publication_id": "fb7c4b1b2a231857dcc2e93a1196079940d1a3fa667be3c427981ea457cd0403",
+   "released_at": "2026-10-03T15:10:07+00:00",
+   "review_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+   "rights_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+  },
+  "estimators": [
+   "None",
+   "PRICE_TIER_BALANCED_H"
+  ],
+  "history": {
+   "api_contract": "native-cny-index-history/1",
+   "calculation_revisions_mixed": false,
+   "currency": "CNY",
+   "days": [
+    {
+     "data": {
+      "availability": "CONTEMPORANEOUS_EOD_NOT_ARCHIVE_LAST_OBSERVATION",
+      "basis": "UPSTREAM_VENDOR_DECLARED_NATIVE_CNY_V1",
+      "bucket_date": "2026-09-27",
+      "currency": "CNY",
+      "fx_applied": false,
+      "measured_at": "2026-10-01T00:00:00Z",
+      "method": "PRICE_TIER_BALANCED_NATIVE_CNY_V1",
+      "numeric_semantics": "FIXED_50_SIGNIFICANT_DECIMAL_DIGITS_CUMULATIVE_LOG_CHAIN_ROUND_HALF_EVEN_DISPLAY_ROUNDING",
+      "points": [
+       {
+        "absolute_price_qualified_member_count": 120,
+        "absolute_price_semantic": "FUSED_MEMBER_ASKS_NOT_MARKET_VALUE",
+        "ask_median_cny_display": "563.615",
+        "ask_sum_cny_display": "103900.73",
+        "effective_estimator": null,
+        "expected_member_count": 120,
+        "grade_counts": {
+         "A": 0,
+         "B": 0,
+         "C": 0,
+         "D": 0,
+         "E": 120
+        },
+        "index_display": "998.11184738",
+        "paired_member_count": 0,
+        "period_return_display": null,
+        "price_quality": "HIGH",
+        "qualified_member_count": 0,
+        "rejected_return_domain_count": 0,
+        "return_quality": "UNAVAILABLE",
+        "scope_code": "ALL",
+        "segment_number": 1,
+        "source_pair_counts": {},
+        "state": "NEW_SEGMENT_BASE_NO_CROSS_BASIS_OR_GAP_RETURN",
+        "warnings": []
+       }
+      ],
+      "price_unit": "CNY_MAJOR",
+      "schema": "native-cny-index-public-day/1",
+      "spec_sha256": "33d070f71a581a0ccad42c55293d1cfa98979d607299ef887e9004cfc6a01228"
+     },
+     "public_sha256": "e0a4dee060fc908815afbce61720826a4279bebe7484fb852d9450336deb8e0e",
+     "publication_id": "70c1c5eb00147f427d1eafaae581d6827555b46a22571cb097d03dbfb7758fee",
+     "released_at": "2026-10-03T15:10:07+00:00",
+     "review_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+     "rights_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    },
+    {
+     "data": {
+      "availability": "CONTEMPORANEOUS_EOD_NOT_ARCHIVE_LAST_OBSERVATION",
+      "basis": "UPSTREAM_VENDOR_DECLARED_NATIVE_CNY_V1",
+      "bucket_date": "2026-09-28",
+      "currency": "CNY",
+      "fx_applied": false,
+      "measured_at": "2026-10-01T00:00:00Z",
+      "method": "PRICE_TIER_BALANCED_NATIVE_CNY_V1",
+      "numeric_semantics": "FIXED_50_SIGNIFICANT_DECIMAL_DIGITS_CUMULATIVE_LOG_CHAIN_ROUND_HALF_EVEN_DISPLAY_ROUNDING",
+      "points": [
+       {
+        "absolute_price_qualified_member_count": 120,
+        "absolute_price_semantic": "FUSED_MEMBER_ASKS_NOT_MARKET_VALUE",
+        "ask_median_cny_display": "580.61",
+        "ask_sum_cny_display": "103859.28",
+        "effective_estimator": "PRICE_TIER_BALANCED_H",
+        "expected_member_count": 120,
+        "grade_counts": {
+         "A": 120,
+         "B": 0,
+         "C": 0,
+         "D": 0,
+         "E": 0
+        },
+        "index_display": "998.93770376",
+        "paired_member_count": 120,
+        "period_return_display": "0.000827418672",
+        "price_quality": "HIGH",
+        "qualified_member_count": 120,
+        "rejected_return_domain_count": 0,
+        "return_quality": "HIGH",
+        "scope_code": "ALL",
+        "segment_number": 1,
+        "source_pair_counts": {
+         "3->3": 120
+        },
+        "state": "ADJACENT_NATIVE_CNY_GEOMETRIC_RETURN",
+        "warnings": []
+       }
+      ],
+      "price_unit": "CNY_MAJOR",
+      "schema": "native-cny-index-public-day/1",
+      "spec_sha256": "33d070f71a581a0ccad42c55293d1cfa98979d607299ef887e9004cfc6a01228"
+     },
+     "public_sha256": "cf1bdf5ccd668fb2b3119c44632663547e877ee85451d1c97788df971f7fbba3",
+     "publication_id": "fb7c4b1b2a231857dcc2e93a1196079940d1a3fa667be3c427981ea457cd0403",
+     "released_at": "2026-10-03T15:10:07+00:00",
+     "review_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+     "rights_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    }
+   ],
+   "end_date": "2026-09-28",
+   "fx_applied": false,
+   "missing_prices_filled": false,
+   "missing_publication_dates": [],
+   "scope": "ALL",
+   "spec_sha256": "33d070f71a581a0ccad42c55293d1cfa98979d607299ef887e9004cfc6a01228",
+   "start_date": "2026-09-27"
+  },
+  "method": "PRICE_TIER_BALANCED_NATIVE_CNY_V1",
+  "spec_sha256": "33d070f71a581a0ccad42c55293d1cfa98979d607299ef887e9004cfc6a01228",
+  "states": [
+   "ADJACENT_NATIVE_CNY_GEOMETRIC_RETURN",
+   "NEW_SEGMENT_BASE_NO_CROSS_BASIS_OR_GAP_RETURN"
+  ]
+ },
+ "h_archive": {
+  "estimators": [
+   "PRICE_TIER_BALANCED_H"
+  ],
+  "history": {
+   "api_contract": "native-cny-index-history/1",
+   "calculation_revisions_mixed": false,
+   "currency": "CNY",
+   "days": [
+    {
+     "data": {
+      "availability": "ARCHIVE_LAST_OBSERVED_UTC_DAY_RECONSTRUCTED_LATE_BOUND",
+      "basis": "UPSTREAM_VENDOR_DECLARED_NATIVE_CNY_V1",
+      "bucket_date": "2026-09-25",
+      "currency": "CNY",
+      "fx_applied": false,
+      "measured_at": "2026-10-01T00:00:00Z",
+      "method": "PRICE_TIER_BALANCED_NATIVE_CNY_V1",
+      "numeric_semantics": "FIXED_50_SIGNIFICANT_DECIMAL_DIGITS_CUMULATIVE_LOG_CHAIN_ROUND_HALF_EVEN_DISPLAY_ROUNDING",
+      "points": [
+       {
+        "absolute_price_qualified_member_count": 120,
+        "absolute_price_semantic": "FUSED_MEMBER_ASKS_NOT_MARKET_VALUE",
+        "ask_median_cny_display": "591.94",
+        "ask_sum_cny_display": "103723.37",
+        "effective_estimator": "PRICE_TIER_BALANCED_H",
+        "expected_member_count": 120,
+        "grade_counts": {
+         "A": 120,
+         "B": 0,
+         "C": 0,
+         "D": 0,
+         "E": 0
+        },
+        "index_display": "999.27777101",
+        "paired_member_count": 120,
+        "period_return_display": "0.000426302135",
+        "price_quality": "HIGH",
+        "qualified_member_count": 120,
+        "rejected_return_domain_count": 0,
+        "return_quality": "HIGH",
+        "scope_code": "ALL",
+        "segment_number": 1,
+        "source_pair_counts": {
+         "3->3": 120
+        },
+        "state": "ADJACENT_NATIVE_CNY_GEOMETRIC_RETURN",
+        "warnings": []
+       }
+      ],
+      "price_unit": "CNY_MAJOR",
+      "schema": "native-cny-index-public-day/1",
+      "spec_sha256": "6b339be3706c03cfc39e96c7a5b52b48db8620ac3c19f6bc099cecb9227f3c9f"
+     },
+     "public_sha256": "e8da632748a1ca4f97deb3d1893068be4cffad4a888be460c5d966eb26804a3f",
+     "publication_id": "b3ecd00c6c32d59897c55c07c270850f4cb8fa61d7e3017b33258e647ddc5370",
+     "released_at": "2026-10-03T15:10:07+00:00",
+     "review_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+     "rights_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    },
+    {
+     "data": {
+      "availability": "ARCHIVE_LAST_OBSERVED_UTC_DAY_RECONSTRUCTED_LATE_BOUND",
+      "basis": "UPSTREAM_VENDOR_DECLARED_NATIVE_CNY_V1",
+      "bucket_date": "2026-09-26",
+      "currency": "CNY",
+      "fx_applied": false,
+      "measured_at": "2026-10-01T00:00:00Z",
+      "method": "PRICE_TIER_BALANCED_NATIVE_CNY_V1",
+      "numeric_semantics": "FIXED_50_SIGNIFICANT_DECIMAL_DIGITS_CUMULATIVE_LOG_CHAIN_ROUND_HALF_EVEN_DISPLAY_ROUNDING",
+      "points": [
+       {
+        "absolute_price_qualified_member_count": 120,
+        "absolute_price_semantic": "FUSED_MEMBER_ASKS_NOT_MARKET_VALUE",
+        "ask_median_cny_display": "546.62",
+        "ask_sum_cny_display": "103489.64",
+        "effective_estimator": "PRICE_TIER_BALANCED_H",
+        "expected_member_count": 120,
+        "grade_counts": {
+         "A": 120,
+         "B": 0,
+         "C": 0,
+         "D": 0,
+         "E": 0
+        },
+        "index_display": "998.96159757",
+        "paired_member_count": 120,
+        "period_return_display": "-0.000316401953",
+        "price_quality": "HIGH",
+        "qualified_member_count": 120,
+        "rejected_return_domain_count": 0,
+        "return_quality": "HIGH",
+        "scope_code": "ALL",
+        "segment_number": 1,
+        "source_pair_counts": {
+         "3->3": 120
+        },
+        "state": "ADJACENT_NATIVE_CNY_GEOMETRIC_RETURN",
+        "warnings": []
+       }
+      ],
+      "price_unit": "CNY_MAJOR",
+      "schema": "native-cny-index-public-day/1",
+      "spec_sha256": "6b339be3706c03cfc39e96c7a5b52b48db8620ac3c19f6bc099cecb9227f3c9f"
+     },
+     "public_sha256": "14dbce06e5103cb08869cfbadd00a26c7a2c68251f86bb9d9496db2d55438df5",
+     "publication_id": "0bdd6d897e09c002d1e54f3ac53a522bdb715ec7a8021a9ef24b9e4afdc79229",
+     "released_at": "2026-10-03T15:10:07+00:00",
+     "review_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+     "rights_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    }
+   ],
+   "end_date": "2026-09-26",
+   "fx_applied": false,
+   "missing_prices_filled": false,
+   "missing_publication_dates": [],
+   "scope": "ALL",
+   "spec_sha256": "6b339be3706c03cfc39e96c7a5b52b48db8620ac3c19f6bc099cecb9227f3c9f",
+   "start_date": "2026-09-25"
+  },
+  "method": "PRICE_TIER_BALANCED_NATIVE_CNY_V1",
+  "spec_sha256": "6b339be3706c03cfc39e96c7a5b52b48db8620ac3c19f6bc099cecb9227f3c9f",
+  "states": [
+   "ADJACENT_NATIVE_CNY_GEOMETRIC_RETURN"
+  ]
+ },
+ "mutations": [
+  {
+   "backend_accepts": true,
+   "base": "h",
+   "field": "effective_estimator",
+   "target": "point",
+   "value": "EQUAL_GEOMETRIC_NO_WINSOR"
+  },
+  {
+   "backend_accepts": true,
+   "base": "h",
+   "field": "effective_estimator",
+   "target": "point",
+   "value": null
+  },
+  {
+   "backend_accepts": false,
+   "base": "h",
+   "field": "effective_estimator",
+   "target": "point",
+   "value": "SYMMETRIC_1_PERCENT_WINSOR"
+  },
+  {
+   "backend_accepts": false,
+   "base": "h",
+   "field": "effective_estimator",
+   "target": "point",
+   "value": "RAW_EQUAL_ADMITTED_NO_WINSOR"
+  },
+  {
+   "backend_accepts": false,
+   "base": "h",
+   "field": "effective_estimator",
+   "target": "point",
+   "value": "LOG_SYMMETRIC_1_PERCENT_WINSOR"
+  },
+  {
+   "backend_accepts": true,
+   "base": "h",
+   "field": "state",
+   "target": "point",
+   "value": "BELOW_MINIMUM_INTERPRETABLE_COVERAGE"
+  },
+  {
+   "backend_accepts": false,
+   "base": "h",
+   "field": "state",
+   "target": "point",
+   "value": "ADJACENT_NATIVE_CNY_ROBUST_EQUAL_RETURN"
+  },
+  {
+   "backend_accepts": false,
+   "base": "h",
+   "field": "numeric_semantics",
+   "target": "data",
+   "value": "FIXED_50_SIGNIFICANT_DECIMAL_DIGITS_ROUND_HALF_EVEN_SCALE_STATE_DISPLAY_ROUNDING"
+  },
+  {
+   "backend_accepts": false,
+   "base": "h",
+   "field": "numeric_semantics",
+   "target": "data",
+   "value": "EXACT_PRIVATE_CALCULATION_DISPLAY_ONLY_ROUNDING"
+  },
+  {
+   "backend_accepts": false,
+   "base": "h",
+   "field": "method",
+   "target": "data",
+   "value": "ROBUST_EQUAL_NATIVE_CNY_EXACT_V1"
+  },
+  {
+   "backend_accepts": false,
+   "base": "h",
+   "field": "method",
+   "target": "data",
+   "value": "ROBUST_EQUAL_GEOMETRIC_NATIVE_CNY_V2"
+  },
+  {
+   "backend_accepts": false,
+   "base": "h",
+   "field": "method",
+   "target": "data",
+   "value": "ARITHMETIC_MEAN"
+  },
+  {
+   "backend_accepts": true,
+   "base": "v1",
+   "field": "effective_estimator",
+   "target": "point",
+   "value": "RAW_EQUAL_ADMITTED_NO_WINSOR"
+  },
+  {
+   "backend_accepts": false,
+   "base": "v1",
+   "field": "effective_estimator",
+   "target": "point",
+   "value": "PRICE_TIER_BALANCED_H"
+  },
+  {
+   "backend_accepts": false,
+   "base": "v1",
+   "field": "effective_estimator",
+   "target": "point",
+   "value": "EQUAL_GEOMETRIC_NO_WINSOR"
+  },
+  {
+   "backend_accepts": false,
+   "base": "v1",
+   "field": "state",
+   "target": "point",
+   "value": "ADJACENT_NATIVE_CNY_GEOMETRIC_RETURN"
+  },
+  {
+   "backend_accepts": true,
+   "base": "v1",
+   "field": "numeric_semantics",
+   "target": "data",
+   "value": "EXACT_PRIVATE_CALCULATION_DISPLAY_ONLY_ROUNDING"
+  },
+  {
+   "backend_accepts": false,
+   "base": "v1",
+   "field": "numeric_semantics",
+   "target": "data",
+   "value": "FIXED_50_SIGNIFICANT_DECIMAL_DIGITS_CUMULATIVE_LOG_CHAIN_ROUND_HALF_EVEN_DISPLAY_ROUNDING"
+  },
+  {
+   "backend_accepts": false,
+   "base": "v1",
+   "field": "method",
+   "target": "data",
+   "value": "PRICE_TIER_BALANCED_NATIVE_CNY_V1"
+  },
+  {
+   "backend_accepts": true,
+   "base": "v2",
+   "field": "method",
+   "target": "data",
+   "value": "ROBUST_EQUAL_GEOMETRIC_NATIVE_CNY_V2"
+  }
+ ],
+ "v1": {
+  "day": {
+   "data": {
+    "availability": "CONTEMPORANEOUS_EOD_NOT_ARCHIVE_LAST_OBSERVATION",
+    "basis": "UPSTREAM_VENDOR_DECLARED_NATIVE_CNY_V1",
+    "bucket_date": "2026-09-28",
+    "currency": "CNY",
+    "fx_applied": false,
+    "measured_at": "2026-10-01T00:00:00Z",
+    "method": "ROBUST_EQUAL_NATIVE_CNY_EXACT_V1",
+    "numeric_semantics": "EXACT_PRIVATE_CALCULATION_DISPLAY_ONLY_ROUNDING",
+    "points": [
+     {
+      "absolute_price_qualified_member_count": 120,
+      "absolute_price_semantic": "FUSED_MEMBER_ASKS_NOT_MARKET_VALUE",
+      "ask_median_cny_display": "580.61",
+      "ask_sum_cny_display": "103859.28",
+      "effective_estimator": "SYMMETRIC_1_PERCENT_WINSOR",
+      "expected_member_count": 120,
+      "grade_counts": {
+       "A": 120,
+       "B": 0,
+       "C": 0,
+       "D": 0,
+       "E": 0
+      },
+      "index_display": "1001.82689316",
+      "paired_member_count": 120,
+      "period_return_display": "0.001826893156",
+      "price_quality": "HIGH",
+      "qualified_member_count": 120,
+      "rejected_return_domain_count": 0,
+      "return_quality": "HIGH",
+      "scope_code": "ALL",
+      "segment_number": 1,
+      "source_pair_counts": {
+       "3->3": 120
+      },
+      "state": "ADJACENT_NATIVE_CNY_ROBUST_EQUAL_RETURN",
+      "warnings": []
+     },
+     {
+      "absolute_price_qualified_member_count": 120,
+      "absolute_price_semantic": "FUSED_MEMBER_ASKS_NOT_MARKET_VALUE",
+      "ask_median_cny_display": "580.61",
+      "ask_sum_cny_display": "103859.28",
+      "effective_estimator": "SYMMETRIC_1_PERCENT_WINSOR",
+      "expected_member_count": 120,
+      "grade_counts": {
+       "A": 120,
+       "B": 0,
+       "C": 0,
+       "D": 0,
+       "E": 0
+      },
+      "index_display": "1001.82689316",
+      "paired_member_count": 120,
+      "period_return_display": "0.001826893156",
+      "price_quality": "HIGH",
+      "qualified_member_count": 120,
+      "rejected_return_domain_count": 0,
+      "return_quality": "HIGH",
+      "scope_code": "WEAPON",
+      "segment_number": 1,
+      "source_pair_counts": {
+       "3->3": 120
+      },
+      "state": "ADJACENT_NATIVE_CNY_ROBUST_EQUAL_RETURN",
+      "warnings": []
+     }
+    ],
+    "price_unit": "CNY_MAJOR",
+    "schema": "native-cny-index-public-day/1",
+    "spec_sha256": "499d1d45d3034dd0f1e872445296fc17bc7bccdcc688936fb7f5d7a4fcedbae8"
+   },
+   "public_sha256": "280775a6dba86a71c156d84e93e7a6a35ef687ae206f7b22fc5080de8082fa03",
+   "publication_id": "e7c24f15a7e3e0d7efe5a7ccd1add0e88ab186e7694881cab6f726fd5a17becf",
+   "released_at": "2026-10-03T15:10:07+00:00",
+   "review_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+   "rights_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+  },
+  "estimators": [
+   "None",
+   "SYMMETRIC_1_PERCENT_WINSOR"
+  ],
+  "history": {
+   "api_contract": "native-cny-index-history/1",
+   "calculation_revisions_mixed": false,
+   "currency": "CNY",
+   "days": [
+    {
+     "data": {
+      "availability": "CONTEMPORANEOUS_EOD_NOT_ARCHIVE_LAST_OBSERVATION",
+      "basis": "UPSTREAM_VENDOR_DECLARED_NATIVE_CNY_V1",
+      "bucket_date": "2026-09-27",
+      "currency": "CNY",
+      "fx_applied": false,
+      "measured_at": "2026-10-01T00:00:00Z",
+      "method": "ROBUST_EQUAL_NATIVE_CNY_EXACT_V1",
+      "numeric_semantics": "EXACT_PRIVATE_CALCULATION_DISPLAY_ONLY_ROUNDING",
+      "points": [
+       {
+        "absolute_price_qualified_member_count": 120,
+        "absolute_price_semantic": "FUSED_MEMBER_ASKS_NOT_MARKET_VALUE",
+        "ask_median_cny_display": "563.615",
+        "ask_sum_cny_display": "103900.73",
+        "effective_estimator": null,
+        "expected_member_count": 120,
+        "grade_counts": {
+         "A": 0,
+         "B": 0,
+         "C": 0,
+         "D": 0,
+         "E": 120
+        },
+        "index_display": "1000",
+        "paired_member_count": 0,
+        "period_return_display": null,
+        "price_quality": "HIGH",
+        "qualified_member_count": 0,
+        "rejected_return_domain_count": 0,
+        "return_quality": "UNAVAILABLE",
+        "scope_code": "ALL",
+        "segment_number": 1,
+        "source_pair_counts": {},
+        "state": "NEW_SEGMENT_BASE_NO_CROSS_BASIS_OR_GAP_RETURN",
+        "warnings": []
+       }
+      ],
+      "price_unit": "CNY_MAJOR",
+      "schema": "native-cny-index-public-day/1",
+      "spec_sha256": "499d1d45d3034dd0f1e872445296fc17bc7bccdcc688936fb7f5d7a4fcedbae8"
+     },
+     "public_sha256": "755e10b8998e30cac6768e65b24c6f2a4d93a7ce611b983b16a0424c09d92352",
+     "publication_id": "57108747823e684051c0d54278e7bd65c2e2047d8547738801380c109489a021",
+     "released_at": "2026-10-03T15:10:07+00:00",
+     "review_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+     "rights_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    },
+    {
+     "data": {
+      "availability": "CONTEMPORANEOUS_EOD_NOT_ARCHIVE_LAST_OBSERVATION",
+      "basis": "UPSTREAM_VENDOR_DECLARED_NATIVE_CNY_V1",
+      "bucket_date": "2026-09-28",
+      "currency": "CNY",
+      "fx_applied": false,
+      "measured_at": "2026-10-01T00:00:00Z",
+      "method": "ROBUST_EQUAL_NATIVE_CNY_EXACT_V1",
+      "numeric_semantics": "EXACT_PRIVATE_CALCULATION_DISPLAY_ONLY_ROUNDING",
+      "points": [
+       {
+        "absolute_price_qualified_member_count": 120,
+        "absolute_price_semantic": "FUSED_MEMBER_ASKS_NOT_MARKET_VALUE",
+        "ask_median_cny_display": "580.61",
+        "ask_sum_cny_display": "103859.28",
+        "effective_estimator": "SYMMETRIC_1_PERCENT_WINSOR",
+        "expected_member_count": 120,
+        "grade_counts": {
+         "A": 120,
+         "B": 0,
+         "C": 0,
+         "D": 0,
+         "E": 0
+        },
+        "index_display": "1001.82689316",
+        "paired_member_count": 120,
+        "period_return_display": "0.001826893156",
+        "price_quality": "HIGH",
+        "qualified_member_count": 120,
+        "rejected_return_domain_count": 0,
+        "return_quality": "HIGH",
+        "scope_code": "ALL",
+        "segment_number": 1,
+        "source_pair_counts": {
+         "3->3": 120
+        },
+        "state": "ADJACENT_NATIVE_CNY_ROBUST_EQUAL_RETURN",
+        "warnings": []
+       }
+      ],
+      "price_unit": "CNY_MAJOR",
+      "schema": "native-cny-index-public-day/1",
+      "spec_sha256": "499d1d45d3034dd0f1e872445296fc17bc7bccdcc688936fb7f5d7a4fcedbae8"
+     },
+     "public_sha256": "280775a6dba86a71c156d84e93e7a6a35ef687ae206f7b22fc5080de8082fa03",
+     "publication_id": "e7c24f15a7e3e0d7efe5a7ccd1add0e88ab186e7694881cab6f726fd5a17becf",
+     "released_at": "2026-10-03T15:10:07+00:00",
+     "review_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+     "rights_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    }
+   ],
+   "end_date": "2026-09-28",
+   "fx_applied": false,
+   "missing_prices_filled": false,
+   "missing_publication_dates": [],
+   "scope": "ALL",
+   "spec_sha256": "499d1d45d3034dd0f1e872445296fc17bc7bccdcc688936fb7f5d7a4fcedbae8",
+   "start_date": "2026-09-27"
+  },
+  "method": "ROBUST_EQUAL_NATIVE_CNY_EXACT_V1",
+  "spec_sha256": "499d1d45d3034dd0f1e872445296fc17bc7bccdcc688936fb7f5d7a4fcedbae8",
+  "states": [
+   "ADJACENT_NATIVE_CNY_ROBUST_EQUAL_RETURN",
+   "NEW_SEGMENT_BASE_NO_CROSS_BASIS_OR_GAP_RETURN"
+  ]
+ },
+ "v2": {
+  "day": {
+   "data": {
+    "availability": "CONTEMPORANEOUS_EOD_NOT_ARCHIVE_LAST_OBSERVATION",
+    "basis": "UPSTREAM_VENDOR_DECLARED_NATIVE_CNY_V1",
+    "bucket_date": "2026-09-28",
+    "currency": "CNY",
+    "fx_applied": false,
+    "measured_at": "2026-10-01T00:00:00Z",
+    "method": "ROBUST_EQUAL_GEOMETRIC_NATIVE_CNY_V2",
+    "numeric_semantics": "FIXED_50_SIGNIFICANT_DECIMAL_DIGITS_CUMULATIVE_LOG_CHAIN_ROUND_HALF_EVEN_DISPLAY_ROUNDING",
+    "points": [
+     {
+      "absolute_price_qualified_member_count": 120,
+      "absolute_price_semantic": "FUSED_MEMBER_ASKS_NOT_MARKET_VALUE",
+      "ask_median_cny_display": "580.61",
+      "ask_sum_cny_display": "103859.28",
+      "effective_estimator": "LOG_SYMMETRIC_1_PERCENT_WINSOR",
+      "expected_member_count": 120,
+      "grade_counts": {
+       "A": 120,
+       "B": 0,
+       "C": 0,
+       "D": 0,
+       "E": 0
+      },
+      "index_display": "999.82639768",
+      "paired_member_count": 120,
+      "period_return_display": "0.00066062955",
+      "price_quality": "HIGH",
+      "qualified_member_count": 120,
+      "rejected_return_domain_count": 0,
+      "return_quality": "HIGH",
+      "scope_code": "ALL",
+      "segment_number": 1,
+      "source_pair_counts": {
+       "3->3": 120
+      },
+      "state": "ADJACENT_NATIVE_CNY_GEOMETRIC_RETURN",
+      "warnings": []
+     },
+     {
+      "absolute_price_qualified_member_count": 120,
+      "absolute_price_semantic": "FUSED_MEMBER_ASKS_NOT_MARKET_VALUE",
+      "ask_median_cny_display": "580.61",
+      "ask_sum_cny_display": "103859.28",
+      "effective_estimator": "LOG_SYMMETRIC_1_PERCENT_WINSOR",
+      "expected_member_count": 120,
+      "grade_counts": {
+       "A": 120,
+       "B": 0,
+       "C": 0,
+       "D": 0,
+       "E": 0
+      },
+      "index_display": "999.82639768",
+      "paired_member_count": 120,
+      "period_return_display": "0.00066062955",
+      "price_quality": "HIGH",
+      "qualified_member_count": 120,
+      "rejected_return_domain_count": 0,
+      "return_quality": "HIGH",
+      "scope_code": "WEAPON",
+      "segment_number": 1,
+      "source_pair_counts": {
+       "3->3": 120
+      },
+      "state": "ADJACENT_NATIVE_CNY_GEOMETRIC_RETURN",
+      "warnings": []
+     }
+    ],
+    "price_unit": "CNY_MAJOR",
+    "schema": "native-cny-index-public-day/1",
+    "spec_sha256": "0ccdc3b51f1a62b73fc46ff8ec326964dc6bc8811a23046bd0fc115de0989c59"
+   },
+   "public_sha256": "f64f259e850efef5839e92f2f82e9d4c2ee9ddd690cf33f440bae28e913f4a1d",
+   "publication_id": "2186ad9e10de502e32b62ef9c3f7e65a666923fab34d6f62e3df9cc8a53e32b5",
+   "released_at": "2026-10-03T15:10:07+00:00",
+   "review_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+   "rights_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+  },
+  "estimators": [
+   "LOG_SYMMETRIC_1_PERCENT_WINSOR",
+   "None"
+  ],
+  "history": {
+   "api_contract": "native-cny-index-history/1",
+   "calculation_revisions_mixed": false,
+   "currency": "CNY",
+   "days": [
+    {
+     "data": {
+      "availability": "CONTEMPORANEOUS_EOD_NOT_ARCHIVE_LAST_OBSERVATION",
+      "basis": "UPSTREAM_VENDOR_DECLARED_NATIVE_CNY_V1",
+      "bucket_date": "2026-09-27",
+      "currency": "CNY",
+      "fx_applied": false,
+      "measured_at": "2026-10-01T00:00:00Z",
+      "method": "ROBUST_EQUAL_GEOMETRIC_NATIVE_CNY_V2",
+      "numeric_semantics": "FIXED_50_SIGNIFICANT_DECIMAL_DIGITS_CUMULATIVE_LOG_CHAIN_ROUND_HALF_EVEN_DISPLAY_ROUNDING",
+      "points": [
+       {
+        "absolute_price_qualified_member_count": 120,
+        "absolute_price_semantic": "FUSED_MEMBER_ASKS_NOT_MARKET_VALUE",
+        "ask_median_cny_display": "563.615",
+        "ask_sum_cny_display": "103900.73",
+        "effective_estimator": null,
+        "expected_member_count": 120,
+        "grade_counts": {
+         "A": 0,
+         "B": 0,
+         "C": 0,
+         "D": 0,
+         "E": 120
+        },
+        "index_display": "999.16631888",
+        "paired_member_count": 0,
+        "period_return_display": null,
+        "price_quality": "HIGH",
+        "qualified_member_count": 0,
+        "rejected_return_domain_count": 0,
+        "return_quality": "UNAVAILABLE",
+        "scope_code": "ALL",
+        "segment_number": 1,
+        "source_pair_counts": {},
+        "state": "NEW_SEGMENT_BASE_NO_CROSS_BASIS_OR_GAP_RETURN",
+        "warnings": []
+       }
+      ],
+      "price_unit": "CNY_MAJOR",
+      "schema": "native-cny-index-public-day/1",
+      "spec_sha256": "0ccdc3b51f1a62b73fc46ff8ec326964dc6bc8811a23046bd0fc115de0989c59"
+     },
+     "public_sha256": "7d19360e1f4e9684d59373238b44ee671efdc1cea65770b36e05bb5abf9fdbbe",
+     "publication_id": "b69c2f1c2cf322a07729eb4af1d21e32228f5ac33d3195b4fb5715953ba8cb70",
+     "released_at": "2026-10-03T15:10:07+00:00",
+     "review_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+     "rights_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    },
+    {
+     "data": {
+      "availability": "CONTEMPORANEOUS_EOD_NOT_ARCHIVE_LAST_OBSERVATION",
+      "basis": "UPSTREAM_VENDOR_DECLARED_NATIVE_CNY_V1",
+      "bucket_date": "2026-09-28",
+      "currency": "CNY",
+      "fx_applied": false,
+      "measured_at": "2026-10-01T00:00:00Z",
+      "method": "ROBUST_EQUAL_GEOMETRIC_NATIVE_CNY_V2",
+      "numeric_semantics": "FIXED_50_SIGNIFICANT_DECIMAL_DIGITS_CUMULATIVE_LOG_CHAIN_ROUND_HALF_EVEN_DISPLAY_ROUNDING",
+      "points": [
+       {
+        "absolute_price_qualified_member_count": 120,
+        "absolute_price_semantic": "FUSED_MEMBER_ASKS_NOT_MARKET_VALUE",
+        "ask_median_cny_display": "580.61",
+        "ask_sum_cny_display": "103859.28",
+        "effective_estimator": "LOG_SYMMETRIC_1_PERCENT_WINSOR",
+        "expected_member_count": 120,
+        "grade_counts": {
+         "A": 120,
+         "B": 0,
+         "C": 0,
+         "D": 0,
+         "E": 0
+        },
+        "index_display": "999.82639768",
+        "paired_member_count": 120,
+        "period_return_display": "0.00066062955",
+        "price_quality": "HIGH",
+        "qualified_member_count": 120,
+        "rejected_return_domain_count": 0,
+        "return_quality": "HIGH",
+        "scope_code": "ALL",
+        "segment_number": 1,
+        "source_pair_counts": {
+         "3->3": 120
+        },
+        "state": "ADJACENT_NATIVE_CNY_GEOMETRIC_RETURN",
+        "warnings": []
+       }
+      ],
+      "price_unit": "CNY_MAJOR",
+      "schema": "native-cny-index-public-day/1",
+      "spec_sha256": "0ccdc3b51f1a62b73fc46ff8ec326964dc6bc8811a23046bd0fc115de0989c59"
+     },
+     "public_sha256": "f64f259e850efef5839e92f2f82e9d4c2ee9ddd690cf33f440bae28e913f4a1d",
+     "publication_id": "2186ad9e10de502e32b62ef9c3f7e65a666923fab34d6f62e3df9cc8a53e32b5",
+     "released_at": "2026-10-03T15:10:07+00:00",
+     "review_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+     "rights_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    }
+   ],
+   "end_date": "2026-09-28",
+   "fx_applied": false,
+   "missing_prices_filled": false,
+   "missing_publication_dates": [],
+   "scope": "ALL",
+   "spec_sha256": "0ccdc3b51f1a62b73fc46ff8ec326964dc6bc8811a23046bd0fc115de0989c59",
+   "start_date": "2026-09-27"
+  },
+  "method": "ROBUST_EQUAL_GEOMETRIC_NATIVE_CNY_V2",
+  "spec_sha256": "0ccdc3b51f1a62b73fc46ff8ec326964dc6bc8811a23046bd0fc115de0989c59",
+  "states": [
+   "ADJACENT_NATIVE_CNY_GEOMETRIC_RETURN",
+   "NEW_SEGMENT_BASE_NO_CROSS_BASIS_OR_GAP_RETURN"
+  ]
+ }
+}

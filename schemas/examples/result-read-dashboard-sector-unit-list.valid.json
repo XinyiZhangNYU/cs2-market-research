@@ -1,0 +1,246 @@
+{
+  "api_contract": "result-read-api",
+  "api_version": "v1",
+  "members": [
+    {
+      "envelope": {
+        "as_of": "2026-08-22T08:00:00.000000Z",
+        "available_at": "2026-08-22T07:59:00.000000Z",
+        "claims": [],
+        "contract_code": "research-result-envelope",
+        "contract_version": "v1",
+        "data_branch": "B",
+        "data_status": "COMPLETE",
+        "envelope_kind": "UNIT",
+        "evidence_domains": [],
+        "identity": {
+          "analysis_unit_id": "sector:cases",
+          "analysis_unit_kind": null,
+          "catalog_version": "catalog-dashboard-fixture-v1",
+          "display_name": "Synthetic cases sector",
+          "edition_kind": null,
+          "identity_available_at": "2026-08-21T08:00:00.000000Z",
+          "parent_analysis_unit_id": null,
+          "scope_kind": "SECTOR"
+        },
+        "recommendation_detail": null,
+        "snapshot_id": "08634287010e287fba395ef405853a037d4f1603480ee966c88fdf95345b7f15",
+        "state": {
+          "analysis_case_id": null,
+          "breadth": {
+            "advancing_member_ratio": "0.500",
+            "breadth_expanding": false,
+            "breadth_narrowing": false,
+            "concentration_warning": false,
+            "median_member_return": "0.004"
+          },
+          "case_status": null,
+          "evidence_flags": [],
+          "input_snapshot_hash": "7bdd5a39f6333feceb03f8f3fa4fde7c909b2a760f48b3f1eef44e947b82600c",
+          "recommendation": "WATCH",
+          "relative_strength": "IN_LINE",
+          "trend_stage": "NEUTRAL"
+        },
+        "versions": {
+          "algorithm_version": "algorithm-dashboard-fixture-v1",
+          "catalog_version": "catalog-dashboard-fixture-v1",
+          "failure_policy_version": "failure-dashboard-fixture-v1",
+          "feature_profile_version": "profile-dashboard-fixture-v1",
+          "fusion_method_version": "fusion-dashboard-fixture-v1",
+          "group_version": "group-dashboard-fixture-v1",
+          "index_version": "index-dashboard-fixture-v1",
+          "parameter_set_version": "parameters-dashboard-fixture-v1",
+          "stage_policy_version": "stage-dashboard-fixture-v1"
+        }
+      },
+      "storage": {
+        "document_hash": "a31da135bee7f21de0627759ae3e8c072406b236d404d3c901d1cbd44b28cc19",
+        "published_at": "2026-08-22T08:00:00.000000Z"
+      }
+    },
+    {
+      "envelope": {
+        "as_of": "2026-08-22T08:00:00.000000Z",
+        "available_at": "2026-08-22T07:59:00.000000Z",
+        "claims": [],
+        "contract_code": "research-result-envelope",
+        "contract_version": "v1",
+        "data_branch": "B",
+        "data_status": "COMPLETE",
+        "envelope_kind": "UNIT",
+        "evidence_domains": [],
+        "identity": {
+          "analysis_unit_id": "sector:gloves",
+          "analysis_unit_kind": null,
+          "catalog_version": "catalog-dashboard-fixture-v1",
+          "display_name": "Synthetic gloves sector",
+          "edition_kind": null,
+          "identity_available_at": "2026-08-21T08:00:00.000000Z",
+          "parent_analysis_unit_id": null,
+          "scope_kind": "SECTOR"
+        },
+        "recommendation_detail": null,
+        "snapshot_id": "3e13049dfb13012be51239a9f2f2f3ea0c759ba3665f332133512f93e1b841c4",
+        "state": {
+          "analysis_case_id": null,
+          "breadth": {
+            "advancing_member_ratio": "0.375",
+            "breadth_expanding": false,
+            "breadth_narrowing": true,
+            "concentration_warning": false,
+            "median_member_return": "-0.009"
+          },
+          "case_status": null,
+          "evidence_flags": [
+            "BREADTH_COLLAPSE"
+          ],
+          "input_snapshot_hash": "0ca4797c38e63ce742aa42904b0f24ee7a2119cf0a364f699120ab96f2969e1b",
+          "recommendation": "WATCH",
+          "relative_strength": "LAGGING",
+          "trend_stage": "DOWN_BUILDING"
+        },
+        "versions": {
+          "algorithm_version": "algorithm-dashboard-fixture-v1",
+          "catalog_version": "catalog-dashboard-fixture-v1",
+          "failure_policy_version": "failure-dashboard-fixture-v1",
+          "feature_profile_version": "profile-dashboard-fixture-v1",
+          "fusion_method_version": "fusion-dashboard-fixture-v1",
+          "group_version": "group-dashboard-fixture-v1",
+          "index_version": "index-dashboard-fixture-v1",
+          "parameter_set_version": "parameters-dashboard-fixture-v1",
+          "stage_policy_version": "stage-dashboard-fixture-v1"
+        }
+      },
+      "storage": {
+        "document_hash": "4e78b7227c01e9823e09087eccf8428db58f13fa16685e1bf4553e47015aaa98",
+        "published_at": "2026-08-22T08:00:00.000000Z"
+      }
+    },
+    {
+      "envelope": {
+        "as_of": "2026-08-22T08:00:00.000000Z",
+        "available_at": "2026-08-22T07:59:00.000000Z",
+        "claims": [],
+        "contract_code": "research-result-envelope",
+        "contract_version": "v1",
+        "data_branch": "B",
+        "data_status": "COMPLETE",
+        "envelope_kind": "UNIT",
+        "evidence_domains": [],
+        "identity": {
+          "analysis_unit_id": "sector:knives",
+          "analysis_unit_kind": null,
+          "catalog_version": "catalog-dashboard-fixture-v1",
+          "display_name": "Synthetic knives sector",
+          "edition_kind": null,
+          "identity_available_at": "2026-08-21T08:00:00.000000Z",
+          "parent_analysis_unit_id": null,
+          "scope_kind": "SECTOR"
+        },
+        "recommendation_detail": null,
+        "snapshot_id": "efc1cc27e55c5b6ae9b284321442752a897e00cc96e5e6e340992e77660a6235",
+        "state": {
+          "analysis_case_id": null,
+          "breadth": {
+            "advancing_member_ratio": "0.750",
+            "breadth_expanding": true,
+            "breadth_narrowing": false,
+            "concentration_warning": true,
+            "median_member_return": "0.028"
+          },
+          "case_status": null,
+          "evidence_flags": [
+            "CONCENTRATION_WARNING"
+          ],
+          "input_snapshot_hash": "b61a23321279bc9d7ae3b95c34d05d130b7b5670c4a68719b7bff7bf1019c4fb",
+          "recommendation": "WATCH",
+          "relative_strength": "LEADING",
+          "trend_stage": "UP_ACTIVE"
+        },
+        "versions": {
+          "algorithm_version": "algorithm-dashboard-fixture-v1",
+          "catalog_version": "catalog-dashboard-fixture-v1",
+          "failure_policy_version": "failure-dashboard-fixture-v1",
+          "feature_profile_version": "profile-dashboard-fixture-v1",
+          "fusion_method_version": "fusion-dashboard-fixture-v1",
+          "group_version": "group-dashboard-fixture-v1",
+          "index_version": "index-dashboard-fixture-v1",
+          "parameter_set_version": "parameters-dashboard-fixture-v1",
+          "stage_policy_version": "stage-dashboard-fixture-v1"
+        }
+      },
+      "storage": {
+        "document_hash": "d3f473b2e283129f7f12008f9004e5dde1a47bb5685a47d3faa676d4054a072b",
+        "published_at": "2026-08-22T08:00:00.000000Z"
+      }
+    },
+    {
+      "envelope": {
+        "as_of": "2026-08-22T08:00:00.000000Z",
+        "available_at": "2026-08-22T07:59:00.000000Z",
+        "claims": [],
+        "contract_code": "research-result-envelope",
+        "contract_version": "v1",
+        "data_branch": "B",
+        "data_status": "COMPLETE",
+        "envelope_kind": "UNIT",
+        "evidence_domains": [],
+        "identity": {
+          "analysis_unit_id": "sector:rifles",
+          "analysis_unit_kind": null,
+          "catalog_version": "catalog-dashboard-fixture-v1",
+          "display_name": "Synthetic rifles sector",
+          "edition_kind": null,
+          "identity_available_at": "2026-08-21T08:00:00.000000Z",
+          "parent_analysis_unit_id": null,
+          "scope_kind": "SECTOR"
+        },
+        "recommendation_detail": null,
+        "snapshot_id": "dd3533ac48fa5b617c68db4f582bf6b73792ee5372f214c8a2d131feb4c3e2ff",
+        "state": {
+          "analysis_case_id": null,
+          "breadth": {
+            "advancing_member_ratio": "0.625",
+            "breadth_expanding": true,
+            "breadth_narrowing": false,
+            "concentration_warning": false,
+            "median_member_return": "0.014"
+          },
+          "case_status": null,
+          "evidence_flags": [],
+          "input_snapshot_hash": "255eb746eb4cc5e13e72ff0c08ae20f649ae160ebf387a55baaa2719c8dc8c4b",
+          "recommendation": "WATCH",
+          "relative_strength": "IN_LINE",
+          "trend_stage": "UP_BUILDING"
+        },
+        "versions": {
+          "algorithm_version": "algorithm-dashboard-fixture-v1",
+          "catalog_version": "catalog-dashboard-fixture-v1",
+          "failure_policy_version": "failure-dashboard-fixture-v1",
+          "feature_profile_version": "profile-dashboard-fixture-v1",
+          "fusion_method_version": "fusion-dashboard-fixture-v1",
+          "group_version": "group-dashboard-fixture-v1",
+          "index_version": "index-dashboard-fixture-v1",
+          "parameter_set_version": "parameters-dashboard-fixture-v1",
+          "stage_policy_version": "stage-dashboard-fixture-v1"
+        }
+      },
+      "storage": {
+        "document_hash": "63c9b22f6494cdf42c367f7c6663945ea8e11bfeea4145609c29682e0be3204a",
+        "published_at": "2026-08-22T08:00:00.000000Z"
+      }
+    }
+  ],
+  "next_cursor": null,
+  "query": {
+    "analysis_unit_kind": null,
+    "as_of": "2026-08-22T08:00:00.000000Z",
+    "data_status": "COMPLETE",
+    "edition_kind": null,
+    "page_size": 100,
+    "parent_analysis_unit_id": null,
+    "scope_kind": "SECTOR",
+    "sort": "ANALYSIS_UNIT_ID_ASC"
+  },
+  "response_kind": "UNIT_LIST"
+}

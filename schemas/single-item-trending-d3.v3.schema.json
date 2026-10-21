@@ -1,0 +1,2640 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.cs2-research.invalid/schemas/single-item-trending-d3.v3.schema.json",
+  "title": "Single-item Trending D3 V3: exact historical identity and qualified input accounting",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/currentEndpointSet"
+    },
+    {
+      "$ref": "#/$defs/windowEvidence"
+    },
+    {
+      "$ref": "#/$defs/numericProfile"
+    },
+    {
+      "$ref": "#/$defs/rightsRelease"
+    },
+    {
+      "$ref": "#/$defs/evidenceRelease"
+    },
+    {
+      "$ref": "#/$defs/measurement"
+    },
+    {
+      "$ref": "#/$defs/candidateLedger"
+    },
+    {
+      "$ref": "#/$defs/publicManifest"
+    },
+    {
+      "$ref": "#/$defs/identityHistory"
+    },
+    {
+      "$ref": "#/$defs/identityBinding"
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "ratio": {
+      "type": "string",
+      "pattern": "^-?[0-9]+\\.[0-9]{8}$"
+    },
+    "sourceCode": {
+      "enum": [
+        "market_a",
+        "market_b",
+        "market_c"
+      ]
+    },
+    "direction": {
+      "enum": [
+        "GAINERS",
+        "LOSERS"
+      ]
+    },
+    "status": {
+      "enum": [
+        "ELIGIBLE_A3",
+        "CONFLICTED_DIRECTION",
+        "INSUFFICIENT_THREE_SOURCES",
+        "FLAT_OR_ZERO_CONFLICT",
+        "WITHHELD_ANOMALY",
+        "WITHHELD_ANOMALY_UNKNOWN",
+        "WITHHELD_WINDOW_EVIDENCE",
+        "WITHHELD_MICROPRICE",
+        "STALE_ENDPOINT",
+        "TEMPORAL_VIOLATION",
+        "CONTRACT_MISMATCH"
+      ]
+    },
+    "anomalyAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "assessment_id",
+        "schema_version",
+        "analysis_unit_id",
+        "source_code",
+        "start_projection_sha256",
+        "end_projection_sha256",
+        "policy_id",
+        "status",
+        "available_at",
+        "reason_codes"
+      ],
+      "properties": {
+        "assessment_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "schema_version": {
+          "const": "single-item-trending-anomaly-assessment/1"
+        },
+        "analysis_unit_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_code": {
+          "$ref": "#/$defs/sourceCode"
+        },
+        "start_projection_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "end_projection_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "policy_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "status": {
+          "enum": [
+            "PASS",
+            "FLAGGED",
+            "UNKNOWN"
+          ]
+        },
+        "available_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "reason_codes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "eodFact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "analysis_unit_id",
+        "ask_atoms",
+        "available_at",
+        "bucket_date",
+        "logical_source",
+        "source_fact_sha256"
+      ],
+      "properties": {
+        "analysis_unit_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ask_atoms": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "available_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "bucket_date": {
+          "$ref": "#/$defs/date"
+        },
+        "logical_source": {
+          "$ref": "#/$defs/sourceCode"
+        },
+        "source_fact_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "eodDiagnostic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "analysis_unit_id",
+        "logical_source",
+        "status",
+        "supplied_slot_count",
+        "positive_fresh_slot_count",
+        "stale_slot_count",
+        "missing_source_clock_slot_count",
+        "invalid_or_missing_ask_slot_count",
+        "reduced_ask_atoms",
+        "reason_codes",
+        "lineage_sha256"
+      ],
+      "properties": {
+        "analysis_unit_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "logical_source": {
+          "$ref": "#/$defs/sourceCode"
+        },
+        "status": {
+          "enum": [
+            "QUALIFIED",
+            "INSUFFICIENT_SLOTS",
+            "INVALID_OR_MISSING_ASK",
+            "STALE_QUOTE",
+            "MISSING_SOURCE_CLOCK",
+            "CROSS_SOURCE_INCOHERENT"
+          ]
+        },
+        "supplied_slot_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 12
+        },
+        "positive_fresh_slot_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 12
+        },
+        "stale_slot_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 12
+        },
+        "missing_source_clock_slot_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 12
+        },
+        "invalid_or_missing_ask_slot_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 12
+        },
+        "reduced_ask_atoms": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "reason_codes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "lineage_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "eodProof": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "reduction_id",
+        "artifact_sha256",
+        "bucket_date",
+        "reduced_at",
+        "upstream_membership_id",
+        "upstream_membership_sha256",
+        "policy_sha256",
+        "supplied_slot_count",
+        "source_fact_count",
+        "source_fact_set_sha256",
+        "source_facts",
+        "input_snapshot_sha256",
+        "diagnostics"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "single-item-trending-eod-proof/2"
+        },
+        "reduction_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "bucket_date": {
+          "$ref": "#/$defs/date"
+        },
+        "reduced_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "upstream_membership_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "upstream_membership_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "policy_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "supplied_slot_count": {
+          "const": 12
+        },
+        "source_fact_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "source_fact_set_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "source_facts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/eodFact"
+          }
+        },
+        "input_snapshot_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "diagnostics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/eodDiagnostic"
+          }
+        }
+      }
+    },
+    "currentEndpointPair": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "analysis_unit_id",
+        "source_code",
+        "anomaly_assessment",
+        "start_projection",
+        "end_projection"
+      ],
+      "properties": {
+        "analysis_unit_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_code": {
+          "$ref": "#/$defs/sourceCode"
+        },
+        "anomaly_assessment": {
+          "$ref": "#/$defs/anomalyAssessment"
+        },
+        "start_projection": {
+          "$ref": "#/$defs/cnyProjection"
+        },
+        "end_projection": {
+          "$ref": "#/$defs/cnyProjection"
+        }
+      }
+    },
+    "currentEndpointSet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "endpoint_set_id",
+        "schema_version",
+        "membership_id",
+        "member_set_sha256",
+        "member_count",
+        "catalog_snapshot_sha256",
+        "knowledge_mode",
+        "maximum_source_lag_seconds",
+        "start_date",
+        "result_as_of",
+        "evaluated_at",
+        "start_eod_proof",
+        "end_eod_proof",
+        "anomaly_policy_id",
+        "anomaly_assessment_set_sha256",
+        "pair_count",
+        "pair_set_sha256",
+        "source_leg_set_sha256",
+        "pairs",
+        "identity_history_sha256",
+        "identity_history"
+      ],
+      "properties": {
+        "endpoint_set_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "schema_version": {
+          "const": "single-item-trending-current-endpoint-set/4"
+        },
+        "membership_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "member_set_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "member_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "catalog_snapshot_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "knowledge_mode": {
+          "enum": [
+            "PROSPECTIVE_PIT",
+            "RETROSPECTIVE_DIAGNOSTIC"
+          ]
+        },
+        "maximum_source_lag_seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 86400
+        },
+        "start_date": {
+          "$ref": "#/$defs/date"
+        },
+        "result_as_of": {
+          "$ref": "#/$defs/date"
+        },
+        "evaluated_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "start_eod_proof": {
+          "$ref": "#/$defs/eodProof"
+        },
+        "end_eod_proof": {
+          "$ref": "#/$defs/eodProof"
+        },
+        "anomaly_policy_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "anomaly_assessment_set_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "pair_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "pair_set_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "source_leg_set_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "pairs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/currentEndpointPair"
+          }
+        },
+        "identity_history_sha256": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "identity_history": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/identityHistory"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "windowEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "window_evidence_id",
+        "schema_version",
+        "endpoint_set_id",
+        "membership_id",
+        "member_set_sha256",
+        "member_count",
+        "catalog_snapshot_sha256",
+        "start_date",
+        "end_date",
+        "start_eod",
+        "end_eod",
+        "anomaly_policy_id",
+        "anomaly_assessment_set_sha256",
+        "source_leg_set_sha256",
+        "available_at",
+        "knowledge_mode",
+        "identity_history_sha256",
+        "identity_history"
+      ],
+      "properties": {
+        "window_evidence_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "schema_version": {
+          "const": "single-item-trending-window-evidence/2"
+        },
+        "endpoint_set_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "membership_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "member_set_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "member_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "catalog_snapshot_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "start_date": {
+          "$ref": "#/$defs/date"
+        },
+        "end_date": {
+          "$ref": "#/$defs/date"
+        },
+        "start_eod": {
+          "$ref": "#/$defs/eodSummary"
+        },
+        "end_eod": {
+          "$ref": "#/$defs/eodSummary"
+        },
+        "anomaly_policy_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "anomaly_assessment_set_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "source_leg_set_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "available_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "knowledge_mode": {
+          "enum": [
+            "PROSPECTIVE_PIT",
+            "RETROSPECTIVE_DIAGNOSTIC"
+          ]
+        },
+        "identity_history_sha256": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "identity_history": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/identityHistory"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "eodSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reduction_id",
+        "artifact_sha256",
+        "reduced_at"
+      ],
+      "properties": {
+        "reduction_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "reduced_at": {
+          "$ref": "#/$defs/timestamp"
+        }
+      }
+    },
+    "numericProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_id",
+        "schema_version",
+        "profile_code",
+        "available_at",
+        "method_id",
+        "segment",
+        "horizon_days",
+        "analysis_currency",
+        "price_scale",
+        "sources",
+        "minimum_endpoint_cny_minor",
+        "minimum_abs_leg_delta_cny_minor",
+        "minimum_eligible_ratio_bps",
+        "endpoint_freshness_seconds",
+        "formal_numeric_profile_approved",
+        "prospective_validation_approved"
+      ],
+      "properties": {
+        "profile_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "schema_version": {
+          "const": "single-item-trending-numeric-profile/1"
+        },
+        "profile_code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "available_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "method_id": {
+          "const": "M3"
+        },
+        "segment": {
+          "const": "A_THREE_SOURCE"
+        },
+        "horizon_days": {
+          "const": 30
+        },
+        "analysis_currency": {
+          "const": "CNY"
+        },
+        "price_scale": {
+          "const": 2
+        },
+        "sources": {
+          "const": [
+            "market_a",
+            "market_b",
+            "market_c"
+          ]
+        },
+        "minimum_endpoint_cny_minor": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "minimum_abs_leg_delta_cny_minor": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "minimum_eligible_ratio_bps": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "endpoint_freshness_seconds": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "formal_numeric_profile_approved": {
+          "type": "boolean"
+        },
+        "prospective_validation_approved": {
+          "type": "boolean"
+        }
+      }
+    },
+    "rightsRelease": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rights_release_id",
+        "schema_version",
+        "release_code",
+        "available_at",
+        "usage_scope",
+        "public_derived_trending_allowed",
+        "allowed_public_source_codes",
+        "maximum_public_members_per_direction"
+      ],
+      "properties": {
+        "rights_release_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "schema_version": {
+          "const": "single-item-trending-rights-release/2"
+        },
+        "release_code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "available_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "usage_scope": {
+          "enum": [
+            "INTERNAL_SHADOW",
+            "PUBLIC_DERIVED_TRENDING"
+          ]
+        },
+        "public_derived_trending_allowed": {
+          "type": "boolean"
+        },
+        "allowed_public_source_codes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/sourceCode"
+          }
+        },
+        "maximum_public_members_per_direction": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 50
+        }
+      }
+    },
+    "evidenceRelease": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_release_id",
+        "schema_version",
+        "release_code",
+        "available_at",
+        "window_evidence_id",
+        "endpoint_set_id",
+        "membership_id",
+        "member_set_sha256",
+        "expected_member_count",
+        "catalog_publication_id",
+        "catalog_snapshot_sha256",
+        "catalog_member_set_sha256",
+        "start_eod_sha256",
+        "start_eod_reduced_at",
+        "end_eod_sha256",
+        "end_eod_reduced_at",
+        "anomaly_policy_id",
+        "anomaly_assessment_set_sha256",
+        "source_leg_set_sha256",
+        "eod_proofs_approved",
+        "anomaly_policy_approved",
+        "pit_membership_approved"
+      ],
+      "properties": {
+        "evidence_release_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "schema_version": {
+          "const": "single-item-trending-window-evidence-release/1"
+        },
+        "release_code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "available_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "window_evidence_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "endpoint_set_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "membership_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "member_set_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "expected_member_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "catalog_publication_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "catalog_snapshot_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "catalog_member_set_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "start_eod_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "start_eod_reduced_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "end_eod_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "end_eod_reduced_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "anomaly_policy_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "anomaly_assessment_set_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "source_leg_set_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "eod_proofs_approved": {
+          "type": "boolean"
+        },
+        "anomaly_policy_approved": {
+          "type": "boolean"
+        },
+        "pit_membership_approved": {
+          "type": "boolean"
+        }
+      }
+    },
+    "sourceLeg": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "analysis_unit_id",
+        "source_code",
+        "start_date",
+        "end_date",
+        "start_cny_minor",
+        "end_cny_minor",
+        "start_fact_id",
+        "end_fact_id",
+        "available_at",
+        "anomaly_status",
+        "anomaly_assessment_id",
+        "change_numerator",
+        "change_denominator",
+        "change_ratio",
+        "endpoint_observed_at",
+        "economic_identity_sha256",
+        "identity_binding_sha256",
+        "identity_binding"
+      ],
+      "properties": {
+        "analysis_unit_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_code": {
+          "$ref": "#/$defs/sourceCode"
+        },
+        "start_date": {
+          "$ref": "#/$defs/date"
+        },
+        "end_date": {
+          "$ref": "#/$defs/date"
+        },
+        "start_cny_minor": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end_cny_minor": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "start_fact_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "end_fact_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "available_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "anomaly_status": {
+          "enum": [
+            "PASS",
+            "FLAGGED",
+            "UNKNOWN"
+          ]
+        },
+        "anomaly_assessment_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "endpoint_observed_at": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/timestamp"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "economic_identity_sha256": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "change_numerator": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "change_denominator": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "change_ratio": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ratio"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "identity_binding_sha256": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "identity_binding": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/identityBinding"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "measurement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "measurement_id",
+        "schema_version",
+        "producer_version",
+        "numeric_profile_id",
+        "membership_id",
+        "analysis_unit_id",
+        "result_as_of",
+        "evaluated_at",
+        "analysis_currency",
+        "price_scale",
+        "method_id",
+        "segment",
+        "horizon_days",
+        "status",
+        "direction",
+        "conservative_source_code",
+        "conservative_change_numerator",
+        "conservative_change_denominator",
+        "conservative_same_direction_change_floor_ratio",
+        "source_legs"
+      ],
+      "properties": {
+        "measurement_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "schema_version": {
+          "const": "single-item-trending-measurement/3"
+        },
+        "producer_version": {
+          "const": "single-item-trending-m3a-cny-v3"
+        },
+        "numeric_profile_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "membership_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "analysis_unit_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "result_as_of": {
+          "$ref": "#/$defs/date"
+        },
+        "evaluated_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "analysis_currency": {
+          "const": "CNY"
+        },
+        "price_scale": {
+          "const": 2
+        },
+        "method_id": {
+          "const": "M3"
+        },
+        "segment": {
+          "const": "A_THREE_SOURCE"
+        },
+        "horizon_days": {
+          "const": 30
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "direction": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/direction"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "conservative_source_code": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sourceCode"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "conservative_change_numerator": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "conservative_change_denominator": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "conservative_same_direction_change_floor_ratio": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ratio"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source_legs": {
+          "type": "array",
+          "maxItems": 3,
+          "items": {
+            "$ref": "#/$defs/sourceLeg"
+          }
+        }
+      }
+    },
+    "ranking": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rank",
+        "analysis_unit_id",
+        "measurement_id",
+        "score_numerator",
+        "score_denominator"
+      ],
+      "properties": {
+        "rank": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "analysis_unit_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "measurement_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "score_numerator": {
+          "type": "integer"
+        },
+        "score_denominator": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "statusCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ELIGIBLE_A3",
+        "CONFLICTED_DIRECTION",
+        "INSUFFICIENT_THREE_SOURCES",
+        "FLAT_OR_ZERO_CONFLICT",
+        "WITHHELD_ANOMALY",
+        "WITHHELD_ANOMALY_UNKNOWN",
+        "WITHHELD_WINDOW_EVIDENCE",
+        "WITHHELD_MICROPRICE",
+        "STALE_ENDPOINT",
+        "TEMPORAL_VIOLATION",
+        "CONTRACT_MISMATCH"
+      ],
+      "properties": {
+        "ELIGIBLE_A3": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "CONFLICTED_DIRECTION": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "INSUFFICIENT_THREE_SOURCES": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "FLAT_OR_ZERO_CONFLICT": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "WITHHELD_ANOMALY": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "WITHHELD_ANOMALY_UNKNOWN": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "WITHHELD_WINDOW_EVIDENCE": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "WITHHELD_MICROPRICE": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "STALE_ENDPOINT": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "TEMPORAL_VIOLATION": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "CONTRACT_MISMATCH": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "candidateLedger": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_ledger_id",
+        "schema_version",
+        "producer_version",
+        "numeric_profile_id",
+        "window_evidence_id",
+        "knowledge_mode",
+        "membership_id",
+        "member_set_sha256",
+        "catalog_snapshot_sha256",
+        "catalog_version",
+        "result_as_of",
+        "input_available_at",
+        "evaluated_at",
+        "member_count",
+        "measurement_set_sha256",
+        "three_source_endpoint_count",
+        "three_source_endpoint_ratio_bps",
+        "direction_eligible_count",
+        "direction_eligible_ratio_bps",
+        "eligible_count",
+        "excluded_count",
+        "status_counts",
+        "candidate_status",
+        "rankings",
+        "formal_publication_eligible",
+        "public_state_published",
+        "qualified_three_source_endpoint_count",
+        "qualified_three_source_endpoint_ratio_bps"
+      ],
+      "properties": {
+        "candidate_ledger_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "schema_version": {
+          "const": "single-item-trending-candidate-ledger/3"
+        },
+        "producer_version": {
+          "const": "single-item-trending-m3a-cny-v3"
+        },
+        "numeric_profile_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "window_evidence_id": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "knowledge_mode": {
+          "enum": [
+            "PROSPECTIVE_PIT",
+            "RETROSPECTIVE_DIAGNOSTIC",
+            "UNPROVEN"
+          ]
+        },
+        "membership_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "member_set_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "catalog_snapshot_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "catalog_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "result_as_of": {
+          "$ref": "#/$defs/date"
+        },
+        "input_available_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "evaluated_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "member_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "measurement_set_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "three_source_endpoint_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "three_source_endpoint_ratio_bps": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "direction_eligible_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "direction_eligible_ratio_bps": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "eligible_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "excluded_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "status_counts": {
+          "$ref": "#/$defs/statusCounts"
+        },
+        "candidate_status": {
+          "enum": [
+            "INTERNAL_CANDIDATE",
+            "WITHHELD_MEMBER_ACCOUNTING",
+            "WITHHELD_NO_DIRECTION_ELIGIBLE"
+          ]
+        },
+        "rankings": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "GAINERS",
+            "LOSERS"
+          ],
+          "properties": {
+            "GAINERS": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ranking"
+              }
+            },
+            "LOSERS": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ranking"
+              }
+            }
+          }
+        },
+        "formal_publication_eligible": {
+          "const": false
+        },
+        "public_state_published": {
+          "const": false
+        },
+        "qualified_three_source_endpoint_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "qualified_three_source_endpoint_ratio_bps": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        }
+      }
+    },
+    "catalogDescriptor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "catalog_publication_id",
+        "snapshot_id",
+        "catalog_version",
+        "as_of",
+        "available_at",
+        "published_at",
+        "member_count",
+        "member_set_hash",
+        "decision",
+        "withdrawn"
+      ],
+      "properties": {
+        "catalog_publication_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "snapshot_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "catalog_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "as_of": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "available_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "published_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "member_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "member_set_hash": {
+          "$ref": "#/$defs/sha256"
+        },
+        "decision": {
+          "const": "APPROVED"
+        },
+        "withdrawn": {
+          "const": false
+        }
+      }
+    },
+    "publicManifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manifest_hash",
+        "schema_version",
+        "candidate_ledger_id",
+        "measurement_set_sha256",
+        "producer_release_id",
+        "numeric_profile_id",
+        "rights_release_id",
+        "evidence_release_id",
+        "window_evidence_id",
+        "result_as_of",
+        "input_available_at",
+        "public_available_at",
+        "freshness_anchor_at",
+        "fresh_until",
+        "retain_until",
+        "supersedes_publication_id",
+        "catalog",
+        "member_count",
+        "three_source_endpoint_count",
+        "three_source_endpoint_ratio_bps",
+        "direction_eligible_count",
+        "direction_eligible_ratio_bps",
+        "eligible_count",
+        "excluded_count",
+        "status_counts",
+        "gainer_count",
+        "loser_count",
+        "public_member_set_sha256",
+        "producer_release",
+        "numeric_profile",
+        "rights_release_code",
+        "rights_maximum_public_members_per_direction",
+        "evidence_release_code",
+        "qualified_three_source_endpoint_count",
+        "qualified_three_source_endpoint_ratio_bps"
+      ],
+      "properties": {
+        "manifest_hash": {
+          "$ref": "#/$defs/sha256"
+        },
+        "schema_version": {
+          "const": "single-item-trending-public-manifest/3"
+        },
+        "candidate_ledger_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "measurement_set_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "producer_release_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "numeric_profile_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "rights_release_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "evidence_release_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "window_evidence_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "result_as_of": {
+          "$ref": "#/$defs/date"
+        },
+        "input_available_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "public_available_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "freshness_anchor_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "fresh_until": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "retain_until": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "supersedes_publication_id": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "catalog": {
+          "$ref": "#/$defs/catalogDescriptor"
+        },
+        "member_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "three_source_endpoint_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "three_source_endpoint_ratio_bps": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "direction_eligible_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "direction_eligible_ratio_bps": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "eligible_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "excluded_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "status_counts": {
+          "$ref": "#/$defs/statusCounts"
+        },
+        "gainer_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 50
+        },
+        "loser_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 50
+        },
+        "public_member_set_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "producer_release": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "release_code",
+            "algorithm_version",
+            "data_quality_policy_version",
+            "public_top_n_per_direction",
+            "minimum_three_source_endpoint_ratio_bps",
+            "minimum_direction_eligible_ratio_bps",
+            "minimum_qualified_three_source_endpoint_ratio_bps"
+          ],
+          "properties": {
+            "release_code": {
+              "type": "string",
+              "minLength": 1
+            },
+            "algorithm_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "data_quality_policy_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "public_top_n_per_direction": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50
+            },
+            "minimum_three_source_endpoint_ratio_bps": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10000
+            },
+            "minimum_direction_eligible_ratio_bps": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10000
+            },
+            "minimum_qualified_three_source_endpoint_ratio_bps": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10000
+            }
+          }
+        },
+        "numeric_profile": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "profile_code",
+            "method_id",
+            "segment",
+            "horizon_days",
+            "analysis_currency",
+            "minimum_endpoint_cny_minor",
+            "minimum_abs_leg_delta_cny_minor"
+          ],
+          "properties": {
+            "profile_code": {
+              "type": "string",
+              "minLength": 1
+            },
+            "method_id": {
+              "const": "M3"
+            },
+            "segment": {
+              "const": "A_THREE_SOURCE"
+            },
+            "horizon_days": {
+              "const": 30
+            },
+            "analysis_currency": {
+              "const": "CNY"
+            },
+            "minimum_endpoint_cny_minor": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "minimum_abs_leg_delta_cny_minor": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        "rights_release_code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rights_maximum_public_members_per_direction": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50
+        },
+        "evidence_release_code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "qualified_three_source_endpoint_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "qualified_three_source_endpoint_ratio_bps": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        }
+      }
+    },
+    "identityHistory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identity_history_sha256",
+        "schema_version",
+        "assembled_at",
+        "catalog_history_sha256",
+        "upstream_membership_sha256s",
+        "artifacts"
+      ],
+      "properties": {
+        "identity_history_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "schema_version": {
+          "const": "single-item-trending-identity-history/1"
+        },
+        "assembled_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "catalog_history_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "upstream_membership_sha256s": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/sha256"
+          }
+        },
+        "artifacts": {
+          "type": "object",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[0-9a-f]{64}$": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "identityVariantVersion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "variant_version_id",
+        "item_id",
+        "version_label",
+        "semantic_status",
+        "valid_from",
+        "recorded_at",
+        "evidence_ref",
+        "evidence_hash",
+        "valid_to",
+        "item_kind",
+        "market_hash_name",
+        "base_item_code",
+        "paint_index",
+        "wear_tier",
+        "edition_kind",
+        "phase_code",
+        "style_code"
+      ],
+      "properties": {
+        "variant_version_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "item_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "version_label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "semantic_status": {
+          "enum": [
+            "CONFIRMED",
+            "INFERRED",
+            "UNVERIFIED"
+          ]
+        },
+        "valid_from": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "recorded_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "evidence_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_hash": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "valid_to": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/timestamp"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "item_kind": {
+          "enum": [
+            "WEAPON",
+            "KNIFE",
+            "GLOVE",
+            "AGENT",
+            "OTHER",
+            "UNKNOWN"
+          ]
+        },
+        "market_hash_name": {
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "base_item_code": {
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "paint_index": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "wear_tier": {
+          "enum": [
+            "FACTORY_NEW",
+            "MINIMAL_WEAR",
+            "FIELD_TESTED",
+            "WELL_WORN",
+            "BATTLE_SCARRED",
+            "NOT_APPLICABLE",
+            "UNKNOWN"
+          ]
+        },
+        "edition_kind": {
+          "enum": [
+            "STANDARD",
+            "STATTRAK",
+            "SOUVENIR",
+            "UNKNOWN"
+          ]
+        },
+        "phase_code": {
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "style_code": {
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "identityAnalysisUnitVersion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "analysis_unit_version_id",
+        "item_id",
+        "version_label",
+        "semantic_status",
+        "valid_from",
+        "recorded_at",
+        "evidence_ref",
+        "evidence_hash",
+        "valid_to",
+        "analysis_unit_kind",
+        "promotion_status",
+        "internal_variant_code"
+      ],
+      "properties": {
+        "analysis_unit_version_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "item_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "version_label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "semantic_status": {
+          "enum": [
+            "CONFIRMED",
+            "INFERRED",
+            "UNVERIFIED"
+          ]
+        },
+        "valid_from": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "recorded_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "evidence_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_hash": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "valid_to": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/timestamp"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "analysis_unit_kind": {
+          "enum": [
+            "BASE_MHN",
+            "STYLE_VARIANT",
+            "PATTERN_VARIANT"
+          ]
+        },
+        "promotion_status": {
+          "enum": [
+            "BASE_MHN",
+            "INTERNAL_VARIANT"
+          ]
+        },
+        "internal_variant_code": {
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "identityMappingVersion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mapping_version_id",
+        "item_id",
+        "semantic_status",
+        "valid_from",
+        "recorded_at",
+        "evidence_ref",
+        "evidence_hash",
+        "valid_to",
+        "source_code",
+        "source_item_id",
+        "source_style_id",
+        "scope_kind",
+        "observed_market_hash_name",
+        "mapping_status",
+        "min_float",
+        "max_float",
+        "candidate_item_ids",
+        "reason_code"
+      ],
+      "properties": {
+        "mapping_version_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "item_id": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "semantic_status": {
+          "enum": [
+            "CONFIRMED",
+            "INFERRED",
+            "UNVERIFIED"
+          ]
+        },
+        "valid_from": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "recorded_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "evidence_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_hash": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "valid_to": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/timestamp"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source_code": {
+          "type": "string",
+          "pattern": "^[a-z0-9_]+$"
+        },
+        "source_item_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_style_id": {
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "scope_kind": {
+          "enum": [
+            "AGGREGATE",
+            "MARKET_HASH_NAME",
+            "WEAR_RANGE",
+            "STYLE",
+            "STYLE_WEAR",
+            "EXACT_VARIANT"
+          ]
+        },
+        "observed_market_hash_name": {
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "mapping_status": {
+          "enum": [
+            "RESOLVED",
+            "UNKNOWN",
+            "AMBIGUOUS",
+            "CONFLICT",
+            "REJECTED"
+          ]
+        },
+        "min_float": {
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "max_float": {
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "candidate_item_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "reason_code": {
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "cny_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "cny_integerText": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)$"
+    },
+    "cny_instant": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    },
+    "cny_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_fact_sha256",
+        "source_item_id",
+        "analysis_unit_id",
+        "logical_source",
+        "transport",
+        "price_kind",
+        "event_at",
+        "source_available_at",
+        "identity_available_at",
+        "currency",
+        "unit",
+        "value",
+        "scale"
+      ],
+      "properties": {
+        "source_fact_sha256": {
+          "$ref": "#/$defs/cny_sha256"
+        },
+        "source_item_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "analysis_unit_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "logical_source": {
+          "enum": [
+            "market_a",
+            "market_b",
+            "market_c"
+          ]
+        },
+        "transport": {
+          "enum": [
+            "upstream",
+            "market_b_direct"
+          ]
+        },
+        "price_kind": {
+          "enum": [
+            "ASK",
+            "BID"
+          ]
+        },
+        "event_at": {
+          "$ref": "#/$defs/cny_instant"
+        },
+        "source_available_at": {
+          "$ref": "#/$defs/cny_instant"
+        },
+        "identity_available_at": {
+          "$ref": "#/$defs/cny_instant"
+        },
+        "currency": {
+          "enum": [
+            "USD",
+            "CNY"
+          ]
+        },
+        "unit": {
+          "enum": [
+            "USD_ATOMS",
+            "CNY_MINOR"
+          ]
+        },
+        "value": {
+          "$ref": "#/$defs/cny_integerText"
+        },
+        "scale": {
+          "enum": [
+            2,
+            8,
+            10
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "transport": {
+                "const": "upstream"
+              }
+            },
+            "required": [
+              "transport"
+            ]
+          },
+          "then": {
+            "properties": {
+              "currency": {
+                "const": "USD"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "transport": {
+                "const": "market_b_direct"
+              },
+              "logical_source": {
+                "const": "market_b"
+              },
+              "currency": {
+                "const": "CNY"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "cny_target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "currency",
+        "unit",
+        "value",
+        "basis",
+        "rounding",
+        "reason"
+      ],
+      "properties": {
+        "status": {
+          "const": "AVAILABLE"
+        },
+        "currency": {
+          "const": "CNY"
+        },
+        "unit": {
+          "const": "CNY_MINOR"
+        },
+        "value": {
+          "$ref": "#/$defs/cny_integerText"
+        },
+        "basis": {
+          "enum": [
+            "NATIVE",
+            "FX_DERIVED"
+          ]
+        },
+        "rounding": {
+          "enum": [
+            "EXACT",
+            "ROUNDED",
+            "ROUNDED_TO_ZERO"
+          ]
+        },
+        "reason": {
+          "type": "null"
+        }
+      }
+    },
+    "cny_fx": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority",
+        "method",
+        "pair_hash",
+        "cny_leg_revision_hash",
+        "usd_leg_revision_hash",
+        "source_event_date",
+        "cny_per_usd",
+        "carry_days",
+        "available_at",
+        "selection_policy_version"
+      ],
+      "properties": {
+        "authority": {
+          "const": "ECB"
+        },
+        "method": {
+          "const": "ECB_EUR_CROSS"
+        },
+        "pair_hash": {
+          "$ref": "#/$defs/cny_sha256"
+        },
+        "cny_leg_revision_hash": {
+          "$ref": "#/$defs/cny_sha256"
+        },
+        "usd_leg_revision_hash": {
+          "$ref": "#/$defs/cny_sha256"
+        },
+        "source_event_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "cny_per_usd": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)\\.[0-9]{18}$"
+        },
+        "carry_days": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 7
+        },
+        "available_at": {
+          "$ref": "#/$defs/cny_instant"
+        },
+        "selection_policy_version": {
+          "const": "ecb-latest-complete-nonfuture-max7d/1"
+        }
+      }
+    },
+    "cnyProjection": {
+      "title": "CNY analysis projection V2 with materialization clocks",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "projection_id",
+        "source",
+        "event_day",
+        "target",
+        "fx",
+        "conversion_policy_version",
+        "projected_at",
+        "available_at",
+        "usage_scope",
+        "formal_state_eligible",
+        "lineage_sha256",
+        "document_hash",
+        "valuation_as_of",
+        "observation",
+        "economic_identity"
+      ],
+      "properties": {
+        "schema": {
+          "const": "cny-analysis-projection/2"
+        },
+        "projection_id": {
+          "type": "string",
+          "pattern": "^cny_analysis_projection_v2_[0-9a-f]{24}$"
+        },
+        "source": {
+          "$ref": "#/$defs/cny_source"
+        },
+        "event_day": {
+          "type": "string",
+          "format": "date"
+        },
+        "target": {
+          "$ref": "#/$defs/cny_target"
+        },
+        "fx": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/cny_fx"
+            }
+          ]
+        },
+        "conversion_policy_version": {
+          "const": "analysis-cny-minor-half-even/1"
+        },
+        "projected_at": {
+          "$ref": "#/$defs/cny_instant"
+        },
+        "available_at": {
+          "$ref": "#/$defs/cny_instant"
+        },
+        "usage_scope": {
+          "const": "INTERNAL_ANALYSIS_INPUT"
+        },
+        "formal_state_eligible": {
+          "const": false
+        },
+        "lineage_sha256": {
+          "$ref": "#/$defs/cny_sha256"
+        },
+        "document_hash": {
+          "$ref": "#/$defs/cny_sha256"
+        },
+        "valuation_as_of": {
+          "$ref": "#/$defs/cny_instant"
+        },
+        "observation": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "kind",
+                "interval_start",
+                "interval_end",
+                "reduction_policy_sha256",
+                "reduction_sha256",
+                "coverage_evidence_sha256",
+                "supplied_slot_count",
+                "positive_fresh_slot_count"
+              ],
+              "properties": {
+                "kind": {
+                  "const": "UTC_DAILY_EOD"
+                },
+                "interval_start": {
+                  "$ref": "#/$defs/cny_instant"
+                },
+                "interval_end": {
+                  "$ref": "#/$defs/cny_instant"
+                },
+                "reduction_policy_sha256": {
+                  "$ref": "#/$defs/cny_sha256"
+                },
+                "reduction_sha256": {
+                  "$ref": "#/$defs/cny_sha256"
+                },
+                "coverage_evidence_sha256": {
+                  "$ref": "#/$defs/cny_sha256"
+                },
+                "supplied_slot_count": {
+                  "const": 12
+                },
+                "positive_fresh_slot_count": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 12
+                }
+              }
+            }
+          ]
+        },
+        "economic_identity": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "fingerprint_sha256",
+                "evidence_sha256",
+                "available_at"
+              ],
+              "properties": {
+                "fingerprint_sha256": {
+                  "$ref": "#/$defs/cny_sha256"
+                },
+                "evidence_sha256": {
+                  "$ref": "#/$defs/cny_sha256"
+                },
+                "available_at": {
+                  "$ref": "#/$defs/cny_instant"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "source": {
+                "properties": {
+                  "currency": {
+                    "const": "USD"
+                  }
+                },
+                "required": [
+                  "currency"
+                ]
+              }
+            },
+            "required": [
+              "source"
+            ]
+          },
+          "then": {
+            "properties": {
+              "source": {
+                "properties": {
+                  "unit": {
+                    "const": "USD_ATOMS"
+                  },
+                  "scale": {
+                    "enum": [
+                      8,
+                      10
+                    ]
+                  }
+                }
+              },
+              "fx": {
+                "$ref": "#/$defs/cny_fx"
+              },
+              "target": {
+                "properties": {
+                  "basis": {
+                    "const": "FX_DERIVED"
+                  }
+                }
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "source": {
+                "properties": {
+                  "currency": {
+                    "const": "CNY"
+                  },
+                  "unit": {
+                    "const": "CNY_MINOR"
+                  },
+                  "scale": {
+                    "const": 2
+                  }
+                }
+              },
+              "fx": {
+                "type": "null"
+              },
+              "target": {
+                "properties": {
+                  "basis": {
+                    "const": "NATIVE"
+                  },
+                  "rounding": {
+                    "const": "EXACT"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "identityEndpointReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identity_history_sha256",
+        "projection_sha256",
+        "projection",
+        "upstream_membership_id",
+        "upstream_membership_sha256",
+        "upstream_schema_sha256",
+        "catalog_projection_sha256",
+        "economic_identity_sha256",
+        "mapping_version",
+        "variant_version",
+        "analysis_unit_version",
+        "valid_at",
+        "known_at"
+      ],
+      "properties": {
+        "identity_history_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "projection_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "projection": {
+          "$ref": "#/$defs/cnyProjection"
+        },
+        "upstream_membership_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "upstream_membership_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "upstream_schema_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "catalog_projection_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "economic_identity_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "mapping_version": {
+          "$ref": "#/$defs/identityMappingVersion"
+        },
+        "variant_version": {
+          "$ref": "#/$defs/identityVariantVersion"
+        },
+        "analysis_unit_version": {
+          "$ref": "#/$defs/identityAnalysisUnitVersion"
+        },
+        "valid_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "known_at": {
+          "$ref": "#/$defs/timestamp"
+        }
+      }
+    },
+    "identityBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "identity_history_sha256",
+        "start",
+        "end"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "single-item-trending-identity-binding/1"
+        },
+        "identity_history_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "start": {
+          "$ref": "#/$defs/identityEndpointReceipt"
+        },
+        "end": {
+          "$ref": "#/$defs/identityEndpointReceipt"
+        }
+      }
+    }
+  }
+}

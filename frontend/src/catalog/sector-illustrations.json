@@ -1,0 +1,53 @@
+{
+  "equipment_revision": "93f190021a73e8e5",
+  "records": [
+    {
+      "illustration_id": "crate_dreams_nightmares",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "梦魇武器箱",
+        "en": "Dreams & Nightmares Case"
+      }
+    },
+    {
+      "illustration_id": "agent_getaway_sally",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "出逃的萨莉",
+        "en": "Getaway Sally"
+      }
+    },
+    {
+      "illustration_id": "skin_ak47_vulcan",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "AK-47 | 火神",
+        "en": "AK-47 | Vulcan"
+      }
+    },
+    {
+      "illustration_id": "skin_knife_butterfly_ruby",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "★ 蝴蝶刀 | 多普勒（红宝石）",
+        "en": "★ Butterfly Knife | Doppler (Ruby)"
+      }
+    },
+    {
+      "illustration_id": "collection_cache",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "死城之谜收藏品",
+        "en": "The Cache Collection"
+      }
+    },
+    {
+      "illustration_id": "skin_awp_longdog",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "AWP | 灵缇",
+        "en": "AWP | LongDog"
+      }
+    }
+  ]
+}

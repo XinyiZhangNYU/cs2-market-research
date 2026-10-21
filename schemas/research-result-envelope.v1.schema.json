@@ -1,0 +1,538 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:cs2-research:research-result-envelope:v1",
+  "title": "CS2 provider-neutral research result envelope v1 candidate",
+  "oneOf": [
+    { "$ref": "#/$defs/unit_result" },
+    { "$ref": "#/$defs/collection_result" }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{6}Z$"
+    },
+    "nonblank_text": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?=[^\\u0000\\ud800-\\udfff]*[^\\u0000\\u0009-\\u000d\\u0020\\u0085\\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ud800-\\udfff])[^\\u0000\\ud800-\\udfff]+$"
+    },
+    "ratio_decimal_text": {
+      "type": "string",
+      "pattern": "^(0(\\.[0-9]+)?|1(\\.0+)?)$"
+    },
+    "signed_fixed_decimal_text": {
+      "type": "string",
+      "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+    },
+    "domain_missing_reason_code": {
+      "enum": [
+        "UNAVAILABLE_BY_DESIGN",
+        "OPTIONAL_DATA_UNAVAILABLE",
+        "DATA_UNAVAILABLE_RUNTIME_GRACE",
+        "DATA_UNAVAILABLE_RUNTIME",
+        "STALE_GRACE",
+        "STALE",
+        "CONFLICTED_INPUTS"
+      ]
+    },
+    "scope_kind": {
+      "enum": ["MARKET", "SECTOR", "ITEM"]
+    },
+    "data_branch": {
+      "enum": ["A", "B"]
+    },
+    "data_status": {
+      "enum": [
+        "COMPLETE",
+        "UNAVAILABLE_BY_DESIGN",
+        "DEGRADED_OPTIONAL",
+        "DATA_UNAVAILABLE_RUNTIME_GRACE",
+        "STALE_GRACE",
+        "DATA_UNAVAILABLE_RUNTIME",
+        "STALE",
+        "CONFLICTED"
+      ]
+    },
+    "versions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "catalog_version",
+        "group_version",
+        "index_version",
+        "fusion_method_version",
+        "feature_profile_version",
+        "algorithm_version",
+        "parameter_set_version",
+        "stage_policy_version",
+        "failure_policy_version"
+      ],
+      "properties": {
+        "catalog_version": { "$ref": "#/$defs/nonblank_text" },
+        "group_version": { "$ref": "#/$defs/nonblank_text" },
+        "index_version": { "$ref": "#/$defs/nonblank_text" },
+        "fusion_method_version": { "$ref": "#/$defs/nonblank_text" },
+        "feature_profile_version": { "$ref": "#/$defs/nonblank_text" },
+        "algorithm_version": { "$ref": "#/$defs/nonblank_text" },
+        "parameter_set_version": { "$ref": "#/$defs/nonblank_text" },
+        "stage_policy_version": { "$ref": "#/$defs/nonblank_text" },
+        "failure_policy_version": { "$ref": "#/$defs/nonblank_text" }
+      }
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "analysis_unit_id",
+        "scope_kind",
+        "display_name",
+        "identity_available_at",
+        "catalog_version",
+        "analysis_unit_kind",
+        "edition_kind",
+        "parent_analysis_unit_id"
+      ],
+      "properties": {
+        "analysis_unit_id": { "$ref": "#/$defs/nonblank_text" },
+        "scope_kind": { "$ref": "#/$defs/scope_kind" },
+        "display_name": { "$ref": "#/$defs/nonblank_text" },
+        "identity_available_at": { "$ref": "#/$defs/timestamp" },
+        "catalog_version": { "$ref": "#/$defs/nonblank_text" },
+        "analysis_unit_kind": {
+          "type": ["string", "null"],
+          "enum": ["BASE_MHN", "STYLE_VARIANT", "PATTERN_VARIANT", null]
+        },
+        "edition_kind": {
+          "type": ["string", "null"],
+          "enum": ["STANDARD", "STATTRAK", "SOUVENIR", "UNKNOWN", null]
+        },
+        "parent_analysis_unit_id": {
+          "oneOf": [{ "$ref": "#/$defs/nonblank_text" }, { "type": "null" }]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "scope_kind": { "const": "ITEM" } },
+            "required": ["scope_kind"]
+          },
+          "then": {
+            "properties": {
+              "analysis_unit_kind": {
+                "enum": ["BASE_MHN", "STYLE_VARIANT", "PATTERN_VARIANT"]
+              },
+              "edition_kind": {
+                "enum": ["STANDARD", "STATTRAK", "SOUVENIR", "UNKNOWN"]
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "analysis_unit_kind": { "type": "null" },
+              "edition_kind": { "type": "null" },
+              "parent_analysis_unit_id": { "type": "null" }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "scope_kind": { "const": "ITEM" },
+              "analysis_unit_kind": { "const": "BASE_MHN" }
+            },
+            "required": ["scope_kind", "analysis_unit_kind"]
+          },
+          "then": {
+            "properties": { "parent_analysis_unit_id": { "type": "null" } }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "scope_kind": { "const": "ITEM" },
+              "analysis_unit_kind": {
+                "enum": ["STYLE_VARIANT", "PATTERN_VARIANT"]
+              }
+            },
+            "required": ["scope_kind", "analysis_unit_kind"]
+          },
+          "then": {
+            "properties": {
+              "parent_analysis_unit_id": { "$ref": "#/$defs/nonblank_text" }
+            }
+          }
+        }
+      ]
+    },
+    "market_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "trend_stage", "level_regime", "evidence_flags", "recommendation",
+        "case_status", "analysis_case_id", "input_snapshot_hash"
+      ],
+      "properties": {
+        "trend_stage": {
+          "enum": [
+            "UP_BUILDING", "UP_ACTIVE", "UP_COOLING", "NEUTRAL",
+            "DOWN_BUILDING", "DOWN_ACTIVE", "DOWN_COOLING"
+          ]
+        },
+        "level_regime": { "enum": ["DEPRESSED", "NORMAL", "ELEVATED", "UNKNOWN"] },
+        "evidence_flags": { "$ref": "#/$defs/evidence_flags" },
+        "recommendation": { "$ref": "#/$defs/recommendation" },
+        "case_status": { "$ref": "#/$defs/nullable_case_status" },
+        "analysis_case_id": {
+          "oneOf": [{ "$ref": "#/$defs/nonblank_text" }, { "type": "null" }]
+        },
+        "input_snapshot_hash": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "sector_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "trend_stage", "relative_strength", "breadth", "evidence_flags",
+        "recommendation", "case_status", "analysis_case_id", "input_snapshot_hash"
+      ],
+      "properties": {
+        "trend_stage": {
+          "enum": [
+            "UP_BUILDING", "UP_ACTIVE", "UP_COOLING", "NEUTRAL",
+            "DOWN_BUILDING", "DOWN_ACTIVE", "DOWN_COOLING"
+          ]
+        },
+        "relative_strength": { "enum": ["LEADING", "IN_LINE", "LAGGING", "UNKNOWN"] },
+        "breadth": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "advancing_member_ratio", "median_member_return",
+            "breadth_expanding", "breadth_narrowing", "concentration_warning"
+          ],
+          "properties": {
+            "advancing_member_ratio": {
+              "oneOf": [{ "$ref": "#/$defs/ratio_decimal_text" }, { "type": "null" }]
+            },
+            "median_member_return": {
+              "oneOf": [{ "$ref": "#/$defs/signed_fixed_decimal_text" }, { "type": "null" }]
+            },
+            "breadth_expanding": { "type": "boolean" },
+            "breadth_narrowing": { "type": "boolean" },
+            "concentration_warning": { "type": "boolean" }
+          }
+        },
+        "evidence_flags": { "$ref": "#/$defs/evidence_flags" },
+        "recommendation": { "$ref": "#/$defs/recommendation" },
+        "case_status": { "$ref": "#/$defs/nullable_case_status" },
+        "analysis_case_id": {
+          "oneOf": [{ "$ref": "#/$defs/nonblank_text" }, { "type": "null" }]
+        },
+        "input_snapshot_hash": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "item_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cycle_stage", "evidence_flags", "regime_relation", "recommendation",
+        "case_status", "candidate_episode_id", "cycle_case_id", "input_snapshot_hash"
+      ],
+      "properties": {
+        "cycle_stage": { "enum": ["BASELINE", "PRESSURE_BUILDING", "CONFIRMED_UP", "COOLING"] },
+        "evidence_flags": { "$ref": "#/$defs/evidence_flags" },
+        "regime_relation": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "MARKET_DRIVEN", "SECTOR_DRIVEN", "ITEM_SPECIFIC",
+              "COUNTER_REGIME", "IN_LINE", "UNKNOWN"
+            ]
+          }
+        },
+        "recommendation": { "$ref": "#/$defs/recommendation" },
+        "case_status": { "$ref": "#/$defs/nullable_case_status" },
+        "candidate_episode_id": {
+          "oneOf": [{ "$ref": "#/$defs/nonblank_text" }, { "type": "null" }]
+        },
+        "cycle_case_id": {
+          "oneOf": [{ "$ref": "#/$defs/nonblank_text" }, { "type": "null" }]
+        },
+        "input_snapshot_hash": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "evidence_flags": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "DEMAND_ACCELERATING", "SUPPLY_CONTRACTING", "PRICE_RISING",
+          "SUSPECTED_SWEEPING", "SWEEPING_CONFIRMED", "REACCELERATION",
+          "OVERHEATED", "SHOCK", "BREADTH_COLLAPSE",
+          "LIQUIDITY_CONTRACTION", "CONCENTRATION_WARNING"
+        ]
+      }
+    },
+    "recommendation": {
+      "enum": [
+        "IGNORE", "WATCH", "RECOMMENDED_CANDIDATE", "STRONG_CANDIDATE",
+        "OVERHEATED_DO_NOT_CHASE", "COOLING_REMOVE_FROM_PRIORITY",
+        "WITHHELD_DATA_INCOMPLETE"
+      ]
+    },
+    "nullable_case_status": {
+      "type": ["string", "null"],
+      "enum": ["ACTIVE", "SUSPENDED", "RESOLVED", "UNRESOLVED", "RETRACTED", null]
+    },
+    "recommendation_detail": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recommendation", "signal_strength", "evidence_coverage",
+        "trade_confirmation", "input_snapshot_hash"
+      ],
+      "properties": {
+        "recommendation": { "$ref": "#/$defs/recommendation" },
+        "signal_strength": { "enum": ["NONE", "WEAK", "MODERATE", "STRONG"] },
+        "evidence_coverage": { "type": "string", "pattern": "^(0(\\.[0-9]+)?|1(\\.0+)?)$" },
+        "trade_confirmation": { "enum": ["UNAVAILABLE", "AVAILABLE_NOT_CONFIRMED", "CONFIRMED"] },
+        "input_snapshot_hash": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "evidence_domain": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "domain", "strength", "contributing_feature_keys", "missing_reason",
+        "policy_version", "input_snapshot_hash"
+      ],
+      "properties": {
+        "domain": { "enum": ["P", "D", "S"] },
+        "strength": { "enum": ["UNAVAILABLE", "CONFLICTED", "ABSENT", "WEAK", "MODERATE", "STRONG"] },
+        "contributing_feature_keys": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/nonblank_text" }
+        },
+        "missing_reason": {
+          "oneOf": [
+            { "$ref": "#/$defs/domain_missing_reason_code" },
+            { "type": "null" }
+          ]
+        },
+        "policy_version": { "$ref": "#/$defs/nonblank_text" },
+        "input_snapshot_hash": { "$ref": "#/$defs/sha256" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "strength": { "enum": ["UNAVAILABLE", "CONFLICTED"] }
+            },
+            "required": ["strength"]
+          },
+          "then": {
+            "properties": {
+              "missing_reason": { "$ref": "#/$defs/domain_missing_reason_code" }
+            }
+          },
+          "else": {
+            "properties": { "missing_reason": { "type": "null" } }
+          }
+        }
+      ]
+    },
+    "unit_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "snapshot_id", "contract_code", "contract_version", "envelope_kind",
+        "identity", "as_of", "available_at", "data_branch", "data_status",
+        "versions", "state", "recommendation_detail", "evidence_domains", "claims"
+      ],
+      "properties": {
+        "snapshot_id": { "$ref": "#/$defs/sha256" },
+        "contract_code": { "const": "research-result-envelope" },
+        "contract_version": { "const": "v1" },
+        "envelope_kind": { "const": "UNIT" },
+        "identity": { "$ref": "#/$defs/identity" },
+        "as_of": { "$ref": "#/$defs/timestamp" },
+        "available_at": { "$ref": "#/$defs/timestamp" },
+        "data_branch": { "$ref": "#/$defs/data_branch" },
+        "data_status": { "$ref": "#/$defs/data_status" },
+        "versions": { "$ref": "#/$defs/versions" },
+        "state": { "oneOf": [
+          { "$ref": "#/$defs/market_state" },
+          { "$ref": "#/$defs/sector_state" },
+          { "$ref": "#/$defs/item_state" }
+        ] },
+        "recommendation_detail": {
+          "oneOf": [{ "$ref": "#/$defs/recommendation_detail" }, { "type": "null" }]
+        },
+        "evidence_domains": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/evidence_domain" }
+        },
+        "claims": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "UNIFIED_PRICE_RISING", "BID_PRICE_RISING",
+              "BUY_DEMAND_STRENGTHENING", "SELLABLE_SUPPLY_DECLINING",
+              "MULTI_SOURCE_ALIGNED", "TRUSTED_TRADE_VOLUME_INCREASING",
+              "SWEEPING_CONFIRMED"
+            ]
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "identity": {
+                "type": "object",
+                "properties": { "scope_kind": { "const": "MARKET" } },
+                "required": ["scope_kind"]
+              }
+            },
+            "required": ["identity"]
+          },
+          "then": {
+            "properties": {
+              "state": { "$ref": "#/$defs/market_state" },
+              "recommendation_detail": { "type": "null" },
+              "evidence_domains": { "type": "array", "maxItems": 0 },
+              "claims": { "type": "array", "maxItems": 0 }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "identity": {
+                "type": "object",
+                "properties": { "scope_kind": { "const": "SECTOR" } },
+                "required": ["scope_kind"]
+              }
+            },
+            "required": ["identity"]
+          },
+          "then": {
+            "properties": {
+              "state": { "$ref": "#/$defs/sector_state" },
+              "recommendation_detail": { "type": "null" },
+              "evidence_domains": { "type": "array", "maxItems": 0 },
+              "claims": { "type": "array", "maxItems": 0 }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "identity": {
+                "type": "object",
+                "properties": { "scope_kind": { "const": "ITEM" } },
+                "required": ["scope_kind"]
+              }
+            },
+            "required": ["identity"]
+          },
+          "then": {
+            "properties": {
+              "state": { "$ref": "#/$defs/item_state" },
+              "recommendation_detail": { "$ref": "#/$defs/recommendation_detail" },
+              "evidence_domains": {
+                "type": "array",
+                "minItems": 3,
+                "maxItems": 3,
+                "allOf": [
+                  { "contains": { "type": "object", "properties": { "domain": { "const": "P" } }, "required": ["domain"] } },
+                  { "contains": { "type": "object", "properties": { "domain": { "const": "D" } }, "required": ["domain"] } },
+                  { "contains": { "type": "object", "properties": { "domain": { "const": "S" } }, "required": ["domain"] } }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data_branch": { "const": "B" },
+              "identity": {
+                "type": "object",
+                "properties": { "scope_kind": { "const": "ITEM" } },
+                "required": ["scope_kind"]
+              }
+            },
+            "required": ["data_branch", "identity"]
+          },
+          "then": {
+            "properties": {
+              "recommendation_detail": {
+                "allOf": [
+                  { "$ref": "#/$defs/recommendation_detail" },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "trade_confirmation": { "const": "UNAVAILABLE" }
+                    }
+                  }
+                ]
+              },
+              "claims": {
+                "type": "array",
+                "not": {
+                  "contains": {
+                    "enum": ["TRUSTED_TRADE_VOLUME_INCREASING", "SWEEPING_CONFIRMED"]
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "collection_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "snapshot_id", "contract_code", "contract_version", "envelope_kind",
+        "collection_id", "scope_kind", "as_of", "available_at", "data_branch",
+        "data_status", "versions", "member_count", "returned_member_count",
+        "member_result_ids", "missing_member_ids", "unavailable_member_ids"
+      ],
+      "properties": {
+        "snapshot_id": { "$ref": "#/$defs/sha256" },
+        "contract_code": { "const": "research-result-envelope" },
+        "contract_version": { "const": "v1" },
+        "envelope_kind": { "const": "COLLECTION" },
+        "collection_id": { "$ref": "#/$defs/nonblank_text" },
+        "scope_kind": { "$ref": "#/$defs/scope_kind" },
+        "as_of": { "$ref": "#/$defs/timestamp" },
+        "available_at": { "$ref": "#/$defs/timestamp" },
+        "data_branch": { "$ref": "#/$defs/data_branch" },
+        "data_status": { "$ref": "#/$defs/data_status" },
+        "versions": { "$ref": "#/$defs/versions" },
+        "member_count": { "type": "integer", "minimum": 0 },
+        "returned_member_count": { "type": "integer", "minimum": 0 },
+        "member_result_ids": {
+          "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/sha256" }
+        },
+        "missing_member_ids": {
+          "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/nonblank_text" }
+        },
+        "unavailable_member_ids": {
+          "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/nonblank_text" }
+        }
+      }
+    }
+  }
+}

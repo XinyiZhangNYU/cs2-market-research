@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.cs2-research.invalid/schemas/market-sector-daily-measurement.v3.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "bucket_date", "current_price_frame_id", "formal_state_eligible", "fusion_rule",
+    "membership_id", "previous_bucket_date", "previous_price_frame_id", "profile_opened",
+    "return_rule", "robust_rule", "schema", "scope_count", "scopes",
+    "state_transition_permitted", "usage_scope"
+  ],
+  "properties": {
+    "bucket_date": {"type": "string", "format": "date"},
+    "current_price_frame_id": {"type": "string", "pattern": "^market_sector_v3_price_frame_[0-9a-f]{64}$"},
+    "formal_state_eligible": {"const": false},
+    "fusion_rule": {"const": "TWO_SOURCE_MEAN_THREE_SOURCE_MEDIAN"},
+    "membership_id": {"type": "string", "pattern": "^market_sector_taxonomy_v3_[0-9a-f]{64}$"},
+    "previous_bucket_date": {"type": "string", "format": "date"},
+    "previous_price_frame_id": {"type": "string", "pattern": "^market_sector_v3_price_frame_[0-9a-f]{64}$"},
+    "profile_opened": {"const": false},
+    "return_rule": {"const": "ADJACENT_COMPLETE_UTC_DAY_IDENTICAL_SOURCE_SET_SIMPLE_RETURN"},
+    "robust_rule": {"const": "SYMMETRIC_1_PERCENT_WINSOR_MINIMUM_ONE_HUNDRED"},
+    "schema": {"const": "market-sector-daily-measurement/3"},
+    "scope_count": {"type": "integer", "minimum": 1},
+    "scopes": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/scope"}},
+    "state_transition_permitted": {"const": false},
+    "usage_scope": {"const": "INTERNAL_PROSPECTIVE_MARKET_SECTOR_V3_MEASUREMENT"}
+  },
+  "$defs": {
+    "decimalOrNull": {"type": ["string", "null"], "pattern": "^-?[0-9]+(?:\\.[0-9]+)?$"},
+    "scope": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "advancing_member_ratio", "anomaly_contributions", "anomaly_member_count",
+        "catalog_direction_identifiable", "current_mean_fused_ask_atoms",
+        "current_price_coverage", "current_qualified_price_count", "current_sum_fused_ask_atoms",
+        "declining_member_ratio", "estimator_applied", "fixed_cohort_composition_identifiable",
+        "fixed_cohort_member_count", "fixed_cohort_raw_equal_member_return",
+        "fixed_cohort_return_coverage", "fixed_cohort_robust_equal_member_return",
+        "fixed_cohort_valid_return_count", "flat_member_ratio", "formal_state_eligible",
+        "gross_error_quarantine_count", "median_member_return",
+        "member_count", "missing_or_invalid_endpoint_count", "raw_equal_member_return",
+        "return_coverage", "robust_equal_member_return", "scope_code", "scope_role",
+        "source_incapable_member_count", "source_set_break_count", "suppression_reason_code",
+        "top1_absolute_contribution_share", "top5_absolute_contribution_share",
+        "valid_return_count"
+      ],
+      "properties": {
+        "advancing_member_ratio": {"$ref": "#/$defs/decimalOrNull"},
+        "anomaly_contributions": {
+          "type": "array", "items": {"$ref": "#/$defs/anomalyContribution"}
+        },
+        "anomaly_member_count": {"type": "integer", "minimum": 0},
+        "catalog_direction_identifiable": {"type": "boolean"},
+        "current_mean_fused_ask_atoms": {"$ref": "#/$defs/decimalOrNull"},
+        "current_price_coverage": {"$ref": "#/$defs/decimalOrNull"},
+        "current_qualified_price_count": {"type": "integer", "minimum": 0},
+        "current_sum_fused_ask_atoms": {"$ref": "#/$defs/decimalOrNull"},
+        "declining_member_ratio": {"$ref": "#/$defs/decimalOrNull"},
+        "estimator_applied": {"type": "boolean"},
+        "fixed_cohort_composition_identifiable": {"type": "boolean"},
+        "fixed_cohort_member_count": {"type": "integer", "minimum": 0},
+        "fixed_cohort_raw_equal_member_return": {"$ref": "#/$defs/decimalOrNull"},
+        "fixed_cohort_return_coverage": {"$ref": "#/$defs/decimalOrNull"},
+        "fixed_cohort_robust_equal_member_return": {"$ref": "#/$defs/decimalOrNull"},
+        "fixed_cohort_valid_return_count": {"type": "integer", "minimum": 0},
+        "flat_member_ratio": {"$ref": "#/$defs/decimalOrNull"},
+        "formal_state_eligible": {"const": false},
+        "gross_error_quarantine_count": {"type": "integer", "minimum": 0},
+        "median_member_return": {"$ref": "#/$defs/decimalOrNull"},
+        "member_count": {"type": "integer", "minimum": 1},
+        "missing_or_invalid_endpoint_count": {"type": "integer", "minimum": 0},
+        "raw_equal_member_return": {"$ref": "#/$defs/decimalOrNull"},
+        "return_coverage": {"$ref": "#/$defs/decimalOrNull"},
+        "robust_equal_member_return": {"$ref": "#/$defs/decimalOrNull"},
+        "scope_code": {"type": "string", "minLength": 1},
+        "scope_role": {"enum": ["PROSPECTIVE_MEASUREMENT_ONLY", "RAW_ONLY_VISIBLE_NO_STATE"]},
+        "source_incapable_member_count": {"type": "integer", "minimum": 0},
+        "source_set_break_count": {"type": "integer", "minimum": 0},
+        "suppression_reason_code": {
+          "enum": [
+            "NO_VALID_RETURNS",
+            "INSUFFICIENT_FOR_SYMMETRIC_1_PERCENT_WINSOR",
+            "SYMMETRIC_1_PERCENT_WINSOR_APPLIED"
+          ]
+        },
+        "top1_absolute_contribution_share": {"$ref": "#/$defs/decimalOrNull"},
+        "top5_absolute_contribution_share": {"$ref": "#/$defs/decimalOrNull"},
+        "valid_return_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "anomalyContribution": {
+      "type": "object", "additionalProperties": false,
+      "required": ["analysis_unit_id", "raw_return", "suppressed_return"],
+      "properties": {
+        "analysis_unit_id": {"type": "string", "minLength": 1},
+        "raw_return": {"type": "string", "pattern": "^-?[0-9]+(?:\\.[0-9]+)?$"},
+        "suppressed_return": {"type": "string", "pattern": "^-?[0-9]+(?:\\.[0-9]+)?$"}
+      }
+    }
+  }
+}

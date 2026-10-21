@@ -1,0 +1,16 @@
+{
+  "classification_rules": {
+    "full_universe_replay": "EXACT_MAPPING_COMPLETE_AND_CONSECUTIVE_100_PERCENT_ELIGIBLE_DAYS_AT_LEAST_REQUIRED",
+    "prospective_warmup_only": "NO_EXACT_COMPACT_HISTORY_MEMBERS",
+    "retrospective_intersection_diagnostic": "SOME_EXACT_COMPACT_HISTORY_MEMBERS_BUT_FULL_UNIVERSE_RULE_NOT_MET"
+  },
+  "eligible_member_day_rule": "AT_LEAST_TWO_STRICTLY_POSITIVE_ASK_SOURCES",
+  "formal_state_eligible": false,
+  "full_universe_required_consecutive_days": 91,
+  "historical_identity_rule": "EXACT_INTERNAL_ITEM_ID_AND_EXACT_MARKET_HASH_NAME_ONLY",
+  "missing_member_rule": "FROZEN_SCOPE_DENOMINATOR_MISSING_IS_NOT_ZERO_AND_NOT_ELIGIBLE",
+  "ratio_scale": 8,
+  "schema": "market-sector-v3-history-qualification-policy/1",
+  "thresholds": ["0.5", "0.65", "0.8", "0.9", "0.95", "0.99", "1"],
+  "usage_scope": "INTERNAL_RETROSPECTIVE_MARKET_SECTOR_V3_QUALIFICATION"
+}

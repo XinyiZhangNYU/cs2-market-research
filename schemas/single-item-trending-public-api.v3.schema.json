@@ -1,0 +1,1087 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:cs2-research:single-item-trending-public-api:v3",
+  "title": "Single-item Trending tiered public API V3",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/listResponse"
+    },
+    {
+      "$ref": "#/$defs/errorResponse"
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{6}Z$"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512,
+      "pattern": "^[^\\u0000-\\u001f\\u007f]+$"
+    },
+    "ratio": {
+      "type": "string",
+      "description": "Eight-place display ratio; negative exact values retain a minus sign even when rounded to -0.00000000.",
+      "pattern": "^-?(0|[1-9][0-9]*)\\.[0-9]{8}$"
+    },
+    "nullableSha256": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/sha256"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "nullableCursor": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8192,
+          "pattern": "^[A-Za-z0-9_-]+$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "catalogDescriptor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "catalog_publication_id",
+        "snapshot_id",
+        "catalog_version",
+        "as_of",
+        "available_at",
+        "published_at",
+        "member_count",
+        "member_set_hash",
+        "decision",
+        "withdrawn"
+      ],
+      "properties": {
+        "catalog_publication_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "snapshot_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "catalog_version": {
+          "$ref": "#/$defs/identifier"
+        },
+        "as_of": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "available_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "published_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "member_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "member_set_hash": {
+          "$ref": "#/$defs/sha256"
+        },
+        "decision": {
+          "const": "APPROVED"
+        },
+        "withdrawn": {
+          "const": false
+        }
+      }
+    },
+    "localizedName": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "en",
+        "zh_cn"
+      ],
+      "properties": {
+        "en": {
+          "$ref": "#/$defs/identifier"
+        },
+        "zh_cn": {
+          "$ref": "#/$defs/identifier"
+        }
+      }
+    },
+    "media": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status"
+          ],
+          "properties": {
+            "status": {
+              "const": "NOT_PRODUCED"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "media_asset_version_id",
+            "media_key",
+            "presentation_kind"
+          ],
+          "properties": {
+            "status": {
+              "const": "BOUND"
+            },
+            "media_asset_version_id": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$"
+            },
+            "media_key": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._/-]*$"
+            },
+            "presentation_kind": {
+              "enum": [
+                "SERIES_REPRESENTATIVE",
+                "STYLE_REPRESENTATIVE"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "catalogProjection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "analysis_unit_id",
+        "parent_analysis_unit_id",
+        "analysis_unit_kind",
+        "item_kind",
+        "base_item_code",
+        "edition_kind",
+        "wear_tier",
+        "localized_name",
+        "media",
+        "catalog_version"
+      ],
+      "properties": {
+        "analysis_unit_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "parent_analysis_unit_id": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/identifier"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "analysis_unit_kind": {
+          "enum": [
+            "BASE_MHN",
+            "STYLE_VARIANT",
+            "PATTERN_VARIANT"
+          ]
+        },
+        "item_kind": {
+          "enum": [
+            "WEAPON",
+            "KNIFE",
+            "GLOVE",
+            "AGENT",
+            "OTHER",
+            "UNKNOWN"
+          ]
+        },
+        "base_item_code": {
+          "$ref": "#/$defs/identifier"
+        },
+        "edition_kind": {
+          "enum": [
+            "STANDARD",
+            "STATTRAK",
+            "SOUVENIR",
+            "UNKNOWN"
+          ]
+        },
+        "wear_tier": {
+          "enum": [
+            "FACTORY_NEW",
+            "MINIMAL_WEAR",
+            "FIELD_TESTED",
+            "WELL_WORN",
+            "BATTLE_SCARRED",
+            "NOT_APPLICABLE",
+            "UNKNOWN"
+          ]
+        },
+        "localized_name": {
+          "$ref": "#/$defs/localizedName"
+        },
+        "media": {
+          "$ref": "#/$defs/media"
+        },
+        "catalog_version": {
+          "$ref": "#/$defs/identifier"
+        }
+      }
+    },
+    "member": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rank",
+        "tie_break_key",
+        "measurement_id",
+        "analysis_unit_id",
+        "direction",
+        "evidence_grade",
+        "conservative_source_code",
+        "conservative_same_direction_change_floor_ratio",
+        "catalog",
+        "supporting_sources",
+        "unavailable_sources"
+      ],
+      "properties": {
+        "rank": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50
+        },
+        "tie_break_key": {
+          "$ref": "#/$defs/identifier"
+        },
+        "measurement_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "analysis_unit_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "direction": {
+          "enum": [
+            "GAINERS",
+            "LOSERS"
+          ]
+        },
+        "evidence_grade": {
+          "enum": [
+            "THREE_SOURCE_CONFIRMED",
+            "TWO_SOURCE_SUPPORTED"
+          ]
+        },
+        "conservative_source_code": {
+          "enum": [
+            "market_a",
+            "market_b",
+            "market_c"
+          ]
+        },
+        "conservative_same_direction_change_floor_ratio": {
+          "$ref": "#/$defs/ratio"
+        },
+        "catalog": {
+          "$ref": "#/$defs/catalogProjection"
+        },
+        "supporting_sources": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 2,
+          "maxItems": 3,
+          "items": {
+            "enum": [
+              "market_a",
+              "market_b",
+              "market_c"
+            ]
+          }
+        },
+        "unavailable_sources": {
+          "type": "array",
+          "maxItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "source_code",
+              "start_reason",
+              "end_reason"
+            ],
+            "properties": {
+              "source_code": {
+                "enum": [
+                  "market_a",
+                  "market_b",
+                  "market_c"
+                ]
+              },
+              "start_reason": {
+                "enum": [
+                  "QUALIFIED",
+                  "NO_ACTIVE_ASK",
+                  "SOURCE_REFRESH_LAG"
+                ]
+              },
+              "end_reason": {
+                "enum": [
+                  "QUALIFIED",
+                  "NO_ACTIVE_ASK",
+                  "SOURCE_REFRESH_LAG"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "producerRelease": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "release_code",
+        "algorithm_version",
+        "data_quality_policy_version",
+        "public_top_n_per_direction",
+        "minimum_three_source_endpoint_ratio_bps",
+        "minimum_direction_eligible_ratio_bps",
+        "minimum_qualified_three_source_endpoint_ratio_bps"
+      ],
+      "properties": {
+        "release_code": {
+          "$ref": "#/$defs/identifier"
+        },
+        "algorithm_version": {
+          "$ref": "#/$defs/identifier"
+        },
+        "data_quality_policy_version": {
+          "$ref": "#/$defs/identifier"
+        },
+        "public_top_n_per_direction": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50
+        },
+        "minimum_three_source_endpoint_ratio_bps": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "minimum_direction_eligible_ratio_bps": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "minimum_qualified_three_source_endpoint_ratio_bps": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        }
+      }
+    },
+    "numericProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_code",
+        "method_id",
+        "segment",
+        "horizon_days",
+        "analysis_currency",
+        "minimum_endpoint_cny_minor",
+        "minimum_abs_leg_delta_cny_minor"
+      ],
+      "properties": {
+        "profile_code": {
+          "$ref": "#/$defs/identifier"
+        },
+        "method_id": {
+          "const": "M3"
+        },
+        "segment": {
+          "const": "SOURCE_TIERED"
+        },
+        "horizon_days": {
+          "const": 30
+        },
+        "analysis_currency": {
+          "const": "CNY"
+        },
+        "minimum_endpoint_cny_minor": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "minimum_abs_leg_delta_cny_minor": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "statusCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ELIGIBLE_A3",
+        "CONFLICTED_DIRECTION",
+        "INSUFFICIENT_THREE_SOURCES",
+        "FLAT_OR_ZERO_CONFLICT",
+        "WITHHELD_ANOMALY",
+        "WITHHELD_ANOMALY_UNKNOWN",
+        "WITHHELD_WINDOW_EVIDENCE",
+        "WITHHELD_MICROPRICE",
+        "STALE_ENDPOINT",
+        "TEMPORAL_VIOLATION",
+        "CONTRACT_MISMATCH",
+        "ELIGIBLE_A2",
+        "WITHHELD_SOURCE_EVIDENCE"
+      ],
+      "properties": {
+        "ELIGIBLE_A3": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "CONFLICTED_DIRECTION": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "INSUFFICIENT_THREE_SOURCES": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "FLAT_OR_ZERO_CONFLICT": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "WITHHELD_ANOMALY": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "WITHHELD_ANOMALY_UNKNOWN": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "WITHHELD_WINDOW_EVIDENCE": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "WITHHELD_MICROPRICE": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "STALE_ENDPOINT": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "TEMPORAL_VIOLATION": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "CONTRACT_MISMATCH": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "ELIGIBLE_A2": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "WITHHELD_SOURCE_EVIDENCE": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "member_count",
+        "three_source_endpoint_count",
+        "three_source_endpoint_ratio_bps",
+        "direction_eligible_count",
+        "direction_eligible_ratio_bps",
+        "eligible_count",
+        "excluded_count",
+        "status_counts",
+        "gainer_count",
+        "loser_count",
+        "qualified_three_source_endpoint_count",
+        "qualified_three_source_endpoint_ratio_bps",
+        "qualified_two_source_endpoint_count",
+        "qualified_supported_endpoint_count",
+        "three_source_confirmed_count",
+        "two_source_supported_count",
+        "qualified_supported_endpoint_ratio_bps",
+        "source_endpoint_reason_counts"
+      ],
+      "properties": {
+        "member_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "three_source_endpoint_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "three_source_endpoint_ratio_bps": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "direction_eligible_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "direction_eligible_ratio_bps": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "eligible_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "excluded_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "status_counts": {
+          "$ref": "#/$defs/statusCounts"
+        },
+        "gainer_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 50
+        },
+        "loser_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 50
+        },
+        "qualified_three_source_endpoint_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "qualified_three_source_endpoint_ratio_bps": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "qualified_two_source_endpoint_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "qualified_supported_endpoint_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "three_source_confirmed_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "two_source_supported_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "qualified_supported_endpoint_ratio_bps": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "source_endpoint_reason_counts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "market_a",
+            "market_b",
+            "market_c"
+          ],
+          "properties": {
+            "market_a": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "QUALIFIED": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "NO_ACTIVE_ASK": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "QUOTE_VALUE_MISSING_OR_INVALID": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "SOURCE_REFRESH_LAG": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "MISSING_SOURCE_CLOCK": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "TEMPORAL_VIOLATION": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "INSUFFICIENT_SLOTS": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "CONTRACT_MISMATCH": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "EVIDENCE_UNAVAILABLE": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            },
+            "market_b": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "QUALIFIED": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "NO_ACTIVE_ASK": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "QUOTE_VALUE_MISSING_OR_INVALID": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "SOURCE_REFRESH_LAG": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "MISSING_SOURCE_CLOCK": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "TEMPORAL_VIOLATION": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "INSUFFICIENT_SLOTS": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "CONTRACT_MISMATCH": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "EVIDENCE_UNAVAILABLE": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            },
+            "market_c": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "QUALIFIED": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "NO_ACTIVE_ASK": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "QUOTE_VALUE_MISSING_OR_INVALID": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "SOURCE_REFRESH_LAG": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "MISSING_SOURCE_CLOCK": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "TEMPORAL_VIOLATION": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "INSUFFICIENT_SLOTS": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "CONTRACT_MISMATCH": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "EVIDENCE_UNAVAILABLE": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "publication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "publication_id",
+        "manifest_hash",
+        "result_as_of",
+        "input_available_at",
+        "public_available_at",
+        "published_at",
+        "freshness_anchor_at",
+        "fresh_until",
+        "retain_until",
+        "freshness",
+        "supersedes_publication_id",
+        "producer_release",
+        "numeric_profile",
+        "rights_release_code",
+        "rights_maximum_public_members_per_direction",
+        "evidence_release_code",
+        "catalog",
+        "accounting",
+        "tiering_policy"
+      ],
+      "properties": {
+        "publication_id": {
+          "$ref": "#/$defs/sha256"
+        },
+        "manifest_hash": {
+          "$ref": "#/$defs/sha256"
+        },
+        "result_as_of": {
+          "$ref": "#/$defs/date"
+        },
+        "input_available_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "public_available_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "published_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "freshness_anchor_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "fresh_until": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "retain_until": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "freshness": {
+          "enum": [
+            "FRESH",
+            "STALE_RETAINED"
+          ]
+        },
+        "supersedes_publication_id": {
+          "$ref": "#/$defs/nullableSha256"
+        },
+        "producer_release": {
+          "$ref": "#/$defs/producerRelease"
+        },
+        "numeric_profile": {
+          "$ref": "#/$defs/numericProfile"
+        },
+        "rights_release_code": {
+          "$ref": "#/$defs/identifier"
+        },
+        "rights_maximum_public_members_per_direction": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50
+        },
+        "evidence_release_code": {
+          "$ref": "#/$defs/identifier"
+        },
+        "catalog": {
+          "$ref": "#/$defs/catalogDescriptor"
+        },
+        "accounting": {
+          "$ref": "#/$defs/accounting"
+        },
+        "tiering_policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "policy_id",
+            "policy_code",
+            "allowed_missing_reasons",
+            "maximum_quote_age_minutes",
+            "minimum_qualified_slots",
+            "expected_slots",
+            "minimum_supported_endpoint_ratio_bps"
+          ],
+          "properties": {
+            "policy_id": {
+              "$ref": "#/$defs/sha256"
+            },
+            "policy_code": {
+              "$ref": "#/$defs/identifier"
+            },
+            "allowed_missing_reasons": {
+              "type": "array",
+              "uniqueItems": true,
+              "maxItems": 2,
+              "items": {
+                "enum": [
+                  "NO_ACTIVE_ASK",
+                  "SOURCE_REFRESH_LAG"
+                ]
+              }
+            },
+            "maximum_quote_age_minutes": {
+              "const": 15
+            },
+            "minimum_qualified_slots": {
+              "const": 9
+            },
+            "expected_slots": {
+              "const": 12
+            },
+            "minimum_supported_endpoint_ratio_bps": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10000
+            }
+          }
+        }
+      }
+    },
+    "filters": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "item_kind",
+        "base_item_code",
+        "edition_kind",
+        "wear_tier"
+      ],
+      "properties": {
+        "item_kind": {
+          "enum": [
+            "WEAPON",
+            "KNIFE",
+            "GLOVE",
+            "AGENT",
+            "OTHER",
+            "UNKNOWN",
+            null
+          ]
+        },
+        "base_item_code": {
+          "oneOf": [
+            {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/identifier"
+                },
+                {
+                  "maxLength": 256
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "edition_kind": {
+          "enum": [
+            "STANDARD",
+            "STATTRAK",
+            "SOUVENIR",
+            "UNKNOWN",
+            null
+          ]
+        },
+        "wear_tier": {
+          "enum": [
+            "FACTORY_NEW",
+            "MINIMAL_WEAR",
+            "FIELD_TESTED",
+            "WELL_WORN",
+            "BATTLE_SCARRED",
+            "NOT_APPLICABLE",
+            "UNKNOWN",
+            null
+          ]
+        }
+      }
+    },
+    "query": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "as_of",
+        "snapshot_known_at",
+        "request_known_at",
+        "publication_id",
+        "direction",
+        "page_size",
+        "cursor",
+        "filters"
+      ],
+      "properties": {
+        "as_of": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "snapshot_known_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "request_known_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "publication_id": {
+          "$ref": "#/$defs/nullableSha256"
+        },
+        "direction": {
+          "enum": [
+            "GAINERS",
+            "LOSERS"
+          ]
+        },
+        "page_size": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "cursor": {
+          "$ref": "#/$defs/nullableCursor"
+        },
+        "filters": {
+          "$ref": "#/$defs/filters"
+        }
+      }
+    },
+    "listResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "api_contract",
+        "api_version",
+        "response_kind",
+        "query",
+        "publication",
+        "total",
+        "members",
+        "next_cursor"
+      ],
+      "properties": {
+        "api_contract": {
+          "const": "single-item-trending-public-api"
+        },
+        "api_version": {
+          "const": "v3"
+        },
+        "response_kind": {
+          "const": "TRENDING_LIST"
+        },
+        "query": {
+          "$ref": "#/$defs/query"
+        },
+        "publication": {
+          "$ref": "#/$defs/publication"
+        },
+        "total": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 50
+        },
+        "members": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/member"
+          },
+          "maxItems": 50
+        },
+        "next_cursor": {
+          "$ref": "#/$defs/nullableCursor"
+        }
+      }
+    },
+    "errorResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "api_contract",
+        "api_version",
+        "response_kind",
+        "error"
+      ],
+      "properties": {
+        "api_contract": {
+          "const": "single-item-trending-public-api"
+        },
+        "api_version": {
+          "const": "v3"
+        },
+        "response_kind": {
+          "const": "ERROR"
+        },
+        "error": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "code",
+            "retryable"
+          ],
+          "properties": {
+            "code": {
+              "enum": [
+                "INVALID_ARGUMENT",
+                "INVALID_CURSOR",
+                "NOT_PUBLISHED",
+                "BACKEND_UNAVAILABLE",
+                "PUBLICATION_EXPIRED",
+                "PUBLICATION_WITHDRAWN",
+                "RESULT_CORRUPT"
+              ]
+            },
+            "retryable": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    }
+  }
+}

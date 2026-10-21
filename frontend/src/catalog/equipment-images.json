@@ -1,0 +1,344 @@
+{
+  "revision": "93f190021a73e8e5",
+  "records": [
+    {
+      "model_id": "leather_handwraps",
+      "kind": "REPRESENTATIVE_FINISH",
+      "finish": {
+        "zh": "钴蓝骷髅",
+        "en": "Cobalt Skulls"
+      }
+    },
+    {
+      "model_id": "motorcycle_gloves",
+      "kind": "REPRESENTATIVE_FINISH",
+      "finish": {
+        "zh": "薄荷",
+        "en": "Spearmint"
+      }
+    },
+    {
+      "model_id": "slick_gloves",
+      "kind": "REPRESENTATIVE_FINISH",
+      "finish": {
+        "zh": "王蛇",
+        "en": "King Snake"
+      }
+    },
+    {
+      "model_id": "specialist_gloves",
+      "kind": "REPRESENTATIVE_FINISH",
+      "finish": {
+        "zh": "深红和服",
+        "en": "Crimson Kimono"
+      }
+    },
+    {
+      "model_id": "sporty_gloves",
+      "kind": "REPRESENTATIVE_FINISH",
+      "finish": {
+        "zh": "紫外狂潮",
+        "en": "Ultra Violent"
+      }
+    },
+    {
+      "model_id": "studded_bloodhound_gloves",
+      "kind": "REPRESENTATIVE_FINISH",
+      "finish": {
+        "zh": "焦炭",
+        "en": "Charred"
+      }
+    },
+    {
+      "model_id": "studded_brokenfang_gloves",
+      "kind": "REPRESENTATIVE_FINISH",
+      "finish": {
+        "zh": "翡翠",
+        "en": "Jade"
+      }
+    },
+    {
+      "model_id": "studded_hydra_gloves",
+      "kind": "REPRESENTATIVE_FINISH",
+      "finish": {
+        "zh": "表面淬火",
+        "en": "Case Hardened"
+      }
+    },
+    {
+      "model_id": "weapon_ak47",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_aug",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_awp",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_bayonet",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_bizon",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_cz75a",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_deagle",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_elite",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_famas",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_fiveseven",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_g3sg1",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_galilar",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_glock",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_hkp2000",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_knife_butterfly",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_knife_canis",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_knife_cord",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_knife_css",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_knife_falchion",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_knife_flip",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_knife_gut",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_knife_gypsy_jackknife",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_knife_karambit",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_knife_kukri",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_knife_m9_bayonet",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_knife_outdoor",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_knife_push",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_knife_skeleton",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_knife_stiletto",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_knife_survival_bowie",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_knife_tactical",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_knife_ursus",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_knife_widowmaker",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_m249",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_m4a1",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_m4a1_silencer",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_mac10",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_mag7",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_mp5sd",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_mp7",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_mp9",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_negev",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_nova",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_p250",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_p90",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_revolver",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_sawedoff",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_scar20",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_sg556",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_ssg08",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_taser",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_tec9",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_ump45",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_usp_silencer",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    },
+    {
+      "model_id": "weapon_xm1014",
+      "kind": "BASE_WEAPON",
+      "finish": null
+    }
+  ]
+}

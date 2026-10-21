@@ -1,0 +1,29 @@
+import type { ErrorObject } from 'ajv'
+
+export interface GeneratedValidator {
+  (data: unknown): boolean
+  errors?: ErrorObject[] | null
+  evaluated?: unknown
+}
+
+export declare const validateResultEnvelope: GeneratedValidator
+export declare const validateQualityEnvelope: GeneratedValidator
+export declare const validateResultReadApiResponse: GeneratedValidator
+export declare const validateCatalogDisplayApiResponse: GeneratedValidator
+export declare const validateCatalogDisplaySnapshotApiResponse: GeneratedValidator
+export declare const validateCatalogDisplayQueryApiResponse: GeneratedValidator
+export declare const validateValveEventApiResponse: GeneratedValidator
+export declare const validateFxReferenceApiResponse: GeneratedValidator
+export declare const validatePriceDisplayApiResponse: GeneratedValidator
+export declare const validateMarketWatchlistPublicApiResponse: GeneratedValidator
+export declare const validateMarketWatchlistObservationApiResponse: GeneratedValidator
+export declare const validateMarketDescriptivePublicApiResponse: GeneratedValidator
+export declare const validateMarketSectorIndexPublicApiResponse: GeneratedValidator
+export declare const validateMarketSectorIndexPublicApiV2Response: GeneratedValidator
+export declare const validateMarketSectorIndexPublicApiV3Response: GeneratedValidator
+export declare const validateSingleItemTrendingPublicApiResponse: GeneratedValidator
+export declare const validateSingleItemMonitorPublicApiResponse: GeneratedValidator
+export declare const validateSingleItemCurrentPublicApiResponse: GeneratedValidator
+export declare const validateSingleItemHistoryPublicApiResponse: GeneratedValidator
+export declare const validateSingleItemTrendingPublicApiV3Response: GeneratedValidator
+export declare const validateSingleItemTrendingPublicApiV4Response: GeneratedValidator

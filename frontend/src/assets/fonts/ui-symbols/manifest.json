@@ -1,0 +1,47 @@
+{
+  "source_version": "5.3.0",
+  "fonttools": "4.65.0",
+  "records": [
+    {
+      "file": "ui-symbols-103.woff2",
+      "source": "noto-sans-sc-103-wght-normal.woff2",
+      "source_sha256": "bafbd591af6493fface8ee91ca8701cd227f18b1636c5a380c1dbd84cd79b92d",
+      "sha256": "c1c88e10541b3058a1af6d39919daa9534fa4356a65b96a8a70cbd487bb5dd2e",
+      "bytes": 3168,
+      "codepoints": [
+        9734
+      ]
+    },
+    {
+      "file": "ui-symbols-105.woff2",
+      "source": "noto-sans-sc-105-wght-normal.woff2",
+      "source_sha256": "8d8b4e6f4a00621d2be4279e9ba4b07cded89ab6d4018d9b87d2116867ead335",
+      "sha256": "ed4856689b8cfc6e0c66d028876838c3a40f6afe37f916c0cb42178bf3db0233",
+      "bytes": 3052,
+      "codepoints": [
+        8592
+      ]
+    },
+    {
+      "file": "ui-symbols-109.woff2",
+      "source": "noto-sans-sc-109-wght-normal.woff2",
+      "source_sha256": "a91f8b038e5ce10805a173a293484c8c49552c275cf901cdf21324d6dca3ed17",
+      "sha256": "6fa9ddcb5a5454a310f93b0139450742d496a875cff0a9dcbc103762009082c2",
+      "bytes": 3128,
+      "codepoints": [
+        8594,
+        9733
+      ]
+    },
+    {
+      "file": "ui-symbols-119.woff2",
+      "source": "noto-sans-sc-119-wght-normal.woff2",
+      "source_sha256": "b3b2374881f4cd93f239820dfd91f0fde8d52f8f92ba2888f7ab9cba21e4d7eb",
+      "sha256": "bb8cd8942ed8aad71a7b9dee3ed5b0bbffdf9160893347065e9d4decbe17e7c3",
+      "bytes": 3128,
+      "codepoints": [
+        65306
+      ]
+    }
+  ]
+}

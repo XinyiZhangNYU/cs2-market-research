@@ -1,0 +1,54 @@
+{
+  "api_contract": "catalog-display-api",
+  "api_version": "v1",
+  "members": [
+    {
+      "projection": {
+        "analysis_unit_id": "fixture:item:official-name-shape",
+        "analysis_unit_kind": "BASE_MHN",
+        "base_item_code": "fixture.weapon.official-name-shape",
+        "catalog_version": "OFFLINE_CONTRACT_FIXTURE_NOT_SOURCE_DATA",
+        "edition_kind": "STATTRAK",
+        "item_kind": "WEAPON",
+        "localized_name": {
+          "authority": "VALVE_STEAM",
+          "en": "StatTrak™ Contract Fixture | Official String Shape (Field-Tested)",
+          "zh_cn": "StatTrak™ 合同样例 | 官方字符串形状 (久经沙场)"
+        },
+        "media": {
+          "media_key": "fixture/series-representative",
+          "presentation_kind": "SERIES_REPRESENTATIVE",
+          "status": "BOUND"
+        },
+        "parent_analysis_unit_id": null,
+        "projection_hash": "abbcd99ebff508d38137c47d8899f09765ccd707dee9fdfcc01ec8c5d6538f24",
+        "valid_from": "2026-08-24T08:00:00.000000Z",
+        "version_context": {
+          "analysis_unit_version_id": "102",
+          "item_variant_version_id": "101",
+          "media_asset_version_id": "105",
+          "name_en_version_id": "103",
+          "name_zh_cn_version_id": "104"
+        },
+        "wear_tier": "FIELD_TESTED"
+      },
+      "storage": {
+        "available_at": "2026-08-24T08:00:01.000000Z",
+        "valid_to": null
+      }
+    }
+  ],
+  "next_cursor": null,
+  "query": {
+    "analysis_unit_kind": null,
+    "as_of": "2026-08-24T09:00:00.000000Z",
+    "base_item_code": "fixture.weapon.official-name-shape",
+    "edition_kind": null,
+    "item_kind": "WEAPON",
+    "known_at": "2026-08-24T09:00:00.000000Z",
+    "page_size": 100,
+    "sort": "ANALYSIS_UNIT_ID_ASC",
+    "wear_tier": null
+  },
+  "response_kind": "CATALOG_DISPLAY_LIST"
+}

@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:cs2-research:fx-reference-api:v1",
+  "title": "CS2 Rotate informational FX reference API V1",
+  "oneOf": [
+    { "$ref": "#/$defs/currentResponse" },
+    { "$ref": "#/$defs/errorResponse" }
+  ],
+  "$defs": {
+    "timestamp": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{6}Z$"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "query": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["known_at"],
+      "properties": {
+        "known_at": { "$ref": "#/$defs/timestamp" }
+      }
+    },
+    "reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority",
+        "available_at",
+        "carry_days",
+        "cny_per_usd",
+        "cny_valid_from",
+        "method",
+        "source_event_date",
+        "usage",
+        "usd_valid_from"
+      ],
+      "properties": {
+        "authority": { "const": "ECB" },
+        "available_at": { "$ref": "#/$defs/timestamp" },
+        "carry_days": { "type": "integer", "minimum": 0, "maximum": 7 },
+        "cny_per_usd": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]{8}$"
+        },
+        "cny_valid_from": { "$ref": "#/$defs/timestamp" },
+        "method": { "const": "ECB_EUR_CROSS" },
+        "source_event_date": { "$ref": "#/$defs/date" },
+        "usage": { "const": "REFERENCE_RATE_INFORMATIONAL_ONLY" },
+        "usd_valid_from": { "$ref": "#/$defs/timestamp" }
+      }
+    },
+    "currentResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "api_contract",
+        "api_version",
+        "query",
+        "reference",
+        "response_kind"
+      ],
+      "properties": {
+        "api_contract": { "const": "fx-reference-api" },
+        "api_version": { "const": "v1" },
+        "response_kind": { "const": "FX_REFERENCE_CURRENT" },
+        "query": { "$ref": "#/$defs/query" },
+        "reference": { "$ref": "#/$defs/reference" }
+      }
+    },
+    "errorResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["api_contract", "api_version", "error", "response_kind"],
+      "properties": {
+        "api_contract": { "const": "fx-reference-api" },
+        "api_version": { "const": "v1" },
+        "response_kind": { "const": "ERROR" },
+        "error": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["code", "http_status", "retryable"],
+          "properties": {
+            "code": {
+              "enum": [
+                "INVALID_ARGUMENT",
+                "NO_CURRENT_REFERENCE",
+                "RECORD_CORRUPT",
+                "BACKEND_UNAVAILABLE"
+              ]
+            },
+            "http_status": { "enum": [400, 503] },
+            "retryable": { "type": "boolean" }
+          }
+        }
+      }
+    }
+  }
+}

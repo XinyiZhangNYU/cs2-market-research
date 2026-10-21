@@ -1,0 +1,46 @@
+{
+  "name": "cs2-market-research-frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "CS2 Rotate public site: market index, Trending, item history, trade-up simulator and Valve announcement analysis",
+  "scripts": {
+    "dev": "vite",
+    "dev:public": "vite --mode public",
+    "generate:wire-validators": "node scripts/generate-wire-validators.mjs --write",
+    "check:wire-validators": "node scripts/generate-wire-validators.mjs --check",
+    "build": "node scripts/generate-wire-validators.mjs --check && tsc --noEmit && vite build",
+    "build:public": "node scripts/generate-wire-validators.mjs --check && node scripts/verify-tradeup-public-data.mjs && tsc --noEmit && npm run test:public && vite build --mode public",
+    "preview": "vite preview",
+    "preview:public": "vite preview --mode public",
+    "typecheck": "node scripts/generate-wire-validators.mjs --check && tsc --noEmit",
+    "test": "node scripts/generate-wire-validators.mjs --check && vitest run",
+    "test:public": "node scripts/verify-valve-history-public.mjs && node scripts/verify-tradeup-public-data.mjs && vitest run --mode public tests/public-beta.test.tsx tests/catalog-unit-public-result.test.tsx tests/public-valve.test.tsx tests/valve-analysis-history.test.tsx tests/valve-analysis-history-bilingual.test.tsx tests/tradeup-engine.test.ts tests/public-tradeup.test.tsx tests/tradeup-integrity.test.ts tests/tradeup-graph-reuse.test.ts tests/public-item-history-timeline.test.tsx tests/public-item-history-search.test.tsx tests/public-item-current-pagination.test.ts tests/public-item-current-search.test.tsx tests/public-item-chain-recovery.test.tsx tests/item-current-public-api.test.ts tests/public-portfolio-page.test.tsx tests/public-market-tooltip-security.test.ts tests/intent-prefetch.test.ts tests/page-horizontal-bleed.test.ts tests/startup-delivery.test.ts tests/catalog-delivery.test.ts tests/home-performance.test.tsx tests/home-directory.test.ts tests/price-display-api.test.ts tests/shared-read.test.ts tests/research-request-queue.test.ts tests/module-navigation.test.ts tests/public-module-navigation.test.tsx tests/preloadable.test.tsx tests/home-return-path.test.tsx tests/series-price-return.test.tsx tests/module-load-recovery.test.tsx tests/public-surface-isolation.test.tsx tests/startup-fallback.test.tsx"
+  },
+  "dependencies": {
+    "@fontsource-variable/geist": "5.3.0",
+    "@fontsource-variable/geist-mono": "5.3.0",
+    "@fontsource-variable/noto-sans-sc": "5.3.0",
+    "@noble/hashes": "^2.3.0",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
+    "echarts": "^6.0.0",
+    "fast-deep-equal": "^3.1.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.6.4",
+    "@types/node": "^26.2.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "jsdom": "^25.0.1",
+    "typescript": "^5.7.0",
+    "vite": "^8.0.0",
+    "vitest": "^4.1.10"
+  }
+}

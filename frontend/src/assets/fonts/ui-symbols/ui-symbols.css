@@ -1,0 +1,5 @@
+/* Derived Noto SC symbols; OFL-1.1 license is embedded in each font name table. */
+@font-face { font-family: 'CS2 UI Symbols'; font-style: normal; font-display: swap; font-weight: 100 900; src: url('./ui-symbols-103.woff2') format('woff2-variations'); unicode-range: U+2606; }
+@font-face { font-family: 'CS2 UI Symbols'; font-style: normal; font-display: swap; font-weight: 100 900; src: url('./ui-symbols-105.woff2') format('woff2-variations'); unicode-range: U+2190; }
+@font-face { font-family: 'CS2 UI Symbols'; font-style: normal; font-display: swap; font-weight: 100 900; src: url('./ui-symbols-109.woff2') format('woff2-variations'); unicode-range: U+2192,U+2605; }
+@font-face { font-family: 'CS2 UI Symbols'; font-style: normal; font-display: swap; font-weight: 100 900; src: url('./ui-symbols-119.woff2') format('woff2-variations'); unicode-range: U+FF1A; }

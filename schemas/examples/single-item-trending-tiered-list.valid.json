@@ -1,0 +1,198 @@
+{
+  "api_contract": "single-item-trending-public-api",
+  "api_version": "v3",
+  "response_kind": "TRENDING_LIST",
+  "query": {
+    "as_of": null,
+    "snapshot_known_at": "2026-09-01T01:07:00.000000Z",
+    "request_known_at": "2026-09-01T01:07:00.000000Z",
+    "publication_id": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "direction": "GAINERS",
+    "page_size": 50,
+    "cursor": null,
+    "filters": {
+      "item_kind": null,
+      "base_item_code": null,
+      "edition_kind": null,
+      "wear_tier": null
+    }
+  },
+  "publication": {
+    "publication_id": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "manifest_hash": "4ff9e28e961b62d7232a6fb2dca5a7ce1bfef095ce2338648e4ad773330e28b3",
+    "result_as_of": "2026-08-31",
+    "input_available_at": "2026-09-01T01:00:00.000000Z",
+    "public_available_at": "2026-09-01T01:05:00.000000Z",
+    "published_at": "2026-09-01T01:06:00.000000Z",
+    "freshness_anchor_at": "2026-09-01T00:00:00.000000Z",
+    "fresh_until": "2026-09-01T03:00:00.000000Z",
+    "retain_until": "2026-09-02T01:05:00.000000Z",
+    "freshness": "FRESH",
+    "supersedes_publication_id": null,
+    "producer_release": {
+      "release_code": "synthetic-tiered-test-v1",
+      "algorithm_version": "synthetic-m3-tiered",
+      "data_quality_policy_version": "synthetic-15m",
+      "public_top_n_per_direction": 50,
+      "minimum_qualified_three_source_endpoint_ratio_bps": 0,
+      "minimum_three_source_endpoint_ratio_bps": 0,
+      "minimum_direction_eligible_ratio_bps": 0
+    },
+    "numeric_profile": {
+      "profile_code": "price-010-shadow-v1",
+      "method_id": "M3",
+      "segment": "SOURCE_TIERED",
+      "horizon_days": 30,
+      "analysis_currency": "CNY",
+      "minimum_endpoint_cny_minor": 10,
+      "minimum_abs_leg_delta_cny_minor": 1
+    },
+    "rights_release_code": "synthetic-public-test-v1",
+    "rights_maximum_public_members_per_direction": 50,
+    "evidence_release_code": "synthetic-window-evidence-v1",
+    "catalog": {
+      "catalog_publication_id": "0000000000000000000000000000000000000000000000000000000000000051",
+      "snapshot_id": "a28c831f480798fec258dd336a94538e174ad98a4325771e8a3dd85cc44157fb",
+      "catalog_version": "identity-fixture-v1",
+      "as_of": "2026-07-30T00:00:00.000000Z",
+      "available_at": "2026-07-31T23:00:00.000000Z",
+      "published_at": "2026-09-01T00:40:00.000000Z",
+      "member_count": 2,
+      "member_set_hash": "0000000000000000000000000000000000000000000000000000000000000052",
+      "decision": "APPROVED",
+      "withdrawn": false
+    },
+    "accounting": {
+      "member_count": 2,
+      "three_source_endpoint_count": 1,
+      "three_source_endpoint_ratio_bps": 5000,
+      "qualified_three_source_endpoint_count": 1,
+      "qualified_three_source_endpoint_ratio_bps": 5000,
+      "direction_eligible_count": 2,
+      "direction_eligible_ratio_bps": 10000,
+      "eligible_count": 2,
+      "excluded_count": 0,
+      "status_counts": {
+        "ELIGIBLE_A3": 1,
+        "CONFLICTED_DIRECTION": 0,
+        "INSUFFICIENT_THREE_SOURCES": 0,
+        "FLAT_OR_ZERO_CONFLICT": 0,
+        "WITHHELD_ANOMALY": 0,
+        "WITHHELD_ANOMALY_UNKNOWN": 0,
+        "WITHHELD_WINDOW_EVIDENCE": 0,
+        "WITHHELD_MICROPRICE": 0,
+        "STALE_ENDPOINT": 0,
+        "TEMPORAL_VIOLATION": 0,
+        "CONTRACT_MISMATCH": 0,
+        "ELIGIBLE_A2": 1,
+        "WITHHELD_SOURCE_EVIDENCE": 0
+      },
+      "gainer_count": 2,
+      "loser_count": 0,
+      "qualified_two_source_endpoint_count": 1,
+      "qualified_supported_endpoint_count": 2,
+      "qualified_supported_endpoint_ratio_bps": 10000,
+      "three_source_confirmed_count": 1,
+      "two_source_supported_count": 1,
+      "source_endpoint_reason_counts": {
+        "market_a": {},
+        "market_b": {
+          "NO_ACTIVE_ASK": 2
+        },
+        "market_c": {}
+      }
+    },
+    "tiering_policy": {
+      "policy_id": "bff7e9146bf8255843b4c1ea4d49d582afc3388875b47d4dea4a24ded23fc9c1",
+      "policy_code": "test-tiering",
+      "allowed_missing_reasons": [
+        "NO_ACTIVE_ASK"
+      ],
+      "maximum_quote_age_minutes": 15,
+      "minimum_qualified_slots": 9,
+      "expected_slots": 12,
+      "minimum_supported_endpoint_ratio_bps": 0
+    }
+  },
+  "total": 2,
+  "members": [
+    {
+      "rank": 1,
+      "tie_break_key": "item:1",
+      "measurement_id": "329771a08f5c8a362f0c7a5ba363e1bf061ad5662493e51b89c76fa89ebb9fdd",
+      "analysis_unit_id": "item:1",
+      "direction": "GAINERS",
+      "evidence_grade": "TWO_SOURCE_SUPPORTED",
+      "conservative_source_code": "market_a",
+      "conservative_same_direction_change_floor_ratio": "0.10000000",
+      "catalog": {
+        "analysis_unit_id": "item:1",
+        "parent_analysis_unit_id": null,
+        "analysis_unit_kind": "BASE_MHN",
+        "item_kind": "WEAPON",
+        "base_item_code": "weapon.fixture.1",
+        "edition_kind": "STANDARD",
+        "wear_tier": "FACTORY_NEW",
+        "localized_name": {
+          "en": "Fixture item 1",
+          "zh_cn": "测试商品 1"
+        },
+        "media": {
+          "status": "BOUND",
+          "media_asset_version_id": "105",
+          "media_key": "fixture/series-representative",
+          "presentation_kind": "SERIES_REPRESENTATIVE"
+        },
+        "catalog_version": "identity-fixture-v1"
+      },
+      "supporting_sources": [
+        "market_a",
+        "market_c"
+      ],
+      "unavailable_sources": [
+        {
+          "source_code": "market_b",
+          "start_reason": "NO_ACTIVE_ASK",
+          "end_reason": "NO_ACTIVE_ASK"
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "tie_break_key": "item:2",
+      "measurement_id": "ba3ada636ee0f3e26afe9e6d262f72d9bac4e9f7237677001f3bcbea4643d19d",
+      "analysis_unit_id": "item:2",
+      "direction": "GAINERS",
+      "evidence_grade": "THREE_SOURCE_CONFIRMED",
+      "conservative_source_code": "market_a",
+      "conservative_same_direction_change_floor_ratio": "0.10000000",
+      "catalog": {
+        "analysis_unit_id": "item:2",
+        "parent_analysis_unit_id": null,
+        "analysis_unit_kind": "BASE_MHN",
+        "item_kind": "WEAPON",
+        "base_item_code": "weapon.fixture.2",
+        "edition_kind": "STANDARD",
+        "wear_tier": "FACTORY_NEW",
+        "localized_name": {
+          "en": "Fixture item 2",
+          "zh_cn": "测试商品 2"
+        },
+        "media": {
+          "status": "BOUND",
+          "media_asset_version_id": "105",
+          "media_key": "fixture/series-representative",
+          "presentation_kind": "SERIES_REPRESENTATIVE"
+        },
+        "catalog_version": "identity-fixture-v1"
+      },
+      "supporting_sources": [
+        "market_a",
+        "market_b",
+        "market_c"
+      ],
+      "unavailable_sources": []
+    }
+  ],
+  "next_cursor": null
+}

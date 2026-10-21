@@ -1,0 +1,128 @@
+{
+  "contract_name": "market-descriptive-public-api",
+  "contract_version": "1",
+  "response_kind": "RESULT",
+  "operation": "OVERVIEW",
+  "product_kind": "MARKET_DESCRIPTIVE",
+  "method": "EQUAL_WEIGHTED_MEMBER_RETURN",
+  "publication": {
+    "publication_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "parent_publication_id": null,
+    "manifest_sha256": "740044ac675fe9340dad9656c63cf09bffc53f9de1ae2b1e8c31bac15e6a7dc7",
+    "rights_revision": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "published_at": "2026-09-08T21:02:00.000000Z",
+    "withdrawn_at": null
+  },
+  "snapshot": {
+    "catalog_snapshot_id": null,
+    "end_date": "2026-09-07",
+    "imported_at": "2026-09-08T21:01:00.000000Z",
+    "input_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "membership_version": "SYNTHETIC_FIXED_MEMBERS_V1",
+    "source_export_as_of": "2026-09-08T21:00:00.000000Z",
+    "start_date": "2026-09-06"
+  },
+  "freshness": {
+    "evaluated_at": "2026-09-12T23:00:00.000000Z",
+    "expected_latest_complete_date": "2026-09-11",
+    "lag_complete_days": 4,
+    "status": "NO_RECENT_STATISTIC",
+    "headline_data_date": null
+  },
+  "day_pair": {
+    "eod_window": {
+      "expected_slots": 12,
+      "maximum_latest_slot_age_minutes": 15,
+      "minimum_qualified_slots": 9
+    },
+    "from_date": "2026-09-06",
+    "is_adjacent_utc_day": true,
+    "to_date": "2026-09-07"
+  },
+  "headline": null,
+  "current_day_quality": {
+    "date": "2026-09-11",
+    "status": "NO_PUBLISHED_DAY",
+    "scope": null
+  },
+  "scopes": [
+    {
+      "ancestor_scope_ids": [],
+      "coverage_grade": "HIGH",
+      "day_price_coverage_ratio": "1",
+      "day_price_member_count": 100,
+      "fixed_member_count": 100,
+      "headline_eligible": true,
+      "labels": {
+        "en": "Whole market",
+        "zh_cn": "整体市场"
+      },
+      "member_price_mean_cny": "1",
+      "member_price_sum_cny": "100",
+      "missing_endpoint_count": 0,
+      "other_unavailable_count": 0,
+      "paired_coverage_ratio": "1",
+      "paired_member_count": 100,
+      "parent_scope_id": null,
+      "price_basis": "ONE_SELECTED_EOD_PRICE_PER_AVAILABLE_MEMBER",
+      "raw_return_ratio": "0.02",
+      "return_method": "SYMMETRIC_WINSOR_1_PERCENT",
+      "return_selected_for_display": "0.01",
+      "scope_id": "ALL",
+      "scope_kind": "MARKET",
+      "scope_token": "d982c2e3b078d22792202f3acb3ee58f5c55cb8242eb43829aaa98e677017dfb",
+      "single_source_pair_count": 100,
+      "source_set_break_count": 0,
+      "suppressed_return_ratio": "0.01",
+      "unmapped_member_count": 0
+    }
+  ],
+  "history": [
+    {
+      "publication_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "day_pair": {
+        "eod_window": {
+          "expected_slots": 12,
+          "maximum_latest_slot_age_minutes": 15,
+          "minimum_qualified_slots": 9
+        },
+        "from_date": "2026-09-06",
+        "is_adjacent_utc_day": true,
+        "to_date": "2026-09-07"
+      },
+      "scopes": [
+        {
+          "ancestor_scope_ids": [],
+          "coverage_grade": "HIGH",
+          "day_price_coverage_ratio": "1",
+          "day_price_member_count": 100,
+          "fixed_member_count": 100,
+          "headline_eligible": true,
+          "labels": {
+            "en": "Whole market",
+            "zh_cn": "整体市场"
+          },
+          "member_price_mean_cny": "1",
+          "member_price_sum_cny": "100",
+          "missing_endpoint_count": 0,
+          "other_unavailable_count": 0,
+          "paired_coverage_ratio": "1",
+          "paired_member_count": 100,
+          "parent_scope_id": null,
+          "price_basis": "ONE_SELECTED_EOD_PRICE_PER_AVAILABLE_MEMBER",
+          "raw_return_ratio": "0.02",
+          "return_method": "SYMMETRIC_WINSOR_1_PERCENT",
+          "return_selected_for_display": "0.01",
+          "scope_id": "ALL",
+          "scope_kind": "MARKET",
+          "scope_token": "d982c2e3b078d22792202f3acb3ee58f5c55cb8242eb43829aaa98e677017dfb",
+          "single_source_pair_count": 100,
+          "source_set_break_count": 0,
+          "suppressed_return_ratio": "0.01",
+          "unmapped_member_count": 0
+        }
+      ],
+      "connect_to_previous": false
+    }
+  ]
+}

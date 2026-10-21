@@ -1,0 +1,262 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.cs2-research.invalid/schemas/capture-recovery-v2.schema.json",
+  "title": "Capture and recoverable persistence V2 documents",
+  "oneOf": [
+    { "$ref": "#/$defs/plan" },
+    { "$ref": "#/$defs/raw_manifest" },
+    { "$ref": "#/$defs/capture_terminal" },
+    { "$ref": "#/$defs/normalization_receipt" },
+    { "$ref": "#/$defs/persistence_receipt" },
+    { "$ref": "#/$defs/raw_deletion_receipt" }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "instant": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    },
+    "identifier": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._=-]{0,127}$"
+    },
+    "rights_snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version_label",
+        "acquisition",
+        "systematic_collection",
+        "historical_backfill",
+        "raw_storage",
+        "normalized_storage",
+        "internal_derivative_use",
+        "derived_storage",
+        "effective_from",
+        "valid_to"
+      ],
+      "properties": {
+        "version_label": { "type": "string", "minLength": 1 },
+        "acquisition": { "enum": ["ALLOW", "DENY", "UNKNOWN"] },
+        "systematic_collection": { "enum": ["ALLOW", "DENY", "UNKNOWN"] },
+        "historical_backfill": { "enum": ["ALLOW", "DENY", "UNKNOWN"] },
+        "raw_storage": { "enum": ["ALLOW", "DENY", "UNKNOWN"] },
+        "normalized_storage": { "enum": ["ALLOW", "DENY", "UNKNOWN"] },
+        "internal_derivative_use": { "enum": ["ALLOW", "DENY", "UNKNOWN"] },
+        "derived_storage": { "enum": ["ALLOW", "DENY", "UNKNOWN"] },
+        "effective_from": { "oneOf": [{ "$ref": "#/$defs/instant" }, { "type": "null" }] },
+        "valid_to": { "oneOf": [{ "$ref": "#/$defs/instant" }, { "type": "null" }] }
+      }
+    },
+    "plan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authorization_ref_sha256",
+        "contract_version",
+        "created_at",
+        "endpoint_code",
+        "endpoint_version",
+        "execution_mode",
+        "item_key_kind",
+        "item_keys",
+        "item_manifest_hash",
+        "planned_for",
+        "request_canonical_hash",
+        "request_options",
+        "request_options_hash",
+        "request_plan_id",
+        "retention_mode",
+        "rights_snapshot",
+        "rights_version_label",
+        "run_id",
+        "slot_id",
+        "source_code"
+      ],
+      "properties": {
+        "authorization_ref_sha256": { "oneOf": [{ "$ref": "#/$defs/sha256" }, { "type": "null" }] },
+        "contract_version": { "const": "capture-recovery-v2/1" },
+        "created_at": { "$ref": "#/$defs/instant" },
+        "endpoint_code": { "type": "string", "minLength": 1 },
+        "endpoint_version": { "type": "string", "minLength": 1 },
+        "execution_mode": { "enum": ["FIXTURE", "SAMPLE", "SYSTEMATIC", "BACKFILL"] },
+        "item_key_kind": { "type": "string", "minLength": 1 },
+        "item_keys": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+        "item_manifest_hash": { "$ref": "#/$defs/sha256" },
+        "planned_for": { "$ref": "#/$defs/instant" },
+        "request_canonical_hash": { "$ref": "#/$defs/sha256" },
+        "request_options": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "prefixItems": [{ "type": "string" }, { "type": "string" }],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "request_options_hash": { "$ref": "#/$defs/sha256" },
+        "request_plan_id": { "type": "string", "format": "uuid" },
+        "retention_mode": { "enum": ["SYNTHETIC_FIXTURE", "PERSISTED_RAW", "EPHEMERAL_NORMALIZED"] },
+        "rights_snapshot": { "$ref": "#/$defs/rights_snapshot" },
+        "rights_version_label": { "type": "string", "minLength": 1 },
+        "run_id": { "$ref": "#/$defs/identifier" },
+        "slot_id": { "$ref": "#/$defs/identifier" },
+        "source_code": { "type": "string", "minLength": 1 }
+      }
+    },
+    "raw_artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["byte_count", "content_type", "fetched_at", "path", "response_ordinal", "sha256"],
+      "properties": {
+        "byte_count": { "type": "integer", "minimum": 0 },
+        "content_type": { "type": "string", "minLength": 1 },
+        "fetched_at": { "$ref": "#/$defs/instant" },
+        "path": { "const": "raw/response-0001.bin" },
+        "response_ordinal": { "const": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "raw_manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifacts", "contract_version", "endpoint_code", "http_status_code",
+        "network_request_count", "plan_hash", "request_plan_id",
+        "response_headers_allowlisted", "run_id", "slot_id", "source_code", "transport_kind"
+      ],
+      "properties": {
+        "artifacts": { "type": "array", "prefixItems": [{ "$ref": "#/$defs/raw_artifact" }], "items": false, "minItems": 1, "maxItems": 1 },
+        "contract_version": { "const": "capture-recovery-v2/1" },
+        "endpoint_code": { "type": "string", "minLength": 1 },
+        "http_status_code": { "type": "integer", "minimum": 100, "maximum": 599 },
+        "network_request_count": { "type": "integer", "minimum": 0 },
+        "plan_hash": { "$ref": "#/$defs/sha256" },
+        "request_plan_id": { "type": "string", "format": "uuid" },
+        "response_headers_allowlisted": { "type": "array" },
+        "run_id": { "$ref": "#/$defs/identifier" },
+        "slot_id": { "$ref": "#/$defs/identifier" },
+        "source_code": { "type": "string", "minLength": 1 },
+        "transport_kind": { "type": "string", "minLength": 1 }
+      }
+    },
+    "capture_terminal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "capture_status", "contract_version", "diagnostic_code", "finished_at",
+        "plan_document_hash", "plan_hash", "raw_delete_after", "raw_manifest_hash",
+        "request_attempt_count", "request_plan_id", "response_count", "run_id",
+        "safe_context", "slot_id", "started_at"
+      ],
+      "properties": {
+        "capture_status": { "enum": ["NOT_ATTEMPTED", "DENIED_BEFORE_REQUEST", "REQUEST_FAILED", "RESPONSE_REJECTED", "CAPTURED"] },
+        "contract_version": { "const": "capture-recovery-v2/1" },
+        "diagnostic_code": { "type": ["string", "null"] },
+        "finished_at": { "$ref": "#/$defs/instant" },
+        "plan_document_hash": { "$ref": "#/$defs/sha256" },
+        "plan_hash": { "$ref": "#/$defs/sha256" },
+        "raw_delete_after": { "oneOf": [{ "$ref": "#/$defs/instant" }, { "type": "null" }] },
+        "raw_manifest_hash": { "oneOf": [{ "$ref": "#/$defs/sha256" }, { "type": "null" }] },
+        "request_attempt_count": { "type": "integer", "minimum": 0 },
+        "request_plan_id": { "type": "string", "format": "uuid" },
+        "response_count": { "type": "integer", "minimum": 0 },
+        "run_id": { "$ref": "#/$defs/identifier" },
+        "safe_context": { "type": "object" },
+        "slot_id": { "$ref": "#/$defs/identifier" },
+        "started_at": { "$ref": "#/$defs/instant" }
+      }
+    },
+    "normalization_receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "attempt_id", "capture_terminal_hash", "contract_version", "diagnostic_code",
+        "finished_at", "input_raw_manifest_hash", "normalization_status",
+        "output_manifest_hash", "parser_version", "receipt_type", "safe_context", "started_at"
+      ],
+      "properties": {
+        "attempt_id": { "$ref": "#/$defs/identifier" },
+        "capture_terminal_hash": { "$ref": "#/$defs/sha256" },
+        "contract_version": { "const": "capture-recovery-v2/1" },
+        "diagnostic_code": { "type": ["string", "null"] },
+        "finished_at": { "$ref": "#/$defs/instant" },
+        "input_raw_manifest_hash": { "$ref": "#/$defs/sha256" },
+        "normalization_status": { "enum": ["NOT_STARTED", "SUCCEEDED", "FAILED_RECOVERABLE", "FAILED_TERMINAL"] },
+        "output_manifest_hash": { "oneOf": [{ "$ref": "#/$defs/sha256" }, { "type": "null" }] },
+        "parser_version": { "$ref": "#/$defs/identifier" },
+        "receipt_type": { "const": "NORMALIZATION" },
+        "safe_context": { "type": "object" },
+        "started_at": { "$ref": "#/$defs/instant" }
+      }
+    },
+    "persistence_receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "attempt_id", "capture_terminal_hash", "contract_version", "dataset_id",
+        "diagnostic_code", "finished_at", "input_normalized_manifest_hash",
+        "normalization_attempt_id", "persistence_status", "receipt_type",
+        "repository_version", "replayed", "safe_context", "schema_release", "seal_id",
+        "started_at", "target_instance_label"
+      ],
+      "properties": {
+        "attempt_id": { "$ref": "#/$defs/identifier" },
+        "capture_terminal_hash": { "$ref": "#/$defs/sha256" },
+        "contract_version": { "const": "capture-recovery-v2/1" },
+        "dataset_id": { "type": ["string", "null"] },
+        "diagnostic_code": { "type": ["string", "null"] },
+        "finished_at": { "$ref": "#/$defs/instant" },
+        "input_normalized_manifest_hash": { "$ref": "#/$defs/sha256" },
+        "normalization_attempt_id": { "$ref": "#/$defs/identifier" },
+        "persistence_status": { "enum": ["NOT_REQUESTED", "PENDING_IMPORT", "IMPORTING", "PERSISTED", "IMPORT_FAILED_RECOVERABLE", "IMPORT_FAILED_TERMINAL"] },
+        "receipt_type": { "const": "PERSISTENCE" },
+        "repository_version": { "$ref": "#/$defs/identifier" },
+        "replayed": { "type": ["boolean", "null"] },
+        "safe_context": { "type": "object" },
+        "schema_release": { "type": ["string", "null"] },
+        "seal_id": { "type": ["string", "null"] },
+        "started_at": { "$ref": "#/$defs/instant" },
+        "target_instance_label": { "$ref": "#/$defs/identifier" }
+      }
+    },
+    "raw_deletion_receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "capture_terminal_hash", "committed_at", "contract_version", "dataset_id",
+        "normalization_attempt_id", "normalization_receipt_hash",
+        "persistence_attempt_id", "persistence_receipt_hash", "raw_byte_count",
+        "raw_content_hash", "raw_delete_after", "raw_manifest_hash",
+        "raw_relative_path", "receipt_contract_version", "receipt_type", "run_id",
+        "seal_id", "slot_id", "status"
+      ],
+      "properties": {
+        "capture_terminal_hash": { "$ref": "#/$defs/sha256" },
+        "committed_at": { "$ref": "#/$defs/instant" },
+        "contract_version": { "const": "capture-recovery-v2/1" },
+        "dataset_id": { "type": "string", "minLength": 1 },
+        "normalization_attempt_id": { "$ref": "#/$defs/identifier" },
+        "normalization_receipt_hash": { "$ref": "#/$defs/sha256" },
+        "persistence_attempt_id": { "$ref": "#/$defs/identifier" },
+        "persistence_receipt_hash": { "$ref": "#/$defs/sha256" },
+        "raw_byte_count": { "type": "integer", "minimum": 0 },
+        "raw_content_hash": { "$ref": "#/$defs/sha256" },
+        "raw_delete_after": { "$ref": "#/$defs/instant" },
+        "raw_manifest_hash": { "$ref": "#/$defs/sha256" },
+        "raw_relative_path": { "const": "raw/response-0001.bin" },
+        "receipt_contract_version": { "const": "capture-raw-deletion-v1" },
+        "receipt_type": { "const": "RAW_DELETION" },
+        "run_id": { "$ref": "#/$defs/identifier" },
+        "seal_id": { "type": "string", "minLength": 1 },
+        "slot_id": { "$ref": "#/$defs/identifier" },
+        "status": { "const": "COMMITTED" }
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+node_modules/
+dist-public/
+dist-price-runtime/
+.npm-cache/
+dist/
+.vite/
+*.local

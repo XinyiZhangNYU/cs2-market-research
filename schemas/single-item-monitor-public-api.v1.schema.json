@@ -1,0 +1,547 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:cs2-research:single-item-monitor-public-api:v1",
+  "title": "Experimental, efficacy-unvalidated ITEM monitor V1",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/success"
+    },
+    {
+      "$ref": "#/$defs/error"
+    }
+  ],
+  "$defs": {
+    "sha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]{1,6})?Z$"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "count": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100000
+    },
+    "publication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "publication_id",
+        "parent_publication_id",
+        "manifest_sha256",
+        "rights_revision",
+        "published_at",
+        "withdrawn_at"
+      ],
+      "properties": {
+        "publication_id": {
+          "$ref": "#/$defs/sha"
+        },
+        "parent_publication_id": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "manifest_sha256": {
+          "$ref": "#/$defs/sha"
+        },
+        "rights_revision": {
+          "$ref": "#/$defs/sha"
+        },
+        "published_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "withdrawn_at": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/timestamp"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "clock_disclosure": {
+          "oneOf": [
+            { "$ref": "#/$defs/clockDisclosure" },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "clockDisclosure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "published_at_kind", "actual_public_available_at", "known_not_before_at", "recorded_at", "reason"],
+      "properties": {
+        "status": { "const": "PREPARED_CLOCK_NOT_ACTUAL" },
+        "published_at_kind": { "const": "PREPARED_VALUE" },
+        "actual_public_available_at": { "type": "null" },
+        "known_not_before_at": { "$ref": "#/$defs/timestamp" },
+        "recorded_at": { "$ref": "#/$defs/timestamp" },
+        "reason": { "const": "INITIAL_ACTIVE_APPLY_CLOCK_NOT_OBSERVED" }
+      }
+    },
+    "snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "catalog_snapshot_id",
+        "membership_version",
+        "input_sha256",
+        "start_date",
+        "end_date",
+        "source_export_as_of",
+        "imported_at"
+      ],
+      "properties": {
+        "catalog_snapshot_id": {
+          "$ref": "#/$defs/sha"
+        },
+        "membership_version": {
+          "$ref": "#/$defs/sha"
+        },
+        "input_sha256": {
+          "$ref": "#/$defs/sha"
+        },
+        "start_date": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "end_date": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source_export_as_of": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "imported_at": {
+          "$ref": "#/$defs/timestamp"
+        }
+      }
+    },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "release_id",
+        "cohort_id",
+        "algorithm_version",
+        "parameter_set_version",
+        "coverage_policy_version",
+        "data_quality_version",
+        "full_member_count",
+        "source_candidate_count",
+        "pre_release_candidate_count",
+        "public_member_count"
+      ],
+      "properties": {
+        "release_id": {
+          "$ref": "#/$defs/sha"
+        },
+        "cohort_id": {
+          "$ref": "#/$defs/sha"
+        },
+        "algorithm_version": {
+          "$ref": "#/$defs/sha"
+        },
+        "parameter_set_version": {
+          "$ref": "#/$defs/sha"
+        },
+        "coverage_policy_version": {
+          "$ref": "#/$defs/sha"
+        },
+        "data_quality_version": {
+          "$ref": "#/$defs/sha"
+        },
+        "full_member_count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20000
+        },
+        "source_candidate_count": {
+          "$ref": "#/$defs/count"
+        },
+        "pre_release_candidate_count": {
+          "$ref": "#/$defs/count"
+        },
+        "public_member_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 20000
+        }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "expected_slots",
+        "qualified_paired_slots",
+        "longest_missing_run"
+      ],
+      "properties": {
+        "expected_slots": {
+          "const": 288
+        },
+        "qualified_paired_slots": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 288
+        },
+        "longest_missing_run": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 288
+        }
+      }
+    },
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "signal_family",
+        "entry_kind",
+        "known_at",
+        "trigger_reasons"
+      ],
+      "properties": {
+        "signal_family": {
+          "enum": [
+            "SUPPLY_LEAD",
+            "RECENT_PERSISTENT",
+            "COINCIDENT"
+          ]
+        },
+        "entry_kind": {
+          "enum": [
+            "FIRST_ENTRY",
+            "REENTRY"
+          ]
+        },
+        "known_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "trigger_reasons": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "SUPPLY_LEAD",
+              "RECENT_PERSISTENT",
+              "COINCIDENT",
+              "FIRST_ENTRY",
+              "REENTRY"
+            ]
+          },
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true
+        }
+      }
+    },
+    "freshness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evaluated_at",
+        "expected_latest_complete_date",
+        "lag_complete_days",
+        "status",
+        "headline_data_date"
+      ],
+      "properties": {
+        "evaluated_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "expected_latest_complete_date": {
+          "$ref": "#/$defs/date"
+        },
+        "lag_complete_days": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/count"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "status": {
+          "enum": [
+            "UNAVAILABLE",
+            "CURRENT",
+            "STALE_RETAINED"
+          ]
+        },
+        "headline_data_date": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "member": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "release_maturity",
+        "efficacy_status",
+        "false_positives_possible",
+        "analysis_unit_token",
+        "catalog_snapshot_id",
+        "catalog",
+        "signal_observed_at",
+        "earlier_signal_event_count",
+        "signal_events",
+        "coverage",
+        "data_quality"
+      ],
+      "properties": {
+        "release_maturity": {
+          "const": "EXPERIMENTAL"
+        },
+        "efficacy_status": {
+          "const": "UNVALIDATED"
+        },
+        "false_positives_possible": {
+          "const": true
+        },
+        "analysis_unit_token": {
+          "$ref": "#/$defs/sha"
+        },
+        "catalog_snapshot_id": {
+          "$ref": "#/$defs/sha"
+        },
+        "catalog": {
+          "$ref": "urn:cs2-research:catalog-display-api:v1#/$defs/projection"
+        },
+        "signal_observed_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "earlier_signal_event_count": {
+          "$ref": "#/$defs/count"
+        },
+        "signal_events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/event"
+          },
+          "minItems": 1,
+          "maxItems": 3
+        },
+        "coverage": {
+          "$ref": "#/$defs/coverage"
+        },
+        "data_quality": {
+          "const": "QUALIFIED_EXPERIMENTAL_INPUT"
+        }
+      }
+    },
+    "projection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "snapshot",
+        "release",
+        "empty_reason",
+        "members"
+      ],
+      "properties": {
+        "snapshot": {
+          "$ref": "#/$defs/snapshot"
+        },
+        "release": {
+          "$ref": "#/$defs/release"
+        },
+        "empty_reason": {
+          "enum": [
+            null,
+            "NO_QUALIFIED_OBSERVATION",
+            "NO_ELIGIBLE_CANDIDATES"
+          ]
+        },
+        "members": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/member"
+          },
+          "minItems": 0,
+          "maxItems": 20000
+        }
+      }
+    },
+    "success": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_name",
+        "contract_version",
+        "response_kind",
+        "operation",
+        "release_maturity",
+        "efficacy_status",
+        "false_positives_possible",
+        "publication",
+        "snapshot",
+        "release",
+        "freshness",
+        "empty_reason",
+        "sort",
+        "page_size",
+        "members",
+        "next_cursor"
+      ],
+      "properties": {
+        "contract_name": {
+          "const": "single-item-monitor-public-api"
+        },
+        "contract_version": {
+          "const": "1"
+        },
+        "response_kind": {
+          "enum": [
+            "RESULT",
+            "EMPTY"
+          ]
+        },
+        "operation": {
+          "enum": [
+            "LIST",
+            "DETAIL"
+          ]
+        },
+        "release_maturity": {
+          "const": "EXPERIMENTAL"
+        },
+        "efficacy_status": {
+          "const": "UNVALIDATED"
+        },
+        "false_positives_possible": {
+          "const": true
+        },
+        "publication": {
+          "$ref": "#/$defs/publication"
+        },
+        "snapshot": {
+          "$ref": "#/$defs/snapshot"
+        },
+        "release": {
+          "$ref": "#/$defs/release"
+        },
+        "freshness": {
+          "$ref": "#/$defs/freshness"
+        },
+        "empty_reason": {
+          "enum": [
+            null,
+            "NO_QUALIFIED_OBSERVATION",
+            "NO_ELIGIBLE_CANDIDATES"
+          ]
+        },
+        "sort": {
+          "const": "SIGNAL_TIME_DESC"
+        },
+        "page_size": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "members": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/member"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "next_cursor": {
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096,
+              "pattern": "^[A-Za-z0-9_-]+$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_name",
+        "contract_version",
+        "response_kind",
+        "error"
+      ],
+      "properties": {
+        "contract_name": {
+          "const": "single-item-monitor-public-api"
+        },
+        "contract_version": {
+          "const": "1"
+        },
+        "response_kind": {
+          "const": "ERROR"
+        },
+        "error": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "code",
+            "retryable"
+          ],
+          "properties": {
+            "code": {
+              "enum": [
+                "INVALID_REQUEST",
+                "NOT_PUBLISHED",
+                "NOT_FOUND",
+                "WITHDRAWN",
+                "STALE_EXPIRED",
+                "CORRUPT_PUBLICATION",
+                "TEMPORARILY_UNAVAILABLE"
+              ]
+            },
+            "retryable": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    }
+  }
+}

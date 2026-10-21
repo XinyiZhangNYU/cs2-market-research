@@ -1,0 +1,15 @@
+{
+  "api_contract": "price-display-api",
+  "api_version": "v1",
+  "document_hash": "348d71377a6cb1a76b0959f549d7f940661c60557c16891ef7384be1d062484c",
+  "error": {
+    "code": "BACKEND_UNAVAILABLE",
+    "http_status": 503,
+    "retryable": true
+  },
+  "items": [],
+  "pagination": null,
+  "query": null,
+  "response_kind": "ERROR",
+  "snapshot": null
+}

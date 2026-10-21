@@ -1,0 +1,14 @@
+{
+  "aggregation_rule": "ARITHMETIC_EQUAL_MEMBER_SIMPLE_RETURN",
+  "candidate_selection_permitted": false,
+  "cohort_rule": "ALL_EXACT_INTERNAL_MEMBERS_OF_EACH_SEALED_V3_SCOPE",
+  "formal_state_eligible": false,
+  "minimum_suppression_members": 100,
+  "pair_rule": "ADJACENT_CALENDAR_DAYS_WITH_AT_LEAST_TWO_POSITIVE_ASK_SOURCES_AND_IDENTICAL_SOURCE_SET",
+  "profile_opening_permitted": false,
+  "robust_rule": "SYMMETRIC_1_PERCENT_WINSOR_MINIMUM_ONE_HUNDRED",
+  "schema": "market-sector-v3-history-comparator-policy/1",
+  "t0_opening_permitted": false,
+  "usage_scope": "INTERNAL_RETROSPECTIVE_MARKET_SECTOR_V3_COMPARATOR",
+  "winsor_tail_fraction": "0.01"
+}

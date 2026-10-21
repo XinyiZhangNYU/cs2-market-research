@@ -1,0 +1,92 @@
+{
+  "api_contract": "result-read-api",
+  "api_version": "v1",
+  "query_as_of": "2026-08-22T04:00:02.000000Z",
+  "resource": {
+    "envelope": {
+      "as_of": "2026-08-22T04:00:00.000000Z",
+      "available_at": "2026-08-22T03:59:59.000000Z",
+      "conflicts": [
+        {
+          "feature_key": "best_ask",
+          "participating_source_refs": [
+            "source:backup",
+            "source:primary"
+          ],
+          "reason_code": "VALUE_DISPERSION",
+          "relative_dispersion": "0.2",
+          "source_fact_count": 2
+        }
+      ],
+      "contract_code": "research-quality-envelope",
+      "contract_version": "v1",
+      "coverage_ratio": "0.75",
+      "envelope_kind": "QUALITY",
+      "expected_cell_count": 4,
+      "fresh_cell_count": 2,
+      "fresh_coverage_ratio": "0.5",
+      "future_fact_count": 0,
+      "identity": {
+        "analysis_unit_id": "item:43",
+        "analysis_unit_kind": "STYLE_VARIANT",
+        "catalog_version": "catalog-v2",
+        "display_name": "M9 Bayonet Doppler P2 FN",
+        "edition_kind": "STANDARD",
+        "identity_available_at": "2026-08-22T03:55:00.000000Z",
+        "parent_analysis_unit_id": "item:42",
+        "scope_kind": "ITEM"
+      },
+      "input_quality_snapshot_id": "source_quality_demo000000000000000001",
+      "missing_cell_count": 1,
+      "observed_cell_count": 3,
+      "policy_version": "source-quality-v1",
+      "query_observations": [
+        {
+          "available_at": "2026-08-22T03:59:57.000000Z",
+          "capability_state": "UNKNOWN",
+          "observation_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "observed_at": "2026-08-22T03:59:56.000000Z",
+          "query_kind": "STYLE_LISTING",
+          "returned_member_count": 0,
+          "sample_state": "ZERO_CURRENT_SAMPLE",
+          "source_ref": "source:primary"
+        },
+        {
+          "available_at": "2026-08-22T03:59:57.000000Z",
+          "capability_state": "CONFIRMED",
+          "observation_id": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "observed_at": "2026-08-22T03:59:56.000000Z",
+          "query_kind": "STYLE_LISTING",
+          "returned_member_count": 2,
+          "sample_state": "POSITIVE_SAMPLE",
+          "source_ref": "source:primary"
+        }
+      ],
+      "snapshot_id": "febca2b3ca678707b5898ea5fcea49b101e24f8cc119bc7ae16806219672f684",
+      "source_summaries": [
+        {
+          "expected_feature_count": 2,
+          "fresh_feature_count": 1,
+          "missing_feature_count": 1,
+          "observed_feature_count": 1,
+          "source_ref": "source:backup",
+          "stale_feature_count": 0
+        },
+        {
+          "expected_feature_count": 2,
+          "fresh_feature_count": 1,
+          "missing_feature_count": 0,
+          "observed_feature_count": 2,
+          "source_ref": "source:primary",
+          "stale_feature_count": 1
+        }
+      ],
+      "stale_cell_count": 1
+    },
+    "storage": {
+      "document_hash": "50a77e271fa370b5e4c9c8f308c52190ee469028a66bd23d2aea306dd0403858",
+      "published_at": "2026-08-22T04:00:01.000000Z"
+    }
+  },
+  "response_kind": "QUALITY_DETAIL"
+}

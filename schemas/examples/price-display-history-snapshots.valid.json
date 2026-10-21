@@ -1,0 +1,32 @@
+{
+  "api_contract": "price-display-api",
+  "api_version": "v1",
+  "document_hash": "0e4a78b660cd9baaa8ae070fb8ea5b7077f69ed811ffb54a8fe32bdb292c5683",
+  "items": [
+    {
+      "available_at": "2026-09-03T00:00:00.000000Z",
+      "catalog_as_of": "2026-08-27T00:00:00.000000Z",
+      "catalog_available_at": "2026-09-02T00:00:00.000000Z",
+      "catalog_snapshot_id": "040d69d4724f6c264dcad12c6dfaa979847cd7ab1e1db1d554858c766f44a052",
+      "kind": "HISTORY",
+      "market_as_of": "2026-08-30T12:00:00.000000Z",
+      "price_policy_version": "price-display-read/1",
+      "published_at": "2026-09-03T00:00:00.000000Z",
+      "snapshot_id": "ef2feed8247e0941bdf4da84c226419163a69a9a2ffd31342facfe6c0a96bfed"
+    }
+  ],
+  "pagination": {
+    "next_cursor": null,
+    "page_size": 20
+  },
+  "query": {
+    "catalog_snapshot_id": "040d69d4724f6c264dcad12c6dfaa979847cd7ab1e1db1d554858c766f44a052",
+    "kind": "HISTORY",
+    "known_at": "2026-09-03T01:00:00.000000Z",
+    "page_size": 20,
+    "query_as_of": "2026-08-30T12:00:00.000000Z",
+    "sort": "MARKET_AS_OF_DESC"
+  },
+  "response_kind": "PRICE_SNAPSHOT_LIST",
+  "snapshot": null
+}

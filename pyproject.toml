@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cs2-market-research"
+version = "0.1.0"
+description = "Design showcase: auditable CS2 market index, trending and event research contracts"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "gmpy2==2.3.0",
+    "httpx>=0.27",
+    "jsonschema>=4.23",
+]
+
+[dependency-groups]
+dev = [
+    "psycopg[binary]>=3.2",
+    "pytest>=8",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]

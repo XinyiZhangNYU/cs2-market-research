@@ -1,0 +1,58 @@
+{
+  "api_contract": "result-read-api",
+  "api_version": "v1",
+  "query_as_of": "2026-08-22T08:00:00.000000Z",
+  "resource": {
+    "envelope": {
+      "as_of": "2026-08-22T08:00:00.000000Z",
+      "available_at": "2026-08-22T07:59:00.000000Z",
+      "claims": [],
+      "contract_code": "research-result-envelope",
+      "contract_version": "v1",
+      "data_branch": "B",
+      "data_status": "COMPLETE",
+      "envelope_kind": "UNIT",
+      "evidence_domains": [],
+      "identity": {
+        "analysis_unit_id": "market:synthetic-global",
+        "analysis_unit_kind": null,
+        "catalog_version": "catalog-dashboard-fixture-v1",
+        "display_name": "Synthetic global market",
+        "edition_kind": null,
+        "identity_available_at": "2026-08-21T08:00:00.000000Z",
+        "parent_analysis_unit_id": null,
+        "scope_kind": "MARKET"
+      },
+      "recommendation_detail": null,
+      "snapshot_id": "74484b48e84b4896fcd79f29df2280d7a3e87bfe65ace862183910459246f7f0",
+      "state": {
+        "analysis_case_id": "analysis-case:synthetic-market",
+        "case_status": "ACTIVE",
+        "evidence_flags": [
+          "DEMAND_ACCELERATING",
+          "SUPPLY_CONTRACTING"
+        ],
+        "input_snapshot_hash": "195b5b353265594d72e2b7c0c594270511f0a7201d0453dda4858b2c13093abc",
+        "level_regime": "NORMAL",
+        "recommendation": "WATCH",
+        "trend_stage": "UP_BUILDING"
+      },
+      "versions": {
+        "algorithm_version": "algorithm-dashboard-fixture-v1",
+        "catalog_version": "catalog-dashboard-fixture-v1",
+        "failure_policy_version": "failure-dashboard-fixture-v1",
+        "feature_profile_version": "profile-dashboard-fixture-v1",
+        "fusion_method_version": "fusion-dashboard-fixture-v1",
+        "group_version": "group-dashboard-fixture-v1",
+        "index_version": "index-dashboard-fixture-v1",
+        "parameter_set_version": "parameters-dashboard-fixture-v1",
+        "stage_policy_version": "stage-dashboard-fixture-v1"
+      }
+    },
+    "storage": {
+      "document_hash": "23c6879a024ddea3a23f2e7fd562fc8f40d390da24ece161561bb47cc709413b",
+      "published_at": "2026-08-22T08:00:00.000000Z"
+    }
+  },
+  "response_kind": "UNIT_DETAIL"
+}

@@ -1,0 +1,104 @@
+{
+  "contract_name": "single-item-monitor-public-api",
+  "contract_version": "1",
+  "response_kind": "RESULT",
+  "operation": "LIST",
+  "release_maturity": "EXPERIMENTAL",
+  "efficacy_status": "UNVALIDATED",
+  "false_positives_possible": true,
+  "publication": {
+    "publication_id": "7777777777777777777777777777777777777777777777777777777777777777",
+    "parent_publication_id": null,
+    "manifest_sha256": "0d0f7b7af3e9bc391e6caa48de9d7fcc9caae0c8e6a86a0d29c744c0200d47c9",
+    "rights_revision": "8888888888888888888888888888888888888888888888888888888888888888",
+    "published_at": "2026-09-17T00:04:00Z",
+    "withdrawn_at": null
+  },
+  "snapshot": {
+    "catalog_snapshot_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "end_date": "2026-09-16",
+    "imported_at": "2026-09-17T00:03:00Z",
+    "input_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "membership_version": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "source_export_as_of": "2026-09-17T00:02:00Z",
+    "start_date": "2026-09-09"
+  },
+  "release": {
+    "algorithm_version": "3333333333333333333333333333333333333333333333333333333333333333",
+    "cohort_id": "2222222222222222222222222222222222222222222222222222222222222222",
+    "coverage_policy_version": "5555555555555555555555555555555555555555555555555555555555555555",
+    "data_quality_version": "6666666666666666666666666666666666666666666666666666666666666666",
+    "full_member_count": 16978,
+    "parameter_set_version": "4444444444444444444444444444444444444444444444444444444444444444",
+    "pre_release_candidate_count": 0,
+    "public_member_count": 1,
+    "release_id": "1111111111111111111111111111111111111111111111111111111111111111",
+    "source_candidate_count": 1
+  },
+  "freshness": {
+    "evaluated_at": "2026-09-17T02:00:00.000000Z",
+    "expected_latest_complete_date": "2026-09-16",
+    "lag_complete_days": 0,
+    "status": "CURRENT",
+    "headline_data_date": "2026-09-16"
+  },
+  "empty_reason": null,
+  "sort": "SIGNAL_TIME_DESC",
+  "page_size": 50,
+  "members": [
+    {
+      "analysis_unit_token": "7519aa46a1fdd9e4330b7bc9a44e6865e8eed0c08f874f8fb1eaf87b19b84aa3",
+      "catalog": {
+        "analysis_unit_id": "synthetic-public-0",
+        "analysis_unit_kind": "BASE_MHN",
+        "base_item_code": "synthetic-base-1",
+        "catalog_version": "synthetic-v1",
+        "edition_kind": "STANDARD",
+        "item_kind": "WEAPON",
+        "localized_name": {
+          "authority": "MARKET_D",
+          "en": "Synthetic 000",
+          "zh_cn": "测试名称"
+        },
+        "media": {
+          "status": "NOT_PRODUCED"
+        },
+        "parent_analysis_unit_id": null,
+        "projection_hash": "94ab4fcb1082b956471bca3d207d6c936599ba77b46f8dc4bba1b5eaaa64b719",
+        "valid_from": "2026-09-07T00:00:00.000000Z",
+        "version_context": {
+          "analysis_unit_version_id": "1",
+          "item_variant_version_id": "2",
+          "media_asset_version_id": null,
+          "name_en_version_id": "3",
+          "name_zh_cn_version_id": "4"
+        },
+        "wear_tier": "MINIMAL_WEAR"
+      },
+      "catalog_snapshot_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "coverage": {
+        "expected_slots": 288,
+        "longest_missing_run": 3,
+        "qualified_paired_slots": 263
+      },
+      "data_quality": "QUALIFIED_EXPERIMENTAL_INPUT",
+      "earlier_signal_event_count": 0,
+      "efficacy_status": "UNVALIDATED",
+      "false_positives_possible": true,
+      "release_maturity": "EXPERIMENTAL",
+      "signal_events": [
+        {
+          "entry_kind": "FIRST_ENTRY",
+          "known_at": "2026-09-17T00:01:00Z",
+          "signal_family": "SUPPLY_LEAD",
+          "trigger_reasons": [
+            "FIRST_ENTRY",
+            "SUPPLY_LEAD"
+          ]
+        }
+      ],
+      "signal_observed_at": "2026-09-17T00:00:00Z"
+    }
+  ],
+  "next_cursor": null
+}

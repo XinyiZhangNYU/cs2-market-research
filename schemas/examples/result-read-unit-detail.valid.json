@@ -1,0 +1,99 @@
+{
+  "api_contract": "result-read-api",
+  "api_version": "v1",
+  "query_as_of": "2026-08-21T00:00:02.000000Z",
+  "resource": {
+    "envelope": {
+      "as_of": "2026-08-21T00:00:00.000000Z",
+      "available_at": "2026-08-20T23:59:59.000000Z",
+      "claims": [
+        "BUY_DEMAND_STRENGTHENING"
+      ],
+      "contract_code": "research-result-envelope",
+      "contract_version": "v1",
+      "data_branch": "B",
+      "data_status": "UNAVAILABLE_BY_DESIGN",
+      "envelope_kind": "UNIT",
+      "evidence_domains": [
+        {
+          "contributing_feature_keys": [
+            "bid_strength"
+          ],
+          "domain": "D",
+          "input_snapshot_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "missing_reason": null,
+          "policy_version": "stage-v1",
+          "strength": "MODERATE"
+        },
+        {
+          "contributing_feature_keys": [
+            "price_return"
+          ],
+          "domain": "P",
+          "input_snapshot_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "missing_reason": null,
+          "policy_version": "stage-v1",
+          "strength": "MODERATE"
+        },
+        {
+          "contributing_feature_keys": [
+            "listing_contraction"
+          ],
+          "domain": "S",
+          "input_snapshot_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "missing_reason": null,
+          "policy_version": "stage-v1",
+          "strength": "MODERATE"
+        }
+      ],
+      "identity": {
+        "analysis_unit_id": "item:42:phase-p2",
+        "analysis_unit_kind": "STYLE_VARIANT",
+        "catalog_version": "catalog-v1",
+        "display_name": "M9 Bayonet Doppler P2 FN",
+        "edition_kind": "STANDARD",
+        "identity_available_at": "2026-08-20T23:00:00.000000Z",
+        "parent_analysis_unit_id": "item:42",
+        "scope_kind": "ITEM"
+      },
+      "recommendation_detail": {
+        "evidence_coverage": "0.67",
+        "input_snapshot_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "recommendation": "WATCH",
+        "signal_strength": "MODERATE",
+        "trade_confirmation": "UNAVAILABLE"
+      },
+      "snapshot_id": "cc4d58450ef8a84fe41dc300bd00abbd89adcd40f1dc0c8a63165bf1dfaa04cd",
+      "state": {
+        "candidate_episode_id": "candidate:42",
+        "case_status": "ACTIVE",
+        "cycle_case_id": null,
+        "cycle_stage": "PRESSURE_BUILDING",
+        "evidence_flags": [
+          "DEMAND_ACCELERATING"
+        ],
+        "input_snapshot_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "recommendation": "WATCH",
+        "regime_relation": [
+          "ITEM_SPECIFIC"
+        ]
+      },
+      "versions": {
+        "algorithm_version": "algorithm-v1",
+        "catalog_version": "catalog-v1",
+        "failure_policy_version": "failure-v1",
+        "feature_profile_version": "profile-v1",
+        "fusion_method_version": "fusion-v1",
+        "group_version": "group-v1",
+        "index_version": "index-v1",
+        "parameter_set_version": "parameters-v1",
+        "stage_policy_version": "stage-v1"
+      }
+    },
+    "storage": {
+      "document_hash": "80365d41a969ff99ecfb907abc0840efda28b9476e745b491b3c6f73017682d1",
+      "published_at": "2026-08-21T00:00:01.000000Z"
+    }
+  },
+  "response_kind": "UNIT_DETAIL"
+}

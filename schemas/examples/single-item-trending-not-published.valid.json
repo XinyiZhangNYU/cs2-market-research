@@ -1,0 +1,9 @@
+{
+  "api_contract": "single-item-trending-public-api",
+  "api_version": "v2",
+  "response_kind": "ERROR",
+  "error": {
+    "code": "NOT_PUBLISHED",
+    "retryable": false
+  }
+}

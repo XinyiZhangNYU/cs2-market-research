@@ -1,0 +1,465 @@
+{
+  "equipment_revision": "93f190021a73e8e5",
+  "records": [
+    {
+      "scope_id": "CASE:4001",
+      "illustration_id": "case_4001",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "反恐精英武器箱",
+        "en": "CS:GO Weapon Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4002",
+      "illustration_id": "case_4002",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "电竞 2013 武器箱",
+        "en": "eSports 2013 Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4003",
+      "illustration_id": "case_4003",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "“英勇大行动”武器箱",
+        "en": "Operation Bravo Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4004",
+      "illustration_id": "case_4004",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "反恐精英 2 号武器箱",
+        "en": "CS:GO Weapon Case 2"
+      }
+    },
+    {
+      "scope_id": "CASE:4005",
+      "illustration_id": "case_4005",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "电竞 2013 冬季武器箱",
+        "en": "eSports 2013 Winter Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4009",
+      "illustration_id": "case_4009",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "冬季攻势武器箱",
+        "en": "Winter Offensive Weapon Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4010",
+      "illustration_id": "case_4010",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "反恐精英 3 号武器箱",
+        "en": "CS:GO Weapon Case 3"
+      }
+    },
+    {
+      "scope_id": "CASE:4011",
+      "illustration_id": "case_4011",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "“凤凰大行动”武器箱",
+        "en": "Operation Phoenix Weapon Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4017",
+      "illustration_id": "case_4017",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "猎杀者武器箱",
+        "en": "Huntsman Weapon Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4018",
+      "illustration_id": "case_4018",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "“突围大行动”武器箱",
+        "en": "Operation Breakout Weapon Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4019",
+      "illustration_id": "case_4019",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "电竞 2014 夏季武器箱",
+        "en": "eSports 2014 Summer Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4029",
+      "illustration_id": "case_4029",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "“先锋大行动”武器箱",
+        "en": "Operation Vanguard Weapon Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4061",
+      "illustration_id": "case_4061",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "幻彩武器箱",
+        "en": "Chroma Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4089",
+      "illustration_id": "case_4089",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "幻彩 2 号武器箱",
+        "en": "Chroma 2 Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4091",
+      "illustration_id": "case_4091",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "弯曲猎手武器箱",
+        "en": "Falchion Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4138",
+      "illustration_id": "case_4138",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "暗影武器箱",
+        "en": "Shadow Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4186",
+      "illustration_id": "case_4186",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "左轮武器箱",
+        "en": "Revolver Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4187",
+      "illustration_id": "case_4187",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "“野火大行动”武器箱",
+        "en": "Operation Wildfire Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4233",
+      "illustration_id": "case_4233",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "幻彩 3 号武器箱",
+        "en": "Chroma 3 Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4236",
+      "illustration_id": "case_4236",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "伽玛武器箱",
+        "en": "Gamma Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4281",
+      "illustration_id": "case_4281",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "伽玛 2 号武器箱",
+        "en": "Gamma 2 Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4288",
+      "illustration_id": "case_4288",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "手套武器箱",
+        "en": "Glove Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4351",
+      "illustration_id": "case_4351",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "光谱武器箱",
+        "en": "Spectrum Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4352",
+      "illustration_id": "case_4352",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "“九头蛇大行动”武器箱",
+        "en": "Operation Hydra Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4403",
+      "illustration_id": "case_4403",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "光谱 2 号武器箱",
+        "en": "Spectrum 2 Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4471",
+      "illustration_id": "case_4471",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "命悬一线武器箱",
+        "en": "Clutch Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4482",
+      "illustration_id": "case_4482",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "地平线武器箱",
+        "en": "Horizon Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4548",
+      "illustration_id": "case_4548",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "“头号特训”武器箱",
+        "en": "Danger Zone Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4598",
+      "illustration_id": "case_4598",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "棱彩武器箱",
+        "en": "Prisma Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4620",
+      "illustration_id": "case_4620",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "“裂网大行动”武器箱",
+        "en": "Shattered Web Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4669",
+      "illustration_id": "case_4669",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "反恐精英20周年武器箱",
+        "en": "CS20 Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4695",
+      "illustration_id": "case_4695",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "棱彩2号武器箱",
+        "en": "Prisma 2 Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4698",
+      "illustration_id": "case_4698",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "裂空武器箱",
+        "en": "Fracture Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4717",
+      "illustration_id": "case_4717",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "“狂牙大行动”武器箱",
+        "en": "Operation Broken Fang Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4747",
+      "illustration_id": "case_4747",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "蛇噬武器箱",
+        "en": "Snakebite Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4790",
+      "illustration_id": "case_4790",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "“激流大行动”武器箱",
+        "en": "Operation Riptide Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4818",
+      "illustration_id": "case_4818",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "梦魇武器箱",
+        "en": "Dreams & Nightmares Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4846",
+      "illustration_id": "case_4846",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "反冲武器箱",
+        "en": "Recoil Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4880",
+      "illustration_id": "case_4880",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "变革武器箱",
+        "en": "Revolution Case"
+      }
+    },
+    {
+      "scope_id": "CASE:4904",
+      "illustration_id": "case_4904",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "千瓦武器箱",
+        "en": "Kilowatt Case"
+      }
+    },
+    {
+      "scope_id": "CASE:5176",
+      "illustration_id": "case_5176",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "封装的创世终端机",
+        "en": "Sealed Genesis Terminal"
+      }
+    },
+    {
+      "scope_id": "CASE:5181",
+      "illustration_id": "case_5181",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "封装的毁灭之手终端机",
+        "en": "Sealed Dead Hand Terminal"
+      }
+    },
+    {
+      "scope_id": "CASE:7003",
+      "illustration_id": "case_7003",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "画廊武器箱",
+        "en": "Gallery Case"
+      }
+    },
+    {
+      "scope_id": "CASE:7007",
+      "illustration_id": "case_7007",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "热潮武器箱",
+        "en": "Fever Case"
+      }
+    },
+    {
+      "scope_id": "WEAPON:MACHINE_GUN",
+      "illustration_id": "skin_negev_mjolnir",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "机枪",
+        "en": "Negev | Mjölnir"
+      }
+    },
+    {
+      "scope_id": "WEAPON:OTHER",
+      "illustration_id": "skin_zeus_olympus",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "其他武器",
+        "en": "Zeus x27 | Olympus"
+      }
+    },
+    {
+      "scope_id": "WEAPON:PISTOL",
+      "illustration_id": "skin_glock_fade",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "手枪",
+        "en": "Glock-18 | Fade"
+      }
+    },
+    {
+      "scope_id": "WEAPON:RIFLE",
+      "illustration_id": "skin_ak47_wild_lotus",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "步枪",
+        "en": "AK-47 | Wild Lotus"
+      }
+    },
+    {
+      "scope_id": "WEAPON:SHOTGUN",
+      "illustration_id": "skin_mag7_cinquedea",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "霰弹枪",
+        "en": "MAG-7 | Cinquedea"
+      }
+    },
+    {
+      "scope_id": "WEAPON:SMG",
+      "illustration_id": "skin_mp9_wild_lily",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "冲锋枪",
+        "en": "MP9 | Wild Lily"
+      }
+    },
+    {
+      "scope_id": "WEAPON:SNIPER",
+      "illustration_id": "skin_awp_dragon_lore",
+      "kind": "REPRESENTATIVE_ITEM",
+      "finish": {
+        "zh": "狙击步枪",
+        "en": "AWP | Dragon Lore"
+      }
+    }
+  ]
+}
+

@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:cs2:market-sector-index-public-api:3",
+  "title": "Hierarchical MARKET/SECTOR index directory and series API",
+  "oneOf": [{"$ref": "#/$defs/directorySuccess"}, {"$ref": "#/$defs/seriesSuccess"}, {"$ref": "#/$defs/error"}],
+  "$defs": {
+    "hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "clock": {"type": "string", "format": "date-time", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]{1,6})?Z$"},
+    "day": {"type": "string", "format": "date", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+    "dayOrNull": {"oneOf": [{"$ref": "#/$defs/day"}, {"type": "null"}]},
+    "decimal": {"type": "string", "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$", "maxLength": 96},
+    "decimalOrNull": {"oneOf": [{"$ref": "#/$defs/decimal"}, {"type": "null"}]},
+    "count": {"type": "integer", "minimum": 0, "maximum": 1000000},
+    "labels": {"type": "object", "additionalProperties": false, "required": ["en", "zh_cn"], "properties": {"en": {"type": "string", "minLength": 1, "maxLength": 128}, "zh_cn": {"type": "string", "minLength": 1, "maxLength": 128}}},
+    "groupCode": {"enum": ["MARKET", "SECTORS", "CASES", "WEAPON_MODELS", "KNIFE_MODELS", "GLOVE_MODELS", "COLLECTIONS", "ARMORY_RELEASES", "DOPPLER"]},
+    "scopeCode": {"type": "string", "minLength": 1, "maxLength": 64, "pattern": "^[A-Z][A-Z0-9_]*(?::[A-Z0-9_]+)?$"},
+    "group": {"type": "object", "additionalProperties": false, "required": ["group_code", "labels", "display_order", "scope_count"], "properties": {"group_code": {"$ref": "#/$defs/groupCode"}, "labels": {"$ref": "#/$defs/labels"}, "display_order": {"type": "integer", "minimum": 0, "maximum": 8}, "scope_count": {"$ref": "#/$defs/count"}}},
+    "scope": {
+      "type": "object", "additionalProperties": false,
+      "required": ["scope_token", "scope_code", "scope_kind", "group_code", "parent_scope_code", "ancestor_scope_codes", "labels", "series_source", "price_history_eligibility", "first_available_date", "last_available_date", "current_member_count", "observed_price_member_count", "origin_uncertainty_disclosed", "low_member_count", "linked_collection_scope_tokens"],
+      "properties": {
+        "scope_token": {"$ref": "#/$defs/hash"}, "scope_code": {"$ref": "#/$defs/scopeCode"},
+        "scope_kind": {"enum": ["MARKET", "SECTOR", "SUBSECTOR"]}, "group_code": {"$ref": "#/$defs/groupCode"},
+        "parent_scope_code": {"oneOf": [{"$ref": "#/$defs/scopeCode"}, {"type": "null"}]},
+        "ancestor_scope_codes": {"type": "array", "maxItems": 8, "uniqueItems": true, "items": {"$ref": "#/$defs/scopeCode"}},
+        "labels": {"$ref": "#/$defs/labels"},
+        "series_source": {"enum": ["REGULAR_SUCCESSOR_RECONSTRUCTION", "VARIANT_RECONSTRUCTION"]},
+        "price_history_eligibility": {"enum": ["RECONSTRUCTED_HISTORY", "FORWARD_ONLY"]},
+        "first_available_date": {"$ref": "#/$defs/dayOrNull"}, "last_available_date": {"$ref": "#/$defs/dayOrNull"},
+        "current_member_count": {"$ref": "#/$defs/count"}, "observed_price_member_count": {"$ref": "#/$defs/count"},
+        "origin_uncertainty_disclosed": {"type": "boolean"}, "low_member_count": {"type": "boolean"},
+        "linked_collection_scope_tokens": {"type": "array", "maxItems": 32, "uniqueItems": true, "items": {"$ref": "#/$defs/hash"}}
+      }
+    },
+    "release": {
+      "type": "object", "additionalProperties": false,
+      "required": ["publication_id", "manifest_sha256", "rights_revision", "published_at", "withdrawn_at", "directory_id", "directory_sha256", "directory_sealed_at", "candidate_sha256", "successor_delta_sha256", "continuation_spec_sha256", "history_start", "history_end", "measured_start", "measured_end", "availability_semantics"],
+      "properties": {
+        "publication_id": {"$ref": "#/$defs/hash"}, "manifest_sha256": {"$ref": "#/$defs/hash"}, "rights_revision": {"$ref": "#/$defs/hash"},
+        "published_at": {"$ref": "#/$defs/clock"}, "withdrawn_at": {"oneOf": [{"$ref": "#/$defs/clock"}, {"type": "null"}]},
+        "directory_id": {"type": "string", "pattern": "^market_sector_index_scope_directory_[0-9a-f]{64}$"},
+        "directory_sha256": {"$ref": "#/$defs/hash"}, "directory_sealed_at": {"$ref": "#/$defs/clock"},
+        "candidate_sha256": {"$ref": "#/$defs/hash"}, "successor_delta_sha256": {"$ref": "#/$defs/hash"},
+        "continuation_spec_sha256": {"$ref": "#/$defs/hash"},
+        "history_start": {"$ref": "#/$defs/day"}, "history_end": {"$ref": "#/$defs/day"},
+        "measured_start": {"$ref": "#/$defs/day"}, "measured_end": {"$ref": "#/$defs/day"},
+        "availability_semantics": {"const": ["RECONSTRUCTED_LATE_BOUND", "CONTEMPORANEOUSLY_MEASURED"]}
+      }
+    },
+    "query": {
+      "type": "object", "additionalProperties": false,
+      "required": ["group", "after", "limit", "next_after"],
+      "properties": {
+        "group": {"oneOf": [{"$ref": "#/$defs/groupCode"}, {"type": "null"}]},
+        "after": {"oneOf": [{"$ref": "#/$defs/hash"}, {"type": "null"}]},
+        "limit": {"oneOf": [{"type": "integer", "minimum": 1, "maximum": 64}, {"type": "null"}]},
+        "next_after": {"oneOf": [{"$ref": "#/$defs/hash"}, {"type": "null"}]}
+      }
+    },
+    "seriesQuery": {
+      "type": "object", "additionalProperties": false,
+      "required": ["from_date", "to_date", "after_date", "limit", "next_after_date"],
+      "properties": {
+        "from_date": {"$ref": "#/$defs/dayOrNull"}, "to_date": {"$ref": "#/$defs/dayOrNull"},
+        "after_date": {"$ref": "#/$defs/dayOrNull"}, "limit": {"type": "integer", "minimum": 1, "maximum": 512},
+        "next_after_date": {"$ref": "#/$defs/dayOrNull"}
+      }
+    },
+    "point": {
+      "type": "object", "additionalProperties": false,
+      "required": ["point_id", "date", "segment_id", "connect_to_previous", "availability", "index", "absolute_price", "coverage", "quality", "origin_uncertainty"],
+      "properties": {
+        "point_id": {"$ref": "#/$defs/hash"}, "date": {"$ref": "#/$defs/day"},
+        "segment_id": {"type": ["string", "null"]}, "connect_to_previous": {"type": "boolean"},
+        "availability": {"enum": ["RECONSTRUCTED_LATE_BOUND", "CONTEMPORANEOUSLY_MEASURED"]},
+        "index": {"type": "object", "additionalProperties": false, "required": ["value", "period_return", "raw_equal_return", "robust_equal_return", "effective_estimator"], "properties": {"value": {"$ref": "#/$defs/decimalOrNull"}, "period_return": {"$ref": "#/$defs/decimalOrNull"}, "raw_equal_return": {"$ref": "#/$defs/decimalOrNull"}, "robust_equal_return": {"$ref": "#/$defs/decimalOrNull"}, "effective_estimator": {"type": ["string", "null"]}}},
+        "absolute_price": {"type": "object", "additionalProperties": false, "required": ["member_minimum_ask_sum_cny", "member_minimum_ask_median_cny", "semantic"], "properties": {"member_minimum_ask_sum_cny": {"$ref": "#/$defs/decimalOrNull"}, "member_minimum_ask_median_cny": {"$ref": "#/$defs/decimalOrNull"}, "semantic": {"const": "SUM_AND_MEDIAN_OF_MEMBER_MINIMUM_ASKS_NOT_MARKET_VALUE"}}},
+        "coverage": {"type": "object", "additionalProperties": false, "required": ["expected_member_count", "expected_member_count_upper_bound", "qualified_member_count", "paired_member_count", "coverage_ratio", "coverage_ratio_lower_bound", "absolute_price_qualified_member_count", "absolute_price_coverage_ratio", "absolute_price_coverage_ratio_lower_bound"], "properties": {"expected_member_count": {"$ref": "#/$defs/count"}, "expected_member_count_upper_bound": {"$ref": "#/$defs/count"}, "qualified_member_count": {"$ref": "#/$defs/count"}, "paired_member_count": {"$ref": "#/$defs/count"}, "coverage_ratio": {"$ref": "#/$defs/decimal"}, "coverage_ratio_lower_bound": {"$ref": "#/$defs/decimal"}, "absolute_price_qualified_member_count": {"$ref": "#/$defs/count"}, "absolute_price_coverage_ratio": {"$ref": "#/$defs/decimal"}, "absolute_price_coverage_ratio_lower_bound": {"$ref": "#/$defs/decimal"}}},
+        "quality": {"type": "object", "additionalProperties": false, "required": ["overall", "return", "price", "grade_counts", "grade_d_share", "anomaly_member_count", "anomaly_contributions", "rejected_return_domain_count", "reason_codes"], "properties": {"overall": {"enum": ["HIGH", "PARTIAL", "LOW", "UNAVAILABLE"]}, "return": {"enum": ["HIGH", "PARTIAL", "LOW", "UNAVAILABLE"]}, "price": {"enum": ["HIGH", "PARTIAL", "LOW", "UNAVAILABLE"]}, "grade_counts": {"type": "object", "additionalProperties": false, "required": ["A", "B", "C", "D", "E"], "properties": {"A": {"$ref": "#/$defs/count"}, "B": {"$ref": "#/$defs/count"}, "C": {"$ref": "#/$defs/count"}, "D": {"$ref": "#/$defs/count"}, "E": {"$ref": "#/$defs/count"}}}, "grade_d_share": {"$ref": "#/$defs/decimalOrNull"}, "anomaly_member_count": {"$ref": "#/$defs/count"}, "anomaly_contributions": {"type": "array", "maxItems": 10, "items": {"type": "object", "additionalProperties": false, "required": ["analysis_unit_id", "raw_return", "suppressed_return", "adjustment"], "properties": {"analysis_unit_id": {"type": "string"}, "raw_return": {"$ref": "#/$defs/decimal"}, "suppressed_return": {"$ref": "#/$defs/decimal"}, "adjustment": {"$ref": "#/$defs/decimal"}}}}, "rejected_return_domain_count": {"$ref": "#/$defs/count"}, "reason_codes": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}}}},
+        "origin_uncertainty": {"type": "object", "additionalProperties": false, "required": ["status", "active_uncertain_origin_member_count", "possible_unadmitted_member_count"], "properties": {"status": {"enum": ["NONE", "ACTIVE_UNCERTAIN_ORIGIN", "POSSIBLE_UNADMITTED_MEMBERS", "ACTIVE_AND_POSSIBLE_UNCERTAIN_ORIGIN"]}, "active_uncertain_origin_member_count": {"$ref": "#/$defs/count"}, "possible_unadmitted_member_count": {"$ref": "#/$defs/count"}}}
+      }
+    },
+    "directorySuccess": {
+      "type": "object", "additionalProperties": false,
+      "required": ["contract_name", "contract_version", "response_kind", "product_kind", "purpose", "prediction_status", "release", "query", "groups", "scopes"],
+      "properties": {
+        "contract_name": {"const": "market-sector-index-public-api"}, "contract_version": {"const": "3"},
+        "response_kind": {"enum": ["SCOPE_GROUP_DIRECTORY", "SCOPE_PAGE"]},
+        "product_kind": {"const": "DESCRIPTIVE_MARKET_SECTOR_INDEX"},
+        "purpose": {"const": "CS2_ROTATE_HIERARCHICAL_MARKET_SECTOR_INDEX_V3"},
+        "prediction_status": {"const": "NOT_A_PREDICTION"}, "release": {"$ref": "#/$defs/release"}, "query": {"$ref": "#/$defs/query"},
+        "groups": {"type": "array", "maxItems": 9, "items": {"$ref": "#/$defs/group"}},
+        "scopes": {"type": "array", "maxItems": 64, "items": {"$ref": "#/$defs/scope"}}
+      },
+      "allOf": [
+        {"if": {"properties": {"response_kind": {"const": "SCOPE_GROUP_DIRECTORY"}}}, "then": {"properties": {"groups": {"minItems": 9, "maxItems": 9}, "scopes": {"maxItems": 0}, "query": {"properties": {"group": {"type": "null"}, "after": {"type": "null"}, "limit": {"type": "null"}, "next_after": {"type": "null"}}}}}},
+        {"if": {"properties": {"response_kind": {"const": "SCOPE_PAGE"}}}, "then": {"properties": {"groups": {"maxItems": 0}, "scopes": {"minItems": 1}, "query": {"properties": {"group": {"$ref": "#/$defs/groupCode"}, "limit": {"type": "integer", "minimum": 1, "maximum": 64}}}}}}
+      ]
+    },
+    "seriesSuccess": {
+      "type": "object", "additionalProperties": false,
+      "required": ["contract_name", "contract_version", "response_kind", "product_kind", "purpose", "prediction_status", "release", "scope", "series_query", "points"],
+      "properties": {
+        "contract_name": {"const": "market-sector-index-public-api"}, "contract_version": {"const": "3"},
+        "response_kind": {"const": "INDEX_SERIES"}, "product_kind": {"const": "DESCRIPTIVE_MARKET_SECTOR_INDEX"},
+        "purpose": {"const": "CS2_ROTATE_HIERARCHICAL_MARKET_SECTOR_INDEX_V3"}, "prediction_status": {"const": "NOT_A_PREDICTION"},
+        "release": {"$ref": "#/$defs/release"}, "scope": {"$ref": "#/$defs/scope"},
+        "series_query": {"$ref": "#/$defs/seriesQuery"}, "points": {"type": "array", "maxItems": 512, "items": {"$ref": "#/$defs/point"}}
+      }
+    },
+    "error": {
+      "type": "object", "additionalProperties": false, "required": ["contract_name", "contract_version", "response_kind", "error"],
+      "properties": {"contract_name": {"const": "market-sector-index-public-api"}, "contract_version": {"const": "3"}, "response_kind": {"const": "ERROR"}, "error": {"type": "object", "additionalProperties": false, "required": ["code", "retryable"], "properties": {"code": {"enum": ["INVALID_REQUEST", "NOT_PUBLISHED", "NOT_FOUND", "WITHDRAWN", "STALE_EXPIRED", "CORRUPT_PUBLICATION", "TEMPORARILY_UNAVAILABLE"]}, "retryable": {"type": "boolean"}}}}
+    }
+  }
+}

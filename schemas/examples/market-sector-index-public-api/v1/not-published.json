@@ -1,0 +1,6 @@
+{
+  "contract_name": "market-sector-index-public-api",
+  "contract_version": "1",
+  "response_kind": "ERROR",
+  "error": { "code": "NOT_PUBLISHED", "retryable": false }
+}

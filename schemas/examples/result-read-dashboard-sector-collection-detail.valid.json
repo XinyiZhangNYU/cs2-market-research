@@ -1,0 +1,45 @@
+{
+  "api_contract": "result-read-api",
+  "api_version": "v1",
+  "query_as_of": "2026-08-22T08:00:00.000000Z",
+  "resource": {
+    "envelope": {
+      "as_of": "2026-08-22T08:00:00.000000Z",
+      "available_at": "2026-08-22T07:59:00.000000Z",
+      "collection_id": "overview:synthetic-sectors",
+      "contract_code": "research-result-envelope",
+      "contract_version": "v1",
+      "data_branch": "B",
+      "data_status": "COMPLETE",
+      "envelope_kind": "COLLECTION",
+      "member_count": 4,
+      "member_result_ids": [
+        "08634287010e287fba395ef405853a037d4f1603480ee966c88fdf95345b7f15",
+        "3e13049dfb13012be51239a9f2f2f3ea0c759ba3665f332133512f93e1b841c4",
+        "dd3533ac48fa5b617c68db4f582bf6b73792ee5372f214c8a2d131feb4c3e2ff",
+        "efc1cc27e55c5b6ae9b284321442752a897e00cc96e5e6e340992e77660a6235"
+      ],
+      "missing_member_ids": [],
+      "returned_member_count": 4,
+      "scope_kind": "SECTOR",
+      "snapshot_id": "78d86b01998bcf4206c64b6d6b7ab6a9bb68a623b275f16b2136b07cc0a31199",
+      "unavailable_member_ids": [],
+      "versions": {
+        "algorithm_version": "algorithm-dashboard-fixture-v1",
+        "catalog_version": "catalog-dashboard-fixture-v1",
+        "failure_policy_version": "failure-dashboard-fixture-v1",
+        "feature_profile_version": "profile-dashboard-fixture-v1",
+        "fusion_method_version": "fusion-dashboard-fixture-v1",
+        "group_version": "group-dashboard-fixture-v1",
+        "index_version": "index-dashboard-fixture-v1",
+        "parameter_set_version": "parameters-dashboard-fixture-v1",
+        "stage_policy_version": "stage-dashboard-fixture-v1"
+      }
+    },
+    "storage": {
+      "document_hash": "27b03468eca3f86753b77e8a33b5e4502d5d5b65b3c91379e546f3621341eb4c",
+      "published_at": "2026-08-22T08:00:00.000000Z"
+    }
+  },
+  "response_kind": "COLLECTION_DETAIL"
+}

@@ -1,0 +1,15 @@
+.formal-price-runtime {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+  padding: clamp(16px, 3vw, 28px);
+  border: 1px solid #bdcfd7;
+  border-top: 3px solid #e8a028;
+  border-radius: 8px;
+  background: #fffefa;
+}
+
+@media (max-width: 480px) {
+  .formal-price-runtime { padding: 14px; }
+}

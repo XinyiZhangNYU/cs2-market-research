@@ -1,0 +1,22 @@
+{
+  "api_contract": "catalog-display-snapshot-api",
+  "api_version": "v1",
+  "members": [
+    {
+      "as_of": "2026-08-25T01:00:00.000000Z",
+      "available_at": "2026-08-25T01:00:01.000000Z",
+      "catalog_version": "catalog-live-v2",
+      "member_count": 2,
+      "member_set_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "snapshot_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    }
+  ],
+  "next_cursor": null,
+  "query": {
+    "known_at": "2026-08-25T02:00:00.000000Z",
+    "page_size": 25,
+    "query_as_of": "2026-08-25T02:00:00.000000Z",
+    "sort": "AS_OF_DESC"
+  },
+  "response_kind": "CATALOG_DISPLAY_SNAPSHOT_LIST"
+}

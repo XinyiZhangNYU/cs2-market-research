@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.uv-cache/
+.pytest_cache/
+.tmp-pytest-*/
+.mypy_cache/
+.ruff_cache/
+
+# Node / edge toolchains
+node_modules/
+.wrangler/
+dist/
+dist-public/
+
+# Environment and secrets
+.env
+.env.*
+config/dev-db.env
+*.key
+*.pem
+secrets.*
+credentials.*
+
+# Data and run outputs
+*.db
+*.sqlite3
+/data/
+/work/
+*.parquet
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

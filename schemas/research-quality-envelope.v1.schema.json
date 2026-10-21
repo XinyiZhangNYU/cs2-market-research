@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:cs2-research:research-quality-envelope:v1",
+  "title": "CS2 provider-neutral research quality envelope v1 candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "snapshot_id", "contract_code", "contract_version", "envelope_kind",
+    "identity", "as_of", "available_at", "policy_version",
+    "input_quality_snapshot_id", "expected_cell_count", "observed_cell_count",
+    "fresh_cell_count", "coverage_ratio", "fresh_coverage_ratio",
+    "missing_cell_count", "stale_cell_count", "future_fact_count",
+    "source_summaries", "conflicts", "query_observations"
+  ],
+  "properties": {
+    "snapshot_id": { "$ref": "urn:cs2-research:research-result-envelope:v1#/$defs/sha256" },
+    "contract_code": { "const": "research-quality-envelope" },
+    "contract_version": { "const": "v1" },
+    "envelope_kind": { "const": "QUALITY" },
+    "identity": {
+      "allOf": [
+        { "$ref": "urn:cs2-research:research-result-envelope:v1#/$defs/identity" },
+        {
+          "type": "object",
+          "properties": { "scope_kind": { "const": "ITEM" } }
+        }
+      ]
+    },
+    "as_of": { "$ref": "urn:cs2-research:research-result-envelope:v1#/$defs/timestamp" },
+    "available_at": { "$ref": "urn:cs2-research:research-result-envelope:v1#/$defs/timestamp" },
+    "policy_version": { "$ref": "urn:cs2-research:research-result-envelope:v1#/$defs/nonblank_text" },
+    "input_quality_snapshot_id": { "$ref": "urn:cs2-research:research-result-envelope:v1#/$defs/nonblank_text" },
+    "expected_cell_count": { "type": "integer", "minimum": 0 },
+    "observed_cell_count": { "type": "integer", "minimum": 0 },
+    "fresh_cell_count": { "type": "integer", "minimum": 0 },
+    "coverage_ratio": { "$ref": "urn:cs2-research:research-result-envelope:v1#/$defs/ratio_decimal_text" },
+    "fresh_coverage_ratio": { "$ref": "urn:cs2-research:research-result-envelope:v1#/$defs/ratio_decimal_text" },
+    "missing_cell_count": { "type": "integer", "minimum": 0 },
+    "stale_cell_count": { "type": "integer", "minimum": 0 },
+    "future_fact_count": { "type": "integer", "minimum": 0 },
+    "source_summaries": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/source_summary" }
+    },
+    "conflicts": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/conflict_summary" }
+    },
+    "query_observations": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/query_observation" }
+    }
+  },
+  "$defs": {
+    "nonnegative_decimal_text": {
+      "type": "string",
+      "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+    },
+    "source_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_ref", "expected_feature_count", "observed_feature_count",
+        "fresh_feature_count", "missing_feature_count", "stale_feature_count"
+      ],
+      "properties": {
+        "source_ref": { "$ref": "urn:cs2-research:research-result-envelope:v1#/$defs/nonblank_text" },
+        "expected_feature_count": { "type": "integer", "minimum": 0 },
+        "observed_feature_count": { "type": "integer", "minimum": 0 },
+        "fresh_feature_count": { "type": "integer", "minimum": 0 },
+        "missing_feature_count": { "type": "integer", "minimum": 0 },
+        "stale_feature_count": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "conflict_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "feature_key", "reason_code", "participating_source_refs",
+        "source_fact_count", "relative_dispersion"
+      ],
+      "properties": {
+        "feature_key": { "$ref": "urn:cs2-research:research-result-envelope:v1#/$defs/nonblank_text" },
+        "reason_code": { "$ref": "urn:cs2-research:research-result-envelope:v1#/$defs/nonblank_text" },
+        "participating_source_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "urn:cs2-research:research-result-envelope:v1#/$defs/nonblank_text" }
+        },
+        "source_fact_count": { "type": "integer", "minimum": 1 },
+        "relative_dispersion": {
+          "oneOf": [
+            { "$ref": "#/$defs/nonnegative_decimal_text" },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "query_observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "observation_id", "source_ref", "query_kind", "sample_state",
+        "capability_state", "returned_member_count", "observed_at", "available_at"
+      ],
+      "properties": {
+        "observation_id": { "$ref": "urn:cs2-research:research-result-envelope:v1#/$defs/nonblank_text" },
+        "source_ref": { "$ref": "urn:cs2-research:research-result-envelope:v1#/$defs/nonblank_text" },
+        "query_kind": {
+          "enum": [
+            "BASE_QUOTE", "LISTING_PAGE", "STYLE_LISTING", "STYLE_BID",
+            "MARKET_SNAPSHOT"
+          ]
+        },
+        "sample_state": { "enum": ["POSITIVE_SAMPLE", "ZERO_CURRENT_SAMPLE"] },
+        "capability_state": { "enum": ["CONFIRMED", "UNKNOWN", "NOT_APPLICABLE"] },
+        "returned_member_count": { "type": "integer", "minimum": 0 },
+        "observed_at": { "$ref": "urn:cs2-research:research-result-envelope:v1#/$defs/timestamp" },
+        "available_at": { "$ref": "urn:cs2-research:research-result-envelope:v1#/$defs/timestamp" }
+      }
+    }
+  }
+}

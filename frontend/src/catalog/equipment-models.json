@@ -1,0 +1,830 @@
+{
+  "version": 1,
+  "sourceHashes": {
+    "mapping": "64b984ff3b5077c4c885793318f2c45a0346b957f104a971febebdfa6cbf6a15"
+  },
+  "presentationOverrides": {
+    "weapon_taser": "ZEUS_IN_PISTOLS"
+  },
+  "models": [
+    {
+      "id": "leather_handwraps",
+      "itemKind": "GLOVE",
+      "category": "GLOVES",
+      "group": "GLOVES",
+      "name": {
+        "zh": "裹手",
+        "en": "Hand Wraps"
+      },
+      "definitionKey": "5032:leather_handwraps",
+      "nameToken": "#CSGO_Wearable_v_leather_handwrap",
+      "valveLoadoutCategory": "clothing"
+    },
+    {
+      "id": "motorcycle_gloves",
+      "itemKind": "GLOVE",
+      "category": "GLOVES",
+      "group": "GLOVES",
+      "name": {
+        "zh": "摩托手套",
+        "en": "Moto Gloves"
+      },
+      "definitionKey": "5033:motorcycle_gloves",
+      "nameToken": "#CSGO_Wearable_v_motorcycle_glove",
+      "valveLoadoutCategory": "clothing"
+    },
+    {
+      "id": "slick_gloves",
+      "itemKind": "GLOVE",
+      "category": "GLOVES",
+      "group": "GLOVES",
+      "name": {
+        "zh": "驾驶手套",
+        "en": "Driver Gloves"
+      },
+      "definitionKey": "5031:slick_gloves",
+      "nameToken": "#CSGO_Wearable_v_slick_glove",
+      "valveLoadoutCategory": "clothing"
+    },
+    {
+      "id": "specialist_gloves",
+      "itemKind": "GLOVE",
+      "category": "GLOVES",
+      "group": "GLOVES",
+      "name": {
+        "zh": "专业手套",
+        "en": "Specialist Gloves"
+      },
+      "definitionKey": "5034:specialist_gloves",
+      "nameToken": "#CSGO_Wearable_v_specialist_glove",
+      "valveLoadoutCategory": "clothing"
+    },
+    {
+      "id": "sporty_gloves",
+      "itemKind": "GLOVE",
+      "category": "GLOVES",
+      "group": "GLOVES",
+      "name": {
+        "zh": "运动手套",
+        "en": "Sport Gloves"
+      },
+      "definitionKey": "5030:sporty_gloves",
+      "nameToken": "#CSGO_Wearable_v_sporty_glove",
+      "valveLoadoutCategory": "clothing"
+    },
+    {
+      "id": "studded_bloodhound_gloves",
+      "itemKind": "GLOVE",
+      "category": "GLOVES",
+      "group": "GLOVES",
+      "name": {
+        "zh": "血猎手套",
+        "en": "Bloodhound Gloves"
+      },
+      "definitionKey": "5027:studded_bloodhound_gloves",
+      "nameToken": "#CSGO_Wearable_t_studdedgloves",
+      "valveLoadoutCategory": "clothing"
+    },
+    {
+      "id": "studded_brokenfang_gloves",
+      "itemKind": "GLOVE",
+      "category": "GLOVES",
+      "group": "GLOVES",
+      "name": {
+        "zh": "狂牙手套",
+        "en": "Broken Fang Gloves"
+      },
+      "definitionKey": "4725:studded_brokenfang_gloves",
+      "nameToken": "#CSGO_Wearable_t_studded_brokenfang_gloves",
+      "valveLoadoutCategory": "clothing"
+    },
+    {
+      "id": "studded_hydra_gloves",
+      "itemKind": "GLOVE",
+      "category": "GLOVES",
+      "group": "GLOVES",
+      "name": {
+        "zh": "九头蛇手套",
+        "en": "Hydra Gloves"
+      },
+      "definitionKey": "5035:studded_hydra_gloves",
+      "nameToken": "#CSGO_Wearable_t_studded_hydra_gloves",
+      "valveLoadoutCategory": "clothing"
+    },
+    {
+      "id": "weapon_ak47",
+      "itemKind": "WEAPON",
+      "category": "RIFLES",
+      "group": "RIFLE",
+      "name": {
+        "zh": "AK-47",
+        "en": "AK-47"
+      },
+      "definitionKey": "7:weapon_ak47",
+      "nameToken": "#SFUI_WPNHUD_AK47",
+      "valveLoadoutCategory": "rifle"
+    },
+    {
+      "id": "weapon_aug",
+      "itemKind": "WEAPON",
+      "category": "RIFLES",
+      "group": "RIFLE",
+      "name": {
+        "zh": "AUG",
+        "en": "AUG"
+      },
+      "definitionKey": "8:weapon_aug",
+      "nameToken": "#SFUI_WPNHUD_Aug",
+      "valveLoadoutCategory": "rifle"
+    },
+    {
+      "id": "weapon_awp",
+      "itemKind": "WEAPON",
+      "category": "RIFLES",
+      "group": "SNIPER",
+      "name": {
+        "zh": "AWP",
+        "en": "AWP"
+      },
+      "definitionKey": "9:weapon_awp",
+      "nameToken": "#SFUI_WPNHUD_AWP",
+      "valveLoadoutCategory": "rifle"
+    },
+    {
+      "id": "weapon_bayonet",
+      "itemKind": "KNIFE",
+      "category": "KNIVES",
+      "group": "KNIVES",
+      "name": {
+        "zh": "刺刀",
+        "en": "Bayonet"
+      },
+      "definitionKey": "500:weapon_bayonet",
+      "nameToken": "#SFUI_WPNHUD_KnifeBayonet",
+      "valveLoadoutCategory": "melee"
+    },
+    {
+      "id": "weapon_bizon",
+      "itemKind": "WEAPON",
+      "category": "MID_TIER",
+      "group": "SMG",
+      "name": {
+        "zh": "PP-野牛",
+        "en": "PP-Bizon"
+      },
+      "definitionKey": "26:weapon_bizon",
+      "nameToken": "#SFUI_WPNHUD_Bizon",
+      "valveLoadoutCategory": "smg"
+    },
+    {
+      "id": "weapon_cz75a",
+      "itemKind": "WEAPON",
+      "category": "PISTOLS",
+      "group": "PISTOL",
+      "name": {
+        "zh": "CZ75自动型",
+        "en": "CZ75-Auto"
+      },
+      "definitionKey": "63:weapon_cz75a",
+      "nameToken": "#SFUI_WPNHUD_CZ75",
+      "valveLoadoutCategory": "secondary"
+    },
+    {
+      "id": "weapon_deagle",
+      "itemKind": "WEAPON",
+      "category": "PISTOLS",
+      "group": "PISTOL",
+      "name": {
+        "zh": "沙漠之鹰",
+        "en": "Desert Eagle"
+      },
+      "definitionKey": "1:weapon_deagle",
+      "nameToken": "#SFUI_WPNHUD_DesertEagle",
+      "valveLoadoutCategory": "secondary"
+    },
+    {
+      "id": "weapon_elite",
+      "itemKind": "WEAPON",
+      "category": "PISTOLS",
+      "group": "PISTOL",
+      "name": {
+        "zh": "双持贝瑞塔",
+        "en": "Dual Berettas"
+      },
+      "definitionKey": "2:weapon_elite",
+      "nameToken": "#SFUI_WPNHUD_Elites",
+      "valveLoadoutCategory": "secondary"
+    },
+    {
+      "id": "weapon_famas",
+      "itemKind": "WEAPON",
+      "category": "RIFLES",
+      "group": "RIFLE",
+      "name": {
+        "zh": "法玛斯",
+        "en": "FAMAS"
+      },
+      "definitionKey": "10:weapon_famas",
+      "nameToken": "#SFUI_WPNHUD_Famas",
+      "valveLoadoutCategory": "rifle"
+    },
+    {
+      "id": "weapon_fiveseven",
+      "itemKind": "WEAPON",
+      "category": "PISTOLS",
+      "group": "PISTOL",
+      "name": {
+        "zh": "FN57",
+        "en": "Five-SeveN"
+      },
+      "definitionKey": "3:weapon_fiveseven",
+      "nameToken": "#SFUI_WPNHUD_FiveSeven",
+      "valveLoadoutCategory": "secondary"
+    },
+    {
+      "id": "weapon_g3sg1",
+      "itemKind": "WEAPON",
+      "category": "RIFLES",
+      "group": "SNIPER",
+      "name": {
+        "zh": "G3SG1",
+        "en": "G3SG1"
+      },
+      "definitionKey": "11:weapon_g3sg1",
+      "nameToken": "#SFUI_WPNHUD_G3SG1",
+      "valveLoadoutCategory": "rifle"
+    },
+    {
+      "id": "weapon_galilar",
+      "itemKind": "WEAPON",
+      "category": "RIFLES",
+      "group": "RIFLE",
+      "name": {
+        "zh": "加利尔AR",
+        "en": "Galil AR"
+      },
+      "definitionKey": "13:weapon_galilar",
+      "nameToken": "#SFUI_WPNHUD_GalilAR",
+      "valveLoadoutCategory": "rifle"
+    },
+    {
+      "id": "weapon_glock",
+      "itemKind": "WEAPON",
+      "category": "PISTOLS",
+      "group": "PISTOL",
+      "name": {
+        "zh": "格洛克18型",
+        "en": "Glock-18"
+      },
+      "definitionKey": "4:weapon_glock",
+      "nameToken": "#SFUI_WPNHUD_Glock18",
+      "valveLoadoutCategory": "secondary"
+    },
+    {
+      "id": "weapon_hkp2000",
+      "itemKind": "WEAPON",
+      "category": "PISTOLS",
+      "group": "PISTOL",
+      "name": {
+        "zh": "P2000",
+        "en": "P2000"
+      },
+      "definitionKey": "32:weapon_hkp2000",
+      "nameToken": "#SFUI_WPNHUD_HKP2000",
+      "valveLoadoutCategory": "secondary"
+    },
+    {
+      "id": "weapon_knife_butterfly",
+      "itemKind": "KNIFE",
+      "category": "KNIVES",
+      "group": "KNIVES",
+      "name": {
+        "zh": "蝴蝶刀",
+        "en": "Butterfly Knife"
+      },
+      "definitionKey": "515:weapon_knife_butterfly",
+      "nameToken": "#SFUI_WPNHUD_Knife_Butterfly",
+      "valveLoadoutCategory": "melee"
+    },
+    {
+      "id": "weapon_knife_canis",
+      "itemKind": "KNIFE",
+      "category": "KNIVES",
+      "group": "KNIVES",
+      "name": {
+        "zh": "求生匕首",
+        "en": "Survival Knife"
+      },
+      "definitionKey": "518:weapon_knife_canis",
+      "nameToken": "#SFUI_WPNHUD_knife_canis",
+      "valveLoadoutCategory": "melee"
+    },
+    {
+      "id": "weapon_knife_cord",
+      "itemKind": "KNIFE",
+      "category": "KNIVES",
+      "group": "KNIVES",
+      "name": {
+        "zh": "系绳匕首",
+        "en": "Paracord Knife"
+      },
+      "definitionKey": "517:weapon_knife_cord",
+      "nameToken": "#SFUI_WPNHUD_knife_cord",
+      "valveLoadoutCategory": "melee"
+    },
+    {
+      "id": "weapon_knife_css",
+      "itemKind": "KNIFE",
+      "category": "KNIVES",
+      "group": "KNIVES",
+      "name": {
+        "zh": "海豹短刀",
+        "en": "Classic Knife"
+      },
+      "definitionKey": "503:weapon_knife_css",
+      "nameToken": "#SFUI_WPNHUD_KnifeCSS",
+      "valveLoadoutCategory": "melee"
+    },
+    {
+      "id": "weapon_knife_falchion",
+      "itemKind": "KNIFE",
+      "category": "KNIVES",
+      "group": "KNIVES",
+      "name": {
+        "zh": "弯刀",
+        "en": "Falchion Knife"
+      },
+      "definitionKey": "512:weapon_knife_falchion",
+      "nameToken": "#SFUI_WPNHUD_knife_falchion_advanced",
+      "valveLoadoutCategory": "melee"
+    },
+    {
+      "id": "weapon_knife_flip",
+      "itemKind": "KNIFE",
+      "category": "KNIVES",
+      "group": "KNIVES",
+      "name": {
+        "zh": "折叠刀",
+        "en": "Flip Knife"
+      },
+      "definitionKey": "505:weapon_knife_flip",
+      "nameToken": "#SFUI_WPNHUD_KnifeFlip",
+      "valveLoadoutCategory": "melee"
+    },
+    {
+      "id": "weapon_knife_gut",
+      "itemKind": "KNIFE",
+      "category": "KNIVES",
+      "group": "KNIVES",
+      "name": {
+        "zh": "穿肠刀",
+        "en": "Gut Knife"
+      },
+      "definitionKey": "506:weapon_knife_gut",
+      "nameToken": "#SFUI_WPNHUD_KnifeGut",
+      "valveLoadoutCategory": "melee"
+    },
+    {
+      "id": "weapon_knife_gypsy_jackknife",
+      "itemKind": "KNIFE",
+      "category": "KNIVES",
+      "group": "KNIVES",
+      "name": {
+        "zh": "折刀",
+        "en": "Navaja Knife"
+      },
+      "definitionKey": "520:weapon_knife_gypsy_jackknife",
+      "nameToken": "#SFUI_WPNHUD_knife_gypsy_jackknife",
+      "valveLoadoutCategory": "melee"
+    },
+    {
+      "id": "weapon_knife_karambit",
+      "itemKind": "KNIFE",
+      "category": "KNIVES",
+      "group": "KNIVES",
+      "name": {
+        "zh": "爪子刀",
+        "en": "Karambit"
+      },
+      "definitionKey": "507:weapon_knife_karambit",
+      "nameToken": "#SFUI_WPNHUD_KnifeKaram",
+      "valveLoadoutCategory": "melee"
+    },
+    {
+      "id": "weapon_knife_kukri",
+      "itemKind": "KNIFE",
+      "category": "KNIVES",
+      "group": "KNIVES",
+      "name": {
+        "zh": "廓尔喀刀",
+        "en": "Kukri Knife"
+      },
+      "definitionKey": "526:weapon_knife_kukri",
+      "nameToken": "#SFUI_WPNHUD_knife_kukri",
+      "valveLoadoutCategory": "melee"
+    },
+    {
+      "id": "weapon_knife_m9_bayonet",
+      "itemKind": "KNIFE",
+      "category": "KNIVES",
+      "group": "KNIVES",
+      "name": {
+        "zh": "M9 刺刀",
+        "en": "M9 Bayonet"
+      },
+      "definitionKey": "508:weapon_knife_m9_bayonet",
+      "nameToken": "#SFUI_WPNHUD_KnifeM9",
+      "valveLoadoutCategory": "melee"
+    },
+    {
+      "id": "weapon_knife_outdoor",
+      "itemKind": "KNIFE",
+      "category": "KNIVES",
+      "group": "KNIVES",
+      "name": {
+        "zh": "流浪者匕首",
+        "en": "Nomad Knife"
+      },
+      "definitionKey": "521:weapon_knife_outdoor",
+      "nameToken": "#SFUI_WPNHUD_knife_outdoor",
+      "valveLoadoutCategory": "melee"
+    },
+    {
+      "id": "weapon_knife_push",
+      "itemKind": "KNIFE",
+      "category": "KNIVES",
+      "group": "KNIVES",
+      "name": {
+        "zh": "暗影双匕",
+        "en": "Shadow Daggers"
+      },
+      "definitionKey": "516:weapon_knife_push",
+      "nameToken": "#SFUI_WPNHUD_knife_push",
+      "valveLoadoutCategory": "melee"
+    },
+    {
+      "id": "weapon_knife_skeleton",
+      "itemKind": "KNIFE",
+      "category": "KNIVES",
+      "group": "KNIVES",
+      "name": {
+        "zh": "骷髅匕首",
+        "en": "Skeleton Knife"
+      },
+      "definitionKey": "525:weapon_knife_skeleton",
+      "nameToken": "#SFUI_WPNHUD_knife_skeleton",
+      "valveLoadoutCategory": "melee"
+    },
+    {
+      "id": "weapon_knife_stiletto",
+      "itemKind": "KNIFE",
+      "category": "KNIVES",
+      "group": "KNIVES",
+      "name": {
+        "zh": "短剑",
+        "en": "Stiletto Knife"
+      },
+      "definitionKey": "522:weapon_knife_stiletto",
+      "nameToken": "#SFUI_WPNHUD_knife_stiletto",
+      "valveLoadoutCategory": "melee"
+    },
+    {
+      "id": "weapon_knife_survival_bowie",
+      "itemKind": "KNIFE",
+      "category": "KNIVES",
+      "group": "KNIVES",
+      "name": {
+        "zh": "鲍伊猎刀",
+        "en": "Bowie Knife"
+      },
+      "definitionKey": "514:weapon_knife_survival_bowie",
+      "nameToken": "#SFUI_WPNHUD_knife_survival_bowie",
+      "valveLoadoutCategory": "melee"
+    },
+    {
+      "id": "weapon_knife_tactical",
+      "itemKind": "KNIFE",
+      "category": "KNIVES",
+      "group": "KNIVES",
+      "name": {
+        "zh": "猎杀者匕首",
+        "en": "Huntsman Knife"
+      },
+      "definitionKey": "509:weapon_knife_tactical",
+      "nameToken": "#SFUI_WPNHUD_KnifeTactical",
+      "valveLoadoutCategory": "melee"
+    },
+    {
+      "id": "weapon_knife_ursus",
+      "itemKind": "KNIFE",
+      "category": "KNIVES",
+      "group": "KNIVES",
+      "name": {
+        "zh": "熊刀",
+        "en": "Ursus Knife"
+      },
+      "definitionKey": "519:weapon_knife_ursus",
+      "nameToken": "#SFUI_WPNHUD_knife_ursus",
+      "valveLoadoutCategory": "melee"
+    },
+    {
+      "id": "weapon_knife_widowmaker",
+      "itemKind": "KNIFE",
+      "category": "KNIVES",
+      "group": "KNIVES",
+      "name": {
+        "zh": "锯齿爪刀",
+        "en": "Talon Knife"
+      },
+      "definitionKey": "523:weapon_knife_widowmaker",
+      "nameToken": "#SFUI_WPNHUD_knife_widowmaker",
+      "valveLoadoutCategory": "melee"
+    },
+    {
+      "id": "weapon_m249",
+      "itemKind": "WEAPON",
+      "category": "MID_TIER",
+      "group": "MACHINEGUN",
+      "name": {
+        "zh": "M249",
+        "en": "M249"
+      },
+      "definitionKey": "14:weapon_m249",
+      "nameToken": "#SFUI_WPNHUD_M249",
+      "valveLoadoutCategory": "smg"
+    },
+    {
+      "id": "weapon_m4a1",
+      "itemKind": "WEAPON",
+      "category": "RIFLES",
+      "group": "RIFLE",
+      "name": {
+        "zh": "M4A4",
+        "en": "M4A4"
+      },
+      "definitionKey": "16:weapon_m4a1",
+      "nameToken": "#SFUI_WPNHUD_M4A1",
+      "valveLoadoutCategory": "rifle"
+    },
+    {
+      "id": "weapon_m4a1_silencer",
+      "itemKind": "WEAPON",
+      "category": "RIFLES",
+      "group": "RIFLE",
+      "name": {
+        "zh": "M4A1消音版",
+        "en": "M4A1-S"
+      },
+      "definitionKey": "60:weapon_m4a1_silencer",
+      "nameToken": "#SFUI_WPNHUD_M4_SILENCER",
+      "valveLoadoutCategory": "rifle"
+    },
+    {
+      "id": "weapon_mac10",
+      "itemKind": "WEAPON",
+      "category": "MID_TIER",
+      "group": "SMG",
+      "name": {
+        "zh": "MAC-10",
+        "en": "MAC-10"
+      },
+      "definitionKey": "17:weapon_mac10",
+      "nameToken": "#SFUI_WPNHUD_MAC10",
+      "valveLoadoutCategory": "smg"
+    },
+    {
+      "id": "weapon_mag7",
+      "itemKind": "WEAPON",
+      "category": "MID_TIER",
+      "group": "SHOTGUN",
+      "name": {
+        "zh": "MAG-7",
+        "en": "MAG-7"
+      },
+      "definitionKey": "27:weapon_mag7",
+      "nameToken": "#SFUI_WPNHUD_Mag7",
+      "valveLoadoutCategory": "smg"
+    },
+    {
+      "id": "weapon_mp5sd",
+      "itemKind": "WEAPON",
+      "category": "MID_TIER",
+      "group": "SMG",
+      "name": {
+        "zh": "MP5-SD",
+        "en": "MP5-SD"
+      },
+      "definitionKey": "23:weapon_mp5sd",
+      "nameToken": "#SFUI_WPNHUD_MP5SD",
+      "valveLoadoutCategory": "smg"
+    },
+    {
+      "id": "weapon_mp7",
+      "itemKind": "WEAPON",
+      "category": "MID_TIER",
+      "group": "SMG",
+      "name": {
+        "zh": "MP7",
+        "en": "MP7"
+      },
+      "definitionKey": "33:weapon_mp7",
+      "nameToken": "#SFUI_WPNHUD_MP7",
+      "valveLoadoutCategory": "smg"
+    },
+    {
+      "id": "weapon_mp9",
+      "itemKind": "WEAPON",
+      "category": "MID_TIER",
+      "group": "SMG",
+      "name": {
+        "zh": "MP9",
+        "en": "MP9"
+      },
+      "definitionKey": "34:weapon_mp9",
+      "nameToken": "#SFUI_WPNHUD_MP9",
+      "valveLoadoutCategory": "smg"
+    },
+    {
+      "id": "weapon_negev",
+      "itemKind": "WEAPON",
+      "category": "MID_TIER",
+      "group": "MACHINEGUN",
+      "name": {
+        "zh": "内格夫",
+        "en": "Negev"
+      },
+      "definitionKey": "28:weapon_negev",
+      "nameToken": "#SFUI_WPNHUD_Negev",
+      "valveLoadoutCategory": "smg"
+    },
+    {
+      "id": "weapon_nova",
+      "itemKind": "WEAPON",
+      "category": "MID_TIER",
+      "group": "SHOTGUN",
+      "name": {
+        "zh": "新星",
+        "en": "Nova"
+      },
+      "definitionKey": "35:weapon_nova",
+      "nameToken": "#SFUI_WPNHUD_Nova",
+      "valveLoadoutCategory": "smg"
+    },
+    {
+      "id": "weapon_p250",
+      "itemKind": "WEAPON",
+      "category": "PISTOLS",
+      "group": "PISTOL",
+      "name": {
+        "zh": "P250",
+        "en": "P250"
+      },
+      "definitionKey": "36:weapon_p250",
+      "nameToken": "#SFUI_WPNHUD_P250",
+      "valveLoadoutCategory": "secondary"
+    },
+    {
+      "id": "weapon_p90",
+      "itemKind": "WEAPON",
+      "category": "MID_TIER",
+      "group": "SMG",
+      "name": {
+        "zh": "P90",
+        "en": "P90"
+      },
+      "definitionKey": "19:weapon_p90",
+      "nameToken": "#SFUI_WPNHUD_P90",
+      "valveLoadoutCategory": "smg"
+    },
+    {
+      "id": "weapon_revolver",
+      "itemKind": "WEAPON",
+      "category": "PISTOLS",
+      "group": "PISTOL",
+      "name": {
+        "zh": "R8左轮手枪",
+        "en": "R8 Revolver"
+      },
+      "definitionKey": "64:weapon_revolver",
+      "nameToken": "#SFUI_WPNHUD_REVOLVER",
+      "valveLoadoutCategory": "secondary"
+    },
+    {
+      "id": "weapon_sawedoff",
+      "itemKind": "WEAPON",
+      "category": "MID_TIER",
+      "group": "SHOTGUN",
+      "name": {
+        "zh": "截短霰弹枪",
+        "en": "Sawed-Off"
+      },
+      "definitionKey": "29:weapon_sawedoff",
+      "nameToken": "#SFUI_WPNHUD_Sawedoff",
+      "valveLoadoutCategory": "smg"
+    },
+    {
+      "id": "weapon_scar20",
+      "itemKind": "WEAPON",
+      "category": "RIFLES",
+      "group": "SNIPER",
+      "name": {
+        "zh": "SCAR-20",
+        "en": "SCAR-20"
+      },
+      "definitionKey": "38:weapon_scar20",
+      "nameToken": "#SFUI_WPNHUD_SCAR20",
+      "valveLoadoutCategory": "rifle"
+    },
+    {
+      "id": "weapon_sg556",
+      "itemKind": "WEAPON",
+      "category": "RIFLES",
+      "group": "RIFLE",
+      "name": {
+        "zh": "SG 553",
+        "en": "SG 553"
+      },
+      "definitionKey": "39:weapon_sg556",
+      "nameToken": "#SFUI_WPNHUD_SG556",
+      "valveLoadoutCategory": "rifle"
+    },
+    {
+      "id": "weapon_ssg08",
+      "itemKind": "WEAPON",
+      "category": "RIFLES",
+      "group": "SNIPER",
+      "name": {
+        "zh": "SSG 08",
+        "en": "SSG 08"
+      },
+      "definitionKey": "40:weapon_ssg08",
+      "nameToken": "#SFUI_WPNHUD_SSG08",
+      "valveLoadoutCategory": "rifle"
+    },
+    {
+      "id": "weapon_taser",
+      "itemKind": "WEAPON",
+      "category": "PISTOLS",
+      "group": "PISTOL",
+      "name": {
+        "zh": "宙斯x27电击枪",
+        "en": "Zeus x27"
+      },
+      "definitionKey": "31:weapon_taser",
+      "nameToken": "#SFUI_WPNHUD_Taser",
+      "valveLoadoutCategory": "equipment2"
+    },
+    {
+      "id": "weapon_tec9",
+      "itemKind": "WEAPON",
+      "category": "PISTOLS",
+      "group": "PISTOL",
+      "name": {
+        "zh": "Tec-9",
+        "en": "Tec-9"
+      },
+      "definitionKey": "30:weapon_tec9",
+      "nameToken": "#SFUI_WPNHUD_Tec9",
+      "valveLoadoutCategory": "secondary"
+    },
+    {
+      "id": "weapon_ump45",
+      "itemKind": "WEAPON",
+      "category": "MID_TIER",
+      "group": "SMG",
+      "name": {
+        "zh": "UMP-45",
+        "en": "UMP-45"
+      },
+      "definitionKey": "24:weapon_ump45",
+      "nameToken": "#SFUI_WPNHUD_UMP45",
+      "valveLoadoutCategory": "smg"
+    },
+    {
+      "id": "weapon_usp_silencer",
+      "itemKind": "WEAPON",
+      "category": "PISTOLS",
+      "group": "PISTOL",
+      "name": {
+        "zh": "USP消音版",
+        "en": "USP-S"
+      },
+      "definitionKey": "61:weapon_usp_silencer",
+      "nameToken": "#SFUI_WPNHUD_USP_SILENCER",
+      "valveLoadoutCategory": "secondary"
+    },
+    {
+      "id": "weapon_xm1014",
+      "itemKind": "WEAPON",
+      "category": "MID_TIER",
+      "group": "SHOTGUN",
+      "name": {
+        "zh": "XM1014",
+        "en": "XM1014"
+      },
+      "definitionKey": "25:weapon_xm1014",
+      "nameToken": "#SFUI_WPNHUD_xm1014",
+      "valveLoadoutCategory": "smg"
+    }
+  ]
+}

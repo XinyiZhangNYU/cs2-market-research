@@ -1,0 +1,75 @@
+{
+  "snapshot_id": "cc4d58450ef8a84fe41dc300bd00abbd89adcd40f1dc0c8a63165bf1dfaa04cd",
+  "contract_code": "research-result-envelope",
+  "contract_version": "v1",
+  "envelope_kind": "UNIT",
+  "identity": {
+    "analysis_unit_id": "item:42:phase-p2",
+    "scope_kind": "ITEM",
+    "display_name": "M9 Bayonet Doppler P2 FN",
+    "identity_available_at": "2026-08-20T23:00:00.000000Z",
+    "catalog_version": "catalog-v1",
+    "analysis_unit_kind": "STYLE_VARIANT",
+    "edition_kind": "STANDARD",
+    "parent_analysis_unit_id": "item:42"
+  },
+  "as_of": "2026-08-21T00:00:00.000000Z",
+  "available_at": "2026-08-20T23:59:59.000000Z",
+  "data_branch": "B",
+  "data_status": "UNAVAILABLE_BY_DESIGN",
+  "versions": {
+    "catalog_version": "catalog-v1",
+    "group_version": "group-v1",
+    "index_version": "index-v1",
+    "fusion_method_version": "fusion-v1",
+    "feature_profile_version": "profile-v1",
+    "algorithm_version": "algorithm-v1",
+    "parameter_set_version": "parameters-v1",
+    "stage_policy_version": "stage-v1",
+    "failure_policy_version": "failure-v1"
+  },
+  "state": {
+    "cycle_stage": "PRESSURE_BUILDING",
+    "evidence_flags": ["DEMAND_ACCELERATING"],
+    "regime_relation": ["ITEM_SPECIFIC"],
+    "recommendation": "WATCH",
+    "case_status": "ACTIVE",
+    "candidate_episode_id": "candidate:42",
+    "cycle_case_id": null,
+    "input_snapshot_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "recommendation_detail": {
+    "recommendation": "WATCH",
+    "signal_strength": "MODERATE",
+    "evidence_coverage": "0.67",
+    "trade_confirmation": "UNAVAILABLE",
+    "input_snapshot_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "evidence_domains": [
+    {
+      "domain": "D",
+      "strength": "MODERATE",
+      "contributing_feature_keys": ["bid_strength"],
+      "missing_reason": null,
+      "policy_version": "stage-v1",
+      "input_snapshot_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "domain": "P",
+      "strength": "MODERATE",
+      "contributing_feature_keys": ["price_return"],
+      "missing_reason": null,
+      "policy_version": "stage-v1",
+      "input_snapshot_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "domain": "S",
+      "strength": "MODERATE",
+      "contributing_feature_keys": ["listing_contraction"],
+      "missing_reason": null,
+      "policy_version": "stage-v1",
+      "input_snapshot_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
+  ],
+  "claims": ["BUY_DEMAND_STRENGTHENING"]
+}

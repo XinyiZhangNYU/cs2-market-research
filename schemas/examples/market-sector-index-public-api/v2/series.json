@@ -1,0 +1,107 @@
+{
+  "contract_name": "market-sector-index-public-api",
+  "contract_version": "2",
+  "response_kind": "INDEX_SERIES",
+  "product_kind": "DESCRIPTIVE_MARKET_SECTOR_INDEX",
+  "purpose": "CS2_ROTATE_DESCRIPTIVE_MARKET_SECTOR_INDEX_HISTORY_AND_CURRENT_V2",
+  "prediction_status": "NOT_A_PREDICTION",
+  "release": {
+    "publication_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "manifest_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "rights_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "published_at": "2026-09-13T02:45:00Z",
+    "withdrawn_at": null,
+    "series_revision_id": "market_sector_index_series_1111111111111111111111111111111111111111111111111111111111111111",
+    "product_policy_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+    "historical_publication_id": "9999999999999999999999999999999999999999999999999999999999999999",
+    "historical_manifest_sha256": "8888888888888888888888888888888888888888888888888888888888888888",
+    "continuation_spec_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "history_start": "2026-09-08",
+    "history_end": "2026-09-10",
+    "measured_start": "2026-09-11",
+    "measured_end": "2026-09-12",
+    "availability_semantics": ["RECONSTRUCTED_LATE_BOUND", "CONTEMPORANEOUSLY_MEASURED"]
+  },
+  "scope": {
+    "scope_token": "5cae7b8d9e596aed9729bc81c52df450ee4473ce17e6791440e13407ea454967",
+    "scope_code": "ALL",
+    "scope_kind": "MARKET",
+    "labels": { "en": "Overall market", "zh_cn": "整体市场" },
+    "price_history_eligibility": "RECONSTRUCTED_HISTORY",
+    "first_available_date": "2026-09-08",
+    "last_available_date": "2026-09-12",
+    "current_member_count": 10,
+    "observed_price_member_count": 9,
+    "origin_uncertainty_disclosed": true
+  },
+  "query": {
+    "from_date": "2026-09-08",
+    "to_date": null,
+    "after_date": null,
+    "limit": 512,
+    "next_after_date": null
+  },
+  "points": [
+    {
+      "point_id": "1111111111111111111111111111111111111111111111111111111111111111",
+      "date": "2026-09-08",
+      "segment_id": "historical",
+      "connect_to_previous": false,
+      "availability": "RECONSTRUCTED_LATE_BOUND",
+      "index": { "value": "1000", "period_return": null, "raw_equal_return": null, "robust_equal_return": null, "effective_estimator": null },
+      "absolute_price": { "member_minimum_ask_sum_cny": "1200", "member_minimum_ask_median_cny": "100", "semantic": "SUM_AND_MEDIAN_OF_MEMBER_MINIMUM_ASKS_NOT_MARKET_VALUE" },
+      "coverage": { "expected_member_count": 10, "expected_member_count_upper_bound": 11, "qualified_member_count": 8, "paired_member_count": 8, "coverage_ratio": "0.8", "coverage_ratio_lower_bound": "0.7272727272727273", "absolute_price_qualified_member_count": 9, "absolute_price_coverage_ratio": "0.9", "absolute_price_coverage_ratio_lower_bound": "0.8181818181818182" },
+      "quality": { "overall": "PARTIAL", "return": "PARTIAL", "price": "HIGH", "grade_counts": { "A": 6, "B": 1, "C": 1, "D": 0, "E": 2 }, "grade_d_share": "0", "anomaly_member_count": 0, "anomaly_contributions": [], "rejected_return_domain_count": 0, "reason_codes": ["ORIGIN_UNCERTAINTY_DISCLOSED"] },
+      "origin_uncertainty": { "status": "ACTIVE_AND_POSSIBLE_UNCERTAIN_ORIGIN", "active_uncertain_origin_member_count": 2, "possible_unadmitted_member_count": 1 }
+    },
+    {
+      "point_id": "2222222222222222222222222222222222222222222222222222222222222222",
+      "date": "2026-09-09",
+      "segment_id": "historical",
+      "connect_to_previous": true,
+      "availability": "RECONSTRUCTED_LATE_BOUND",
+      "index": { "value": "1010", "period_return": "0.01", "raw_equal_return": "0.011", "robust_equal_return": "0.01", "effective_estimator": "SYMMETRIC_WINSOR_1_PERCENT" },
+      "absolute_price": { "member_minimum_ask_sum_cny": "1212", "member_minimum_ask_median_cny": "101", "semantic": "SUM_AND_MEDIAN_OF_MEMBER_MINIMUM_ASKS_NOT_MARKET_VALUE" },
+      "coverage": { "expected_member_count": 10, "expected_member_count_upper_bound": 11, "qualified_member_count": 8, "paired_member_count": 8, "coverage_ratio": "0.8", "coverage_ratio_lower_bound": "0.7272727272727273", "absolute_price_qualified_member_count": 9, "absolute_price_coverage_ratio": "0.9", "absolute_price_coverage_ratio_lower_bound": "0.8181818181818182" },
+      "quality": { "overall": "PARTIAL", "return": "PARTIAL", "price": "HIGH", "grade_counts": { "A": 6, "B": 1, "C": 1, "D": 0, "E": 2 }, "grade_d_share": "0", "anomaly_member_count": 0, "anomaly_contributions": [], "rejected_return_domain_count": 0, "reason_codes": ["ORIGIN_UNCERTAINTY_DISCLOSED"] },
+      "origin_uncertainty": { "status": "ACTIVE_AND_POSSIBLE_UNCERTAIN_ORIGIN", "active_uncertain_origin_member_count": 2, "possible_unadmitted_member_count": 1 }
+    },
+    {
+      "point_id": "3333333333333333333333333333333333333333333333333333333333333333",
+      "date": "2026-09-10",
+      "segment_id": "historical",
+      "connect_to_previous": true,
+      "availability": "RECONSTRUCTED_LATE_BOUND",
+      "index": { "value": "1010", "period_return": "0", "raw_equal_return": "0", "robust_equal_return": "0", "effective_estimator": "SYMMETRIC_WINSOR_1_PERCENT" },
+      "absolute_price": { "member_minimum_ask_sum_cny": "1212", "member_minimum_ask_median_cny": "101", "semantic": "SUM_AND_MEDIAN_OF_MEMBER_MINIMUM_ASKS_NOT_MARKET_VALUE" },
+      "coverage": { "expected_member_count": 10, "expected_member_count_upper_bound": 11, "qualified_member_count": 8, "paired_member_count": 8, "coverage_ratio": "0.8", "coverage_ratio_lower_bound": "0.7272727272727273", "absolute_price_qualified_member_count": 9, "absolute_price_coverage_ratio": "0.9", "absolute_price_coverage_ratio_lower_bound": "0.8181818181818182" },
+      "quality": { "overall": "PARTIAL", "return": "PARTIAL", "price": "HIGH", "grade_counts": { "A": 6, "B": 1, "C": 1, "D": 0, "E": 2 }, "grade_d_share": "0", "anomaly_member_count": 0, "anomaly_contributions": [], "rejected_return_domain_count": 0, "reason_codes": ["ORIGIN_UNCERTAINTY_DISCLOSED"] },
+      "origin_uncertainty": { "status": "ACTIVE_AND_POSSIBLE_UNCERTAIN_ORIGIN", "active_uncertain_origin_member_count": 2, "possible_unadmitted_member_count": 1 }
+    },
+    {
+      "point_id": "4444444444444444444444444444444444444444444444444444444444444444",
+      "date": "2026-09-11",
+      "segment_id": "measured",
+      "connect_to_previous": false,
+      "availability": "CONTEMPORANEOUSLY_MEASURED",
+      "index": { "value": "1010", "period_return": null, "raw_equal_return": null, "robust_equal_return": null, "effective_estimator": null },
+      "absolute_price": { "member_minimum_ask_sum_cny": "1224", "member_minimum_ask_median_cny": "102", "semantic": "SUM_AND_MEDIAN_OF_MEMBER_MINIMUM_ASKS_NOT_MARKET_VALUE" },
+      "coverage": { "expected_member_count": 10, "expected_member_count_upper_bound": 11, "qualified_member_count": 8, "paired_member_count": 8, "coverage_ratio": "0.8", "coverage_ratio_lower_bound": "0.7272727272727273", "absolute_price_qualified_member_count": 9, "absolute_price_coverage_ratio": "0.9", "absolute_price_coverage_ratio_lower_bound": "0.8181818181818182" },
+      "quality": { "overall": "PARTIAL", "return": "PARTIAL", "price": "HIGH", "grade_counts": { "A": 6, "B": 1, "C": 1, "D": 0, "E": 2 }, "grade_d_share": "0", "anomaly_member_count": 0, "anomaly_contributions": [], "rejected_return_domain_count": 0, "reason_codes": ["CONTEMPORANEOUS_BOUNDARY_BASE_NO_RETURN_OR_VISUAL_JOIN"] },
+      "origin_uncertainty": { "status": "ACTIVE_AND_POSSIBLE_UNCERTAIN_ORIGIN", "active_uncertain_origin_member_count": 2, "possible_unadmitted_member_count": 1 }
+    },
+    {
+      "point_id": "5555555555555555555555555555555555555555555555555555555555555555",
+      "date": "2026-09-12",
+      "segment_id": "measured",
+      "connect_to_previous": true,
+      "availability": "CONTEMPORANEOUSLY_MEASURED",
+      "index": { "value": "1020.1", "period_return": "0.01", "raw_equal_return": "0.02", "robust_equal_return": "0.01", "effective_estimator": "SYMMETRIC_WINSOR_1_PERCENT" },
+      "absolute_price": { "member_minimum_ask_sum_cny": "1236", "member_minimum_ask_median_cny": "103", "semantic": "SUM_AND_MEDIAN_OF_MEMBER_MINIMUM_ASKS_NOT_MARKET_VALUE" },
+      "coverage": { "expected_member_count": 10, "expected_member_count_upper_bound": 11, "qualified_member_count": 8, "paired_member_count": 8, "coverage_ratio": "0.8", "coverage_ratio_lower_bound": "0.7272727272727273", "absolute_price_qualified_member_count": 9, "absolute_price_coverage_ratio": "0.9", "absolute_price_coverage_ratio_lower_bound": "0.8181818181818182" },
+      "quality": { "overall": "PARTIAL", "return": "PARTIAL", "price": "HIGH", "grade_counts": { "A": 6, "B": 1, "C": 1, "D": 0, "E": 2 }, "grade_d_share": "0", "anomaly_member_count": 1, "anomaly_contributions": [{ "analysis_unit_id": "unit-redacted-1", "raw_return": "0.2", "suppressed_return": "0.1", "adjustment": "-0.1" }], "rejected_return_domain_count": 0, "reason_codes": ["ANOMALY_CONTRIBUTION_DISCLOSED"] },
+      "origin_uncertainty": { "status": "ACTIVE_AND_POSSIBLE_UNCERTAIN_ORIGIN", "active_uncertain_origin_member_count": 2, "possible_unadmitted_member_count": 1 }
+    }
+  ]
+}
+

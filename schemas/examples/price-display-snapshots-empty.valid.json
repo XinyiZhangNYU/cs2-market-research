@@ -1,0 +1,20 @@
+{
+  "api_contract": "price-display-api",
+  "api_version": "v1",
+  "document_hash": "1481d37403b7003ddfe7b4c3abcd42dc0ada655ed6c052b714bc43a5d87a168d",
+  "items": [],
+  "pagination": {
+    "next_cursor": null,
+    "page_size": 20
+  },
+  "query": {
+    "catalog_snapshot_id": "040d69d4724f6c264dcad12c6dfaa979847cd7ab1e1db1d554858c766f44a052",
+    "kind": "CURRENT",
+    "known_at": "2026-09-03T01:00:00.000000Z",
+    "page_size": 20,
+    "query_as_of": "2026-08-30T12:00:00.000000Z",
+    "sort": "MARKET_AS_OF_DESC"
+  },
+  "response_kind": "PRICE_SNAPSHOT_LIST",
+  "snapshot": null
+}

@@ -1,0 +1,83 @@
+{
+  "api_contract": "market-watchlist-public-api",
+  "api_version": "v1",
+  "response_kind": "MARKET_OVERVIEW",
+  "query": {
+    "as_of": null,
+    "query_known_at": "2026-09-03T13:05:00.000000Z"
+  },
+  "publication": {
+    "publication_id": "1111111111111111111111111111111111111111111111111111111111111111",
+    "manifest_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+    "result_as_of": "2026-09-03T12:00:00.000000Z",
+    "input_available_at": "2026-09-03T11:59:00.000000Z",
+    "public_available_at": "2026-09-03T12:01:00.000000Z",
+    "published_at": "2026-09-03T12:02:00.000000Z",
+    "fresh_until": "2026-09-03T13:01:00.000000Z",
+    "retain_until": "2026-09-04T12:01:00.000000Z",
+    "freshness": "STALE_RETAINED",
+    "supersedes_publication_id": null,
+    "producer_release": {
+      "release_code": "formal-prospective-fixture-v1",
+      "algorithm_version": "algorithm-fixture-v1",
+      "parameter_set_version": "parameters-fixture-v1",
+      "data_quality_policy_version": "quality-fixture-v1"
+    },
+    "watchlist_policy_code": "empty-framework-fixture-v1",
+    "catalog": {
+      "snapshot_id": "3333333333333333333333333333333333333333333333333333333333333333",
+      "catalog_version": "catalog-fixture-v1",
+      "as_of": "2026-09-03T11:55:00.000000Z",
+      "available_at": "2026-09-03T11:56:00.000000Z",
+      "member_count": 1,
+      "member_set_hash": "4444444444444444444444444444444444444444444444444444444444444444"
+    }
+  },
+  "market": {
+    "analysis_unit_id": "market:all",
+    "data_status": "COMPLETE",
+    "trend_stage": "UP_BUILDING",
+    "level_regime": "NORMAL",
+    "evidence_flags": ["DEMAND_ACCELERATING"],
+    "recommendation": "WATCH",
+    "case_status": "ACTIVE"
+  },
+  "sectors": [
+    {
+      "display_order": 1,
+      "sector_code": "GLOVE",
+      "analysis_unit_id": "sector:glove",
+      "data_status": "COMPLETE",
+      "trend_stage": "NEUTRAL",
+      "relative_strength": "IN_LINE",
+      "breadth": {"advancing_member_ratio": "0.5", "median_member_return": "0", "breadth_expanding": false, "breadth_narrowing": false, "concentration_warning": false},
+      "evidence_flags": [],
+      "recommendation": "WATCH",
+      "case_status": null
+    },
+    {
+      "display_order": 2,
+      "sector_code": "KNIFE",
+      "analysis_unit_id": "sector:knife",
+      "data_status": "DEGRADED_OPTIONAL",
+      "trend_stage": "UP_ACTIVE",
+      "relative_strength": "LEADING",
+      "breadth": {"advancing_member_ratio": null, "median_member_return": null, "breadth_expanding": false, "breadth_narrowing": false, "concentration_warning": true},
+      "evidence_flags": ["CONCENTRATION_WARNING"],
+      "recommendation": "WATCH",
+      "case_status": null
+    },
+    {
+      "display_order": 3,
+      "sector_code": "WEAPON",
+      "analysis_unit_id": "sector:weapon",
+      "data_status": "COMPLETE",
+      "trend_stage": "DOWN_COOLING",
+      "relative_strength": "LAGGING",
+      "breadth": {"advancing_member_ratio": "0.25", "median_member_return": "-0.01", "breadth_expanding": false, "breadth_narrowing": true, "concentration_warning": false},
+      "evidence_flags": ["BREADTH_COLLAPSE"],
+      "recommendation": "IGNORE",
+      "case_status": null
+    }
+  ]
+}

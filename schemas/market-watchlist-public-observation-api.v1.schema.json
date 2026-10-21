@@ -1,0 +1,296 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:cs2-research:market-watchlist-public-observation-api:v1",
+  "title": "CS2 public item observation API V1",
+  "oneOf": [
+    { "$ref": "#/$defs/watchlistResponse" },
+    { "$ref": "#/$defs/detailResponse" },
+    { "$ref": "#/$defs/errorResponse" }
+  ],
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "timestamp": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{6}Z$"
+    },
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256,
+      "pattern": "^[^\\u0000-\\u001f\\u007f]+$"
+    },
+    "nullableTimestamp": {
+      "oneOf": [{ "$ref": "#/$defs/timestamp" }, { "type": "null" }]
+    },
+    "nullableSha256": {
+      "oneOf": [{ "$ref": "#/$defs/sha256" }, { "type": "null" }]
+    },
+    "reasonCodes": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 5,
+      "uniqueItems": true,
+      "items": {
+        "enum": ["COINCIDENT", "FIRST_ENTRY", "RECENT_PERSISTENT", "REENTRY", "SUPPLY_LEAD"]
+      }
+    },
+    "qualityReasonCodes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "enum": ["CLOCK_SKEW", "INPUT_GAP", "OPTIONAL_SOURCE_UNAVAILABLE", "STALE_RETAINED"] }
+    },
+    "sourceCoverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "expected_source_count", "observed_source_count", "observation_count"],
+      "properties": {
+        "status": { "const": "COMPLETE" },
+        "expected_source_count": { "type": "integer", "minimum": 1, "maximum": 64 },
+        "observed_source_count": { "type": "integer", "minimum": 1, "maximum": 64 },
+        "observation_count": { "type": "integer", "minimum": 1, "maximum": 10000000 }
+      }
+    },
+    "dataQuality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reason_codes"],
+      "properties": {
+        "status": { "enum": ["COMPLETE", "DEGRADED_OPTIONAL"] },
+        "reason_codes": { "$ref": "#/$defs/qualityReasonCodes" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "status": { "const": "COMPLETE" } } },
+          "then": { "properties": { "reason_codes": { "maxItems": 0 } } },
+          "else": { "properties": { "reason_codes": { "minItems": 1 } } }
+        }
+      ]
+    },
+    "catalogDescriptor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["snapshot_id", "catalog_version", "as_of", "available_at", "member_count", "member_set_hash"],
+      "properties": {
+        "snapshot_id": { "$ref": "#/$defs/sha256" },
+        "catalog_version": { "$ref": "#/$defs/identifier" },
+        "as_of": { "$ref": "#/$defs/timestamp" },
+        "available_at": { "$ref": "#/$defs/timestamp" },
+        "member_count": { "type": "integer", "minimum": 0 },
+        "member_set_hash": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "catalogLocalizedName": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["en", "zh_cn"],
+      "properties": {
+        "en": { "type": "string", "minLength": 1, "maxLength": 512, "pattern": "^[^\\u0000-\\u001f\\u007f]+$" },
+        "zh_cn": { "type": "string", "minLength": 1, "maxLength": 512, "pattern": "^[^\\u0000-\\u001f\\u007f]+$" }
+      }
+    },
+    "catalogMedia": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status"],
+          "properties": { "status": { "const": "NOT_PRODUCED" } }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "media_asset_version_id", "media_key", "presentation_kind"],
+          "properties": {
+            "status": { "const": "BOUND" },
+            "media_asset_version_id": { "type": "string", "pattern": "^[1-9][0-9]*$" },
+            "media_key": {
+              "type": "string",
+              "maxLength": 256,
+              "pattern": "^[A-Za-z0-9](?:[A-Za-z0-9._-]*[A-Za-z0-9._-])?(?:/[A-Za-z0-9](?:[A-Za-z0-9._-]*[A-Za-z0-9._-])?)*$",
+              "not": { "pattern": "(^|/)\\.{1,2}(/|$)" }
+            },
+            "presentation_kind": { "enum": ["SERIES_REPRESENTATIVE", "STYLE_REPRESENTATIVE"] }
+          }
+        }
+      ]
+    },
+    "catalogProjection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "analysis_unit_id", "parent_analysis_unit_id", "analysis_unit_kind", "item_kind",
+        "base_item_code", "edition_kind", "wear_tier", "localized_name", "media", "catalog_version"
+      ],
+      "properties": {
+        "analysis_unit_id": { "$ref": "#/$defs/identifier" },
+        "parent_analysis_unit_id": { "oneOf": [{ "$ref": "#/$defs/identifier" }, { "type": "null" }] },
+        "analysis_unit_kind": { "enum": ["BASE_MHN", "STYLE_VARIANT", "PATTERN_VARIANT"] },
+        "item_kind": { "enum": ["WEAPON", "KNIFE", "GLOVE", "AGENT", "OTHER", "UNKNOWN"] },
+        "base_item_code": { "$ref": "#/$defs/identifier" },
+        "edition_kind": { "enum": ["STANDARD", "STATTRAK", "SOUVENIR", "UNKNOWN"] },
+        "wear_tier": {
+          "enum": ["FACTORY_NEW", "MINIMAL_WEAR", "FIELD_TESTED", "WELL_WORN", "BATTLE_SCARRED", "NOT_APPLICABLE", "UNKNOWN"]
+        },
+        "localized_name": { "$ref": "#/$defs/catalogLocalizedName" },
+        "media": { "$ref": "#/$defs/catalogMedia" },
+        "catalog_version": { "$ref": "#/$defs/identifier" }
+      }
+    },
+    "producerRelease": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["release_code", "algorithm_version", "data_quality_policy_version", "input_contract_version"],
+      "properties": {
+        "release_code": { "$ref": "#/$defs/identifier" },
+        "algorithm_version": { "$ref": "#/$defs/identifier" },
+        "data_quality_policy_version": { "$ref": "#/$defs/identifier" },
+        "input_contract_version": { "const": "market-watchlist-observation-input/1" }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["policy_code", "policy_version", "order"],
+      "properties": {
+        "policy_code": { "const": "SYSTEM_PROSPECTIVE_ITEM_OBSERVATION_V1" },
+        "policy_version": { "const": "v1" },
+        "order": { "const": "SIGNAL_TIME_DESC" }
+      }
+    },
+    "publicPurpose": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["purpose_code", "rights_version_label", "terms_sha256", "distribution_mode"],
+      "properties": {
+        "purpose_code": { "const": "CS2_ROTATE_BOUNDED_ITEM_OBSERVATION_PAGE_V1" },
+        "rights_version_label": { "const": "upstream-bounded-item-observation-page-2026-09-06" },
+        "terms_sha256": { "const": "547a6a0d29f78f038ca785c60aad1788b8d7acd628322fc0c54799ccea1be1e9" },
+        "distribution_mode": { "const": "BOUNDED_SAME_ORIGIN_DERIVED_PAGE" }
+      }
+    },
+    "publication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "publication_id", "manifest_hash", "as_of", "known_at", "public_available_at", "published_at",
+        "fresh_until", "retain_until", "freshness", "supersedes_publication_id", "producer_release",
+        "policy", "public_purpose", "catalog", "source_coverage", "data_quality"
+      ],
+      "properties": {
+        "publication_id": { "$ref": "#/$defs/sha256" },
+        "manifest_hash": { "$ref": "#/$defs/sha256" },
+        "as_of": { "$ref": "#/$defs/timestamp" },
+        "known_at": { "$ref": "#/$defs/timestamp" },
+        "public_available_at": { "$ref": "#/$defs/timestamp" },
+        "published_at": { "$ref": "#/$defs/timestamp" },
+        "fresh_until": { "$ref": "#/$defs/timestamp" },
+        "retain_until": { "$ref": "#/$defs/timestamp" },
+        "freshness": { "enum": ["FRESH", "STALE_RETAINED"] },
+        "supersedes_publication_id": { "$ref": "#/$defs/nullableSha256" },
+        "producer_release": { "$ref": "#/$defs/producerRelease" },
+        "policy": { "$ref": "#/$defs/policy" },
+        "public_purpose": { "$ref": "#/$defs/publicPurpose" },
+        "catalog": { "$ref": "#/$defs/catalogDescriptor" },
+        "source_coverage": { "$ref": "#/$defs/sourceCoverage" },
+        "data_quality": { "$ref": "#/$defs/dataQuality" }
+      }
+    },
+    "member": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "position", "lane", "validation_status", "observation_id", "analysis_unit_id",
+        "signal_observed_at", "known_at", "reason_codes", "source_coverage", "data_quality", "catalog"
+      ],
+      "properties": {
+        "position": { "type": "integer", "minimum": 1, "maximum": 500 },
+        "lane": { "const": "OBSERVATION" },
+        "validation_status": { "const": "SHADOW_UNVALIDATED" },
+        "observation_id": { "$ref": "#/$defs/sha256" },
+        "analysis_unit_id": { "$ref": "#/$defs/identifier" },
+        "signal_observed_at": { "$ref": "#/$defs/timestamp" },
+        "known_at": { "$ref": "#/$defs/timestamp" },
+        "reason_codes": { "$ref": "#/$defs/reasonCodes" },
+        "source_coverage": { "$ref": "#/$defs/sourceCoverage" },
+        "data_quality": { "$ref": "#/$defs/dataQuality" },
+        "catalog": { "$ref": "#/$defs/catalogProjection" }
+      }
+    },
+    "listQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["as_of", "query_known_at", "publication_id", "sort", "page_size", "cursor"],
+      "properties": {
+        "as_of": { "$ref": "#/$defs/nullableTimestamp" },
+        "query_known_at": { "$ref": "#/$defs/timestamp" },
+        "publication_id": { "$ref": "#/$defs/sha256" },
+        "sort": { "const": "SIGNAL_TIME_DESC" },
+        "page_size": { "type": "integer", "minimum": 1, "maximum": 100 },
+        "cursor": { "type": ["string", "null"], "maxLength": 8192, "pattern": "^[A-Za-z0-9_-]+$" }
+      }
+    },
+    "watchlistResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["api_contract", "api_version", "response_kind", "lane", "validation_status", "query", "publication", "total", "members", "next_cursor"],
+      "properties": {
+        "api_contract": { "const": "market-watchlist-public-observation-api" },
+        "api_version": { "const": "v1" },
+        "response_kind": { "const": "OBSERVATION_WATCHLIST" },
+        "lane": { "const": "OBSERVATION" },
+        "validation_status": { "const": "SHADOW_UNVALIDATED" },
+        "query": { "$ref": "#/$defs/listQuery" },
+        "publication": { "$ref": "#/$defs/publication" },
+        "total": { "type": "integer", "minimum": 0, "maximum": 500 },
+        "members": { "type": "array", "items": { "$ref": "#/$defs/member" } },
+        "next_cursor": { "type": ["string", "null"], "maxLength": 8192, "pattern": "^[A-Za-z0-9_-]+$" }
+      }
+    },
+    "detailQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["query_known_at", "publication_id", "analysis_unit_id"],
+      "properties": {
+        "query_known_at": { "$ref": "#/$defs/timestamp" },
+        "publication_id": { "$ref": "#/$defs/sha256" },
+        "analysis_unit_id": { "$ref": "#/$defs/identifier" }
+      }
+    },
+    "detailResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["api_contract", "api_version", "response_kind", "lane", "validation_status", "query", "publication", "member"],
+      "properties": {
+        "api_contract": { "const": "market-watchlist-public-observation-api" },
+        "api_version": { "const": "v1" },
+        "response_kind": { "const": "OBSERVATION_DETAIL" },
+        "lane": { "const": "OBSERVATION" },
+        "validation_status": { "const": "SHADOW_UNVALIDATED" },
+        "query": { "$ref": "#/$defs/detailQuery" },
+        "publication": { "$ref": "#/$defs/publication" },
+        "member": { "$ref": "#/$defs/member" }
+      }
+    },
+    "errorResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["api_contract", "api_version", "response_kind", "error"],
+      "properties": {
+        "api_contract": { "const": "market-watchlist-public-observation-api" },
+        "api_version": { "const": "v1" },
+        "response_kind": { "const": "ERROR" },
+        "error": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["code", "retryable"],
+          "properties": {
+            "code": {
+              "enum": ["INVALID_ARGUMENT", "INVALID_CURSOR", "NOT_PUBLISHED", "NOT_FOUND", "BACKEND_UNAVAILABLE", "PUBLICATION_EXPIRED", "PUBLICATION_WITHDRAWN", "RESULT_CORRUPT"]
+            },
+            "retryable": { "type": "boolean" }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "api_contract": "price-display-api",
+  "api_version": "v1",
+  "document_hash": "c7e78264f27ad9c75c82c9b65c1cc2345837c4a8eaa767c0a5716d48a0b1c560",
+  "error": {
+    "code": "INVALID_ARGUMENT",
+    "http_status": 400,
+    "retryable": false
+  },
+  "items": [],
+  "pagination": null,
+  "query": null,
+  "response_kind": "ERROR",
+  "snapshot": null
+}

@@ -1,0 +1,399 @@
+.public-trending {
+  --trending-panel: rgb(255 253 247 / 82%);
+}
+
+.public-trending .public-result-page__header {
+  align-items: center;
+  padding: clamp(14px, 2vw, 22px);
+}
+
+.public-trending__controls {
+  display: grid;
+  grid-template-columns: auto repeat(3, minmax(150px, 1fr));
+  gap: 10px;
+  padding: 14px;
+  background: rgb(231 239 241 / 62%);
+  border: 1px solid rgb(50 129 172 / 24%);
+}
+
+.public-trending__directions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(90px, 1fr));
+}
+
+/* The one-row filter bar needs about 680px. Above 900px the persistent sidebar can leave less
+   than that, so wrap the bar on the page's own width; the media rules below still apply. */
+.public-trending {
+  container-type: inline-size;
+}
+
+@container (max-width: 820px) {
+  .public-trending__controls {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .public-trending__directions {
+    grid-column: 1 / -1;
+  }
+}
+
+.public-trending__directions button,
+.public-trending__clear-model,
+.public-trending__problem button,
+.public-trending__problem a {
+  min-height: 46px;
+  padding: 10px 14px;
+  background: #fffdf7;
+  border: 1px solid rgb(30 32 47 / 22%);
+  color: var(--cs-navy);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.public-trending__directions button + button {
+  border-left: 0;
+}
+
+.public-trending__directions button.is-active {
+  background: var(--cs-navy);
+  border-color: var(--cs-navy);
+  box-shadow: inset 0 -4px 0 var(--cs-amber);
+  color: #fffdf7;
+}
+
+.public-trending__controls > label {
+  display: grid;
+  gap: 4px;
+}
+
+.public-trending__controls > label > span {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.public-trending__controls select {
+  width: 100%;
+  min-height: 46px;
+  padding: 8px 34px 8px 12px;
+  background: #fffdf7;
+  border: 1px solid rgb(30 32 47 / 22%);
+  color: var(--cs-navy);
+  font: inherit;
+  font-weight: 650;
+}
+
+.public-trending__clear-model {
+  grid-column: 1 / -1;
+  justify-self: start;
+  min-height: 36px;
+  padding-block: 6px;
+}
+
+.public-trending__content {
+  position: relative;
+  display: grid;
+  align-content: start;
+  min-height: clamp(360px, calc(100dvh - 160px), 720px);
+}
+
+.public-trending__content.is-refreshing > :not(.public-trending__refreshing) {
+  opacity: 0.62;
+  pointer-events: none;
+}
+
+.public-trending__refreshing {
+  position: absolute;
+  z-index: 2;
+  top: 12px;
+  right: 12px;
+  padding: 8px 12px;
+  background: #fffdf7;
+  border: 1px solid rgb(50 129 172 / 38%);
+  box-shadow: 0 8px 24px rgb(30 32 47 / 10%);
+  color: var(--cs-blue);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.public-trending__publication {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
+  background: var(--trending-panel);
+  border: 1px solid rgb(30 32 47 / 16%);
+}
+
+.public-trending__publication > div,
+.public-trending__publication > strong {
+  display: grid;
+  gap: 3px;
+  align-content: center;
+  min-height: 64px;
+  padding: 10px 16px;
+  border-right: 1px solid rgb(30 32 47 / 13%);
+}
+
+.public-trending__publication span {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.public-trending__publication time,
+.public-trending__publication strong {
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.public-trending__publication > strong {
+  place-items: center;
+  border-right: 0;
+  color: #236f55;
+  text-transform: uppercase;
+}
+
+.public-trending__publication > strong.is-stale {
+  color: #9b6112;
+}
+
+.public-trending__results {
+  display: grid;
+  gap: 12px;
+}
+
+.public-trending__results > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(30 32 47 / 16%);
+}
+
+.public-trending__results h2 {
+  margin: 0 0 9px;
+  font-size: var(--public-section-title-size);
+  font-weight: var(--public-page-title-weight);
+  letter-spacing: var(--public-page-title-tracking);
+  line-height: var(--public-page-title-leading);
+}
+
+.public-trending__results > div > span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.public-trending__results ol {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.public-trending__results li {
+  min-width: 0;
+}
+
+.public-trending__results li > a {
+  display: grid;
+  min-height: 110px;
+  grid-template-columns: 38px 104px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 12px 10px 8px;
+  background: var(--trending-panel);
+  border: 1px solid rgb(30 32 47 / 16%);
+  color: var(--cs-navy);
+  text-decoration: none;
+}
+
+.public-trending__results li > a:hover,
+.public-trending__results li > a:focus-visible {
+  border-color: rgb(50 129 172 / 62%);
+  box-shadow: inset 4px 0 0 var(--cs-amber);
+}
+
+.public-trending__results .item-image-slot--thumbnail {
+  width: 104px;
+  height: 78px;
+}
+
+.public-trending__rank {
+  color: var(--cs-blue);
+  font-family: var(--mono);
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.public-trending__item-copy,
+.public-trending__change {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+.public-trending__item-copy > strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.public-trending__item-copy small,
+.public-trending__change small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.public-trending__change {
+  justify-items: end;
+  text-align: right;
+}
+
+.public-trending__change > strong {
+  color: var(--cs-blue);
+  font-family: var(--mono);
+  font-size: 18px;
+}
+
+.public-trending__change[data-direction='LOSERS'] > strong {
+  color: #a65d16;
+}
+
+.public-trending__loading,
+.public-trending__empty,
+.public-trending__problem {
+  padding: clamp(24px, 4vw, 44px);
+  background: var(--trending-panel);
+  border: 1px solid rgb(30 32 47 / 16%);
+  border-left: 4px solid var(--cs-blue);
+}
+
+.public-trending__loading {
+  min-height: 140px;
+  align-content: center;
+}
+
+.public-trending__empty,
+.public-trending__problem {
+  display: grid;
+  gap: 10px;
+}
+
+.public-trending__empty h2,
+.public-trending__problem h2 {
+  margin: 0;
+  font-size: var(--public-section-title-size);
+  font-weight: var(--public-page-title-weight);
+  letter-spacing: var(--public-page-title-tracking);
+  line-height: var(--public-page-title-leading);
+}
+
+.public-trending__problem p {
+  margin: 0;
+}
+
+.public-trending__problem > p:first-child {
+  color: var(--cs-blue);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+}
+
+.public-trending__problem > p:not(:first-child),
+.public-trending__empty p,
+.public-trending__disclaimer,
+.public-trending__more-status {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.public-trending__problem > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.public-trending__problem button {
+  background: var(--cs-navy);
+  color: #fffdf7;
+}
+
+.public-trending__disclaimer,
+.public-trending__more-status {
+  margin: 0;
+}
+
+@media (max-width: 1220px) {
+  .public-trending__results ol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 860px) {
+  .public-trending__controls {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .public-trending__directions {
+    grid-column: 1 / -1;
+  }
+
+  .public-trending__publication {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .public-trending__publication > strong {
+    grid-column: 1 / -1;
+    min-height: 42px;
+  }
+
+  .public-trending__results ol {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .public-trending .public-result-page__header {
+    display: grid;
+    gap: 14px;
+    align-items: start;
+  }
+
+  .public-trending__controls {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .public-trending__directions,
+  .public-trending__clear-model {
+    grid-column: auto;
+  }
+
+  .public-trending__publication {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .public-trending__publication > div,
+  .public-trending__publication > strong {
+    min-height: 48px;
+    border-right: 0;
+    border-bottom: 1px solid rgb(30 32 47 / 13%);
+  }
+
+  .public-trending__results li > a {
+    grid-template-columns: 30px 82px minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .public-trending__results .item-image-slot--thumbnail {
+    width: 82px;
+    height: 66px;
+  }
+
+  .public-trending__change {
+    grid-column: 3;
+    justify-items: start;
+    text-align: left;
+  }
+}

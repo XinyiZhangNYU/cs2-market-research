@@ -1,0 +1,76 @@
+{
+  "api_contract": "price-display-api",
+  "api_version": "v1",
+  "document_hash": "78b76d0fe8766ef8aca0b9e63df62d61b78bfcd556131e696644e2e4b8780ced",
+  "items": [
+    {
+      "amounts": {
+        "CNY": {
+          "amount": null,
+          "basis": null,
+          "currency": "CNY",
+          "reason": "FX_STALE",
+          "rounding": null,
+          "scale": null,
+          "status": "UNAVAILABLE"
+        },
+        "USD": {
+          "amount": "10.00000000",
+          "basis": "NATIVE",
+          "currency": "USD",
+          "reason": null,
+          "rounding": "EXACT",
+          "scale": 8,
+          "status": "AVAILABLE"
+        }
+      },
+      "analysis_unit_id": "fixture:价格/./\\:é",
+      "available_at": "2026-09-03T00:00:00.000000Z",
+      "bucket_at": "2026-08-28T12:00:00.000000Z",
+      "fx": null,
+      "identity_available_at": "2026-09-02T00:00:00.000000Z",
+      "identity_policy": "CATALOG_SNAPSHOT_EXACT_ITEM_V1",
+      "item_id": "9007199254740993",
+      "late_bound": false,
+      "observed_at": "2026-08-28T12:00:00.000000Z",
+      "quote_id": "0f0090581c95f93a6bcb7234a446716770d97f625974506d3aef8d8cb4eebf32",
+      "quote_kind": "ASK",
+      "source": {
+        "logical_market": "market_a",
+        "quote_origin": "SOURCE_QUOTE",
+        "transport": "upstream"
+      },
+      "source_available_at": "2026-08-29T00:00:00.000000Z",
+      "source_collected_at": null,
+      "source_price": {
+        "currency": "USD",
+        "normalized_fraction_digits": 8,
+        "unit": "USD_DECIMAL",
+        "upstream_fraction_digits": null,
+        "value": "10.00000000"
+      },
+      "source_price_reason": null,
+      "source_updated_at": null,
+      "time_basis": "BUCKET_AT"
+    }
+  ],
+  "pagination": null,
+  "query": {
+    "analysis_unit_id": "fixture:价格/./\\:é",
+    "as_of": "2026-08-30T12:00:00.000000Z",
+    "known_at": "2026-09-03T01:00:00.000000Z",
+    "snapshot_id": "8290d89288df36add6a15df0287bd049ba396d5d9290a89db9920b62b702efbc"
+  },
+  "response_kind": "PRICE_ITEM",
+  "snapshot": {
+    "available_at": "2026-09-03T00:00:00.000000Z",
+    "catalog_as_of": "2026-08-27T00:00:00.000000Z",
+    "catalog_available_at": "2026-09-02T00:00:00.000000Z",
+    "catalog_snapshot_id": "040d69d4724f6c264dcad12c6dfaa979847cd7ab1e1db1d554858c766f44a052",
+    "kind": "CURRENT",
+    "market_as_of": "2026-08-30T12:00:00.000000Z",
+    "price_policy_version": "price-display-read/1",
+    "published_at": "2026-09-03T00:00:00.000000Z",
+    "snapshot_id": "8290d89288df36add6a15df0287bd049ba396d5d9290a89db9920b62b702efbc"
+  }
+}

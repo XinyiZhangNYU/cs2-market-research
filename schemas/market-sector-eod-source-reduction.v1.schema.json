@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.cs2-research.invalid/schemas/market-sector-eod-source-reduction.v1.schema.json",
+  "title": "MARKET/SECTOR end-of-day source reduction V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "bucket_date",
+    "reduced_at",
+    "membership_id",
+    "input_snapshot_sha256",
+    "policy_sha256",
+    "reduction_id",
+    "source_facts",
+    "diagnostics"
+  ],
+  "properties": {
+    "schema": {"const": "market-sector-eod-source-reduction/1"},
+    "bucket_date": {"type": "string", "format": "date"},
+    "reduced_at": {"type": "string", "format": "date-time", "pattern": "Z$"},
+    "membership_id": {"type": "string", "minLength": 1},
+    "input_snapshot_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "policy_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "reduction_id": {"type": "string", "pattern": "^market_sector_eod_reduction_v1_[0-9a-f]{24}$"},
+    "source_facts": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/sourceFact"}
+    },
+    "diagnostics": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/diagnostic"}
+    }
+  },
+  "$defs": {
+    "sourceFact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "item_id",
+        "bucket_date",
+        "logical_source",
+        "ask_atoms",
+        "visible_listing_slots",
+        "observed_at",
+        "available_at",
+        "source_fact_sha256",
+        "transport"
+      ],
+      "properties": {
+        "item_id": {"type": "integer", "minimum": 1},
+        "bucket_date": {"type": "string", "format": "date"},
+        "logical_source": {"enum": ["market_a", "market_b", "market_c"]},
+        "ask_atoms": {"type": "integer", "minimum": 1},
+        "visible_listing_slots": {"type": ["integer", "null"], "minimum": 0},
+        "observed_at": {"type": "string", "format": "date-time", "pattern": "Z$"},
+        "available_at": {"type": "string", "format": "date-time", "pattern": "Z$"},
+        "source_fact_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "transport": {"const": "upstream"}
+      }
+    },
+    "diagnostic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "analysis_unit_id",
+        "item_id",
+        "logical_source",
+        "status",
+        "supplied_slot_count",
+        "positive_fresh_slot_count",
+        "stale_slot_count",
+        "invalid_or_missing_ask_slot_count",
+        "reduced_ask_atoms",
+        "reason_codes",
+        "lineage_sha256"
+      ],
+      "properties": {
+        "analysis_unit_id": {"type": "string", "minLength": 1},
+        "item_id": {"type": "integer", "minimum": 1},
+        "logical_source": {"enum": ["market_a", "market_b", "market_c"]},
+        "status": {
+          "enum": [
+            "QUALIFIED",
+            "INSUFFICIENT_SLOTS",
+            "INVALID_OR_MISSING_ASK",
+            "STALE_QUOTE",
+            "CROSS_SOURCE_INCOHERENT"
+          ]
+        },
+        "supplied_slot_count": {"type": "integer", "minimum": 0, "maximum": 12},
+        "positive_fresh_slot_count": {"type": "integer", "minimum": 0, "maximum": 12},
+        "stale_slot_count": {"type": "integer", "minimum": 0, "maximum": 12},
+        "invalid_or_missing_ask_slot_count": {"type": "integer", "minimum": 0, "maximum": 12},
+        "reduced_ask_atoms": {"type": ["integer", "null"], "minimum": 1},
+        "reason_codes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "lineage_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  }
+}

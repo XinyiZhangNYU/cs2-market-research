@@ -1,0 +1,100 @@
+{
+  "api_contract": "price-display-api",
+  "api_version": "v1",
+  "document_hash": "f243ff5d8e8ed1238a71e6ba0840a140e503fef979a7090543b680ad17d23c70",
+  "items": [
+    {
+      "amounts": {
+        "CNY": {
+          "amount": "100.80",
+          "basis": "FX_DERIVED",
+          "currency": "CNY",
+          "reason": null,
+          "rounding": "EXACT",
+          "scale": 2,
+          "status": "AVAILABLE"
+        },
+        "USD": {
+          "amount": "15.00000000",
+          "basis": "NATIVE",
+          "currency": "USD",
+          "reason": null,
+          "rounding": "EXACT",
+          "scale": 8,
+          "status": "AVAILABLE"
+        }
+      },
+      "analysis_unit_id": "fixture:价格/./\\:é",
+      "available_at": "2026-09-03T00:00:00.000000Z",
+      "bucket_at": "2026-08-30T12:00:00.000000Z",
+      "fx": {
+        "authority": "ECB",
+        "available_at": "2026-08-29T00:00:00.000000Z",
+        "carry_days": 2,
+        "cny_per_usd": "6.720000000000000000",
+        "cny_valid_from": "2026-08-28T14:00:00.000000Z",
+        "conversion_policy_version": "ecb-eur-cross-daily/2",
+        "fx_selection_policy_version": "ecb-eur-cross-daily/2",
+        "method": "ECB_EUR_CROSS",
+        "public_rate_id": "eba287891252e8fa862401bccbdeb8bca8ef04c91c6b5f98390d1484c2520210",
+        "source_event_date": "2026-08-28",
+        "usage": "PRICE_DISPLAY_ONLY",
+        "usd_valid_from": "2026-08-28T14:00:00.000000Z"
+      },
+      "identity_available_at": "2026-09-02T00:00:00.000000Z",
+      "identity_policy": "CURRENT_EXACT_MHN_LATE_BIND_V1",
+      "item_id": "9007199254740993",
+      "late_bound": true,
+      "observed_at": "2026-08-30T12:00:00.000000Z",
+      "quote_id": "d897647d0532906b5cea79a509f5721be2055f1e4572ef09d5ae7d252bcf950e",
+      "quote_kind": "ASK",
+      "source": {
+        "logical_market": null,
+        "quote_origin": "PROVIDER_AGGREGATE",
+        "transport": "upstream"
+      },
+      "source_available_at": "2026-08-30T12:00:00.000000Z",
+      "source_collected_at": null,
+      "source_price": {
+        "currency": "USD",
+        "normalized_fraction_digits": 8,
+        "unit": "USD_DECIMAL",
+        "upstream_fraction_digits": null,
+        "value": "15.00000000"
+      },
+      "source_price_reason": null,
+      "source_updated_at": null,
+      "time_basis": "BUCKET_AT"
+    }
+  ],
+  "pagination": {
+    "next_cursor": null,
+    "page_size": 2
+  },
+  "query": {
+    "analysis_unit_id": "fixture:价格/./\\:é",
+    "as_of": "2026-08-30T12:00:00.000000Z",
+    "cursor": "eyJhZnRlciI6eyJldmVudF9hdCI6IjIwMjYtMDgtMjlUMTI6MDA6MDAuMDAwMDAwWiIsImxvZ2ljYWxfbWFya2V0IjoibWFya2V0X2IiLCJxdW90ZV9pZCI6ImM0YzBkNzcxMGVkZGQwZWM3MDAzM2RkYTkzYmNiYWIwNDIyOWNhOThmYmFmZWEzMjc2MmM5NmU3MTA0YTg4NjAiLCJxdW90ZV9raW5kIjoiQklEIiwicXVvdGVfb3JpZ2luIjoiU09VUkNFX1FVT1RFIn0sImFwaV9jb250cmFjdCI6InByaWNlLWRpc3BsYXktYXBpIiwiYXBpX3ZlcnNpb24iOiJ2MSIsInF1ZXJ5Ijp7ImFuYWx5c2lzX3VuaXRfaWQiOiJmaXh0dXJlOuS7t-agvC8uL1xcOmXMgSIsImFzX29mIjoiMjAyNi0wOC0zMFQxMjowMDowMC4wMDAwMDBaIiwiY3Vyc29yIjpudWxsLCJmcm9tIjoiMjAyNi0wOC0yOFQwMDowMDowMC4wMDAwMDBaIiwia25vd25fYXQiOiIyMDI2LTA5LTAzVDAxOjAwOjAwLjAwMDAwMFoiLCJsb2dpY2FsX21hcmtldCI6bnVsbCwicGFnZV9zaXplIjoyLCJxdW90ZV9raW5kIjpudWxsLCJxdW90ZV9vcmlnaW4iOm51bGwsInNuYXBzaG90X2lkIjoiZWYyZmVlZDgyNDdlMDk0MWJkZjRkYTg0YzIyNjQxOTE2M2E2OWE5YTJmZmQzMTM0MmZhY2ZlNmMwYTk2YmZlZCIsInNvcnQiOiJFVkVOVF9TT1VSQ0VfUVVPVEVfSURfQVNDIiwidG8iOiIyMDI2LTA4LTMxVDAwOjAwOjAwLjAwMDAwMFoifX0K",
+    "from": "2026-08-28T00:00:00.000000Z",
+    "known_at": "2026-09-03T01:00:00.000000Z",
+    "logical_market": null,
+    "page_size": 2,
+    "quote_kind": null,
+    "quote_origin": null,
+    "snapshot_id": "ef2feed8247e0941bdf4da84c226419163a69a9a2ffd31342facfe6c0a96bfed",
+    "sort": "EVENT_SOURCE_QUOTE_ID_ASC",
+    "to": "2026-08-31T00:00:00.000000Z"
+  },
+  "response_kind": "PRICE_HISTORY",
+  "snapshot": {
+    "available_at": "2026-09-03T00:00:00.000000Z",
+    "catalog_as_of": "2026-08-27T00:00:00.000000Z",
+    "catalog_available_at": "2026-09-02T00:00:00.000000Z",
+    "catalog_snapshot_id": "040d69d4724f6c264dcad12c6dfaa979847cd7ab1e1db1d554858c766f44a052",
+    "kind": "HISTORY",
+    "market_as_of": "2026-08-30T12:00:00.000000Z",
+    "price_policy_version": "price-display-read/1",
+    "published_at": "2026-09-03T00:00:00.000000Z",
+    "snapshot_id": "ef2feed8247e0941bdf4da84c226419163a69a9a2ffd31342facfe6c0a96bfed"
+  }
+}

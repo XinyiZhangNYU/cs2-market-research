@@ -1,0 +1,53 @@
+{
+  "api_contract": "market-watchlist-public-observation-api",
+  "api_version": "v1",
+  "response_kind": "OBSERVATION_WATCHLIST",
+  "lane": "OBSERVATION",
+  "validation_status": "SHADOW_UNVALIDATED",
+  "query": {
+    "as_of": null,
+    "query_known_at": "2026-09-06T12:05:00.000000Z",
+    "publication_id": "1111111111111111111111111111111111111111111111111111111111111111",
+    "sort": "SIGNAL_TIME_DESC",
+    "page_size": 50,
+    "cursor": null
+  },
+  "publication": {
+    "publication_id": "1111111111111111111111111111111111111111111111111111111111111111",
+    "manifest_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+    "as_of": "2026-09-06T12:00:00.000000Z",
+    "known_at": "2026-09-06T12:00:30.000000Z",
+    "public_available_at": "2026-09-06T12:01:00.000000Z",
+    "published_at": "2026-09-06T12:02:00.000000Z",
+    "fresh_until": "2026-09-06T13:01:00.000000Z",
+    "retain_until": "2026-09-07T12:01:00.000000Z",
+    "freshness": "FRESH",
+    "supersedes_publication_id": null,
+    "producer_release": {
+      "release_code": "prospective-observation-fixture-v1",
+      "algorithm_version": "single-item-shadow-v1",
+      "data_quality_policy_version": "prospective-complete-v1",
+      "input_contract_version": "market-watchlist-observation-input/1"
+    },
+    "policy": { "policy_code": "SYSTEM_PROSPECTIVE_ITEM_OBSERVATION_V1", "policy_version": "v1", "order": "SIGNAL_TIME_DESC" },
+    "public_purpose": {
+      "purpose_code": "CS2_ROTATE_BOUNDED_ITEM_OBSERVATION_PAGE_V1",
+      "rights_version_label": "upstream-bounded-item-observation-page-2026-09-06",
+      "terms_sha256": "547a6a0d29f78f038ca785c60aad1788b8d7acd628322fc0c54799ccea1be1e9",
+      "distribution_mode": "BOUNDED_SAME_ORIGIN_DERIVED_PAGE"
+    },
+    "catalog": {
+      "snapshot_id": "3333333333333333333333333333333333333333333333333333333333333333",
+      "catalog_version": "catalog-fixture-v1",
+      "as_of": "2026-09-06T11:55:00.000000Z",
+      "available_at": "2026-09-06T11:56:00.000000Z",
+      "member_count": 1,
+      "member_set_hash": "4444444444444444444444444444444444444444444444444444444444444444"
+    },
+    "source_coverage": { "status": "COMPLETE", "expected_source_count": 3, "observed_source_count": 3, "observation_count": 234 },
+    "data_quality": { "status": "COMPLETE", "reason_codes": [] }
+  },
+  "total": 0,
+  "members": [],
+  "next_cursor": null
+}

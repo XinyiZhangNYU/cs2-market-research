@@ -1,0 +1,126 @@
+{
+  "api_contract": "valve-event-public-api",
+  "api_version": "v1",
+  "etag": "e6fc9f967c8dd140533b69bacae6759cbca0d079caae771d03afcfb319279c40",
+  "event": {
+    "flags": {
+      "corrected": true,
+      "source_updated": true,
+      "withdrawn": false
+    },
+    "latest_outcome": {
+      "evidence_status": "ALL_PLANNED_TARGETS_AVAILABLE",
+      "explanation": "The preregistered synthetic market observation remained aligned with the original no-clear-impact conclusion.",
+      "label": "SUPPORTED",
+      "noise_and_causality_disclosure": "This later alignment does not establish that the Valve announcement caused, prevented, or offset any market movement.",
+      "observation_cutoff_at": "2026-08-27T12:10:00.000000Z",
+      "outcome_evaluation_id": "outcome-evaluation-synthetic-reload-001",
+      "outcome_publication_id": "outcome-publication-synthetic-reload-001",
+      "policy_release_id": "synthetic-functional-policy-v1-not-production",
+      "published_at": "2026-08-27T12:12:00.000000Z"
+    },
+    "latest_publication": {
+      "article": {
+        "conclusion": "There is currently no clear evidence of a market-wide effect, while a mild player-sentiment channel cannot be excluded.",
+        "factual_summary": "Valve announced a synthetic reload-mechanic change in this offline contract fixture.",
+        "observation_and_falsification": "The sealed plan observes the formal market state after seven days. A broad directional shift would weaken the no-clear-impact conclusion, while missing qualified data would produce UNAVAILABLE rather than a guessed result.",
+        "scope_analysis": "The overall market is tracked. The reload-mechanic subject has no deterministic sector or item mapping, so it remains explicitly untracked and carries no invented price series.",
+        "title": "Reload changes and plausible market transmission",
+        "transmission_mechanisms": "Player sentiment could change activity at the margin, but the announcement does not directly create or remove market supply in the tracked universe.",
+        "uncertainties_and_counterforces": "Concurrent market events, ordinary noise, and the lack of a tracked subject mapping could dominate any small response. Timing alone cannot identify causality."
+      },
+      "claims": [
+        {
+          "claim_id": "claim-market-synthetic-reload-001",
+          "direction": "NO_CLEAR_IMPACT",
+          "falsification_conditions": [
+            "A preregistered broad directional shift appears in the formal market state."
+          ],
+          "horizon": "SHORT_TERM",
+          "limitations": [
+            "The announcement cutoff contains no direct evidence of a market-wide state change."
+          ],
+          "mechanism_codes": [
+            "PLAYER_SENTIMENT"
+          ],
+          "observation_targets": [
+            "synthetic.market.state_alignment"
+          ],
+          "reasoning_section_ref": "scope_analysis",
+          "scope_display": "Overall CS2 market",
+          "scope_kind": "MARKET",
+          "scope_ref": "market:global",
+          "tracking_status": "TRACKED"
+        },
+        {
+          "claim_id": "claim-mechanism-synthetic-reload-001",
+          "direction": "UNCERTAIN",
+          "falsification_conditions": [
+            "No sustained activity or sentiment response is observed in a future qualified mechanism dataset."
+          ],
+          "horizon": "IMMEDIATE",
+          "limitations": [
+            "This subject is outside the frozen tracked universe."
+          ],
+          "mechanism_codes": [
+            "PLAYER_SENTIMENT"
+          ],
+          "observation_targets": [
+            "qualitative.player_sentiment"
+          ],
+          "reasoning_section_ref": "transmission_mechanisms",
+          "scope_display": "Reload-mechanic subject (untracked)",
+          "scope_kind": "MECHANISM",
+          "scope_ref": null,
+          "tracking_status": "UNTRACKED_SUBJECT"
+        }
+      ],
+      "context_snapshot_id": "context-synthetic-reload-001",
+      "context_status": "PARTIAL",
+      "correction_of_publication_id": "publication-synthetic-reload-001",
+      "disclosures": [
+        "AI-assisted analysis reviewed and approved by a human; this project is not affiliated with or endorsed by Valve or Steam.",
+        "Observational event analysis only; not investment advice.",
+        "This correction uses a retrospective-correction temporal mode and preserves the earlier public version."
+      ],
+      "event_cutoff_at": "2026-08-20T12:00:00.000000Z",
+      "known_at": "2026-08-21T09:00:00.000000Z",
+      "public_payload_sha256": "e6fc9f967c8dd140533b69bacae6759cbca0d079caae771d03afcfb319279c40",
+      "publication_id": "publication-synthetic-reload-002",
+      "publication_version_no": 2,
+      "published_at": "2026-08-21T09:01:00.000000Z",
+      "source_notice_version_id": "source-version-synthetic-reload-002",
+      "temporal_mode": "RETROSPECTIVE_CORRECTION"
+    },
+    "public_versions": [
+      {
+        "publication_id": "publication-synthetic-reload-001",
+        "publication_version_no": 1,
+        "published_at": "2026-08-20T13:00:00.000000Z",
+        "temporal_mode": "RETROSPECTIVE_REPLAY",
+        "withdrawal_reason": null,
+        "withdrawn": false
+      },
+      {
+        "publication_id": "publication-synthetic-reload-002",
+        "publication_version_no": 2,
+        "published_at": "2026-08-21T09:01:00.000000Z",
+        "temporal_mode": "RETROSPECTIVE_CORRECTION",
+        "withdrawal_reason": null,
+        "withdrawn": false
+      }
+    ],
+    "source": {
+      "event_id": "event-synthetic-reload-001",
+      "first_observed_at": "2026-08-20T12:01:00.000000Z",
+      "official_published_at": "2026-08-20T12:00:00.000000Z",
+      "official_title": "Synthetic reload mechanics update",
+      "official_url": "https://store.steampowered.com/news/app/730/view/synthetic-reload-001",
+      "source_code": "STEAM_ISteamNews_V2",
+      "source_notice_version_id": "source-version-synthetic-reload-002",
+      "source_updated_at": "2026-08-21T09:00:00.000000Z"
+    },
+    "status": "CORRECTED"
+  },
+  "response_kind": "VALVE_EVENT_DETAIL"
+}

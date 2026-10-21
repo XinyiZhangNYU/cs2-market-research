@@ -1,0 +1,9 @@
+{
+  "api_contract": "market-watchlist-public-api",
+  "api_version": "v1",
+  "response_kind": "ERROR",
+  "error": {
+    "code": "BACKEND_UNAVAILABLE",
+    "retryable": true
+  }
+}

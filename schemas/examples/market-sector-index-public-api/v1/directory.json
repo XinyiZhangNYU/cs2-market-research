@@ -1,0 +1,44 @@
+{
+  "contract_name": "market-sector-index-public-api",
+  "contract_version": "1",
+  "response_kind": "SCOPE_DIRECTORY",
+  "product_kind": "DESCRIPTIVE_MARKET_SECTOR_INDEX",
+  "purpose": "CS2_ROTATE_DERIVED_MARKET_SECTOR_INDEX_HISTORY_V1",
+  "prediction_status": "NOT_A_PREDICTION",
+  "release": {
+    "publication_id": "9999999999999999999999999999999999999999999999999999999999999999",
+    "manifest_sha256": "8888888888888888888888888888888888888888888888888888888888888888",
+    "rights_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "published_at": "2026-09-10T17:30:00Z",
+    "withdrawn_at": null,
+    "series_revision_id": "market_sector_index_series_1111111111111111111111111111111111111111111111111111111111111111",
+    "product_policy_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+    "source_result_sha256": "7777777777777777777777777777777777777777777777777777777777777777",
+    "history_start": "2026-09-08",
+    "history_end": "2026-09-10",
+    "availability_semantic": "RECONSTRUCTED_LATE_BOUND_NOT_HISTORICALLY_DECISION_AVAILABLE"
+  },
+  "scope": null,
+  "query": {
+    "from_date": null,
+    "to_date": null,
+    "after_date": null,
+    "limit": 1,
+    "next_after_date": null
+  },
+  "points": [],
+  "scopes": [
+    {
+      "scope_token": "5cae7b8d9e596aed9729bc81c52df450ee4473ce17e6791440e13407ea454967",
+      "scope_code": "ALL",
+      "scope_kind": "MARKET",
+      "labels": { "en": "Overall market", "zh_cn": "整体市场" },
+      "price_history_eligibility": "RECONSTRUCTED_HISTORY",
+      "first_available_date": "2026-09-08",
+      "last_available_date": "2026-09-10",
+      "current_member_count": 10,
+      "observed_price_member_count": 9,
+      "origin_uncertainty_disclosed": true
+    }
+  ]
+}

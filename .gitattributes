@@ -1,0 +1,6 @@
+# Many files are content-addressed: tests and loaders pin their exact SHA-256.
+# Check them out with LF bytes on every platform so the pins stay valid.
+* text=auto eol=lf
+
+# Immutable evidence bytes; never normalize line endings.
+frontend/public/tradeup/tradeup-graph.*.json -text

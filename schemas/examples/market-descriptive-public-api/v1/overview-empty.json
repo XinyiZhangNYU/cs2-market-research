@@ -1,0 +1,41 @@
+{
+  "contract_name": "market-descriptive-public-api",
+  "contract_version": "1",
+  "response_kind": "EMPTY",
+  "operation": "OVERVIEW",
+  "product_kind": "MARKET_DESCRIPTIVE",
+  "method": "EQUAL_WEIGHTED_MEMBER_RETURN",
+  "publication": {
+    "publication_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "parent_publication_id": null,
+    "manifest_sha256": "9d8d35d479bdffd594411bb9f4f396caff4cd0c516d941588e91b63590f4e2e5",
+    "rights_revision": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "published_at": "2026-09-08T21:02:00.000000Z",
+    "withdrawn_at": null
+  },
+  "snapshot": {
+    "catalog_snapshot_id": null,
+    "end_date": "2026-09-07",
+    "imported_at": "2026-09-08T21:01:00.000000Z",
+    "input_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "membership_version": "SYNTHETIC_FIXED_MEMBERS_V1",
+    "source_export_as_of": "2026-09-08T21:00:00.000000Z",
+    "start_date": "2026-09-06"
+  },
+  "freshness": {
+    "evaluated_at": "2026-09-08T23:00:00.000000Z",
+    "expected_latest_complete_date": "2026-09-07",
+    "lag_complete_days": 0,
+    "status": "NO_RECENT_STATISTIC",
+    "headline_data_date": null
+  },
+  "day_pair": null,
+  "headline": null,
+  "current_day_quality": {
+    "date": "2026-09-07",
+    "status": "UNAVAILABLE",
+    "scope": null
+  },
+  "scopes": [],
+  "history": []
+}

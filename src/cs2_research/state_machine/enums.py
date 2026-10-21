@@ -1,0 +1,323 @@
+"""Closed vocabularies for the versioned market-state contracts.
+
+The enums in this module deliberately keep orthogonal concepts separate.  In
+particular, a recommendation, a data-quality state, and an evidence flag can
+never be used where an economic cycle stage is expected.
+"""
+
+from __future__ import annotations
+
+from enum import StrEnum
+
+
+class ScopeKind(StrEnum):
+    MARKET = "MARKET"
+    SECTOR = "SECTOR"
+    ITEM = "ITEM"
+
+
+class AnalysisUnitKind(StrEnum):
+    """Economic identity granularity carried by item-scope facts.
+
+    This is deliberately separate from ``ScopeKind``: all three values below
+    are ITEM-scope, but a parent MHN, a provider/style variant, and an exact
+    pattern must never be fused into the same feature snapshot.
+    """
+
+    BASE_MHN = "BASE_MHN"
+    STYLE_VARIANT = "STYLE_VARIANT"
+    PATTERN_VARIANT = "PATTERN_VARIANT"
+
+
+class DataBranch(StrEnum):
+    A = "A"
+    B = "B"
+
+
+class DataStatus(StrEnum):
+    COMPLETE = "COMPLETE"
+    UNAVAILABLE_BY_DESIGN = "UNAVAILABLE_BY_DESIGN"
+    DEGRADED_OPTIONAL = "DEGRADED_OPTIONAL"
+    DATA_UNAVAILABLE_RUNTIME_GRACE = "DATA_UNAVAILABLE_RUNTIME_GRACE"
+    STALE_GRACE = "STALE_GRACE"
+    DATA_UNAVAILABLE_RUNTIME = "DATA_UNAVAILABLE_RUNTIME"
+    STALE = "STALE"
+    CONFLICTED = "CONFLICTED"
+
+
+class FreshnessStatus(StrEnum):
+    FRESH = "FRESH"
+    STALE = "STALE"
+
+
+class FeatureValueStatus(StrEnum):
+    AVAILABLE = "AVAILABLE"
+    UNAVAILABLE = "UNAVAILABLE"
+    CONFLICTED = "CONFLICTED"
+
+
+class MissingCause(StrEnum):
+    BY_DESIGN = "BY_DESIGN"
+    RUNTIME = "RUNTIME"
+
+
+class FeatureRequiredness(StrEnum):
+    REQUIRED = "REQUIRED"
+    OPTIONAL = "OPTIONAL"
+
+
+class FeatureProvision(StrEnum):
+    EXPECTED = "EXPECTED"
+    UNAVAILABLE_BY_DESIGN = "UNAVAILABLE_BY_DESIGN"
+
+
+class SemanticStatus(StrEnum):
+    CONFIRMED = "CONFIRMED"
+    PROVISIONAL = "PROVISIONAL"
+    UNKNOWN = "UNKNOWN"
+    INCOMPATIBLE = "INCOMPATIBLE"
+
+
+class EvidenceType(StrEnum):
+    PRICE = "PRICE"
+    TRADE = "TRADE"
+    ORDERBOOK = "ORDERBOOK"
+    LISTING = "LISTING"
+    SUPPLY = "SUPPLY"
+    PLATFORM_DERIVED = "PLATFORM_DERIVED"
+    INFERENCE = "INFERENCE"
+    EXTERNAL_CONTEXT = "EXTERNAL_CONTEXT"
+
+
+class Directness(StrEnum):
+    DIRECT = "DIRECT"
+    DERIVED = "DERIVED"
+    INFERRED = "INFERRED"
+    UNKNOWN = "UNKNOWN"
+
+
+class CoreDomain(StrEnum):
+    PRICE = "P"
+    DEMAND = "D"
+    SUPPLY = "S"
+
+
+class DomainStrength(StrEnum):
+    UNAVAILABLE = "UNAVAILABLE"
+    CONFLICTED = "CONFLICTED"
+    ABSENT = "ABSENT"
+    WEAK = "WEAK"
+    MODERATE = "MODERATE"
+    STRONG = "STRONG"
+
+
+class DomainMissingReasonCode(StrEnum):
+    """Source-neutral localization keys for unusable P/D/S evidence."""
+
+    UNAVAILABLE_BY_DESIGN = "UNAVAILABLE_BY_DESIGN"
+    OPTIONAL_DATA_UNAVAILABLE = "OPTIONAL_DATA_UNAVAILABLE"
+    DATA_UNAVAILABLE_RUNTIME_GRACE = "DATA_UNAVAILABLE_RUNTIME_GRACE"
+    DATA_UNAVAILABLE_RUNTIME = "DATA_UNAVAILABLE_RUNTIME"
+    STALE_GRACE = "STALE_GRACE"
+    STALE = "STALE"
+    CONFLICTED_INPUTS = "CONFLICTED_INPUTS"
+
+
+class SignalStrength(StrEnum):
+    NONE = "NONE"
+    WEAK = "WEAK"
+    MODERATE = "MODERATE"
+    STRONG = "STRONG"
+
+
+class ItemCycleStage(StrEnum):
+    BASELINE = "BASELINE"
+    PRESSURE_BUILDING = "PRESSURE_BUILDING"
+    CONFIRMED_UP = "CONFIRMED_UP"
+    COOLING = "COOLING"
+
+
+class MarketTrendStage(StrEnum):
+    UP_BUILDING = "UP_BUILDING"
+    UP_ACTIVE = "UP_ACTIVE"
+    UP_COOLING = "UP_COOLING"
+    NEUTRAL = "NEUTRAL"
+    DOWN_BUILDING = "DOWN_BUILDING"
+    DOWN_ACTIVE = "DOWN_ACTIVE"
+    DOWN_COOLING = "DOWN_COOLING"
+
+
+class MarketLevelRegime(StrEnum):
+    DEPRESSED = "DEPRESSED"
+    NORMAL = "NORMAL"
+    ELEVATED = "ELEVATED"
+    UNKNOWN = "UNKNOWN"
+
+
+class SectorTrendStage(StrEnum):
+    UP_BUILDING = "UP_BUILDING"
+    UP_ACTIVE = "UP_ACTIVE"
+    UP_COOLING = "UP_COOLING"
+    NEUTRAL = "NEUTRAL"
+    DOWN_BUILDING = "DOWN_BUILDING"
+    DOWN_ACTIVE = "DOWN_ACTIVE"
+    DOWN_COOLING = "DOWN_COOLING"
+
+
+class RelativeStrength(StrEnum):
+    LEADING = "LEADING"
+    IN_LINE = "IN_LINE"
+    LAGGING = "LAGGING"
+    UNKNOWN = "UNKNOWN"
+
+
+class EvidenceFlag(StrEnum):
+    DEMAND_ACCELERATING = "DEMAND_ACCELERATING"
+    SUPPLY_CONTRACTING = "SUPPLY_CONTRACTING"
+    PRICE_RISING = "PRICE_RISING"
+    SUSPECTED_SWEEPING = "SUSPECTED_SWEEPING"
+    SWEEPING_CONFIRMED = "SWEEPING_CONFIRMED"
+    REACCELERATION = "REACCELERATION"
+    OVERHEATED = "OVERHEATED"
+    SHOCK = "SHOCK"
+    BREADTH_COLLAPSE = "BREADTH_COLLAPSE"
+    LIQUIDITY_CONTRACTION = "LIQUIDITY_CONTRACTION"
+    CONCENTRATION_WARNING = "CONCENTRATION_WARNING"
+
+
+class RegimeRelation(StrEnum):
+    MARKET_DRIVEN = "MARKET_DRIVEN"
+    SECTOR_DRIVEN = "SECTOR_DRIVEN"
+    ITEM_SPECIFIC = "ITEM_SPECIFIC"
+    COUNTER_REGIME = "COUNTER_REGIME"
+    IN_LINE = "IN_LINE"
+    UNKNOWN = "UNKNOWN"
+
+
+class Recommendation(StrEnum):
+    IGNORE = "IGNORE"
+    WATCH = "WATCH"
+    RECOMMENDED_CANDIDATE = "RECOMMENDED_CANDIDATE"
+    STRONG_CANDIDATE = "STRONG_CANDIDATE"
+    OVERHEATED_DO_NOT_CHASE = "OVERHEATED_DO_NOT_CHASE"
+    COOLING_REMOVE_FROM_PRIORITY = "COOLING_REMOVE_FROM_PRIORITY"
+    WITHHELD_DATA_INCOMPLETE = "WITHHELD_DATA_INCOMPLETE"
+
+
+class TradeConfirmation(StrEnum):
+    UNAVAILABLE = "UNAVAILABLE"
+    AVAILABLE_NOT_CONFIRMED = "AVAILABLE_NOT_CONFIRMED"
+    CONFIRMED = "CONFIRMED"
+
+
+class CaseStatus(StrEnum):
+    ACTIVE = "ACTIVE"
+    SUSPENDED = "SUSPENDED"
+    RESOLVED = "RESOLVED"
+    UNRESOLVED = "UNRESOLVED"
+    RETRACTED = "RETRACTED"
+
+
+class ResolutionCode(StrEnum):
+    COMPLETED_UP_CYCLE = "COMPLETED_UP_CYCLE"
+    RETURNED_TO_BASELINE = "RETURNED_TO_BASELINE"
+    TREND_REVERSED = "TREND_REVERSED"
+    NO_CONFIRMATION = "NO_CONFIRMATION"
+    DATA_LOSS = "DATA_LOSS"
+    INVALID_INPUT = "INVALID_INPUT"
+
+
+class TransitionMode(StrEnum):
+    FORMAL = "FORMAL"
+    SHADOW = "SHADOW"
+
+
+class TransitionReason(StrEnum):
+    PRESSURE_CONFIRMED = "PRESSURE_CONFIRMED"
+    ABSOLUTE_RISE_CONFIRMED = "ABSOLUTE_RISE_CONFIRMED"
+    PRESSURE_DISSIPATED = "PRESSURE_DISSIPATED"
+    COOLING_CONFIRMED = "COOLING_CONFIRMED"
+    REACCELERATION = "REACCELERATION"
+    RETURNED_TO_BASELINE = "RETURNED_TO_BASELINE"
+    FAST_PATH_THEORETICAL = "FAST_PATH_THEORETICAL"
+
+
+class LifecycleEntityKind(StrEnum):
+    ANALYSIS_CASE = "ANALYSIS_CASE"
+    CANDIDATE_EPISODE = "CANDIDATE_EPISODE"
+    CYCLE_CASE = "CYCLE_CASE"
+
+
+class LifecycleAction(StrEnum):
+    STARTED = "STARTED"
+    CONVERTED = "CONVERTED"
+    SUSPENDED = "SUSPENDED"
+    RESUMED = "RESUMED"
+    REACCELERATED = "REACCELERATED"
+    CLOSED = "CLOSED"
+
+
+class OutcomeLabel(StrEnum):
+    SUCCESS = "SUCCESS"
+    FAILURE = "FAILURE"
+    INDETERMINATE_DATA_LOSS = "INDETERMINATE_DATA_LOSS"
+    INVALID_CASE = "INVALID_CASE"
+
+
+class ValidationLevel(StrEnum):
+    PRICE_ONLY = "PRICE_ONLY"
+    COMPONENT_BACKTEST = "COMPONENT_BACKTEST"
+    PROSPECTIVE_FULL_SIGNAL = "PROSPECTIVE_FULL_SIGNAL"
+    WALK_FORWARD_OUT_OF_SAMPLE = "WALK_FORWARD_OUT_OF_SAMPLE"
+
+
+class ValidationClaim(StrEnum):
+    COMPONENTS_EXECUTE_POINT_IN_TIME = "COMPONENTS_EXECUTE_POINT_IN_TIME"
+    PRICE_FEATURES_HAVE_HISTORICAL_ASSOCIATION = (
+        "PRICE_FEATURES_HAVE_HISTORICAL_ASSOCIATION"
+    )
+    FULL_PDS_ALGORITHM_VALIDATED = "FULL_PDS_ALGORITHM_VALIDATED"
+
+
+class ClaimCode(StrEnum):
+    UNIFIED_PRICE_RISING = "UNIFIED_PRICE_RISING"
+    BID_PRICE_RISING = "BID_PRICE_RISING"
+    BUY_DEMAND_STRENGTHENING = "BUY_DEMAND_STRENGTHENING"
+    SELLABLE_SUPPLY_DECLINING = "SELLABLE_SUPPLY_DECLINING"
+    MULTI_SOURCE_ALIGNED = "MULTI_SOURCE_ALIGNED"
+    TRUSTED_TRADE_VOLUME_INCREASING = "TRUSTED_TRADE_VOLUME_INCREASING"
+    SWEEPING_CONFIRMED = "SWEEPING_CONFIRMED"
+
+
+BLOCKING_DATA_STATUSES = frozenset(
+    {
+        DataStatus.DATA_UNAVAILABLE_RUNTIME,
+        DataStatus.STALE,
+        DataStatus.CONFLICTED,
+    }
+)
+
+
+GRACEABLE_DATA_STATUSES = frozenset(
+    {
+        DataStatus.DATA_UNAVAILABLE_RUNTIME,
+        DataStatus.STALE,
+    }
+)
+
+
+DERIVED_GRACE_DATA_STATUSES = frozenset(
+    {
+        DataStatus.DATA_UNAVAILABLE_RUNTIME_GRACE,
+        DataStatus.STALE_GRACE,
+    }
+)
+
+
+EVIDENCE_BEARING_STRENGTHS = frozenset(
+    {
+        DomainStrength.WEAK,
+        DomainStrength.MODERATE,
+        DomainStrength.STRONG,
+    }
+)

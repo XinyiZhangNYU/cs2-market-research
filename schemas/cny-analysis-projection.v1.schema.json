@@ -1,0 +1,159 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.cs2-research.invalid/schemas/cny-analysis-projection.v1.schema.json",
+  "title": "CNY analysis projection V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema", "projection_id", "source", "event_day", "target", "fx",
+    "conversion_policy_version", "projected_at", "available_at", "usage_scope",
+    "formal_state_eligible", "lineage_sha256", "document_hash"
+  ],
+  "properties": {
+    "schema": {"const": "cny-analysis-projection/1"},
+    "projection_id": {"type": "string", "pattern": "^cny_analysis_projection_v1_[0-9a-f]{24}$"},
+    "source": {"$ref": "#/$defs/source"},
+    "event_day": {"type": "string", "format": "date"},
+    "target": {"$ref": "#/$defs/target"},
+    "fx": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "#/$defs/fx"}
+      ]
+    },
+    "conversion_policy_version": {"const": "analysis-cny-minor-half-even/1"},
+    "projected_at": {"$ref": "#/$defs/instant"},
+    "available_at": {"$ref": "#/$defs/instant"},
+    "usage_scope": {"const": "INTERNAL_ANALYSIS_INPUT"},
+    "formal_state_eligible": {"const": false},
+    "lineage_sha256": {"$ref": "#/$defs/sha256"},
+    "document_hash": {"$ref": "#/$defs/sha256"}
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "source": {
+            "properties": {"currency": {"const": "USD"}},
+            "required": ["currency"]
+          }
+        },
+        "required": ["source"]
+      },
+      "then": {
+        "properties": {
+          "source": {
+            "properties": {
+              "unit": {"const": "USD_ATOMS"},
+              "scale": {"enum": [8, 10]}
+            }
+          },
+          "fx": {"$ref": "#/$defs/fx"},
+          "target": {
+            "properties": {
+              "basis": {"const": "FX_DERIVED"}
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "source": {
+            "properties": {
+              "currency": {"const": "CNY"},
+              "unit": {"const": "CNY_MINOR"},
+              "scale": {"const": 2}
+            }
+          },
+          "fx": {"type": "null"},
+          "target": {
+            "properties": {
+              "basis": {"const": "NATIVE"},
+              "rounding": {"const": "EXACT"}
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "integerText": {"type": "string", "pattern": "^(0|[1-9][0-9]*)$"},
+    "instant": {"type": "string", "format": "date-time", "pattern": "Z$"},
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_fact_sha256", "source_item_id", "analysis_unit_id", "logical_source", "transport",
+        "price_kind", "event_at", "source_available_at", "identity_available_at",
+        "currency", "unit", "value", "scale"
+      ],
+      "properties": {
+        "source_fact_sha256": {"$ref": "#/$defs/sha256"},
+        "source_item_id": {"type": "integer", "minimum": 1},
+        "analysis_unit_id": {"type": "string", "minLength": 1},
+        "logical_source": {"enum": ["market_a", "market_b", "market_c"]},
+        "transport": {"enum": ["upstream", "market_b_direct"]},
+        "price_kind": {"enum": ["ASK", "BID"]},
+        "event_at": {"$ref": "#/$defs/instant"},
+        "source_available_at": {"$ref": "#/$defs/instant"},
+        "identity_available_at": {"$ref": "#/$defs/instant"},
+        "currency": {"enum": ["USD", "CNY"]},
+        "unit": {"enum": ["USD_ATOMS", "CNY_MINOR"]},
+        "value": {"$ref": "#/$defs/integerText"},
+        "scale": {"enum": [2, 8, 10]}
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {"transport": {"const": "upstream"}},
+            "required": ["transport"]
+          },
+          "then": {"properties": {"currency": {"const": "USD"}}},
+          "else": {
+            "properties": {
+              "transport": {"const": "market_b_direct"},
+              "logical_source": {"const": "market_b"},
+              "currency": {"const": "CNY"}
+            }
+          }
+        }
+      ]
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "currency", "unit", "value", "basis", "rounding", "reason"],
+      "properties": {
+        "status": {"const": "AVAILABLE"},
+        "currency": {"const": "CNY"},
+        "unit": {"const": "CNY_MINOR"},
+        "value": {"$ref": "#/$defs/integerText"},
+        "basis": {"enum": ["NATIVE", "FX_DERIVED"]},
+        "rounding": {"enum": ["EXACT", "ROUNDED", "ROUNDED_TO_ZERO"]},
+        "reason": {"type": "null"}
+      }
+    },
+    "fx": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority", "method", "pair_hash", "cny_leg_revision_hash",
+        "usd_leg_revision_hash", "source_event_date", "cny_per_usd", "carry_days",
+        "available_at", "selection_policy_version"
+      ],
+      "properties": {
+        "authority": {"const": "ECB"},
+        "method": {"const": "ECB_EUR_CROSS"},
+        "pair_hash": {"$ref": "#/$defs/sha256"},
+        "cny_leg_revision_hash": {"$ref": "#/$defs/sha256"},
+        "usd_leg_revision_hash": {"$ref": "#/$defs/sha256"},
+        "source_event_date": {"type": "string", "format": "date"},
+        "cny_per_usd": {"type": "string", "pattern": "^(0|[1-9][0-9]*)\\.[0-9]{18}$"},
+        "carry_days": {"type": "integer", "minimum": 0, "maximum": 7},
+        "available_at": {"$ref": "#/$defs/instant"},
+        "selection_policy_version": {"const": "ecb-latest-complete-nonfuture-max7d/1"}
+      }
+    }
+  }
+}

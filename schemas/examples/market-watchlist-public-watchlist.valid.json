@@ -1,0 +1,90 @@
+{
+  "api_contract": "market-watchlist-public-api",
+  "api_version": "v1",
+  "response_kind": "WATCHLIST",
+  "query": {
+    "as_of": null,
+    "query_known_at": "2026-09-03T12:05:00.000000Z",
+    "publication_id": "1111111111111111111111111111111111111111111111111111111111111111",
+    "sort": "RANK_ASC",
+    "page_size": 50,
+    "cursor": null
+  },
+  "publication": {
+    "publication_id": "1111111111111111111111111111111111111111111111111111111111111111",
+    "manifest_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+    "result_as_of": "2026-09-03T12:00:00.000000Z",
+    "input_available_at": "2026-09-03T11:59:00.000000Z",
+    "public_available_at": "2026-09-03T12:01:00.000000Z",
+    "published_at": "2026-09-03T12:02:00.000000Z",
+    "fresh_until": "2026-09-03T13:01:00.000000Z",
+    "retain_until": "2026-09-04T12:01:00.000000Z",
+    "freshness": "FRESH",
+    "supersedes_publication_id": null,
+    "producer_release": {
+      "release_code": "formal-prospective-fixture-v1",
+      "algorithm_version": "algorithm-fixture-v1",
+      "parameter_set_version": "parameters-fixture-v1",
+      "data_quality_policy_version": "quality-fixture-v1"
+    },
+    "watchlist_policy_code": "nonempty-framework-fixture-v1",
+    "catalog": {
+      "snapshot_id": "3333333333333333333333333333333333333333333333333333333333333333",
+      "catalog_version": "catalog-fixture-v1",
+      "as_of": "2026-09-03T11:55:00.000000Z",
+      "available_at": "2026-09-03T11:56:00.000000Z",
+      "member_count": 1,
+      "member_set_hash": "4444444444444444444444444444444444444444444444444444444444444444"
+    }
+  },
+  "total": 1,
+  "members": [
+    {
+      "rank": 1,
+      "tie_break_key": "item:fixture-001",
+      "inclusion_reason_codes": ["DEMAND_AND_SUPPLY_ALIGNED"],
+      "result": {
+        "analysis_unit_id": "item:fixture-001",
+        "data_status": "COMPLETE",
+        "cycle_stage": "PRESSURE_BUILDING",
+        "evidence_flags": ["DEMAND_ACCELERATING", "SUPPLY_CONTRACTING"],
+        "regime_relation": ["ITEM_SPECIFIC"],
+        "recommendation": "WATCH",
+        "case_status": "ACTIVE",
+        "recommendation_detail": {
+          "recommendation": "WATCH",
+          "signal_strength": "MODERATE",
+          "evidence_coverage": "1",
+          "trade_confirmation": "AVAILABLE_NOT_CONFIRMED"
+        },
+        "evidence_domains": [
+          {"domain": "P", "strength": "MODERATE", "contributing_feature_keys": ["price_return"], "missing_reason": null},
+          {"domain": "D", "strength": "MODERATE", "contributing_feature_keys": ["bid_strength"], "missing_reason": null},
+          {"domain": "S", "strength": "WEAK", "contributing_feature_keys": ["listing_contraction"], "missing_reason": null}
+        ],
+        "claims": ["BID_PRICE_RISING", "SELLABLE_SUPPLY_DECLINING"]
+      },
+      "catalog": {
+        "analysis_unit_id": "item:fixture-001",
+        "analysis_unit_kind": "BASE_MHN",
+        "base_item_code": "weapon.ak47.paint.redline",
+        "catalog_version": "catalog-fixture-v1",
+        "edition_kind": "STANDARD",
+        "item_kind": "WEAPON",
+        "localized_name": {
+          "en": "AK-47 | Redline (Field-Tested)",
+          "zh_cn": "AK-47 | 红线（久经沙场）"
+        },
+        "media": {
+          "status": "BOUND",
+          "media_asset_version_id": "5",
+          "media_key": "fixture/series-representative",
+          "presentation_kind": "SERIES_REPRESENTATIVE"
+        },
+        "parent_analysis_unit_id": null,
+        "wear_tier": "FIELD_TESTED"
+      }
+    }
+  ],
+  "next_cursor": null
+}

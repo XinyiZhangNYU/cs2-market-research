@@ -1,0 +1,9 @@
+{
+  "contract_name": "single-item-monitor-public-api",
+  "contract_version": "1",
+  "response_kind": "ERROR",
+  "error": {
+    "code": "WITHDRAWN",
+    "retryable": false
+  }
+}

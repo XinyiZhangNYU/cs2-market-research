@@ -1,0 +1,58 @@
+{
+  "api_contract": "valve-event-public-api",
+  "api_version": "v1",
+  "events": [
+    {
+      "conclusion_summary": "No clear market-wide effect is established at the announcement cutoff; a mild player-sentiment channel remains plausible.",
+      "flags": {
+        "corrected": true,
+        "source_updated": true,
+        "withdrawn": false
+      },
+      "outcome_label": "SUPPORTED",
+      "primary_direction": "NO_CLEAR_IMPACT",
+      "scope_labels": [
+        "Overall CS2 market",
+        "Reload-mechanic subject (untracked)"
+      ],
+      "source": {
+        "event_id": "event-synthetic-reload-001",
+        "first_observed_at": "2026-08-20T12:01:00.000000Z",
+        "official_published_at": "2026-08-20T12:00:00.000000Z",
+        "official_title": "Synthetic reload mechanics update",
+        "official_url": "https://store.steampowered.com/news/app/730/view/synthetic-reload-001",
+        "source_code": "STEAM_ISteamNews_V2",
+        "source_notice_version_id": "source-version-synthetic-reload-002",
+        "source_updated_at": "2026-08-21T09:00:00.000000Z"
+      },
+      "status": "CORRECTED",
+      "temporal_mode": "RETROSPECTIVE_CORRECTION"
+    },
+    {
+      "conclusion_summary": null,
+      "flags": {
+        "corrected": false,
+        "source_updated": false,
+        "withdrawn": false
+      },
+      "outcome_label": null,
+      "primary_direction": null,
+      "scope_labels": [],
+      "source": {
+        "event_id": "event-synthetic-source-only-001",
+        "first_observed_at": "2026-07-11T16:31:00.000000Z",
+        "official_published_at": "2026-07-11T16:30:00.000000Z",
+        "official_title": "Synthetic source-only announcement",
+        "official_url": "https://store.steampowered.com/news/app/730/view/synthetic-source-only-001",
+        "source_code": "STEAM_ISteamNews_V2",
+        "source_notice_version_id": "source-version-synthetic-source-only-001",
+        "source_updated_at": null
+      },
+      "status": "SOURCE_ONLY",
+      "temporal_mode": null
+    }
+  ],
+  "next_cursor": null,
+  "query_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+  "response_kind": "VALVE_EVENT_LIST"
+}

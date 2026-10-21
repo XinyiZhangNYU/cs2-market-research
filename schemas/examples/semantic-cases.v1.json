@@ -1,0 +1,434 @@
+[
+  {
+    "case_id": "unit-available-after-as-of",
+    "rule_id": "UNIT_TIME_ORDER",
+    "base_file": "unit-item-branch-b.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["available_at"], "value": "2026-08-21T00:00:01.000000Z" }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "available_at cannot be later than as_of"
+  },
+  {
+    "case_id": "identity-available-after-as-of",
+    "rule_id": "IDENTITY_TIME_ORDER",
+    "base_file": "unit-item-branch-b.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["identity", "identity_available_at"], "value": "2026-08-21T00:00:01.000000Z" }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "identity knowledge cannot be later than as_of"
+  },
+  {
+    "case_id": "identity-catalog-version-mismatch",
+    "rule_id": "IDENTITY_CATALOG_MATCH",
+    "base_file": "unit-item-branch-b.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["identity", "catalog_version"], "value": "catalog-v2" }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "catalog versions differ"
+  },
+  {
+    "case_id": "item-recommendation-mismatch",
+    "rule_id": "ITEM_RECOMMENDATION_MATCH",
+    "base_file": "unit-item-branch-b.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["recommendation_detail", "recommendation"], "value": "STRONG_CANDIDATE" }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "state and recommendation detail disagree"
+  },
+  {
+    "case_id": "item-state-detail-input-hash-mismatch",
+    "rule_id": "ITEM_INPUT_HASH_MATCH",
+    "base_file": "unit-item-branch-b.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["recommendation_detail", "input_snapshot_hash"], "value": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "input hashes differ"
+  },
+  {
+    "case_id": "item-domain-input-hash-mismatch",
+    "rule_id": "DOMAIN_INPUT_HASH_UNIFORM",
+    "base_file": "unit-item-branch-b.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["evidence_domains", 0, "input_snapshot_hash"], "value": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "one feature snapshot"
+  },
+  {
+    "case_id": "unavailable-domain-without-reason",
+    "rule_id": "DOMAIN_MISSING_REASON",
+    "base_file": "unit-item-branch-b.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["evidence_domains", 0, "strength"], "value": "UNAVAILABLE" }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "missing_reason"
+  },
+  {
+    "case_id": "available-domain-with-reason",
+    "rule_id": "DOMAIN_MISSING_REASON",
+    "base_file": "unit-item-branch-b.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["evidence_domains", 0, "missing_reason"], "value": "unexpected reason" }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "available evidence domain"
+  },
+  {
+    "case_id": "unsorted-contributing-feature-keys",
+    "rule_id": "FEATURE_KEYS_SORTED",
+    "base_file": "unit-item-branch-b.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["evidence_domains", 0, "contributing_feature_keys"], "value": ["z_feature", "a_feature"] }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "must be sorted"
+  },
+  {
+    "case_id": "tampered-unit-snapshot-id",
+    "rule_id": "SNAPSHOT_ID_MATCH",
+    "base_file": "unit-item-branch-b.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["snapshot_id"], "value": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" }
+    ],
+    "rehash_snapshot": false,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "snapshot_id"
+  },
+  {
+    "case_id": "noncanonical-offset-timestamp",
+    "rule_id": "CANONICAL_UTC_TIMESTAMP",
+    "base_file": "unit-item-branch-b.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["as_of"], "value": "2026-08-21T08:00:00.000000+08:00" }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "canonical UTC spelling"
+  },
+  {
+    "case_id": "collection-returned-count-mismatch",
+    "rule_id": "COLLECTION_RETURNED_COUNT",
+    "base_file": "collection-missing-unavailable.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["returned_member_count"], "value": 0 }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "returned_member_count"
+  },
+  {
+    "case_id": "collection-missing-unavailable-overlap",
+    "rule_id": "COLLECTION_MEMBER_DISJOINT",
+    "base_file": "collection-missing-unavailable.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["unavailable_member_ids"], "value": ["market:missing"] }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "must not overlap"
+  },
+  {
+    "case_id": "collection-member-accounting-undercount",
+    "rule_id": "COLLECTION_EXACT_ACCOUNTING",
+    "base_file": "collection-missing-unavailable.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["member_count"], "value": 4 }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "accounting must be exact"
+  },
+  {
+    "case_id": "collection-member-accounting-overcount",
+    "rule_id": "COLLECTION_EXACT_ACCOUNTING",
+    "base_file": "collection-missing-unavailable.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["member_count"], "value": 2 }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "accounting must be exact"
+  },
+  {
+    "case_id": "collection-id-whitespace-only",
+    "rule_id": "NONBLANK_NUL_FREE_TEXT",
+    "base_file": "collection-missing-unavailable.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["collection_id"], "value": "   " }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "non-empty NUL-free text"
+  },
+  {
+    "case_id": "collection-id-nul",
+    "rule_id": "NONBLANK_NUL_FREE_TEXT",
+    "base_file": "collection-missing-unavailable.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["collection_id"], "value": "bad\u0000id" }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "non-empty NUL-free text"
+  },
+  {
+    "case_id": "evidence-coverage-out-of-range",
+    "rule_id": "EVIDENCE_COVERAGE_RANGE",
+    "base_file": "unit-item-branch-b.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["recommendation_detail", "evidence_coverage"], "value": "1.01" }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "between 0 and 1"
+  },
+  {
+    "case_id": "noncanonical-domain-order",
+    "rule_id": "CANONICAL_SET_ORDER",
+    "base_file": "unit-item-branch-b.valid.json",
+    "operations": [
+      { "operation": "reverse", "path": ["evidence_domains"] }
+    ],
+    "rehash_snapshot": false,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "canonical ascending domain order"
+  },
+  {
+    "case_id": "noncanonical-claim-order",
+    "rule_id": "CANONICAL_SET_ORDER",
+    "base_file": "unit-item-branch-b.valid.json",
+    "operations": [
+      {
+        "operation": "replace",
+        "path": ["claims"],
+        "value": ["MULTI_SOURCE_ALIGNED", "BUY_DEMAND_STRENGTHENING"]
+      },
+      {
+        "operation": "replace",
+        "path": ["snapshot_id"],
+        "value": "49b0448a85d8448962598f11a15ba61477494aa2a8a98c19298f29993c75adb9"
+      }
+    ],
+    "rehash_snapshot": false,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "claims must use canonical ascending order"
+  },
+  {
+    "case_id": "noncanonical-collection-member-order",
+    "rule_id": "CANONICAL_SET_ORDER",
+    "base_file": "collection-missing-unavailable.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["member_count"], "value": 4 },
+      { "operation": "replace", "path": ["missing_member_ids"], "value": ["market:z", "market:a"] },
+      {
+        "operation": "replace",
+        "path": ["snapshot_id"],
+        "value": "fea3d1985da7950bb302c4f36670c65bd1aaabf7a950053bcb22b5505ad5f841"
+      }
+    ],
+    "rehash_snapshot": false,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "missing_member_ids must use canonical ascending order"
+  },
+  {
+    "case_id": "collection-id-unicode-whitespace-only",
+    "rule_id": "NONBLANK_NUL_FREE_TEXT",
+    "base_file": "collection-missing-unavailable.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["collection_id"], "value": "\u00a0" }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "non-empty NUL-free text"
+  },
+  {
+    "case_id": "collection-id-carriage-return-prefix",
+    "rule_id": "NONBLANK_UNICODE_SCALAR_TEXT",
+    "base_file": "collection-missing-unavailable.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["collection_id"], "value": "\rM9 Bayonet" }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "ACCEPT"
+  },
+  {
+    "case_id": "collection-id-unpaired-surrogate",
+    "rule_id": "NONBLANK_UNICODE_SCALAR_TEXT",
+    "base_file": "collection-missing-unavailable.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["collection_id"], "value": "bad\ud800id" }
+    ],
+    "rehash_snapshot": false,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "non-empty NUL-free text"
+  },
+  {
+    "case_id": "branch-b-forbidden-trade-claim",
+    "rule_id": "CLAIM_BRANCH",
+    "base_file": "unit-item-branch-b.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["claims"], "value": ["SWEEPING_CONFIRMED"] }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "data branch B cannot make trade-confirmation claims"
+  },
+  {
+    "case_id": "collection-negative-member-count",
+    "rule_id": "COLLECTION_MEMBER_COUNT",
+    "base_file": "collection-missing-unavailable.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["member_count"], "value": -1 }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "member_count cannot be negative"
+  },
+  {
+    "case_id": "collection-available-after-as-of",
+    "rule_id": "COLLECTION_TIME_ORDER",
+    "base_file": "collection-missing-unavailable.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["available_at"], "value": "2026-08-21T00:00:01.000000Z" }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "collection available_at cannot be later than as_of"
+  },
+  {
+    "case_id": "item-missing-s-domain",
+    "rule_id": "DOMAIN_SET_EXACT",
+    "base_file": "unit-item-branch-b.valid.json",
+    "operations": [
+      { "operation": "remove", "path": ["evidence_domains", 2] }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "exactly P/D/S evidence domains"
+  },
+  {
+    "case_id": "unsupported-data-status",
+    "rule_id": "ENUM_MEMBER",
+    "base_file": "unit-item-branch-b.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["data_status"], "value": "MAYBE" }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "unsupported data_status"
+  },
+  {
+    "case_id": "unsupported-envelope-kind",
+    "rule_id": "ENVELOPE_KIND",
+    "base_file": "unit-item-branch-b.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["envelope_kind"], "value": "MYSTERY" }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "unsupported envelope_kind"
+  },
+  {
+    "case_id": "unknown-top-level-source-field",
+    "rule_id": "EXACT_KEY_SET",
+    "base_file": "unit-item-branch-b.valid.json",
+    "operations": [
+      { "operation": "add", "path": ["source_code"], "value": "market_b_direct" }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "unit result keys mismatch"
+  },
+  {
+    "case_id": "sector-carries-item-identity-kind",
+    "rule_id": "IDENTITY_SCOPE_SHAPE",
+    "base_file": "unit-sector.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["identity", "analysis_unit_kind"], "value": "BASE_MHN" }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "MARKET/SECTOR identities cannot carry item kind"
+  },
+  {
+    "case_id": "item-carries-market-state-shape",
+    "rule_id": "ITEM_SCOPE_SHAPE",
+    "base_file": "unit-item-branch-b.valid.json",
+    "operations": [
+      {
+        "operation": "replace",
+        "path": ["state"],
+        "value": {
+          "trend_stage": "NEUTRAL",
+          "level_regime": "NORMAL",
+          "evidence_flags": [],
+          "recommendation": "WATCH",
+          "case_status": null,
+          "analysis_case_id": null,
+          "input_snapshot_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "ITEM state keys mismatch"
+  },
+  {
+    "case_id": "short-input-snapshot-digest",
+    "rule_id": "SHA256_DIGEST",
+    "base_file": "unit-item-branch-b.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["state", "input_snapshot_hash"], "value": "abc" }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "lowercase SHA-256 hex digest"
+  },
+  {
+    "case_id": "sector-advancing-ratio-out-of-range",
+    "rule_id": "SECTOR_BREADTH_RATIO",
+    "base_file": "unit-sector.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["state", "breadth", "advancing_member_ratio"], "value": "1.01" }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "advancing_member_ratio must be a decimal string between 0 and 1"
+  },
+  {
+    "case_id": "sector-median-return-exponent",
+    "rule_id": "SECTOR_BREADTH_DECIMAL",
+    "base_file": "unit-sector.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["state", "breadth", "median_member_return"], "value": "1e-3" }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "REJECT",
+    "python_error_contains": "median_member_return must be a finite signed fixed-decimal string"
+  },
+  {
+    "case_id": "collection-id-astral-unicode-scalar",
+    "rule_id": "NONBLANK_UNICODE_SCALAR_TEXT",
+    "base_file": "collection-missing-unavailable.valid.json",
+    "operations": [
+      { "operation": "replace", "path": ["collection_id"], "value": "knife:\ud83d\udde1" }
+    ],
+    "rehash_snapshot": true,
+    "expected_acceptance": "ACCEPT"
+  }
+]

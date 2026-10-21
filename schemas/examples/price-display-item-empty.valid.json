@@ -1,0 +1,25 @@
+{
+  "api_contract": "price-display-api",
+  "api_version": "v1",
+  "document_hash": "70e7a93c4b979d2927683eca27250482c09a5ce8f3901e3e18df11534439f12c",
+  "items": [],
+  "pagination": null,
+  "query": {
+    "analysis_unit_id": "fixture:价格/./\\:é",
+    "as_of": "2026-08-30T12:00:00.000000Z",
+    "known_at": "2026-09-03T01:00:00.000000Z",
+    "snapshot_id": "8290d89288df36add6a15df0287bd049ba396d5d9290a89db9920b62b702efbc"
+  },
+  "response_kind": "PRICE_ITEM",
+  "snapshot": {
+    "available_at": "2026-09-03T00:00:00.000000Z",
+    "catalog_as_of": "2026-08-27T00:00:00.000000Z",
+    "catalog_available_at": "2026-09-02T00:00:00.000000Z",
+    "catalog_snapshot_id": "040d69d4724f6c264dcad12c6dfaa979847cd7ab1e1db1d554858c766f44a052",
+    "kind": "CURRENT",
+    "market_as_of": "2026-08-30T12:00:00.000000Z",
+    "price_policy_version": "price-display-read/1",
+    "published_at": "2026-09-03T00:00:00.000000Z",
+    "snapshot_id": "8290d89288df36add6a15df0287bd049ba396d5d9290a89db9920b62b702efbc"
+  }
+}

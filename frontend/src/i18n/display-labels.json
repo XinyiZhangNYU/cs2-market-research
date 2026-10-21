@@ -1,0 +1,208 @@
+{
+  "enumValues": {
+    "itemCycleStage": {
+      "BASELINE": { "zh": "基线", "en": "Baseline" },
+      "PRESSURE_BUILDING": { "zh": "压力积累", "en": "Pressure building" },
+      "CONFIRMED_UP": { "zh": "已确认上涨", "en": "Confirmed rise" },
+      "COOLING": { "zh": "降温", "en": "Cooling" }
+    },
+    "trendStage": {
+      "UP_BUILDING": { "zh": "上行积累", "en": "Up, building" },
+      "UP_ACTIVE": { "zh": "上行活跃", "en": "Up, active" },
+      "UP_COOLING": { "zh": "上行降温", "en": "Up, cooling" },
+      "NEUTRAL": { "zh": "中性", "en": "Neutral" },
+      "DOWN_BUILDING": { "zh": "下行积累", "en": "Down, building" },
+      "DOWN_ACTIVE": { "zh": "下行活跃", "en": "Down, active" },
+      "DOWN_COOLING": { "zh": "下行降温", "en": "Down, cooling" }
+    },
+    "marketLevelRegime": {
+      "DEPRESSED": { "zh": "低位", "en": "Depressed" },
+      "NORMAL": { "zh": "常态", "en": "Normal" },
+      "ELEVATED": { "zh": "高位", "en": "Elevated" },
+      "UNKNOWN": { "zh": "未知", "en": "Unknown" }
+    },
+    "relativeStrength": {
+      "LEADING": { "zh": "强于大盘", "en": "Leading the market" },
+      "IN_LINE": { "zh": "与大盘一致", "en": "In line with the market" },
+      "LAGGING": { "zh": "弱于大盘", "en": "Lagging the market" },
+      "UNKNOWN": { "zh": "未知", "en": "Unknown" }
+    },
+    "evidenceFlag": {
+      "DEMAND_ACCELERATING": { "zh": "需求加速", "en": "Demand accelerating" },
+      "SUPPLY_CONTRACTING": { "zh": "供给收缩", "en": "Supply contracting" },
+      "PRICE_RISING": { "zh": "价格上行", "en": "Price rising" },
+      "SUSPECTED_SWEEPING": { "zh": "疑似扫货", "en": "Suspected sweeping" },
+      "SWEEPING_CONFIRMED": { "zh": "扫货已确认", "en": "Sweeping confirmed" },
+      "REACCELERATION": { "zh": "重新加速", "en": "Reacceleration" },
+      "OVERHEATED": { "zh": "过热", "en": "Overheated" },
+      "SHOCK": { "zh": "冲击", "en": "Shock" },
+      "BREADTH_COLLAPSE": { "zh": "宽度塌缩", "en": "Breadth collapse" },
+      "LIQUIDITY_CONTRACTION": { "zh": "流动性收缩", "en": "Liquidity contraction" },
+      "CONCENTRATION_WARNING": { "zh": "集中度警告", "en": "Concentration warning" }
+    },
+    "regimeRelation": {
+      "MARKET_DRIVEN": { "zh": "大盘驱动", "en": "Market driven" },
+      "SECTOR_DRIVEN": { "zh": "板块驱动", "en": "Sector driven" },
+      "ITEM_SPECIFIC": { "zh": "单品独有", "en": "Item specific" },
+      "COUNTER_REGIME": { "zh": "逆环境", "en": "Counter to regime" },
+      "IN_LINE": { "zh": "与环境一致", "en": "In line with regime" },
+      "UNKNOWN": { "zh": "未知", "en": "Unknown" }
+    },
+    "recommendation": {
+      "IGNORE": { "zh": "忽略", "en": "Ignore" },
+      "WATCH": { "zh": "观察", "en": "Watch" },
+      "RECOMMENDED_CANDIDATE": { "zh": "推荐候选", "en": "Recommended candidate" },
+      "STRONG_CANDIDATE": { "zh": "强候选", "en": "Strong candidate" },
+      "OVERHEATED_DO_NOT_CHASE": { "zh": "过热不追", "en": "Overheated, do not chase" },
+      "COOLING_REMOVE_FROM_PRIORITY": { "zh": "降温移出优先", "en": "Cooling, drop from priority" },
+      "WITHHELD_DATA_INCOMPLETE": { "zh": "数据不完整暂不输出", "en": "Withheld, data incomplete" }
+    },
+    "tradeConfirmation": {
+      "UNAVAILABLE": { "zh": "成交口径不可得", "en": "Trade basis unavailable" },
+      "AVAILABLE_NOT_CONFIRMED": { "zh": "成交口径可得但未确认", "en": "Trade basis available, not confirmed" },
+      "CONFIRMED": { "zh": "成交已确认", "en": "Trade confirmed" }
+    },
+    "caseStatus": {
+      "ACTIVE": { "zh": "进行中", "en": "Active" },
+      "SUSPENDED": { "zh": "已暂停", "en": "Suspended" },
+      "RESOLVED": { "zh": "已结案", "en": "Resolved" },
+      "UNRESOLVED": { "zh": "未定论", "en": "Unresolved" },
+      "RETRACTED": { "zh": "已撤回", "en": "Retracted" }
+    },
+    "dataStatus": {
+      "COMPLETE": { "zh": "完整", "en": "Complete" },
+      "UNAVAILABLE_BY_DESIGN": { "zh": "按设计不提供", "en": "Unavailable by design" },
+      "DEGRADED_OPTIONAL": { "zh": "可选项降级", "en": "Optional feature degraded" },
+      "DATA_UNAVAILABLE_RUNTIME_GRACE": { "zh": "运行时缺失·宽限期内", "en": "Runtime gap, within grace" },
+      "STALE_GRACE": { "zh": "过期·宽限期内", "en": "Stale, within grace" },
+      "DATA_UNAVAILABLE_RUNTIME": { "zh": "运行时缺失", "en": "Runtime gap" },
+      "STALE": { "zh": "过期", "en": "Stale" },
+      "CONFLICTED": { "zh": "来源冲突", "en": "Sources conflict" }
+    },
+    "dataBranch": {
+      "A": { "zh": "分支 A·有可信成交", "en": "Branch A, trusted trades" },
+      "B": { "zh": "分支 B·无可信成交口径", "en": "Branch B, no trusted trade basis" }
+    },
+    "signalStrength": {
+      "NONE": { "zh": "无", "en": "None" },
+      "WEAK": { "zh": "弱", "en": "Weak" },
+      "MODERATE": { "zh": "中", "en": "Moderate" },
+      "STRONG": { "zh": "强", "en": "Strong" }
+    },
+    "domainStrength": {
+      "UNAVAILABLE": { "zh": "不可得", "en": "Unavailable" },
+      "CONFLICTED": { "zh": "冲突", "en": "Conflicted" },
+      "ABSENT": { "zh": "无证据", "en": "No evidence" },
+      "WEAK": { "zh": "弱", "en": "Weak" },
+      "MODERATE": { "zh": "中", "en": "Moderate" },
+      "STRONG": { "zh": "强", "en": "Strong" }
+    },
+    "domainMissingReason": {
+      "UNAVAILABLE_BY_DESIGN": { "zh": "当前数据分支按设计不提供", "en": "Unavailable in this data branch by design" },
+      "OPTIONAL_DATA_UNAVAILABLE": { "zh": "可选数据暂不可得", "en": "Optional data unavailable" },
+      "DATA_UNAVAILABLE_RUNTIME_GRACE": { "zh": "运行时缺失，仍在宽限期", "en": "Runtime gap, within grace period" },
+      "DATA_UNAVAILABLE_RUNTIME": { "zh": "运行时数据缺失", "en": "Runtime data unavailable" },
+      "STALE_GRACE": { "zh": "数据过期，仍在宽限期", "en": "Stale data, within grace period" },
+      "STALE": { "zh": "数据已过期", "en": "Data is stale" },
+      "CONFLICTED_INPUTS": { "zh": "输入来源存在冲突", "en": "Input sources conflict" }
+    },
+    "coreDomain": {
+      "P": { "zh": "价格域", "en": "Price domain" },
+      "D": { "zh": "需求域", "en": "Demand domain" },
+      "S": { "zh": "供给域", "en": "Supply domain" }
+    },
+    "resolutionCode": {
+      "COMPLETED_UP_CYCLE": { "zh": "完成上涨周期", "en": "Completed up cycle" },
+      "RETURNED_TO_BASELINE": { "zh": "回归基线", "en": "Returned to baseline" },
+      "TREND_REVERSED": { "zh": "趋势反转", "en": "Trend reversed" },
+      "NO_CONFIRMATION": { "zh": "未获确认", "en": "No confirmation" },
+      "DATA_LOSS": { "zh": "数据丢失", "en": "Data loss" },
+      "INVALID_INPUT": { "zh": "输入非法", "en": "Invalid input" }
+    },
+    "outcomeLabel": {
+      "SUCCESS": { "zh": "成功", "en": "Success" },
+      "FAILURE": { "zh": "失败", "en": "Failure" },
+      "INDETERMINATE_DATA_LOSS": { "zh": "因数据丢失无法判定", "en": "Indeterminate, data lost" },
+      "INVALID_CASE": { "zh": "案例无效", "en": "Invalid case" }
+    },
+    "validationLevel": {
+      "PRICE_ONLY": { "zh": "仅价格", "en": "Price only" },
+      "COMPONENT_BACKTEST": { "zh": "组件回测", "en": "Component backtest" },
+      "PROSPECTIVE_FULL_SIGNAL": { "zh": "前瞻完整信号", "en": "Prospective full signal" },
+      "WALK_FORWARD_OUT_OF_SAMPLE": { "zh": "滚动样本外", "en": "Walk-forward out of sample" }
+    },
+    "directness": {
+      "DIRECT": { "zh": "直接", "en": "Direct" },
+      "DERIVED": { "zh": "派生", "en": "Derived" },
+      "INFERRED": { "zh": "推断", "en": "Inferred" },
+      "UNKNOWN": { "zh": "未知", "en": "Unknown" }
+    },
+    "transitionReason": {
+      "PRESSURE_CONFIRMED": { "zh": "压力确认", "en": "Pressure confirmed" },
+      "ABSOLUTE_RISE_CONFIRMED": { "zh": "绝对上涨确认", "en": "Absolute rise confirmed" },
+      "PRESSURE_DISSIPATED": { "zh": "压力消散", "en": "Pressure dissipated" },
+      "COOLING_CONFIRMED": { "zh": "降温确认", "en": "Cooling confirmed" },
+      "REACCELERATION": { "zh": "重新加速", "en": "Reacceleration" },
+      "RETURNED_TO_BASELINE": { "zh": "回归基线", "en": "Returned to baseline" },
+      "FAST_PATH_THEORETICAL": { "zh": "快速通道·理论", "en": "Fast path, theoretical" }
+    },
+    "transitionMode": {
+      "FORMAL": { "zh": "正式", "en": "Formal" },
+      "SHADOW": { "zh": "影子", "en": "Shadow" }
+    },
+    "lifecycleAction": {
+      "STARTED": { "zh": "建立", "en": "Started" },
+      "CONVERTED": { "zh": "转换", "en": "Converted" },
+      "SUSPENDED": { "zh": "暂停", "en": "Suspended" },
+      "RESUMED": { "zh": "恢复", "en": "Resumed" },
+      "REACCELERATED": { "zh": "重新加速", "en": "Reaccelerated" },
+      "CLOSED": { "zh": "关闭", "en": "Closed" }
+    },
+    "lifecycleEntityKind": {
+      "ANALYSIS_CASE": { "zh": "分析案例", "en": "Analysis case" },
+      "CANDIDATE_EPISODE": { "zh": "候选观察", "en": "Candidate episode" },
+      "CYCLE_CASE": { "zh": "周期案例", "en": "Cycle case" }
+    },
+    "analysisUnitKind": {
+      "BASE_MHN": { "zh": "母体名（父项）", "en": "Base market hash name (parent)" },
+      "STYLE_VARIANT": { "zh": "款式子身份", "en": "Style variant" },
+      "PATTERN_VARIANT": { "zh": "模板子身份", "en": "Pattern variant" }
+    },
+    "editionKind": {
+      "STANDARD": { "zh": "普通", "en": "Standard" },
+      "STATTRAK": { "zh": "StatTrak™", "en": "StatTrak™" },
+      "SOUVENIR": { "zh": "纪念品", "en": "Souvenir" },
+      "UNKNOWN": { "zh": "版本尚未解析", "en": "Edition not resolved" }
+    },
+    "querySampleState": {
+      "POSITIVE_SAMPLE": { "zh": "本次查询有样本", "en": "This query returned samples" },
+      "ZERO_CURRENT_SAMPLE": { "zh": "本次查询返回零条当前样本", "en": "This query returned zero current samples" }
+    },
+    "sourceCapabilityState": {
+      "CONFIRMED": { "zh": "来源支持该查询", "en": "Source supports this query" },
+      "UNKNOWN": { "zh": "来源是否支持该查询未知", "en": "Whether the source supports this query is unknown" },
+      "NOT_APPLICABLE": { "zh": "该查询对此来源不适用", "en": "This query does not apply to this source" }
+    },
+    "zeroSampleNonConclusion": {
+      "SOURCE_LACKS_SUPPORT": { "zh": "不等于来源不支持这类查询", "en": "does not mean the source cannot answer this kind of query" },
+      "IDENTITY_DOES_NOT_EXIST": { "zh": "不等于该身份不存在", "en": "does not mean this identity does not exist" },
+      "TOTAL_SUPPLY_IS_ZERO": { "zh": "不等于总供应量为零", "en": "does not mean total supply is zero" }
+    }
+  },
+  "fieldAxes": {
+    "dimCycleStage": { "zh": "单品周期阶段", "en": "Item cycle stage" },
+    "dimEvidenceFlags": { "zh": "证据标记", "en": "Evidence flags" },
+    "dimDataStatus": { "zh": "数据状态", "en": "Data status" },
+    "dimRegimeRelation": { "zh": "与环境关系", "en": "Regime relation" },
+    "dimRecommendation": { "zh": "推荐状态", "en": "Recommendation" },
+    "dimCaseStatus": { "zh": "案例状态", "en": "Case status" },
+    "dimMarketTrend": { "zh": "大盘趋势阶段", "en": "Market trend stage" },
+    "dimMarketLevel": { "zh": "大盘水平", "en": "Market level regime" },
+    "dimSectorTrend": { "zh": "板块绝对趋势", "en": "Sector absolute trend" },
+    "dimRelativeStrength": { "zh": "相对大盘强弱", "en": "Relative strength vs market" },
+    "dimBreadth": { "zh": "板块宽度", "en": "Sector breadth" },
+    "watchAxisRecommendation": { "zh": "推荐", "en": "Recommendation" },
+    "watchAxisCycleStage": { "zh": "阶段", "en": "Cycle stage" },
+    "watchAxisCaseStatus": { "zh": "案例", "en": "Case" }
+  }
+}

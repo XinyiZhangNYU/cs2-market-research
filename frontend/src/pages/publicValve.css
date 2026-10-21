@@ -1,0 +1,853 @@
+.public-valve-archive {
+  min-width: 0;
+}
+
+/* The public archive follows the same warm editorial system as every other public surface.
+   The dark operations-console presentation remains available only to the internal fixture. */
+.public-valve-archive .public-valve-results {
+  --valve-ink: var(--cs-navy, #1e202f);
+  --valve-blue: var(--cs-blue, #3281ac);
+  --valve-orange: var(--cs-amber, #e48717);
+  --valve-paper: #fffdf7;
+  --valve-muted: #686762;
+  --valve-line: rgb(30 32 47 / 17%);
+  gap: 22px;
+  color: var(--valve-ink);
+}
+
+.public-valve-archive .public-valve-results :is(h1, h2, h3, h4) {
+  color: var(--valve-ink);
+}
+
+.public-valve-results__header {
+  min-height: 0;
+}
+
+.public-valve-results__header > div {
+  max-width: 880px;
+}
+
+.public-valve-archive .valve-events__steam-disclaimer {
+  margin: 0;
+  padding: 13px 18px;
+  background: rgb(255 253 247 / 66%);
+  border: 1px solid var(--valve-line);
+  border-left: 4px solid var(--valve-blue);
+  border-radius: 0;
+  color: var(--valve-muted);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.public-valve-archive .valve-events__archive,
+.public-valve-archive .valve-events__history {
+  min-width: 0;
+  padding: clamp(22px, 3vw, 38px);
+  background: rgb(255 253 247 / 76%);
+  border: 1px solid var(--valve-line);
+  border-radius: 0;
+}
+
+.public-valve-archive .valve-events__archive > header {
+  display: flex;
+  gap: 18px;
+  align-items: end;
+  justify-content: space-between;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--valve-line);
+}
+
+.public-valve-archive :is(
+  .valve-events__archive > header p,
+  .valve-events__card header p,
+  .valve-events__source-stage header p,
+  .valve-events__article header p:first-child,
+  .valve-events__claims article header p
+) {
+  margin: 0 0 6px;
+  color: var(--valve-blue);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.public-valve-archive .valve-events__archive > header h2 {
+  margin: 0;
+  font-size: var(--public-section-title-size);
+  font-weight: var(--public-page-title-weight);
+  letter-spacing: var(--public-page-title-tracking);
+  line-height: var(--public-page-title-leading);
+}
+
+.public-valve-archive .valve-events__archive > header > span {
+  color: var(--valve-orange);
+  font-family: var(--mono);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.public-valve-archive .scope-note {
+  max-width: 76ch;
+  margin: 14px 0 0;
+  color: var(--valve-muted);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.public-valve-archive .valve-events__cards {
+  display: grid;
+  gap: 1px;
+  margin-top: 22px;
+  background: var(--valve-line);
+  border: 1px solid var(--valve-line);
+}
+
+.public-valve-archive .valve-events__card {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: 116px minmax(0, 1fr);
+  overflow: visible;
+  background: var(--valve-paper);
+  border: 0;
+  border-radius: 0;
+}
+
+.public-valve-archive .valve-events__card-index {
+  display: grid;
+  min-height: 210px;
+  gap: 4px;
+  align-content: center;
+  justify-items: center;
+  background:
+    linear-gradient(150deg, rgb(50 129 172 / 14%), transparent 70%),
+    #f2f5f3;
+  border-right: 1px solid var(--valve-line);
+  color: var(--valve-blue);
+  font-family: var(--mono);
+}
+
+.public-valve-archive .valve-events__card-index span {
+  color: var(--valve-muted);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+}
+
+.public-valve-archive .valve-events__card-index strong {
+  font-size: 20px;
+  letter-spacing: -0.04em;
+}
+
+.public-valve-archive .valve-events__card-main {
+  min-width: 0;
+  padding: clamp(18px, 2.5vw, 30px);
+}
+
+.public-valve-archive :is(
+  .valve-events__card header,
+  .valve-events__source-stage header,
+  .valve-events__article header,
+  .valve-events__claims article header,
+  .valve-events__outcome header
+) {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.public-valve-archive .valve-events__card h2 {
+  margin: 0;
+  font-size: var(--public-section-title-size);
+  font-weight: var(--public-page-title-weight);
+  letter-spacing: var(--public-page-title-tracking);
+  line-height: var(--public-page-title-leading);
+}
+
+.public-valve-archive .valve-events__tag {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  padding: 4px 8px;
+  background: rgb(50 129 172 / 9%);
+  border: 1px solid rgb(50 129 172 / 24%);
+  border-radius: 0;
+  color: #255f7d;
+  font-family: var(--mono);
+  font-size: 9px;
+  line-height: 1.45;
+  white-space: normal;
+}
+
+.public-valve-archive .valve-events__tag--unknown {
+  background: rgb(228 135 23 / 9%);
+  border-color: rgb(228 135 23 / 28%);
+  color: #87540f;
+}
+
+.public-valve-archive .valve-events__card-date {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 12px;
+  align-items: baseline;
+  margin: 13px 0;
+  color: var(--valve-muted);
+  font-size: 12px;
+}
+
+.public-valve-archive .valve-events__card-date span {
+  font-size: 10px;
+}
+
+.public-valve-archive .valve-events__card-date time {
+  color: var(--valve-ink);
+  font-family: var(--mono);
+  font-weight: 650;
+}
+
+.public-valve-archive .valve-events__ai-disclosure {
+  width: auto;
+  margin: 12px 0 5px !important;
+  padding: 0 0 0 9px;
+  background: transparent;
+  border: 0;
+  border-left: 2px solid var(--valve-orange);
+  border-radius: 0;
+  color: #745018 !important;
+  font-family: var(--font-sans);
+  font-size: 11px !important;
+  letter-spacing: 0;
+}
+
+.public-valve-archive .valve-events__conclusion,
+.public-valve-archive .valve-events__source-only {
+  max-width: 82ch;
+  margin: 10px 0;
+  color: var(--valve-ink);
+  line-height: 1.65;
+}
+
+.public-valve-archive .valve-events__source-only {
+  padding: 10px 13px;
+  background: rgb(30 32 47 / 4%);
+  border-left: 3px solid rgb(30 32 47 / 30%);
+}
+
+.public-valve-archive .valve-events__card-labels {
+  display: flex;
+  min-height: 0;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.public-valve-archive .valve-events__card-labels > span:not(.valve-events__tag) {
+  color: #8b5a16;
+  font-size: 10px;
+}
+
+.public-valve-archive .valve-events__card footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--valve-line);
+}
+
+.public-valve-archive .valve-events a {
+  color: #245d78;
+  font-weight: 650;
+  text-underline-offset: 4px;
+}
+
+.public-valve-archive .valve-events button {
+  min-height: 40px;
+  padding: 9px 14px;
+  background: var(--valve-orange);
+  border: 1px solid var(--valve-orange);
+  border-radius: 0;
+  color: var(--valve-ink);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.public-valve-archive .valve-events button:focus-visible,
+.public-valve-archive .valve-events a:focus-visible {
+  outline: 3px solid rgb(228 135 23 / 42%);
+  outline-offset: 3px;
+}
+
+.public-valve-archive .valve-events__continuation {
+  border-top-color: var(--valve-line);
+}
+
+.public-valve-archive .valve-events__loading,
+.public-valve-archive .valve-events__error {
+  min-height: 150px;
+  padding: 30px;
+  background: var(--valve-paper);
+  border: 1px solid var(--valve-line);
+  border-radius: 0;
+  color: var(--valve-muted);
+}
+
+.public-valve-archive .valve-events__error strong {
+  color: #a33932;
+}
+
+.public-valve-archive .valve-events__back {
+  width: fit-content;
+  margin: 0 0 2px;
+  background: transparent;
+  border-color: var(--valve-line);
+}
+
+.public-valve-archive .valve-events__withdrawal {
+  margin: 0;
+  padding: 14px 18px;
+  background: rgb(228 135 23 / 10%);
+  border: 1px solid rgb(228 135 23 / 32%);
+  border-left: 4px solid var(--valve-orange);
+  border-radius: 0;
+}
+
+.public-valve-archive .valve-events__spine {
+  display: grid;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.public-valve-archive .valve-events__spine::before,
+.public-valve-archive .valve-events__node {
+  display: none;
+}
+
+.public-valve-archive .valve-events__spine > li {
+  display: block;
+  padding: 0;
+}
+
+.public-valve-archive :is(
+  .valve-events__source-stage,
+  .valve-events__outcome,
+  .valve-events__disclosures
+) {
+  padding: clamp(20px, 3vw, 34px);
+  background: rgb(255 253 247 / 78%);
+  border: 1px solid var(--valve-line);
+  border-radius: 0;
+}
+
+.public-valve-archive .valve-events__source-stage {
+  border-top: 5px solid var(--valve-orange);
+}
+
+.public-valve-archive .valve-events__source-stage h2 {
+  max-width: 880px;
+  margin: 0;
+  font-size: var(--public-section-title-size);
+  font-weight: var(--public-page-title-weight);
+  letter-spacing: var(--public-page-title-tracking);
+  line-height: var(--public-page-title-leading);
+}
+
+.public-valve-archive .valve-events__source-stage dl {
+  display: block;
+  margin: 18px 0;
+}
+
+.public-valve-archive .valve-events__source-stage dl > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  align-items: baseline;
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+
+.public-valve-archive .valve-events__source-stage dt,
+.public-valve-archive .valve-events__outcome dt {
+  color: var(--valve-muted);
+  font-size: 10px;
+}
+
+.public-valve-archive .valve-events__source-stage dd,
+.public-valve-archive .valve-events__outcome dd {
+  margin: 0;
+  color: var(--valve-ink);
+}
+
+.public-valve-archive .valve-events__article {
+  max-width: none;
+  padding: clamp(22px, 4vw, 48px);
+  background: var(--valve-paper);
+  border: 1px solid var(--valve-line);
+  border-top: 5px solid var(--valve-blue);
+  border-radius: 0;
+}
+
+.public-valve-archive .valve-events__article header {
+  margin-bottom: 22px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--valve-line);
+}
+
+.public-valve-archive .valve-events__article header h2 {
+  max-width: 760px;
+  margin: 2px 0 0;
+  font-size: var(--public-page-title-size);
+  font-weight: var(--public-page-title-weight);
+  letter-spacing: var(--public-page-title-tracking);
+  line-height: var(--public-page-title-leading);
+}
+
+.public-valve-archive .valve-events__article-meta {
+  display: grid;
+  min-width: 180px;
+  gap: 8px;
+  justify-items: end;
+}
+
+.public-valve-archive .valve-events__report-date {
+  display: grid;
+  gap: 3px;
+  margin: 0 !important;
+  color: var(--valve-muted) !important;
+  font-size: 10px !important;
+  text-align: right;
+}
+
+.public-valve-archive .valve-events__report-date time {
+  color: var(--valve-ink);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.public-valve-archive .valve-events__article-meta > span:not(.valve-events__tag) {
+  color: var(--valve-muted);
+  font-size: 11px;
+}
+
+.public-valve-archive .valve-events__article > section {
+  max-width: 80ch;
+  padding: 12px 0;
+}
+
+.public-valve-archive .valve-events__article h3 {
+  margin: 0 0 7px;
+  color: var(--valve-ink);
+  font-size: 15px;
+}
+
+.public-valve-archive .valve-events__article p {
+  color: #44453f;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.public-valve-archive .valve-events__article-conclusion {
+  margin-top: 12px;
+  padding: 16px 18px !important;
+  background: rgb(50 129 172 / 8%);
+  border-left: 4px solid var(--valve-blue);
+}
+
+.public-valve-archive .valve-events__claims {
+  margin-top: 18px;
+}
+
+.public-valve-archive .valve-events__claims > h2,
+.public-valve-archive .valve-events__outcome h2,
+.public-valve-archive .valve-events__history h2 {
+  margin: 0;
+  font-size: var(--public-section-title-size);
+  font-weight: var(--public-page-title-weight);
+  letter-spacing: var(--public-page-title-tracking);
+  line-height: var(--public-page-title-leading);
+}
+
+.public-valve-archive .valve-events__claims > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 12px;
+  background: var(--valve-line);
+  border: 1px solid var(--valve-line);
+}
+
+.public-valve-archive .valve-events__claims article {
+  min-width: 0;
+  padding: 22px;
+  background: var(--valve-paper);
+  border: 0;
+  border-radius: 0;
+}
+
+.public-valve-archive .valve-events__claims article dl {
+  gap: 1px;
+  background: var(--valve-line);
+}
+
+.public-valve-archive .valve-events__claims article dl > div {
+  background: #f2f4f1;
+}
+
+.public-valve-archive .valve-events__claim-notes section {
+  border-top-color: var(--valve-line);
+}
+
+.public-valve-archive .valve-events__claim-notes h4 {
+  color: var(--valve-ink);
+}
+
+.public-valve-archive :is(.valve-events__claim-notes ul, .valve-events__disclosures ul) {
+  color: var(--valve-muted);
+  line-height: 1.6;
+}
+
+.public-valve-archive .valve-events__disclosures {
+  max-width: none;
+  margin-top: 1px;
+  border-left: 4px solid var(--valve-orange);
+}
+
+.public-valve-archive .valve-events__outcome header {
+  border-bottom-color: var(--valve-line);
+}
+
+.public-valve-archive .valve-events__outcome > p {
+  max-width: 82ch;
+  color: #44453f;
+  line-height: 1.7;
+}
+
+.public-valve-archive .valve-events__outcome dl {
+  display: grid;
+  grid-template-columns: minmax(170px, 0.4fr) minmax(0, 1.6fr);
+  gap: 1px;
+  background: var(--valve-line);
+}
+
+.public-valve-archive .valve-events__outcome dl > div {
+  padding: 13px;
+  background: #f2f4f1;
+  border: 0;
+}
+
+.public-valve-archive .valve-events__history {
+  margin-left: 0;
+}
+
+.public-valve-archive .valve-events__history > ol {
+  gap: 1px;
+  margin-top: 14px;
+  background: var(--valve-line);
+  border: 1px solid var(--valve-line);
+}
+
+.public-valve-archive .valve-events__history li {
+  grid-template-columns: 54px minmax(150px, auto) minmax(0, 1fr);
+  padding: 11px 13px;
+  background: var(--valve-paper);
+  border: 0;
+}
+
+.public-valve-archive .valve-events__history time {
+  color: var(--valve-muted);
+  font-size: 11px;
+}
+
+@media (max-width: 760px) {
+  .public-valve-results__header {
+    min-height: 0;
+  }
+
+  .public-valve-archive .valve-events__card {
+    grid-template-columns: 84px minmax(0, 1fr);
+  }
+
+  .public-valve-archive .valve-events__card-index {
+    min-height: 190px;
+  }
+
+  .public-valve-archive .valve-events__article header {
+    flex-direction: column;
+  }
+
+  .public-valve-archive .valve-events__article-meta {
+    min-width: 0;
+    justify-items: start;
+  }
+
+  .public-valve-archive .valve-events__report-date {
+    text-align: left;
+  }
+
+  .public-valve-archive .valve-events__claims > div,
+  .public-valve-archive .valve-events__outcome dl {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .public-valve-archive .valve-events__archive,
+  .public-valve-archive .valve-events__history {
+    padding: 16px;
+  }
+
+  .public-valve-archive .valve-events__archive > header,
+  .public-valve-archive .valve-events__card header,
+  .public-valve-archive .valve-events__source-stage header,
+  .public-valve-archive .valve-events__outcome header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .public-valve-archive .valve-events__card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .public-valve-archive .valve-events__card-index {
+    min-height: 72px;
+    grid-auto-flow: column;
+    gap: 8px;
+    border-right: 0;
+    border-bottom: 1px solid var(--valve-line);
+  }
+
+  .public-valve-archive .valve-events__card footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .public-valve-archive .valve-events__card footer button {
+    width: 100%;
+  }
+
+  .public-valve-archive .valve-events__history li {
+    grid-template-columns: 44px minmax(0, 1fr);
+  }
+
+  .public-valve-archive .valve-events__history time {
+    grid-column: 1 / -1;
+    text-align: left;
+  }
+}
+
+.public-valve-switcher {
+  display: inline-flex;
+  gap: 4px;
+  margin: 0 0 18px;
+  padding: 4px;
+  background: rgb(30 32 47 / 6%);
+  border: 1px solid rgb(30 32 47 / 15%);
+}
+
+.public-valve-switcher :is(a, span) {
+  padding: 8px 13px;
+  color: var(--cs-navy, #1e202f);
+  font-size: 12px;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.public-valve-switcher [aria-current='page'] {
+  background: var(--cs-navy, #1e202f);
+  color: #fffdf7;
+}
+
+.public-valve-switcher a:hover {
+  background: rgb(50 129 172 / 12%);
+}
+
+.valve-history {
+  --valve-ink: var(--cs-navy, #1e202f);
+  --valve-blue: var(--cs-blue, #3281ac);
+  --valve-orange: var(--cs-amber, #e48717);
+  --valve-paper: #fffdf7;
+  --valve-muted: #686762;
+  --valve-line: rgb(30 32 47 / 17%);
+  min-width: 0;
+  padding: clamp(22px, 3vw, 38px);
+  overflow-wrap: anywhere;
+  background: rgb(255 253 247 / 76%);
+  border: 1px solid var(--valve-line);
+  color: var(--valve-ink);
+}
+
+.valve-history > header {
+  max-width: 880px;
+  margin-bottom: 24px;
+}
+
+.valve-history > header > p:first-child {
+  margin: 0 0 7px;
+  color: var(--valve-blue);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.valve-history > header h2 {
+  margin: 0 0 12px;
+  color: var(--valve-ink);
+  font-size: var(--public-section-title-size);
+  font-weight: var(--public-page-title-weight);
+  letter-spacing: var(--public-page-title-tracking);
+  line-height: var(--public-page-title-leading);
+}
+
+.valve-history p {
+  line-height: 1.72;
+  white-space: pre-wrap;
+}
+
+.valve-history__search,
+.valve-history__version {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  align-items: center;
+  color: var(--valve-muted);
+  font-size: 13px;
+}
+
+.valve-history__search {
+  margin-bottom: 22px;
+}
+
+.valve-history :is(input, select) {
+  min-width: 0;
+  max-width: 100%;
+  min-height: 42px;
+  padding: 8px 12px;
+  background: var(--valve-paper);
+  border: 1px solid rgb(30 32 47 / 28%);
+  border-radius: 0;
+  color: var(--valve-ink);
+}
+
+.valve-history__search input {
+  flex: 1;
+  max-width: 460px;
+}
+
+.valve-history__case {
+  margin-top: 18px;
+  padding: clamp(18px, 2.5vw, 30px);
+  background: var(--valve-paper);
+  border: 1px solid var(--valve-line);
+}
+
+.valve-history__case > header,
+.valve-history__case > footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.valve-history__case > header p,
+.valve-history__case > footer,
+.valve-history__muted,
+.valve-history__times {
+  color: var(--valve-muted);
+  font-size: 12px;
+}
+
+.valve-history__case h3 {
+  margin: 5px 0 0;
+  color: var(--valve-ink);
+  font-size: var(--public-section-title-size);
+  font-weight: var(--public-page-title-weight);
+  letter-spacing: var(--public-page-title-tracking);
+  line-height: var(--public-page-title-leading);
+}
+
+.valve-history__badge {
+  padding: 5px 8px;
+  background: rgb(50 129 172 / 9%);
+  border: 1px solid rgb(50 129 172 / 24%);
+  color: #255f7d;
+  font-family: var(--mono);
+  font-size: 9px;
+}
+
+.valve-history__times {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 24px;
+}
+
+.valve-history__analysis {
+  margin: 24px 0;
+}
+
+.valve-history__analysis h4,
+.valve-history__comment h4,
+.valve-history__label h4 {
+  color: var(--valve-ink);
+}
+
+.valve-history__label {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--valve-line);
+}
+
+.valve-history__comment,
+.valve-history__pending {
+  margin: 20px 0;
+  padding: 15px 18px;
+  background: rgb(228 135 23 / 7%);
+  border-left: 3px solid var(--valve-orange);
+}
+
+.valve-history__comment h4 {
+  margin: 0 0 10px;
+  font-size: 13px;
+}
+
+.valve-history__comment p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.valve-history__case footer {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--valve-line);
+}
+
+.valve-history a {
+  color: #245d78;
+  font-weight: 650;
+  text-underline-offset: 4px;
+}
+
+.valve-history :is(a, button, input, select):focus-visible,
+.public-valve-switcher :is(a, button):focus-visible {
+  outline: 2px solid var(--valve-blue);
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .valve-history__version select {
+    width: 100%;
+  }
+
+  .valve-history__comment {
+    padding: 12px;
+  }
+}

@@ -1,0 +1,353 @@
+{
+  "api_contract": "price-display-api",
+  "api_version": "v1",
+  "document_hash": "1fe73e43ad05f2eef472d0c50fc2280548194c16a1862038cf48903e514f31ab",
+  "items": [
+    {
+      "amounts": {
+        "CNY": {
+          "amount": "0.01",
+          "basis": "FX_DERIVED",
+          "currency": "CNY",
+          "reason": null,
+          "rounding": "EXACT",
+          "scale": 2,
+          "status": "AVAILABLE"
+        },
+        "USD": {
+          "amount": "10.00000000",
+          "basis": "NATIVE",
+          "currency": "USD",
+          "reason": null,
+          "rounding": "EXACT",
+          "scale": 8,
+          "status": "AVAILABLE"
+        }
+      },
+      "analysis_unit_id": "fixture:价格/./\\:é",
+      "available_at": "2026-09-03T00:00:00.000000Z",
+      "bucket_at": "2026-08-28T12:00:00.000000Z",
+      "fx": {
+        "authority": "ECB",
+        "available_at": "2026-08-29T00:00:00.000000Z",
+        "carry_days": 0,
+        "cny_per_usd": "6.720000000000000000",
+        "cny_valid_from": "2026-08-28T14:00:00.000000Z",
+        "conversion_policy_version": "price-display-bicurrency/1",
+        "fx_selection_policy_version": "ecb-eur-cross-daily/2",
+        "method": "ECB_EUR_CROSS",
+        "public_rate_id": "eba287891252e8fa862401bccbdeb8bca8ef04c91c6b5f98390d1484c2520210",
+        "source_event_date": "2026-08-28",
+        "usage": "PRICE_DISPLAY_ONLY",
+        "usd_valid_from": "2026-08-28T14:00:00.000000Z"
+      },
+      "identity_available_at": "2026-09-02T00:00:00.000000Z",
+      "identity_policy": "CATALOG_SNAPSHOT_EXACT_ITEM_V1",
+      "item_id": "9007199254740993",
+      "late_bound": false,
+      "observed_at": "2026-08-28T12:00:00.000000Z",
+      "quote_id": "716088ee526caa0a852bf7bfe7e1801bd30f408b89ab86b349a117f41c076d35",
+      "quote_kind": "ASK",
+      "source": {
+        "logical_market": "market_a",
+        "quote_origin": "SOURCE_QUOTE",
+        "transport": "upstream"
+      },
+      "source_available_at": "2026-08-29T00:00:00.000000Z",
+      "source_collected_at": null,
+      "source_price": {
+        "currency": "USD",
+        "normalized_fraction_digits": 8,
+        "unit": "USD_DECIMAL",
+        "upstream_fraction_digits": null,
+        "value": "10.00000000"
+      },
+      "source_price_reason": null,
+      "source_updated_at": null,
+      "time_basis": "BUCKET_AT"
+    },
+    {
+      "amounts": {
+        "CNY": {
+          "amount": "92233720368547758.07",
+          "basis": "NATIVE",
+          "currency": "CNY",
+          "reason": null,
+          "rounding": "EXACT",
+          "scale": 2,
+          "status": "AVAILABLE"
+        },
+        "USD": {
+          "amount": "13725256007224368.76041667",
+          "basis": "FX_DERIVED",
+          "currency": "USD",
+          "reason": null,
+          "rounding": "ROUNDED",
+          "scale": 8,
+          "status": "AVAILABLE"
+        }
+      },
+      "analysis_unit_id": "fixture:价格/./\\:é",
+      "available_at": "2026-09-03T00:00:00.000000Z",
+      "bucket_at": "2026-08-28T12:00:00.000000Z",
+      "fx": {
+        "authority": "ECB",
+        "available_at": "2026-08-29T00:00:00.000000Z",
+        "carry_days": 0,
+        "cny_per_usd": "6.720000000000000000",
+        "cny_valid_from": "2026-08-28T14:00:00.000000Z",
+        "conversion_policy_version": "price-display-bicurrency/1",
+        "fx_selection_policy_version": "ecb-eur-cross-daily/2",
+        "method": "ECB_EUR_CROSS",
+        "public_rate_id": "eba287891252e8fa862401bccbdeb8bca8ef04c91c6b5f98390d1484c2520210",
+        "source_event_date": "2026-08-28",
+        "usage": "PRICE_DISPLAY_ONLY",
+        "usd_valid_from": "2026-08-28T14:00:00.000000Z"
+      },
+      "identity_available_at": "2026-09-02T00:00:00.000000Z",
+      "identity_policy": "CATALOG_SNAPSHOT_EXACT_ITEM_V1",
+      "item_id": "9007199254740993",
+      "late_bound": false,
+      "observed_at": "2026-08-28T12:00:00.000000Z",
+      "quote_id": "5f2dbea32bac37049322b2608c536eb14f8d3a582f2b4d2d2cc765c62ef12491",
+      "quote_kind": "ASK",
+      "source": {
+        "logical_market": "market_b",
+        "quote_origin": "SOURCE_QUOTE",
+        "transport": "market_b_direct"
+      },
+      "source_available_at": "2026-08-29T00:00:00.000000Z",
+      "source_collected_at": null,
+      "source_price": {
+        "currency": "CNY",
+        "normalized_fraction_digits": 0,
+        "unit": "CNY_MINOR",
+        "upstream_fraction_digits": null,
+        "value": "9223372036854775807"
+      },
+      "source_price_reason": null,
+      "source_updated_at": null,
+      "time_basis": "BUCKET_AT"
+    },
+    {
+      "amounts": {
+        "CNY": {
+          "amount": null,
+          "basis": null,
+          "currency": "CNY",
+          "reason": "SOURCE_CONFLICT",
+          "rounding": null,
+          "scale": null,
+          "status": "UNAVAILABLE"
+        },
+        "USD": {
+          "amount": null,
+          "basis": null,
+          "currency": "USD",
+          "reason": "SOURCE_CONFLICT",
+          "rounding": null,
+          "scale": null,
+          "status": "UNAVAILABLE"
+        }
+      },
+      "analysis_unit_id": "fixture:价格/./\\:é",
+      "available_at": "2026-09-03T00:00:00.000000Z",
+      "bucket_at": "2026-08-28T12:00:00.000000Z",
+      "fx": null,
+      "identity_available_at": "2026-09-02T00:00:00.000000Z",
+      "identity_policy": "CATALOG_SNAPSHOT_EXACT_ITEM_V1",
+      "item_id": "9007199254740993",
+      "late_bound": false,
+      "observed_at": "2026-08-28T12:00:00.000000Z",
+      "quote_id": "1de8bb5afd4993660fecbaf3276d3cb22375af16b82de7135c9a4ffc18601e59",
+      "quote_kind": "BID",
+      "source": {
+        "logical_market": "market_b",
+        "quote_origin": "SOURCE_QUOTE",
+        "transport": "upstream"
+      },
+      "source_available_at": "2026-08-29T00:00:00.000000Z",
+      "source_collected_at": null,
+      "source_price": null,
+      "source_price_reason": "SOURCE_CONFLICT",
+      "source_updated_at": null,
+      "time_basis": "BUCKET_AT"
+    },
+    {
+      "amounts": {
+        "CNY": {
+          "amount": "0.00",
+          "basis": "FX_DERIVED",
+          "currency": "CNY",
+          "reason": null,
+          "rounding": "ROUNDED_TO_ZERO",
+          "scale": 2,
+          "status": "AVAILABLE"
+        },
+        "USD": {
+          "amount": "0.00000001",
+          "basis": "NATIVE",
+          "currency": "USD",
+          "reason": null,
+          "rounding": "EXACT",
+          "scale": 8,
+          "status": "AVAILABLE"
+        }
+      },
+      "analysis_unit_id": "fixture:价格/./\\:é",
+      "available_at": "2026-09-03T00:00:00.000000Z",
+      "bucket_at": "2026-08-28T12:00:00.000000Z",
+      "fx": {
+        "authority": "ECB",
+        "available_at": "2026-08-29T00:00:00.000000Z",
+        "carry_days": 0,
+        "cny_per_usd": "6.720000000000000000",
+        "cny_valid_from": "2026-08-28T14:00:00.000000Z",
+        "conversion_policy_version": "price-display-bicurrency/1",
+        "fx_selection_policy_version": "ecb-eur-cross-daily/2",
+        "method": "ECB_EUR_CROSS",
+        "public_rate_id": "eba287891252e8fa862401bccbdeb8bca8ef04c91c6b5f98390d1484c2520210",
+        "source_event_date": "2026-08-28",
+        "usage": "PRICE_DISPLAY_ONLY",
+        "usd_valid_from": "2026-08-28T14:00:00.000000Z"
+      },
+      "identity_available_at": "2026-09-02T00:00:00.000000Z",
+      "identity_policy": "CATALOG_SNAPSHOT_EXACT_ITEM_V1",
+      "item_id": "9007199254740993",
+      "late_bound": false,
+      "observed_at": "2026-08-28T12:00:00.000000Z",
+      "quote_id": "b2598e9137268722c7de1b1c3ad8634eec7ffae252096f1ed7d7c0e4df66ac48",
+      "quote_kind": "ASK",
+      "source": {
+        "logical_market": "market_c",
+        "quote_origin": "SOURCE_QUOTE",
+        "transport": "upstream"
+      },
+      "source_available_at": "2026-08-29T00:00:00.000000Z",
+      "source_collected_at": null,
+      "source_price": {
+        "currency": "USD",
+        "normalized_fraction_digits": 8,
+        "unit": "USD_DECIMAL",
+        "upstream_fraction_digits": null,
+        "value": "0.00000001"
+      },
+      "source_price_reason": null,
+      "source_updated_at": null,
+      "time_basis": "BUCKET_AT"
+    },
+    {
+      "amounts": {
+        "CNY": {
+          "amount": null,
+          "basis": null,
+          "currency": "CNY",
+          "reason": "SOURCE_UNAVAILABLE",
+          "rounding": null,
+          "scale": null,
+          "status": "UNAVAILABLE"
+        },
+        "USD": {
+          "amount": null,
+          "basis": null,
+          "currency": "USD",
+          "reason": "SOURCE_UNAVAILABLE",
+          "rounding": null,
+          "scale": null,
+          "status": "UNAVAILABLE"
+        }
+      },
+      "analysis_unit_id": "fixture:价格/./\\:é",
+      "available_at": "2026-09-03T00:00:00.000000Z",
+      "bucket_at": "2026-08-28T12:00:00.000000Z",
+      "fx": null,
+      "identity_available_at": "2026-09-02T00:00:00.000000Z",
+      "identity_policy": "CATALOG_SNAPSHOT_EXACT_ITEM_V1",
+      "item_id": "9007199254740993",
+      "late_bound": false,
+      "observed_at": "2026-08-28T12:00:00.000000Z",
+      "quote_id": "2d4740c3a177b47cd082953d7df0b2a9f9d68150e8ec890341e640508a53077e",
+      "quote_kind": "BID",
+      "source": {
+        "logical_market": "market_c",
+        "quote_origin": "SOURCE_QUOTE",
+        "transport": "upstream"
+      },
+      "source_available_at": "2026-08-29T00:00:00.000000Z",
+      "source_collected_at": null,
+      "source_price": null,
+      "source_price_reason": "SOURCE_UNAVAILABLE",
+      "source_updated_at": null,
+      "time_basis": "BUCKET_AT"
+    },
+    {
+      "amounts": {
+        "CNY": {
+          "amount": null,
+          "basis": null,
+          "currency": "CNY",
+          "reason": "NO_ELIGIBLE_FX",
+          "rounding": null,
+          "scale": null,
+          "status": "UNAVAILABLE"
+        },
+        "USD": {
+          "amount": "0.00000000",
+          "basis": "NATIVE",
+          "currency": "USD",
+          "reason": null,
+          "rounding": "EXACT",
+          "scale": 8,
+          "status": "AVAILABLE"
+        }
+      },
+      "analysis_unit_id": "fixture:价格/./\\:é",
+      "available_at": "2026-09-03T00:00:00.000000Z",
+      "bucket_at": null,
+      "fx": null,
+      "identity_available_at": "2026-09-02T00:00:00.000000Z",
+      "identity_policy": "CATALOG_SNAPSHOT_EXACT_ITEM_V1",
+      "item_id": "9007199254740993",
+      "late_bound": false,
+      "observed_at": null,
+      "quote_id": "1e4d50df9b2808efca519ed9b08c4a49f830803b1caad66d75757571b8fe6a96",
+      "quote_kind": "BID",
+      "source": {
+        "logical_market": "market_a",
+        "quote_origin": "SOURCE_QUOTE",
+        "transport": "upstream"
+      },
+      "source_available_at": "2026-08-29T00:00:00.000000Z",
+      "source_collected_at": null,
+      "source_price": {
+        "currency": "USD",
+        "normalized_fraction_digits": 8,
+        "unit": "USD_DECIMAL",
+        "upstream_fraction_digits": null,
+        "value": "0.00000000"
+      },
+      "source_price_reason": null,
+      "source_updated_at": null,
+      "time_basis": "UNAVAILABLE"
+    }
+  ],
+  "pagination": null,
+  "query": {
+    "analysis_unit_id": "fixture:价格/./\\:é",
+    "as_of": "2026-08-30T12:00:00.000000Z",
+    "known_at": "2026-09-03T01:00:00.000000Z",
+    "snapshot_id": "8290d89288df36add6a15df0287bd049ba396d5d9290a89db9920b62b702efbc"
+  },
+  "response_kind": "PRICE_ITEM",
+  "snapshot": {
+    "available_at": "2026-09-03T00:00:00.000000Z",
+    "catalog_as_of": "2026-08-27T00:00:00.000000Z",
+    "catalog_available_at": "2026-09-02T00:00:00.000000Z",
+    "catalog_snapshot_id": "040d69d4724f6c264dcad12c6dfaa979847cd7ab1e1db1d554858c766f44a052",
+    "kind": "CURRENT",
+    "market_as_of": "2026-08-30T12:00:00.000000Z",
+    "price_policy_version": "price-display-read/1",
+    "published_at": "2026-09-03T00:00:00.000000Z",
+    "snapshot_id": "8290d89288df36add6a15df0287bd049ba396d5d9290a89db9920b62b702efbc"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "api_contract": "price-display-api",
+  "api_version": "v1",
+  "document_hash": "ccfaf2f45aa26e1d1667e92d1f01f370999bf32eeabf2d773129949da742f732",
+  "items": [],
+  "pagination": {
+    "next_cursor": null,
+    "page_size": 2
+  },
+  "query": {
+    "analysis_unit_id": "fixture:价格/./\\:é",
+    "as_of": "2026-08-30T12:00:00.000000Z",
+    "cursor": null,
+    "from": "2026-08-27T00:00:00.000000Z",
+    "known_at": "2026-09-03T01:00:00.000000Z",
+    "logical_market": null,
+    "page_size": 2,
+    "quote_kind": null,
+    "quote_origin": null,
+    "snapshot_id": "ef2feed8247e0941bdf4da84c226419163a69a9a2ffd31342facfe6c0a96bfed",
+    "sort": "EVENT_SOURCE_QUOTE_ID_ASC",
+    "to": "2026-08-28T00:00:00.000000Z"
+  },
+  "response_kind": "PRICE_HISTORY",
+  "snapshot": {
+    "available_at": "2026-09-03T00:00:00.000000Z",
+    "catalog_as_of": "2026-08-27T00:00:00.000000Z",
+    "catalog_available_at": "2026-09-02T00:00:00.000000Z",
+    "catalog_snapshot_id": "040d69d4724f6c264dcad12c6dfaa979847cd7ab1e1db1d554858c766f44a052",
+    "kind": "HISTORY",
+    "market_as_of": "2026-08-30T12:00:00.000000Z",
+    "price_policy_version": "price-display-read/1",
+    "published_at": "2026-09-03T00:00:00.000000Z",
+    "snapshot_id": "ef2feed8247e0941bdf4da84c226419163a69a9a2ffd31342facfe6c0a96bfed"
+  }
+}

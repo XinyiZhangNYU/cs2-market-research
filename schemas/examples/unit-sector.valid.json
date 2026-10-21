@@ -1,0 +1,50 @@
+{
+  "snapshot_id": "1fe6915fe0ffbf250e80b1dd2797b3da66660adde62edd003e6e692dbc9cb668",
+  "contract_code": "research-result-envelope",
+  "contract_version": "v1",
+  "envelope_kind": "UNIT",
+  "identity": {
+    "analysis_unit_id": "sector:knives",
+    "scope_kind": "SECTOR",
+    "display_name": "Knives",
+    "identity_available_at": "2026-08-20T23:00:00.000000Z",
+    "catalog_version": "catalog-v1",
+    "analysis_unit_kind": null,
+    "edition_kind": null,
+    "parent_analysis_unit_id": null
+  },
+  "as_of": "2026-08-21T00:00:00.000000Z",
+  "available_at": "2026-08-20T23:59:59.000000Z",
+  "data_branch": "B",
+  "data_status": "COMPLETE",
+  "versions": {
+    "catalog_version": "catalog-v1",
+    "group_version": "group-v1",
+    "index_version": "index-v1",
+    "fusion_method_version": "fusion-v1",
+    "feature_profile_version": "profile-v1",
+    "algorithm_version": "algorithm-v1",
+    "parameter_set_version": "parameters-v1",
+    "stage_policy_version": "stage-v1",
+    "failure_policy_version": "failure-v1"
+  },
+  "state": {
+    "trend_stage": "UP_BUILDING",
+    "relative_strength": "LEADING",
+    "breadth": {
+      "advancing_member_ratio": "0.625",
+      "median_member_return": "-0.031",
+      "breadth_expanding": true,
+      "breadth_narrowing": false,
+      "concentration_warning": true
+    },
+    "evidence_flags": ["CONCENTRATION_WARNING"],
+    "recommendation": "WATCH",
+    "case_status": "ACTIVE",
+    "analysis_case_id": "sector-case:knives",
+    "input_snapshot_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "recommendation_detail": null,
+  "evidence_domains": [],
+  "claims": []
+}

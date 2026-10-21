@@ -1,0 +1,10 @@
+{
+  "api_contract": "result-read-api",
+  "api_version": "v1",
+  "error": {
+    "code": "NOT_FOUND",
+    "http_status": 404,
+    "retryable": false
+  },
+  "response_kind": "ERROR"
+}

@@ -1,0 +1,50 @@
+{
+  "contract_name": "single-item-monitor-public-api",
+  "contract_version": "1",
+  "response_kind": "EMPTY",
+  "operation": "LIST",
+  "release_maturity": "EXPERIMENTAL",
+  "efficacy_status": "UNVALIDATED",
+  "false_positives_possible": true,
+  "publication": {
+    "publication_id": "7777777777777777777777777777777777777777777777777777777777777777",
+    "parent_publication_id": null,
+    "manifest_sha256": "0afb8a80a55a938695213bc0c24520e51204f7c92bdc0175da9729e4683618eb",
+    "rights_revision": "8888888888888888888888888888888888888888888888888888888888888888",
+    "published_at": "2026-09-17T00:04:00Z",
+    "withdrawn_at": null
+  },
+  "snapshot": {
+    "catalog_snapshot_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "end_date": null,
+    "imported_at": "2026-09-17T00:03:00Z",
+    "input_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "membership_version": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "source_export_as_of": "2026-09-17T00:02:00Z",
+    "start_date": null
+  },
+  "release": {
+    "algorithm_version": "3333333333333333333333333333333333333333333333333333333333333333",
+    "cohort_id": "2222222222222222222222222222222222222222222222222222222222222222",
+    "coverage_policy_version": "5555555555555555555555555555555555555555555555555555555555555555",
+    "data_quality_version": "6666666666666666666666666666666666666666666666666666666666666666",
+    "full_member_count": 16978,
+    "parameter_set_version": "4444444444444444444444444444444444444444444444444444444444444444",
+    "pre_release_candidate_count": 0,
+    "public_member_count": 0,
+    "release_id": "1111111111111111111111111111111111111111111111111111111111111111",
+    "source_candidate_count": 0
+  },
+  "freshness": {
+    "evaluated_at": "2026-09-17T02:00:00.000000Z",
+    "expected_latest_complete_date": "2026-09-16",
+    "lag_complete_days": null,
+    "status": "UNAVAILABLE",
+    "headline_data_date": null
+  },
+  "empty_reason": "NO_QUALIFIED_OBSERVATION",
+  "sort": "SIGNAL_TIME_DESC",
+  "page_size": 50,
+  "members": [],
+  "next_cursor": null
+}

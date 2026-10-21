@@ -1,0 +1,170 @@
+{
+  "schema": "market-sector-taxonomy-policy/3",
+  "usage_scope": "INTERNAL_PROSPECTIVE_MARKET_SECTOR_V3_SHADOW",
+  "formal_state_eligible": false,
+  "market_scope_code": "ALL",
+  "aggregate_scope_codes": [
+    "AGENT",
+    "ARMORY",
+    "CASE",
+    "COLLECTION",
+    "GLOVE",
+    "KNIFE",
+    "WEAPON"
+  ],
+  "weapon_subsectors": {
+    "WEAPON:MACHINE_GUN": [
+      "M249",
+      "Negev"
+    ],
+    "WEAPON:OTHER": [
+      "Zeus x27"
+    ],
+    "WEAPON:PISTOL": [
+      "CZ75-Auto",
+      "Desert Eagle",
+      "Dual Berettas",
+      "Five-SeveN",
+      "Glock-18",
+      "P2000",
+      "P250",
+      "R8 Revolver",
+      "Tec-9",
+      "USP-S"
+    ],
+    "WEAPON:RIFLE": [
+      "AK-47",
+      "AUG",
+      "FAMAS",
+      "Galil AR",
+      "M4A1-S",
+      "M4A4",
+      "SG 553"
+    ],
+    "WEAPON:SHOTGUN": [
+      "MAG-7",
+      "Nova",
+      "Sawed-Off",
+      "XM1014"
+    ],
+    "WEAPON:SMG": [
+      "MAC-10",
+      "MP5-SD",
+      "MP7",
+      "MP9",
+      "P90",
+      "PP-Bizon",
+      "UMP-45"
+    ],
+    "WEAPON:SNIPER": [
+      "AWP",
+      "G3SG1",
+      "SCAR-20",
+      "SSG 08"
+    ]
+  },
+  "case_admission": {
+    "category": "container",
+    "is_tradable": true,
+    "schema_completeness_rule": "TRADABLE_CONTAINER_NAME_CONTAINS_CASE_OR_ENDS_TERMINAL",
+    "required_provider_ids": [
+      "market_a",
+      "market_b",
+      "market_c"
+    ],
+    "market_hash_names": [
+      "CS20 Case",
+      "CS:GO Weapon Case",
+      "CS:GO Weapon Case 2",
+      "CS:GO Weapon Case 3",
+      "Chroma 2 Case",
+      "Chroma 3 Case",
+      "Chroma Case",
+      "Clutch Case",
+      "Danger Zone Case",
+      "Dreams & Nightmares Case",
+      "Falchion Case",
+      "Fever Case",
+      "Fracture Case",
+      "Gallery Case",
+      "Gamma 2 Case",
+      "Gamma Case",
+      "Glove Case",
+      "Horizon Case",
+      "Huntsman Weapon Case",
+      "Kilowatt Case",
+      "Operation Bravo Case",
+      "Operation Breakout Weapon Case",
+      "Operation Broken Fang Case",
+      "Operation Hydra Case",
+      "Operation Phoenix Weapon Case",
+      "Operation Riptide Case",
+      "Operation Vanguard Weapon Case",
+      "Operation Wildfire Case",
+      "Prisma 2 Case",
+      "Prisma Case",
+      "Recoil Case",
+      "Revolution Case",
+      "Revolver Case",
+      "Sealed Dead Hand Terminal",
+      "Sealed Genesis Terminal",
+      "Shadow Case",
+      "Shattered Web Case",
+      "Snakebite Case",
+      "Spectrum 2 Case",
+      "Spectrum Case",
+      "Winter Offensive Weapon Case",
+      "eSports 2013 Case",
+      "eSports 2013 Winter Case",
+      "eSports 2014 Summer Case"
+    ]
+  },
+  "agent_admission": {
+    "category": "agent",
+    "is_tradable": true,
+    "required_provider_ids": [
+      "market_a",
+      "market_b",
+      "market_c"
+    ]
+  },
+  "collection_admission": {
+    "member_category": "skin",
+    "collection_kind": "weapon"
+  },
+  "armory_admission": {
+    "member_category": "skin",
+    "collection_kind": "weapon",
+    "collection_names": [
+      "Limited Edition Armory",
+      "The Arabesque Collection",
+      "The Gallery Collection",
+      "The Graphic Design Collection",
+      "The Overpass 2024 Collection",
+      "The Sport & Field Collection",
+      "The Spy Tech Collection"
+    ],
+    "excluded_armory_item_kinds": [
+      "keychain",
+      "sticker",
+      "sticker_slab"
+    ]
+  },
+  "identity_rules": {
+    "existing_catalog": "EXACT_INTERNAL_CATALOG_PROJECTION",
+    "new_case_and_agent": "EXACT_MARKET_HASH_NAME_SHA256_PROVISIONAL",
+    "cross_platform_key": "market_hash_name",
+    "wear_only_identity_forbidden": true
+  },
+  "continuity_rules": {
+    "new_membership_version_required": true,
+    "reset_on_membership_change": true,
+    "historical_backfill_forbidden": true,
+    "prior_t0_rewrite_forbidden": true
+  },
+  "small_scope_rule": {
+    "singleton_status": "LOW_MEMBER_COUNT_RAW_ONLY",
+    "other_small_scope_threshold": null,
+    "other_small_scope_threshold_status": "PROFILE_NOT_SELECTED"
+  }
+}

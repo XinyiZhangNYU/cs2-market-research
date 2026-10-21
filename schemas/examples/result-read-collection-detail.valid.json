@@ -1,0 +1,46 @@
+{
+  "api_contract": "result-read-api",
+  "api_version": "v1",
+  "query_as_of": "2026-08-21T00:00:02.000000Z",
+  "resource": {
+    "envelope": {
+      "as_of": "2026-08-21T00:00:00.000000Z",
+      "available_at": "2026-08-21T00:00:00.000000Z",
+      "collection_id": "overview:market",
+      "contract_code": "research-result-envelope",
+      "contract_version": "v1",
+      "data_branch": "B",
+      "data_status": "DEGRADED_OPTIONAL",
+      "envelope_kind": "COLLECTION",
+      "member_count": 3,
+      "member_result_ids": [
+        "c991a731927360d3293b1b9c021e0b89f6354af92cebd6f2d0c52ccf0f294c2c"
+      ],
+      "missing_member_ids": [
+        "market:missing"
+      ],
+      "returned_member_count": 1,
+      "scope_kind": "MARKET",
+      "snapshot_id": "606586ade0a5e0060b52bfcd194edcee37af60e808c55ec3d41ed3b8b67bb57b",
+      "unavailable_member_ids": [
+        "market:unavailable"
+      ],
+      "versions": {
+        "algorithm_version": "algorithm-v1",
+        "catalog_version": "catalog-v1",
+        "failure_policy_version": "failure-v1",
+        "feature_profile_version": "profile-v1",
+        "fusion_method_version": "fusion-v1",
+        "group_version": "group-v1",
+        "index_version": "index-v1",
+        "parameter_set_version": "parameters-v1",
+        "stage_policy_version": "stage-v1"
+      }
+    },
+    "storage": {
+      "document_hash": "9ab9c3089a856bc9fdd98fe04d160ddf99ffe04a982f66ca8d1716ca9fba0a13",
+      "published_at": "2026-08-21T00:00:01.000000Z"
+    }
+  },
+  "response_kind": "COLLECTION_DETAIL"
+}
